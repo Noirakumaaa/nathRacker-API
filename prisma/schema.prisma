@@ -1,0 +1,159 @@
+generator client {
+  provider   = "prisma-client"
+  output     = "./generated"
+  //engineType = "client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          Int               @id @default(autoincrement())
+  createdAt   DateTime          @default(now())
+  email       String            @unique
+  password    String
+  role        Role              @default(ENCODER)
+  govUsername String            @unique
+  busById     Bus[]             @relation("UserById")
+  encDocByID  EncodedDocument[] @relation("UserById")
+  encDocByUsername EncodedDocument[] @relation("UserByUsername")
+  miscByID    Miscellaneous[]   @relation("UserById")
+  pcnByID     Pcn[]             @relation("UserById")
+  swdiById    Swdi[]            @relation("UserById")
+  userInfo    UserInfo?
+}
+
+model UserInfo {
+  id                Int     @id @default(autoincrement())
+  userId            Int     @unique
+  firstName         String  @default("")
+  lastName          String  @default("")
+  phone             String  @default("")
+  sessionTime       Int     @default(30)
+  language          String  @default("ENGLISH")
+  timezone          String  @default("UTC")
+  twoFactorAuth     Boolean @default(false)
+  smsAlert          Boolean @default(false)
+  loginAlert        Boolean @default(false)
+  SecuritAlert      Boolean @default(false)
+  emailAlert        Boolean @default(false)
+  weeklyReportAlert Boolean @default(false)
+  theme             theme   @default(DARK)
+  user              User    @relation(fields: [userId], references: [id])
+}
+
+model Bus {
+  id              Int      @id @default(autoincrement())
+  lgu             String
+  barangay        String
+  hhId            String
+  granteeName     String
+  typeOfUpdate    String
+  remarks         String
+  issue           String?
+  encodedBy       String
+  updateInfo      String
+  subjectOfChange String
+  drn             String
+  cl              String
+  date            DateTime
+  note            String?
+  userId          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userById        User     @relation("UserById", fields: [userId], references: [id])
+}
+
+model Swdi {
+  id        Int      @id @default(autoincrement())
+  hhId      String
+  lgu       String
+  barangay  String
+  grantee   String
+  swdiScore Float
+  swdiLevel String
+  encodedBy String
+  remarks   String
+  issue     String?
+  cl       String?
+  drn       String?
+  date      DateTime
+  note      String?
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  encoded   String
+  userById  User     @relation("UserById", fields: [userId], references: [id])
+}
+
+model Pcn {
+  id              Int      @id @default(autoincrement())
+  lgu             String
+  barangay        String
+  hhId            String
+  granteeName     String
+  hhMember        String
+  typeOfUpdate    String   @default("PCN")
+  remarks         String
+  issue           String?
+  encodedBy       String
+  subjectOfChange String
+  drn             String?
+  cl              String?
+  date            DateTime
+  note            String?
+  userId          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userById        User     @relation("UserById", fields: [userId], references: [id])
+}
+
+model Miscellaneous {
+  id              Int      @id @default(autoincrement())
+  lgu             String
+  barangay        String
+  hhId            String
+  granteeName     String
+  hhMember        String?
+  typeOfUpdate    String
+  remarks         String
+  issue           String?
+  encodedBy       String
+  subjectOfChange String?
+  drn             String?
+  cl              String?
+  date            DateTime
+  note            String?
+  userId          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userById        User     @relation("UserById", fields: [userId], references: [id])
+}
+
+model EncodedDocument {
+  id           Int      @id @default(autoincrement())
+  hhId         String
+  name         String
+  documentType String
+  documentId   Int
+  encoded      String
+  userId       Int
+  govUsername   String
+  date         DateTime
+  createdAt    DateTime @default(now())
+  userById     User     @relation("UserById", fields: [userId], references: [id])
+  govUserByUsername User @relation("UserByUsername", fields: [govUsername], references: [govUsername])
+
+  @@index([hhId])
+}
+
+enum theme {
+  LIGHT
+  DARK
+}
+
+enum Role {
+  ENCODER
+  ADMIN
+}
