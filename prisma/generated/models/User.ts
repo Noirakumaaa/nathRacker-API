@@ -229,7 +229,8 @@ export type UserWhereInput = {
   encDocByUsername?: Prisma.EncodedDocumentListRelationFilter
   miscByID?: Prisma.MiscellaneousListRelationFilter
   pcnByID?: Prisma.PcnListRelationFilter
-  swdiById?: Prisma.SwdiListRelationFilter
+  swdiByID?: Prisma.SwdiListRelationFilter
+  cvsByID?: Prisma.CVSListRelationFilter
   userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
 }
 
@@ -245,7 +246,8 @@ export type UserOrderByWithRelationInput = {
   encDocByUsername?: Prisma.EncodedDocumentOrderByRelationAggregateInput
   miscByID?: Prisma.MiscellaneousOrderByRelationAggregateInput
   pcnByID?: Prisma.PcnOrderByRelationAggregateInput
-  swdiById?: Prisma.SwdiOrderByRelationAggregateInput
+  swdiByID?: Prisma.SwdiOrderByRelationAggregateInput
+  cvsByID?: Prisma.CVSOrderByRelationAggregateInput
   userInfo?: Prisma.UserInfoOrderByWithRelationInput
 }
 
@@ -264,7 +266,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   encDocByUsername?: Prisma.EncodedDocumentListRelationFilter
   miscByID?: Prisma.MiscellaneousListRelationFilter
   pcnByID?: Prisma.PcnListRelationFilter
-  swdiById?: Prisma.SwdiListRelationFilter
+  swdiByID?: Prisma.SwdiListRelationFilter
+  cvsByID?: Prisma.CVSListRelationFilter
   userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
 }, "id" | "email" | "govUsername">
 
@@ -305,7 +308,8 @@ export type UserCreateInput = {
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
@@ -321,7 +325,8 @@ export type UserUncheckedCreateInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -336,7 +341,8 @@ export type UserUpdateInput = {
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
@@ -352,7 +358,8 @@ export type UserUncheckedUpdateInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -470,18 +477,18 @@ export type UserUpdateOneRequiredWithoutBusByIdNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBusByIdInput, Prisma.UserUpdateWithoutBusByIdInput>, Prisma.UserUncheckedUpdateWithoutBusByIdInput>
 }
 
-export type UserCreateNestedOneWithoutSwdiByIdInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIdInput, Prisma.UserUncheckedCreateWithoutSwdiByIdInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSwdiByIdInput
+export type UserCreateNestedOneWithoutSwdiByIDInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIDInput, Prisma.UserUncheckedCreateWithoutSwdiByIDInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSwdiByIDInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutSwdiByIdNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIdInput, Prisma.UserUncheckedCreateWithoutSwdiByIdInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSwdiByIdInput
-  upsert?: Prisma.UserUpsertWithoutSwdiByIdInput
+export type UserUpdateOneRequiredWithoutSwdiByIDNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIDInput, Prisma.UserUncheckedCreateWithoutSwdiByIDInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSwdiByIDInput
+  upsert?: Prisma.UserUpsertWithoutSwdiByIDInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSwdiByIdInput, Prisma.UserUpdateWithoutSwdiByIdInput>, Prisma.UserUncheckedUpdateWithoutSwdiByIdInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSwdiByIDInput, Prisma.UserUpdateWithoutSwdiByIDInput>, Prisma.UserUncheckedUpdateWithoutSwdiByIDInput>
 }
 
 export type UserCreateNestedOneWithoutPcnByIDInput = {
@@ -496,6 +503,20 @@ export type UserUpdateOneRequiredWithoutPcnByIDNestedInput = {
   upsert?: Prisma.UserUpsertWithoutPcnByIDInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPcnByIDInput, Prisma.UserUpdateWithoutPcnByIDInput>, Prisma.UserUncheckedUpdateWithoutPcnByIDInput>
+}
+
+export type UserCreateNestedOneWithoutCvsByIDInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCvsByIDInput, Prisma.UserUncheckedCreateWithoutCvsByIDInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCvsByIDInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCvsByIDNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCvsByIDInput, Prisma.UserUncheckedCreateWithoutCvsByIDInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCvsByIDInput
+  upsert?: Prisma.UserUpsertWithoutCvsByIDInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCvsByIDInput, Prisma.UserUpdateWithoutCvsByIDInput>, Prisma.UserUncheckedUpdateWithoutCvsByIDInput>
 }
 
 export type UserCreateNestedOneWithoutMiscByIDInput = {
@@ -551,7 +572,8 @@ export type UserCreateWithoutUserInfoInput = {
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
 }
 
 export type UserUncheckedCreateWithoutUserInfoInput = {
@@ -566,7 +588,8 @@ export type UserUncheckedCreateWithoutUserInfoInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
 }
 
 export type UserCreateOrConnectWithoutUserInfoInput = {
@@ -596,7 +619,8 @@ export type UserUpdateWithoutUserInfoInput = {
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserInfoInput = {
@@ -611,7 +635,8 @@ export type UserUncheckedUpdateWithoutUserInfoInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
 }
 
 export type UserCreateWithoutBusByIdInput = {
@@ -624,7 +649,8 @@ export type UserCreateWithoutBusByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
@@ -639,7 +665,8 @@ export type UserUncheckedCreateWithoutBusByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -669,7 +696,8 @@ export type UserUpdateWithoutBusByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
@@ -684,11 +712,12 @@ export type UserUncheckedUpdateWithoutBusByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
-export type UserCreateWithoutSwdiByIdInput = {
+export type UserCreateWithoutSwdiByIDInput = {
   createdAt?: Date | string
   email: string
   password: string
@@ -699,10 +728,11 @@ export type UserCreateWithoutSwdiByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutSwdiByIdInput = {
+export type UserUncheckedCreateWithoutSwdiByIDInput = {
   id?: number
   createdAt?: Date | string
   email: string
@@ -714,26 +744,27 @@ export type UserUncheckedCreateWithoutSwdiByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutSwdiByIdInput = {
+export type UserCreateOrConnectWithoutSwdiByIDInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIdInput, Prisma.UserUncheckedCreateWithoutSwdiByIdInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIDInput, Prisma.UserUncheckedCreateWithoutSwdiByIDInput>
 }
 
-export type UserUpsertWithoutSwdiByIdInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSwdiByIdInput, Prisma.UserUncheckedUpdateWithoutSwdiByIdInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIdInput, Prisma.UserUncheckedCreateWithoutSwdiByIdInput>
+export type UserUpsertWithoutSwdiByIDInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSwdiByIDInput, Prisma.UserUncheckedUpdateWithoutSwdiByIDInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSwdiByIDInput, Prisma.UserUncheckedCreateWithoutSwdiByIDInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutSwdiByIdInput = {
+export type UserUpdateToOneWithWhereWithoutSwdiByIDInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSwdiByIdInput, Prisma.UserUncheckedUpdateWithoutSwdiByIdInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSwdiByIDInput, Prisma.UserUncheckedUpdateWithoutSwdiByIDInput>
 }
 
-export type UserUpdateWithoutSwdiByIdInput = {
+export type UserUpdateWithoutSwdiByIDInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -744,10 +775,11 @@ export type UserUpdateWithoutSwdiByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutSwdiByIdInput = {
+export type UserUncheckedUpdateWithoutSwdiByIDInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -759,6 +791,7 @@ export type UserUncheckedUpdateWithoutSwdiByIdInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -772,7 +805,8 @@ export type UserCreateWithoutPcnByIDInput = {
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
@@ -787,7 +821,8 @@ export type UserUncheckedCreateWithoutPcnByIDInput = {
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -817,7 +852,8 @@ export type UserUpdateWithoutPcnByIDInput = {
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
@@ -832,7 +868,86 @@ export type UserUncheckedUpdateWithoutPcnByIDInput = {
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCvsByIDInput = {
+  createdAt?: Date | string
+  email: string
+  password: string
+  role?: $Enums.Role
+  govUsername: string
+  busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCvsByIDInput = {
+  id?: number
+  createdAt?: Date | string
+  email: string
+  password: string
+  role?: $Enums.Role
+  govUsername: string
+  busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCvsByIDInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCvsByIDInput, Prisma.UserUncheckedCreateWithoutCvsByIDInput>
+}
+
+export type UserUpsertWithoutCvsByIDInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCvsByIDInput, Prisma.UserUncheckedUpdateWithoutCvsByIDInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCvsByIDInput, Prisma.UserUncheckedCreateWithoutCvsByIDInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCvsByIDInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCvsByIDInput, Prisma.UserUncheckedUpdateWithoutCvsByIDInput>
+}
+
+export type UserUpdateWithoutCvsByIDInput = {
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCvsByIDInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -846,7 +961,8 @@ export type UserCreateWithoutMiscByIDInput = {
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
@@ -861,7 +977,8 @@ export type UserUncheckedCreateWithoutMiscByIDInput = {
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -891,7 +1008,8 @@ export type UserUpdateWithoutMiscByIDInput = {
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
@@ -906,7 +1024,8 @@ export type UserUncheckedUpdateWithoutMiscByIDInput = {
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -920,7 +1039,8 @@ export type UserCreateWithoutEncDocByIDInput = {
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
@@ -935,7 +1055,8 @@ export type UserUncheckedCreateWithoutEncDocByIDInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -954,7 +1075,8 @@ export type UserCreateWithoutEncDocByUsernameInput = {
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
@@ -969,7 +1091,8 @@ export type UserUncheckedCreateWithoutEncDocByUsernameInput = {
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiById?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -999,7 +1122,8 @@ export type UserUpdateWithoutEncDocByIDInput = {
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
@@ -1014,7 +1138,8 @@ export type UserUncheckedUpdateWithoutEncDocByIDInput = {
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -1039,7 +1164,8 @@ export type UserUpdateWithoutEncDocByUsernameInput = {
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
@@ -1054,7 +1180,8 @@ export type UserUncheckedUpdateWithoutEncDocByUsernameInput = {
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiById?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -1069,7 +1196,8 @@ export type UserCountOutputType = {
   encDocByUsername: number
   miscByID: number
   pcnByID: number
-  swdiById: number
+  swdiByID: number
+  cvsByID: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1078,7 +1206,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   encDocByUsername?: boolean | UserCountOutputTypeCountEncDocByUsernameArgs
   miscByID?: boolean | UserCountOutputTypeCountMiscByIDArgs
   pcnByID?: boolean | UserCountOutputTypeCountPcnByIDArgs
-  swdiById?: boolean | UserCountOutputTypeCountSwdiByIdArgs
+  swdiByID?: boolean | UserCountOutputTypeCountSwdiByIDArgs
+  cvsByID?: boolean | UserCountOutputTypeCountCvsByIDArgs
 }
 
 /**
@@ -1129,8 +1258,15 @@ export type UserCountOutputTypeCountPcnByIDArgs<ExtArgs extends runtime.Types.Ex
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSwdiByIdArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountSwdiByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SwdiWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCvsByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CVSWhereInput
 }
 
 
@@ -1146,7 +1282,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   encDocByUsername?: boolean | Prisma.User$encDocByUsernameArgs<ExtArgs>
   miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
   pcnByID?: boolean | Prisma.User$pcnByIDArgs<ExtArgs>
-  swdiById?: boolean | Prisma.User$swdiByIdArgs<ExtArgs>
+  swdiByID?: boolean | Prisma.User$swdiByIDArgs<ExtArgs>
+  cvsByID?: boolean | Prisma.User$cvsByIDArgs<ExtArgs>
   userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1185,7 +1322,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   encDocByUsername?: boolean | Prisma.User$encDocByUsernameArgs<ExtArgs>
   miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
   pcnByID?: boolean | Prisma.User$pcnByIDArgs<ExtArgs>
-  swdiById?: boolean | Prisma.User$swdiByIdArgs<ExtArgs>
+  swdiByID?: boolean | Prisma.User$swdiByIDArgs<ExtArgs>
+  cvsByID?: boolean | Prisma.User$cvsByIDArgs<ExtArgs>
   userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1200,7 +1338,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     encDocByUsername: Prisma.$EncodedDocumentPayload<ExtArgs>[]
     miscByID: Prisma.$MiscellaneousPayload<ExtArgs>[]
     pcnByID: Prisma.$PcnPayload<ExtArgs>[]
-    swdiById: Prisma.$SwdiPayload<ExtArgs>[]
+    swdiByID: Prisma.$SwdiPayload<ExtArgs>[]
+    cvsByID: Prisma.$CVSPayload<ExtArgs>[]
     userInfo: Prisma.$UserInfoPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1609,7 +1748,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   encDocByUsername<T extends Prisma.User$encDocByUsernameArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$encDocByUsernameArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EncodedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   miscByID<T extends Prisma.User$miscByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$miscByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MiscellaneousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   pcnByID<T extends Prisma.User$pcnByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pcnByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PcnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  swdiById<T extends Prisma.User$swdiByIdArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$swdiByIdArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SwdiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  swdiByID<T extends Prisma.User$swdiByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$swdiByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SwdiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cvsByID<T extends Prisma.User$cvsByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$cvsByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CVSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userInfo<T extends Prisma.User$userInfoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userInfoArgs<ExtArgs>>): Prisma.Prisma__UserInfoClient<runtime.Types.Result.GetResult<Prisma.$UserInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2154,9 +2294,9 @@ export type User$pcnByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
- * User.swdiById
+ * User.swdiByID
  */
-export type User$swdiByIdArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$swdiByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Swdi
    */
@@ -2175,6 +2315,30 @@ export type User$swdiByIdArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.SwdiScalarFieldEnum | Prisma.SwdiScalarFieldEnum[]
+}
+
+/**
+ * User.cvsByID
+ */
+export type User$cvsByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CVS
+   */
+  select?: Prisma.CVSSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CVS
+   */
+  omit?: Prisma.CVSOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CVSInclude<ExtArgs> | null
+  where?: Prisma.CVSWhereInput
+  orderBy?: Prisma.CVSOrderByWithRelationInput | Prisma.CVSOrderByWithRelationInput[]
+  cursor?: Prisma.CVSWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CVSScalarFieldEnum | Prisma.CVSScalarFieldEnum[]
 }
 
 /**

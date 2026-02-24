@@ -56,6 +56,7 @@ export const ModelName = {
   Bus: 'Bus',
   Swdi: 'Swdi',
   Pcn: 'Pcn',
+  CVS: 'CVS',
   Miscellaneous: 'Miscellaneous',
   EncodedDocument: 'EncodedDocument'
 } as const
@@ -125,6 +126,8 @@ export const BusScalarFieldEnum = {
   cl: 'cl',
   date: 'date',
   note: 'note',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -148,10 +151,11 @@ export const SwdiScalarFieldEnum = {
   drn: 'drn',
   date: 'date',
   note: 'note',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  encoded: 'encoded'
+  updatedAt: 'updatedAt'
 } as const
 
 export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
@@ -163,16 +167,18 @@ export const PcnScalarFieldEnum = {
   barangay: 'barangay',
   hhId: 'hhId',
   granteeName: 'granteeName',
-  hhMember: 'hhMember',
-  typeOfUpdate: 'typeOfUpdate',
   remarks: 'remarks',
   issue: 'issue',
   encodedBy: 'encodedBy',
   subjectOfChange: 'subjectOfChange',
+  pcn: 'pcn',
+  tr: 'tr',
   drn: 'drn',
   cl: 'cl',
   date: 'date',
   note: 'note',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -181,14 +187,30 @@ export const PcnScalarFieldEnum = {
 export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
 
 
+export const CVSScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  facilityName: 'facilityName',
+  formType: 'formType',
+  remarks: 'remarks',
+  userId: 'userId',
+  date: 'date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
+
+
 export const MiscellaneousScalarFieldEnum = {
   id: 'id',
   lgu: 'lgu',
   barangay: 'barangay',
   hhId: 'hhId',
   granteeName: 'granteeName',
-  hhMember: 'hhMember',
-  typeOfUpdate: 'typeOfUpdate',
+  documentType: 'documentType',
   remarks: 'remarks',
   issue: 'issue',
   encodedBy: 'encodedBy',
@@ -207,14 +229,17 @@ export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)
 
 export const EncodedDocumentScalarFieldEnum = {
   id: 'id',
-  hhId: 'hhId',
+  idNumber: 'idNumber',
   name: 'name',
   documentType: 'documentType',
   documentId: 'documentId',
-  encoded: 'encoded',
+  subjectOfChange: 'subjectOfChange',
+  remarks: 'remarks',
   userId: 'userId',
   govUsername: 'govUsername',
   date: 'date',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   createdAt: 'createdAt'
 } as const
 

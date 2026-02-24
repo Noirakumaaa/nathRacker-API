@@ -42,8 +42,7 @@ export type MiscellaneousMinAggregateOutputType = {
   barangay: string | null
   hhId: string | null
   granteeName: string | null
-  hhMember: string | null
-  typeOfUpdate: string | null
+  documentType: string | null
   remarks: string | null
   issue: string | null
   encodedBy: string | null
@@ -63,8 +62,7 @@ export type MiscellaneousMaxAggregateOutputType = {
   barangay: string | null
   hhId: string | null
   granteeName: string | null
-  hhMember: string | null
-  typeOfUpdate: string | null
+  documentType: string | null
   remarks: string | null
   issue: string | null
   encodedBy: string | null
@@ -84,8 +82,7 @@ export type MiscellaneousCountAggregateOutputType = {
   barangay: number
   hhId: number
   granteeName: number
-  hhMember: number
-  typeOfUpdate: number
+  documentType: number
   remarks: number
   issue: number
   encodedBy: number
@@ -117,8 +114,7 @@ export type MiscellaneousMinAggregateInputType = {
   barangay?: true
   hhId?: true
   granteeName?: true
-  hhMember?: true
-  typeOfUpdate?: true
+  documentType?: true
   remarks?: true
   issue?: true
   encodedBy?: true
@@ -138,8 +134,7 @@ export type MiscellaneousMaxAggregateInputType = {
   barangay?: true
   hhId?: true
   granteeName?: true
-  hhMember?: true
-  typeOfUpdate?: true
+  documentType?: true
   remarks?: true
   issue?: true
   encodedBy?: true
@@ -159,8 +154,7 @@ export type MiscellaneousCountAggregateInputType = {
   barangay?: true
   hhId?: true
   granteeName?: true
-  hhMember?: true
-  typeOfUpdate?: true
+  documentType?: true
   remarks?: true
   issue?: true
   encodedBy?: true
@@ -267,8 +261,7 @@ export type MiscellaneousGroupByOutputType = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue: string | null
   encodedBy: string
@@ -311,8 +304,7 @@ export type MiscellaneousWhereInput = {
   barangay?: Prisma.StringFilter<"Miscellaneous"> | string
   hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
-  hhMember?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  typeOfUpdate?: Prisma.StringFilter<"Miscellaneous"> | string
+  documentType?: Prisma.StringFilter<"Miscellaneous"> | string
   remarks?: Prisma.StringFilter<"Miscellaneous"> | string
   issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
@@ -333,8 +325,7 @@ export type MiscellaneousOrderByWithRelationInput = {
   barangay?: Prisma.SortOrder
   hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  hhMember?: Prisma.SortOrderInput | Prisma.SortOrder
-  typeOfUpdate?: Prisma.SortOrder
+  documentType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   issue?: Prisma.SortOrderInput | Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
@@ -358,8 +349,7 @@ export type MiscellaneousWhereUniqueInput = Prisma.AtLeast<{
   barangay?: Prisma.StringFilter<"Miscellaneous"> | string
   hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
-  hhMember?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  typeOfUpdate?: Prisma.StringFilter<"Miscellaneous"> | string
+  documentType?: Prisma.StringFilter<"Miscellaneous"> | string
   remarks?: Prisma.StringFilter<"Miscellaneous"> | string
   issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
@@ -380,8 +370,7 @@ export type MiscellaneousOrderByWithAggregationInput = {
   barangay?: Prisma.SortOrder
   hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  hhMember?: Prisma.SortOrderInput | Prisma.SortOrder
-  typeOfUpdate?: Prisma.SortOrder
+  documentType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   issue?: Prisma.SortOrderInput | Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
@@ -409,8 +398,7 @@ export type MiscellaneousScalarWhereWithAggregatesInput = {
   barangay?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   hhId?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
-  hhMember?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
-  typeOfUpdate?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
+  documentType?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   remarks?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   issue?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
   encodedBy?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
@@ -429,8 +417,7 @@ export type MiscellaneousCreateInput = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember?: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue?: string | null
   encodedBy: string
@@ -450,8 +437,7 @@ export type MiscellaneousUncheckedCreateInput = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember?: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue?: string | null
   encodedBy: string
@@ -470,8 +456,7 @@ export type MiscellaneousUpdateInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -491,8 +476,7 @@ export type MiscellaneousUncheckedUpdateInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -512,8 +496,7 @@ export type MiscellaneousCreateManyInput = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember?: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue?: string | null
   encodedBy: string
@@ -532,8 +515,7 @@ export type MiscellaneousUpdateManyMutationInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -552,8 +534,7 @@ export type MiscellaneousUncheckedUpdateManyInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -583,8 +564,7 @@ export type MiscellaneousCountOrderByAggregateInput = {
   barangay?: Prisma.SortOrder
   hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  hhMember?: Prisma.SortOrder
-  typeOfUpdate?: Prisma.SortOrder
+  documentType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   issue?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
@@ -609,8 +589,7 @@ export type MiscellaneousMaxOrderByAggregateInput = {
   barangay?: Prisma.SortOrder
   hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  hhMember?: Prisma.SortOrder
-  typeOfUpdate?: Prisma.SortOrder
+  documentType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   issue?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
@@ -630,8 +609,7 @@ export type MiscellaneousMinOrderByAggregateInput = {
   barangay?: Prisma.SortOrder
   hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  hhMember?: Prisma.SortOrder
-  typeOfUpdate?: Prisma.SortOrder
+  documentType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   issue?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
@@ -697,8 +675,7 @@ export type MiscellaneousCreateWithoutUserByIdInput = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember?: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue?: string | null
   encodedBy: string
@@ -717,8 +694,7 @@ export type MiscellaneousUncheckedCreateWithoutUserByIdInput = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember?: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue?: string | null
   encodedBy: string
@@ -766,8 +742,7 @@ export type MiscellaneousScalarWhereInput = {
   barangay?: Prisma.StringFilter<"Miscellaneous"> | string
   hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
-  hhMember?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  typeOfUpdate?: Prisma.StringFilter<"Miscellaneous"> | string
+  documentType?: Prisma.StringFilter<"Miscellaneous"> | string
   remarks?: Prisma.StringFilter<"Miscellaneous"> | string
   issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
@@ -787,8 +762,7 @@ export type MiscellaneousCreateManyUserByIdInput = {
   barangay: string
   hhId: string
   granteeName: string
-  hhMember?: string | null
-  typeOfUpdate: string
+  documentType: string
   remarks: string
   issue?: string | null
   encodedBy: string
@@ -806,8 +780,7 @@ export type MiscellaneousUpdateWithoutUserByIdInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -826,8 +799,7 @@ export type MiscellaneousUncheckedUpdateWithoutUserByIdInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -846,8 +818,7 @@ export type MiscellaneousUncheckedUpdateManyWithoutUserByIdInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
-  hhMember?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -868,8 +839,7 @@ export type MiscellaneousSelect<ExtArgs extends runtime.Types.Extensions.Interna
   barangay?: boolean
   hhId?: boolean
   granteeName?: boolean
-  hhMember?: boolean
-  typeOfUpdate?: boolean
+  documentType?: boolean
   remarks?: boolean
   issue?: boolean
   encodedBy?: boolean
@@ -890,8 +860,7 @@ export type MiscellaneousSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   barangay?: boolean
   hhId?: boolean
   granteeName?: boolean
-  hhMember?: boolean
-  typeOfUpdate?: boolean
+  documentType?: boolean
   remarks?: boolean
   issue?: boolean
   encodedBy?: boolean
@@ -912,8 +881,7 @@ export type MiscellaneousSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   barangay?: boolean
   hhId?: boolean
   granteeName?: boolean
-  hhMember?: boolean
-  typeOfUpdate?: boolean
+  documentType?: boolean
   remarks?: boolean
   issue?: boolean
   encodedBy?: boolean
@@ -934,8 +902,7 @@ export type MiscellaneousSelectScalar = {
   barangay?: boolean
   hhId?: boolean
   granteeName?: boolean
-  hhMember?: boolean
-  typeOfUpdate?: boolean
+  documentType?: boolean
   remarks?: boolean
   issue?: boolean
   encodedBy?: boolean
@@ -949,7 +916,7 @@ export type MiscellaneousSelectScalar = {
   updatedAt?: boolean
 }
 
-export type MiscellaneousOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "hhMember" | "typeOfUpdate" | "remarks" | "issue" | "encodedBy" | "subjectOfChange" | "drn" | "cl" | "date" | "note" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["miscellaneous"]>
+export type MiscellaneousOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "documentType" | "remarks" | "issue" | "encodedBy" | "subjectOfChange" | "drn" | "cl" | "date" | "note" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["miscellaneous"]>
 export type MiscellaneousInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -971,8 +938,7 @@ export type $MiscellaneousPayload<ExtArgs extends runtime.Types.Extensions.Inter
     barangay: string
     hhId: string
     granteeName: string
-    hhMember: string | null
-    typeOfUpdate: string
+    documentType: string
     remarks: string
     issue: string | null
     encodedBy: string
@@ -1413,8 +1379,7 @@ export interface MiscellaneousFieldRefs {
   readonly barangay: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly hhId: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly granteeName: Prisma.FieldRef<"Miscellaneous", 'String'>
-  readonly hhMember: Prisma.FieldRef<"Miscellaneous", 'String'>
-  readonly typeOfUpdate: Prisma.FieldRef<"Miscellaneous", 'String'>
+  readonly documentType: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly remarks: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly issue: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly encodedBy: Prisma.FieldRef<"Miscellaneous", 'String'>

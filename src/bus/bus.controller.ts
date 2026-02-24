@@ -5,7 +5,6 @@ import { CreateBusDto } from './dto/create-bus.dto.js';
 import { UpdateBusDto } from './dto/update-bus.dto.js';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './../../guard/jwt-guard.js';
-import { RolesGuard } from './../../guard/roles.guard.js';
 import { Role } from './../../enums/roles.enum.js';
 import { Roles } from './../../decorator/roles.decorator.js';
 
@@ -47,6 +46,11 @@ export class BusController {
   @Get('records/:id',)
   busRecordsById(@Param('id') id: string) {
     return this.busService.busRecordsById(+id);
+  }
+
+  @Get('count')
+  busCountbyId(@Req() req: Request) {
+    return this.busService.busCountbyId(req);
   }
 
   @Delete(':id')

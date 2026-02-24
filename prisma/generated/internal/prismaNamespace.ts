@@ -389,6 +389,7 @@ export const ModelName = {
   Bus: 'Bus',
   Swdi: 'Swdi',
   Pcn: 'Pcn',
+  CVS: 'CVS',
   Miscellaneous: 'Miscellaneous',
   EncodedDocument: 'EncodedDocument'
 } as const
@@ -406,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userInfo" | "bus" | "swdi" | "pcn" | "miscellaneous" | "encodedDocument"
+    modelProps: "user" | "userInfo" | "bus" | "swdi" | "pcn" | "cVS" | "miscellaneous" | "encodedDocument"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -780,6 +781,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CVS: {
+      payload: Prisma.$CVSPayload<ExtArgs>
+      fields: Prisma.CVSFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CVSFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CVSFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>
+        }
+        findFirst: {
+          args: Prisma.CVSFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CVSFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>
+        }
+        findMany: {
+          args: Prisma.CVSFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>[]
+        }
+        create: {
+          args: Prisma.CVSCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>
+        }
+        createMany: {
+          args: Prisma.CVSCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CVSCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>[]
+        }
+        delete: {
+          args: Prisma.CVSDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>
+        }
+        update: {
+          args: Prisma.CVSUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>
+        }
+        deleteMany: {
+          args: Prisma.CVSDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CVSUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CVSUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>[]
+        }
+        upsert: {
+          args: Prisma.CVSUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CVSPayload>
+        }
+        aggregate: {
+          args: Prisma.CVSAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCVS>
+        }
+        groupBy: {
+          args: Prisma.CVSGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CVSGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CVSCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CVSCountAggregateOutputType> | number
+        }
+      }
+    }
     Miscellaneous: {
       payload: Prisma.$MiscellaneousPayload<ExtArgs>
       fields: Prisma.MiscellaneousFieldRefs
@@ -1016,6 +1091,8 @@ export const BusScalarFieldEnum = {
   cl: 'cl',
   date: 'date',
   note: 'note',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1039,10 +1116,11 @@ export const SwdiScalarFieldEnum = {
   drn: 'drn',
   date: 'date',
   note: 'note',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  encoded: 'encoded'
+  updatedAt: 'updatedAt'
 } as const
 
 export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
@@ -1054,16 +1132,18 @@ export const PcnScalarFieldEnum = {
   barangay: 'barangay',
   hhId: 'hhId',
   granteeName: 'granteeName',
-  hhMember: 'hhMember',
-  typeOfUpdate: 'typeOfUpdate',
   remarks: 'remarks',
   issue: 'issue',
   encodedBy: 'encodedBy',
   subjectOfChange: 'subjectOfChange',
+  pcn: 'pcn',
+  tr: 'tr',
   drn: 'drn',
   cl: 'cl',
   date: 'date',
   note: 'note',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1072,14 +1152,30 @@ export const PcnScalarFieldEnum = {
 export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
 
 
+export const CVSScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  facilityName: 'facilityName',
+  formType: 'formType',
+  remarks: 'remarks',
+  userId: 'userId',
+  date: 'date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
+
+
 export const MiscellaneousScalarFieldEnum = {
   id: 'id',
   lgu: 'lgu',
   barangay: 'barangay',
   hhId: 'hhId',
   granteeName: 'granteeName',
-  hhMember: 'hhMember',
-  typeOfUpdate: 'typeOfUpdate',
+  documentType: 'documentType',
   remarks: 'remarks',
   issue: 'issue',
   encodedBy: 'encodedBy',
@@ -1098,14 +1194,17 @@ export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)
 
 export const EncodedDocumentScalarFieldEnum = {
   id: 'id',
-  hhId: 'hhId',
+  idNumber: 'idNumber',
   name: 'name',
   documentType: 'documentType',
   documentId: 'documentId',
-  encoded: 'encoded',
+  subjectOfChange: 'subjectOfChange',
+  remarks: 'remarks',
   userId: 'userId',
   govUsername: 'govUsername',
   date: 'date',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
   createdAt: 'createdAt'
 } as const
 
@@ -1332,6 +1431,7 @@ export type GlobalOmitConfig = {
   bus?: Prisma.BusOmit
   swdi?: Prisma.SwdiOmit
   pcn?: Prisma.PcnOmit
+  cVS?: Prisma.CVSOmit
   miscellaneous?: Prisma.MiscellaneousOmit
   encodedDocument?: Prisma.EncodedDocumentOmit
 }

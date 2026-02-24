@@ -3,7 +3,7 @@ import { CreateBusDto } from './dto/create-bus.dto.js';
 import { UpdateBusDto } from './dto/update-bus.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import type { Request } from 'express';
-import { Upload } from 'lucide-react';
+
 
 @Injectable()
 export class BusService {
@@ -53,13 +53,14 @@ export class BusService {
 
     const globalTable = await this.prisma.client.encodedDocument.create({ 
       data: {
-        hhId: result.hhId,
+        idNumber: result.hhId,
         name: result.granteeName,
         documentType: 'BUS',
         documentId: result.id,
+        subjectOfChange: result.subjectOfChange,
         userId: user.id,
         date: new Date(),
-        encoded: result.remarks,
+        remarks: result.remarks,
         govUsername: user.govUsername
       }
     })
@@ -114,6 +115,19 @@ export class BusService {
     return result
   }
 
+  async busCountbyId(req: Request) {
+    const user = req.user;
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+
+    const count = await this.prisma.client.bus.count({
+      where: {
+        userId: user.id,
+      },
+    });
+    return {count : count};
+  }
 
   update(id: number, updateBusDto: UpdateBusDto) {
     return `This action updates a #${id} bus`;

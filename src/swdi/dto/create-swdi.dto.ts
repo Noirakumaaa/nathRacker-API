@@ -29,10 +29,6 @@ export class CreateSwdiDto {
   @IsNotEmpty()
   remarks: string;
 
-  @IsString()
-  @IsNotEmpty()
-  encoded: string;
-
   @IsOptional()
   @IsString()
   issue?: string;

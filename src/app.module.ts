@@ -8,6 +8,9 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { JwtStrategy } from './../component/jwt.strategy.js';
 import { BusModule } from './bus/bus.module.js';
 import { SwdiModule } from './swdi/swdi.module.js';
+import { AlldocumentsModule } from './alldocuments/alldocuments.module.js';
+import { PcnModule } from './pcn/pcn.module.js';
+import { CvsModule } from './cvs/cvs.module.js';
 
 @Module({
   imports: [
@@ -20,6 +23,9 @@ import { SwdiModule } from './swdi/swdi.module.js';
     PrismaModule,
     BusModule,
     SwdiModule,
+    AlldocumentsModule,
+    PcnModule,
+    CvsModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],

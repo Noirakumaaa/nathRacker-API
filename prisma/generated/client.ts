@@ -65,6 +65,11 @@ export type Swdi = Prisma.SwdiModel
  */
 export type Pcn = Prisma.PcnModel
 /**
+ * Model CVS
+ * 
+ */
+export type CVS = Prisma.CVSModel
+/**
  * Model Miscellaneous
  * 
  */

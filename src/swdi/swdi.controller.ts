@@ -24,6 +24,17 @@ export class SwdiController {
     return this.swdiService.recent(req);
   }
 
+  @Get('count')
+  swdiCountbyId(@Req() req: Request) {
+    return this.swdiService.swdiCountbyId(req);
+  }
+
+
+  @Get('records/:id')
+  swdiRecordsById(@Req() req: Request, @Param('id') id: string) {
+    return this.swdiService.swdiRecordsById(req, +id);
+  }
+
   @Get()
   findAll() {
     return this.swdiService.findAll();

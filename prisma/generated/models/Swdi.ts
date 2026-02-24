@@ -53,10 +53,11 @@ export type SwdiMinAggregateOutputType = {
   drn: string | null
   date: Date | null
   note: string | null
+  verifiedBy: string | null
+  verified: string | null
   userId: number | null
   createdAt: Date | null
   updatedAt: Date | null
-  encoded: string | null
 }
 
 export type SwdiMaxAggregateOutputType = {
@@ -74,10 +75,11 @@ export type SwdiMaxAggregateOutputType = {
   drn: string | null
   date: Date | null
   note: string | null
+  verifiedBy: string | null
+  verified: string | null
   userId: number | null
   createdAt: Date | null
   updatedAt: Date | null
-  encoded: string | null
 }
 
 export type SwdiCountAggregateOutputType = {
@@ -95,10 +97,11 @@ export type SwdiCountAggregateOutputType = {
   drn: number
   date: number
   note: number
+  verifiedBy: number
+  verified: number
   userId: number
   createdAt: number
   updatedAt: number
-  encoded: number
   _all: number
 }
 
@@ -130,10 +133,11 @@ export type SwdiMinAggregateInputType = {
   drn?: true
   date?: true
   note?: true
+  verifiedBy?: true
+  verified?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
-  encoded?: true
 }
 
 export type SwdiMaxAggregateInputType = {
@@ -151,10 +155,11 @@ export type SwdiMaxAggregateInputType = {
   drn?: true
   date?: true
   note?: true
+  verifiedBy?: true
+  verified?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
-  encoded?: true
 }
 
 export type SwdiCountAggregateInputType = {
@@ -172,10 +177,11 @@ export type SwdiCountAggregateInputType = {
   drn?: true
   date?: true
   note?: true
+  verifiedBy?: true
+  verified?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
-  encoded?: true
   _all?: true
 }
 
@@ -280,10 +286,11 @@ export type SwdiGroupByOutputType = {
   drn: string | null
   date: Date
   note: string | null
+  verifiedBy: string
+  verified: string
   userId: number
   createdAt: Date
   updatedAt: Date
-  encoded: string
   _count: SwdiCountAggregateOutputType | null
   _avg: SwdiAvgAggregateOutputType | null
   _sum: SwdiSumAggregateOutputType | null
@@ -324,10 +331,11 @@ export type SwdiWhereInput = {
   drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
   date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  verifiedBy?: Prisma.StringFilter<"Swdi"> | string
+  verified?: Prisma.StringFilter<"Swdi"> | string
   userId?: Prisma.IntFilter<"Swdi"> | number
   createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
-  encoded?: Prisma.StringFilter<"Swdi"> | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -346,10 +354,11 @@ export type SwdiOrderByWithRelationInput = {
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  verifiedBy?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  encoded?: Prisma.SortOrder
   userById?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -371,10 +380,11 @@ export type SwdiWhereUniqueInput = Prisma.AtLeast<{
   drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
   date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  verifiedBy?: Prisma.StringFilter<"Swdi"> | string
+  verified?: Prisma.StringFilter<"Swdi"> | string
   userId?: Prisma.IntFilter<"Swdi"> | number
   createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
-  encoded?: Prisma.StringFilter<"Swdi"> | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -393,10 +403,11 @@ export type SwdiOrderByWithAggregationInput = {
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  verifiedBy?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  encoded?: Prisma.SortOrder
   _count?: Prisma.SwdiCountOrderByAggregateInput
   _avg?: Prisma.SwdiAvgOrderByAggregateInput
   _max?: Prisma.SwdiMaxOrderByAggregateInput
@@ -422,10 +433,11 @@ export type SwdiScalarWhereWithAggregatesInput = {
   drn?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
   date?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
+  verifiedBy?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
+  verified?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
   userId?: Prisma.IntWithAggregatesFilter<"Swdi"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
-  encoded?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
 }
 
 export type SwdiCreateInput = {
@@ -442,10 +454,11 @@ export type SwdiCreateInput = {
   drn?: string | null
   date: Date | string
   note?: string | null
+  verifiedBy?: string
+  verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  encoded: string
-  userById: Prisma.UserCreateNestedOneWithoutSwdiByIdInput
+  userById: Prisma.UserCreateNestedOneWithoutSwdiByIDInput
 }
 
 export type SwdiUncheckedCreateInput = {
@@ -463,10 +476,11 @@ export type SwdiUncheckedCreateInput = {
   drn?: string | null
   date: Date | string
   note?: string | null
+  verifiedBy?: string
+  verified?: string
   userId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  encoded: string
 }
 
 export type SwdiUpdateInput = {
@@ -483,10 +497,11 @@ export type SwdiUpdateInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
-  userById?: Prisma.UserUpdateOneRequiredWithoutSwdiByIdNestedInput
+  userById?: Prisma.UserUpdateOneRequiredWithoutSwdiByIDNestedInput
 }
 
 export type SwdiUncheckedUpdateInput = {
@@ -504,10 +519,11 @@ export type SwdiUncheckedUpdateInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SwdiCreateManyInput = {
@@ -525,10 +541,11 @@ export type SwdiCreateManyInput = {
   drn?: string | null
   date: Date | string
   note?: string | null
+  verifiedBy?: string
+  verified?: string
   userId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  encoded: string
 }
 
 export type SwdiUpdateManyMutationInput = {
@@ -545,9 +562,10 @@ export type SwdiUpdateManyMutationInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SwdiUncheckedUpdateManyInput = {
@@ -565,10 +583,11 @@ export type SwdiUncheckedUpdateManyInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SwdiListRelationFilter = {
@@ -596,10 +615,11 @@ export type SwdiCountOrderByAggregateInput = {
   drn?: Prisma.SortOrder
   date?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  verifiedBy?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  encoded?: Prisma.SortOrder
 }
 
 export type SwdiAvgOrderByAggregateInput = {
@@ -623,10 +643,11 @@ export type SwdiMaxOrderByAggregateInput = {
   drn?: Prisma.SortOrder
   date?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  verifiedBy?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  encoded?: Prisma.SortOrder
 }
 
 export type SwdiMinOrderByAggregateInput = {
@@ -644,10 +665,11 @@ export type SwdiMinOrderByAggregateInput = {
   drn?: Prisma.SortOrder
   date?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  verifiedBy?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  encoded?: Prisma.SortOrder
 }
 
 export type SwdiSumOrderByAggregateInput = {
@@ -720,9 +742,10 @@ export type SwdiCreateWithoutUserByIdInput = {
   drn?: string | null
   date: Date | string
   note?: string | null
+  verifiedBy?: string
+  verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  encoded: string
 }
 
 export type SwdiUncheckedCreateWithoutUserByIdInput = {
@@ -740,9 +763,10 @@ export type SwdiUncheckedCreateWithoutUserByIdInput = {
   drn?: string | null
   date: Date | string
   note?: string | null
+  verifiedBy?: string
+  verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  encoded: string
 }
 
 export type SwdiCreateOrConnectWithoutUserByIdInput = {
@@ -789,10 +813,11 @@ export type SwdiScalarWhereInput = {
   drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
   date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  verifiedBy?: Prisma.StringFilter<"Swdi"> | string
+  verified?: Prisma.StringFilter<"Swdi"> | string
   userId?: Prisma.IntFilter<"Swdi"> | number
   createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
-  encoded?: Prisma.StringFilter<"Swdi"> | string
 }
 
 export type SwdiCreateManyUserByIdInput = {
@@ -810,9 +835,10 @@ export type SwdiCreateManyUserByIdInput = {
   drn?: string | null
   date: Date | string
   note?: string | null
+  verifiedBy?: string
+  verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  encoded: string
 }
 
 export type SwdiUpdateWithoutUserByIdInput = {
@@ -829,9 +855,10 @@ export type SwdiUpdateWithoutUserByIdInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SwdiUncheckedUpdateWithoutUserByIdInput = {
@@ -849,9 +876,10 @@ export type SwdiUncheckedUpdateWithoutUserByIdInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SwdiUncheckedUpdateManyWithoutUserByIdInput = {
@@ -869,9 +897,10 @@ export type SwdiUncheckedUpdateManyWithoutUserByIdInput = {
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  encoded?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -891,10 +920,11 @@ export type SwdiSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   drn?: boolean
   date?: boolean
   note?: boolean
+  verifiedBy?: boolean
+  verified?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  encoded?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["swdi"]>
 
@@ -913,10 +943,11 @@ export type SwdiSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   drn?: boolean
   date?: boolean
   note?: boolean
+  verifiedBy?: boolean
+  verified?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  encoded?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["swdi"]>
 
@@ -935,10 +966,11 @@ export type SwdiSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   drn?: boolean
   date?: boolean
   note?: boolean
+  verifiedBy?: boolean
+  verified?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  encoded?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["swdi"]>
 
@@ -957,13 +989,14 @@ export type SwdiSelectScalar = {
   drn?: boolean
   date?: boolean
   note?: boolean
+  verifiedBy?: boolean
+  verified?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  encoded?: boolean
 }
 
-export type SwdiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "grantee" | "swdiScore" | "swdiLevel" | "encodedBy" | "remarks" | "issue" | "cl" | "drn" | "date" | "note" | "userId" | "createdAt" | "updatedAt" | "encoded", ExtArgs["result"]["swdi"]>
+export type SwdiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "grantee" | "swdiScore" | "swdiLevel" | "encodedBy" | "remarks" | "issue" | "cl" | "drn" | "date" | "note" | "verifiedBy" | "verified" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["swdi"]>
 export type SwdiInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -994,10 +1027,11 @@ export type $SwdiPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     drn: string | null
     date: Date
     note: string | null
+    verifiedBy: string
+    verified: string
     userId: number
     createdAt: Date
     updatedAt: Date
-    encoded: string
   }, ExtArgs["result"]["swdi"]>
   composites: {}
 }
@@ -1436,10 +1470,11 @@ export interface SwdiFieldRefs {
   readonly drn: Prisma.FieldRef<"Swdi", 'String'>
   readonly date: Prisma.FieldRef<"Swdi", 'DateTime'>
   readonly note: Prisma.FieldRef<"Swdi", 'String'>
+  readonly verifiedBy: Prisma.FieldRef<"Swdi", 'String'>
+  readonly verified: Prisma.FieldRef<"Swdi", 'String'>
   readonly userId: Prisma.FieldRef<"Swdi", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Swdi", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Swdi", 'DateTime'>
-  readonly encoded: Prisma.FieldRef<"Swdi", 'String'>
 }
     
 

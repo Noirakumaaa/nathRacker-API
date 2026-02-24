@@ -15,14 +15,17 @@ async function bootstrap() {
   app.setGlobalPrefix('api')
   const allowedOrigins = [
     "http://localhost:5173",
+    "http://192.168.68.45:3000",
+    "http://localhost:3000",
     "http://192.168.128.1:5173",
     "http://192.168.128.11:5173",
     "http://192.168.68.16:5173",
+    "http://192.168.100.19:3000",
     "https://667d-136-158-11-78.ngrok-free.app"
   ];
 
   app.enableCors({
-    origin: (origin, callback) => {
+    origin: (origin, callback) => { 
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {

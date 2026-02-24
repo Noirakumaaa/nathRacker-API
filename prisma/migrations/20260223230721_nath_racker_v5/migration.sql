@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "CVS" ALTER COLUMN "idNumber" SET DATA TYPE TEXT;

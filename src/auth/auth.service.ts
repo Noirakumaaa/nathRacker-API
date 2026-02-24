@@ -4,6 +4,7 @@ import { CreateAuthDto } from './dto/create-auth.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
+import { first } from 'rxjs';
 
 declare global {
   namespace Express {
@@ -12,6 +13,8 @@ declare global {
       govUsername: string;
       email: string;
       role: string;
+      firstName: string;
+      lastName: string;
     }
 
     interface Request {
@@ -21,21 +24,23 @@ declare global {
 }
 
 const sessionTimeoutFormat = {
-  15 : 15 * 60 * 1000,
-  30 : 30 * 60 * 1000,
-  1 : 60 * 60 * 1000,
-  2 : 2 * 60 * 60 * 1000,
-  3 : 3 * 60 * 60 * 1000,
-  4 : 4 * 60 * 60 * 1000,
-  never : 365 * 24 * 60 * 60 * 1000
-} as const
+  15: 15 * 60 * 1000,
+  30: 30 * 60 * 1000,
+  1: 60 * 60 * 1000,
+  2: 2 * 60 * 60 * 1000,
+  3: 3 * 60 * 60 * 1000,
+  4: 4 * 60 * 60 * 1000,
+  never: 365 * 24 * 60 * 60 * 1000,
+} as const;
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly prisma: PrismaService, private jwtService: JwtService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private jwtService: JwtService,
+  ) {}
 
   async Register(createAuthDto: CreateAuthDto) {
-    
     const checkDuplicate = await this.prisma.client.user.findUnique({
       where: { email: createAuthDto.email },
     });
@@ -65,11 +70,11 @@ export class AuthService {
 
   async login(createAuthDto: CreateAuthDto, res: Response) {
     const checkUser = await this.prisma.client.user.findFirst({
-      where: { 
+      where: {
         OR: [
           { email: createAuthDto.email },
-          { govUsername: createAuthDto.email }
-        ]
+          { govUsername: createAuthDto.email },
+        ],
       },
     });
 
@@ -77,17 +82,26 @@ export class AuthService {
       where: { userId: checkUser?.id },
     });
 
-
     if (!checkUser) {
       throw new BadRequestException('Invalid email or password');
     }
 
-    const validPassword = await argon2.verify(checkUser.password, createAuthDto.password);
+    const validPassword = await argon2.verify(
+      checkUser.password,
+      createAuthDto.password,
+    );
     if (!validPassword) {
       throw new BadRequestException('Invalid email or password');
     }
 
-    const payload = { email: checkUser.email, govUsername: checkUser.govUsername, role: checkUser.role, id: checkUser.id };
+    const payload = {
+      email: checkUser.email,
+      govUsername: checkUser.govUsername,
+      firstName: sessionTimeout?.firstName,
+      lastName: sessionTimeout?.lastName,
+      role: checkUser.role,
+      id: checkUser.id,
+    };
     const token = this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
       expiresIn: '1h',
@@ -96,7 +110,10 @@ export class AuthService {
     res.cookie('accessToken', token, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: sessionTimeoutFormat[sessionTimeout?.sessionTime as keyof typeof sessionTimeoutFormat] || sessionTimeoutFormat[15],
+      maxAge:
+        sessionTimeoutFormat[
+          sessionTimeout?.sessionTime as keyof typeof sessionTimeoutFormat
+        ] || sessionTimeoutFormat[15],
     });
 
     return res.json({ message: 'Login successful', token });
@@ -107,13 +124,12 @@ export class AuthService {
       throw new BadRequestException('User not authenticated');
     }
 
-    return { email: req.user.email, role: req.user.role, id: req.user.id };
+    return { email: req.user.email, role: req.user.role, id: req.user.id, govUsername: req.user.govUsername, firstName: req.user.firstName, lastName: req.user.lastName };
   }
 
   findAll() {
     return this.prisma.client.user.findMany();
   }
-
 
   async newSessionTime(sessionTime: string, req: Request) {
     const user = req.user;
@@ -124,10 +140,14 @@ export class AuthService {
       where: { userId: user.id },
       data: { sessionTime: sessionTimeoutFormat[sessionTime] },
     });
-    console.log('Session time updated for user:', user.id, 'New session time:', newSessionTimeUpdate.sessionTime);
-    return{ message: 'Session time updated successfully', updated: true}
+    console.log(
+      'Session time updated for user:',
+      user.id,
+      'New session time:',
+      newSessionTimeUpdate.sessionTime,
+    );
+    return { message: 'Session time updated successfully', updated: true };
   }
-
 
   logout(res: Response) {
     res.clearCookie('accessToken', {

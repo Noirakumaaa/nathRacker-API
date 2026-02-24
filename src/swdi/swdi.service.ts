@@ -39,20 +39,21 @@ export class SwdiService {
       },
     });
 
-    await this.prisma.client.encodedDocument.create({
+    const encodedDocument = await this.prisma.client.encodedDocument.create({
       data: {
-        hhId: uploadSwdi.hhId,
+        idNumber: uploadSwdi.hhId,
         name: uploadSwdi.grantee,
         documentType: 'SWDI',
         documentId: uploadSwdi.id,
         userId: user.id,
         date: new Date(),
-        encoded: uploadSwdi.encoded,
+        remarks: uploadSwdi.remarks,
+        subjectOfChange: "",
         govUsername: user.govUsername
       },
     });
 
-    return { upload: true, data: uploadSwdi, message : 'SWDI record created successfully' };
+    return { upload: true, data: uploadSwdi, message : 'SWDI record created successfully', encodedDocument : encodedDocument };
   }
 
   recent(req: Request) {
@@ -69,6 +70,33 @@ export class SwdiService {
         createdAt: 'desc',
       },
       take: 5,
+    });
+  }
+
+  async swdiCountbyId(req: Request) {
+    const user = req.user;
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+    const count = await this.prisma.client.swdi.count({
+      where: {
+        userId: user.id,
+      },
+    });
+    return { count };
+  }
+
+  swdiRecordsById(req: Request, id: number) {
+    const user = req.user;
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+
+    return this.prisma.client.swdi.findUnique({
+      where: {
+        id: id,
+        userId: user.id,
+      },
     });
   }
 

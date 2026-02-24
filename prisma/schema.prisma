@@ -1,6 +1,6 @@
 generator client {
-  provider   = "prisma-client"
-  output     = "./generated"
+  provider = "prisma-client"
+  output   = "./generated"
   //engineType = "client"
 }
 
@@ -9,19 +9,20 @@ datasource db {
 }
 
 model User {
-  id          Int               @id @default(autoincrement())
-  createdAt   DateTime          @default(now())
-  email       String            @unique
-  password    String
-  role        Role              @default(ENCODER)
-  govUsername String            @unique
-  busById     Bus[]             @relation("UserById")
-  encDocByID  EncodedDocument[] @relation("UserById")
+  id               Int               @id @default(autoincrement())
+  createdAt        DateTime          @default(now())
+  email            String            @unique
+  password         String
+  role             Role              @default(ENCODER)
+  govUsername      String            @unique
+  busById          Bus[]             @relation("UserById")
+  encDocByID       EncodedDocument[] @relation("UserById")
   encDocByUsername EncodedDocument[] @relation("UserByUsername")
-  miscByID    Miscellaneous[]   @relation("UserById")
-  pcnByID     Pcn[]             @relation("UserById")
-  swdiById    Swdi[]            @relation("UserById")
-  userInfo    UserInfo?
+  miscByID         Miscellaneous[]   @relation("UserById")
+  pcnByID          Pcn[]             @relation("UserById")
+  swdiByID         Swdi[]            @relation("UserById")
+  cvsByID          CVS[]             @relation("UserById")
+  userInfo         UserInfo?
 }
 
 model UserInfo {
@@ -59,54 +60,84 @@ model Bus {
   cl              String
   date            DateTime
   note            String?
+  verifiedBy      String   @default("")
+  verified        String   @default("NO")
   userId          Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   userById        User     @relation("UserById", fields: [userId], references: [id])
+
+  @@index([hhId])
 }
 
 model Swdi {
-  id        Int      @id @default(autoincrement())
-  hhId      String
-  lgu       String
-  barangay  String
-  grantee   String
-  swdiScore Float
-  swdiLevel String
-  encodedBy String
-  remarks   String
-  issue     String?
-  cl       String?
-  drn       String?
-  date      DateTime
-  note      String?
-  userId    Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  encoded   String
-  userById  User     @relation("UserById", fields: [userId], references: [id])
+  id         Int      @id @default(autoincrement())
+  hhId       String
+  lgu        String
+  barangay   String
+  grantee    String
+  swdiScore  Float
+  swdiLevel  String
+  encodedBy  String
+  remarks    String
+  issue      String?
+  cl         String?
+  drn        String?
+  date       DateTime
+  note       String?
+  verifiedBy String   @default("")
+  verified   String   @default("NO")
+  userId     Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userById   User     @relation("UserById", fields: [userId], references: [id])
+
+  @@index([hhId])
 }
 
 model Pcn {
   id              Int      @id @default(autoincrement())
-  lgu             String
-  barangay        String
+  lgu             String?
+  barangay        String?
   hhId            String
-  granteeName     String
-  hhMember        String
-  typeOfUpdate    String   @default("PCN")
+  granteeName     String?
   remarks         String
   issue           String?
   encodedBy       String
   subjectOfChange String
+  pcn             String?  @unique
+  tr              String?  @unique
   drn             String?
   cl              String?
   date            DateTime
   note            String?
+  verifiedBy      String   @default("")
+  verified        String   @default("NO")
   userId          Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   userById        User     @relation("UserById", fields: [userId], references: [id])
+
+  @@index([hhId])
+  @@index([granteeName])
+}
+
+model CVS {
+  id           Int      @id @default(autoincrement())
+  idNumber     String
+  lgu          String
+  barangay     String
+  facilityName String
+  formType     String
+  remarks      String
+  userId       Int
+  date         DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  userById     User     @relation("UserById", fields: [userId], references: [id])
+
+  @@index([id])
+  @@index([idNumber])
 }
 
 model Miscellaneous {
@@ -115,8 +146,7 @@ model Miscellaneous {
   barangay        String
   hhId            String
   granteeName     String
-  hhMember        String?
-  typeOfUpdate    String
+  documentType    String
   remarks         String
   issue           String?
   encodedBy       String
@@ -129,23 +159,29 @@ model Miscellaneous {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   userById        User     @relation("UserById", fields: [userId], references: [id])
+
+  @@index([id])
 }
 
 model EncodedDocument {
-  id           Int      @id @default(autoincrement())
-  hhId         String
-  name         String
-  documentType String
-  documentId   Int
-  encoded      String
-  userId       Int
-  govUsername   String
-  date         DateTime
-  createdAt    DateTime @default(now())
-  userById     User     @relation("UserById", fields: [userId], references: [id])
-  govUserByUsername User @relation("UserByUsername", fields: [govUsername], references: [govUsername])
+  id                Int      @id @default(autoincrement())
+  idNumber          String   @default("")
+  name              String
+  documentType      String
+  documentId        Int
+  subjectOfChange   String
+  remarks           String
+  userId            Int
+  govUsername       String
+  date              DateTime
+  verifiedBy        String   @default("")
+  verified          String   @default("NO")
+  createdAt         DateTime @default(now())
+  userById          User     @relation("UserById", fields: [userId], references: [id])
+  govUserByUsername User     @relation("UserByUsername", fields: [govUsername], references: [govUsername])
 
-  @@index([hhId])
+  @@index([id])
+  @@index([documentId])
 }
 
 enum theme {
