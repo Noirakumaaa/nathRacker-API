@@ -1,9 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
-import { PcnService } from './pcn.service.js';
+import { PcnService } from './lcn.service.js';
 import { CreatePcnDto } from './dto/create-pcn.dto.js';
 import { UpdatePcnDto } from './dto/update-pcn.dto.js';
 import type { Request } from 'express';
-@Controller('pcn')
+
+
+@Controller('lcn')
 export class PcnController {
   constructor(private readonly pcnService: PcnService) {}
 
@@ -20,7 +22,7 @@ export class PcnController {
     return this.pcnService.UserRecent(req);
   }
 
-  @Get('records/:id')
+  @Get('record/:id')
   getPcnById(@Req() req: Request, @Param('id') id: number) {
     return this.pcnService.getPcnById(req, id);
   }

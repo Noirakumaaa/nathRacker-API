@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PcnService } from './pcn.service.js';
-import { PcnController } from './pcn.controller.js';
+import { PcnService } from './lcn.service.js';
+import { PcnController } from './lcn.controller.js';
 
 @Module({
   controllers: [PcnController],

@@ -4,7 +4,6 @@ import { CreateAuthDto } from './dto/create-auth.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
-import { first } from 'rxjs';
 
 declare global {
   namespace Express {
@@ -51,7 +50,7 @@ export class AuthService {
 
     const hashedPassword = await argon2.hash(createAuthDto.password);
 
-    return this.prisma.client.user.create({
+    const user = await this.prisma.client.user.create({
       data: {
         govUsername: createAuthDto.govUsername,
         email: createAuthDto.email,
@@ -66,6 +65,7 @@ export class AuthService {
         },
       },
     });
+    return { Register : true, newUser : user.govUsername}
   }
 
   async login(createAuthDto: CreateAuthDto, res: Response) {
@@ -123,7 +123,6 @@ export class AuthService {
     if (!req.user) {
       throw new BadRequestException('User not authenticated');
     }
-
     return { email: req.user.email, role: req.user.role, id: req.user.id, govUsername: req.user.govUsername, firstName: req.user.firstName, lastName: req.user.lastName };
   }
 

@@ -47,7 +47,7 @@ export type PcnMinAggregateOutputType = {
   encodedBy: string | null
   subjectOfChange: string | null
   pcn: string | null
-  tr: string | null
+  lrn: string | null
   drn: string | null
   cl: string | null
   date: Date | null
@@ -70,7 +70,7 @@ export type PcnMaxAggregateOutputType = {
   encodedBy: string | null
   subjectOfChange: string | null
   pcn: string | null
-  tr: string | null
+  lrn: string | null
   drn: string | null
   cl: string | null
   date: Date | null
@@ -93,7 +93,7 @@ export type PcnCountAggregateOutputType = {
   encodedBy: number
   subjectOfChange: number
   pcn: number
-  tr: number
+  lrn: number
   drn: number
   cl: number
   date: number
@@ -128,7 +128,7 @@ export type PcnMinAggregateInputType = {
   encodedBy?: true
   subjectOfChange?: true
   pcn?: true
-  tr?: true
+  lrn?: true
   drn?: true
   cl?: true
   date?: true
@@ -151,7 +151,7 @@ export type PcnMaxAggregateInputType = {
   encodedBy?: true
   subjectOfChange?: true
   pcn?: true
-  tr?: true
+  lrn?: true
   drn?: true
   cl?: true
   date?: true
@@ -174,7 +174,7 @@ export type PcnCountAggregateInputType = {
   encodedBy?: true
   subjectOfChange?: true
   pcn?: true
-  tr?: true
+  lrn?: true
   drn?: true
   cl?: true
   date?: true
@@ -284,7 +284,7 @@ export type PcnGroupByOutputType = {
   encodedBy: string
   subjectOfChange: string
   pcn: string | null
-  tr: string | null
+  lrn: string | null
   drn: string | null
   cl: string | null
   date: Date
@@ -330,7 +330,7 @@ export type PcnWhereInput = {
   encodedBy?: Prisma.StringFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
   pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  tr?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
@@ -354,7 +354,7 @@ export type PcnOrderByWithRelationInput = {
   encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrderInput | Prisma.SortOrder
-  tr?: Prisma.SortOrderInput | Prisma.SortOrder
+  lrn?: Prisma.SortOrderInput | Prisma.SortOrder
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   cl?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -369,8 +369,6 @@ export type PcnOrderByWithRelationInput = {
 
 export type PcnWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  pcn?: string
-  tr?: string
   AND?: Prisma.PcnWhereInput | Prisma.PcnWhereInput[]
   OR?: Prisma.PcnWhereInput[]
   NOT?: Prisma.PcnWhereInput | Prisma.PcnWhereInput[]
@@ -382,6 +380,8 @@ export type PcnWhereUniqueInput = Prisma.AtLeast<{
   issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
   encodedBy?: Prisma.StringFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
+  pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
@@ -392,7 +392,7 @@ export type PcnWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "pcn" | "tr">
+}, "id">
 
 export type PcnOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -405,7 +405,7 @@ export type PcnOrderByWithAggregationInput = {
   encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrderInput | Prisma.SortOrder
-  tr?: Prisma.SortOrderInput | Prisma.SortOrder
+  lrn?: Prisma.SortOrderInput | Prisma.SortOrder
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   cl?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -436,7 +436,7 @@ export type PcnScalarWhereWithAggregatesInput = {
   encodedBy?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   pcn?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
-  tr?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
+  lrn?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeWithAggregatesFilter<"Pcn"> | Date | string
@@ -458,7 +458,7 @@ export type PcnCreateInput = {
   encodedBy: string
   subjectOfChange: string
   pcn?: string | null
-  tr?: string | null
+  lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
@@ -481,7 +481,7 @@ export type PcnUncheckedCreateInput = {
   encodedBy: string
   subjectOfChange: string
   pcn?: string | null
-  tr?: string | null
+  lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
@@ -503,7 +503,7 @@ export type PcnUpdateInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -526,7 +526,7 @@ export type PcnUncheckedUpdateInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -549,7 +549,7 @@ export type PcnCreateManyInput = {
   encodedBy: string
   subjectOfChange: string
   pcn?: string | null
-  tr?: string | null
+  lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
@@ -571,7 +571,7 @@ export type PcnUpdateManyMutationInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -593,7 +593,7 @@ export type PcnUncheckedUpdateManyInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -626,7 +626,7 @@ export type PcnCountOrderByAggregateInput = {
   encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrder
-  tr?: Prisma.SortOrder
+  lrn?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -654,7 +654,7 @@ export type PcnMaxOrderByAggregateInput = {
   encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrder
-  tr?: Prisma.SortOrder
+  lrn?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -677,7 +677,7 @@ export type PcnMinOrderByAggregateInput = {
   encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrder
-  tr?: Prisma.SortOrder
+  lrn?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -746,7 +746,7 @@ export type PcnCreateWithoutUserByIdInput = {
   encodedBy: string
   subjectOfChange: string
   pcn?: string | null
-  tr?: string | null
+  lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
@@ -768,7 +768,7 @@ export type PcnUncheckedCreateWithoutUserByIdInput = {
   encodedBy: string
   subjectOfChange: string
   pcn?: string | null
-  tr?: string | null
+  lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
@@ -819,7 +819,7 @@ export type PcnScalarWhereInput = {
   encodedBy?: Prisma.StringFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
   pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  tr?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
@@ -842,7 +842,7 @@ export type PcnCreateManyUserByIdInput = {
   encodedBy: string
   subjectOfChange: string
   pcn?: string | null
-  tr?: string | null
+  lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
@@ -863,7 +863,7 @@ export type PcnUpdateWithoutUserByIdInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -885,7 +885,7 @@ export type PcnUncheckedUpdateWithoutUserByIdInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -907,7 +907,7 @@ export type PcnUncheckedUpdateManyWithoutUserByIdInput = {
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -931,7 +931,7 @@ export type PcnSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
-  tr?: boolean
+  lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
@@ -955,7 +955,7 @@ export type PcnSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
-  tr?: boolean
+  lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
@@ -979,7 +979,7 @@ export type PcnSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
-  tr?: boolean
+  lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
@@ -1003,7 +1003,7 @@ export type PcnSelectScalar = {
   encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
-  tr?: boolean
+  lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
@@ -1015,7 +1015,7 @@ export type PcnSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PcnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "remarks" | "issue" | "encodedBy" | "subjectOfChange" | "pcn" | "tr" | "drn" | "cl" | "date" | "note" | "verifiedBy" | "verified" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["pcn"]>
+export type PcnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "remarks" | "issue" | "encodedBy" | "subjectOfChange" | "pcn" | "lrn" | "drn" | "cl" | "date" | "note" | "verifiedBy" | "verified" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["pcn"]>
 export type PcnInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -1042,7 +1042,7 @@ export type $PcnPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     encodedBy: string
     subjectOfChange: string
     pcn: string | null
-    tr: string | null
+    lrn: string | null
     drn: string | null
     cl: string | null
     date: Date
@@ -1486,7 +1486,7 @@ export interface PcnFieldRefs {
   readonly encodedBy: Prisma.FieldRef<"Pcn", 'String'>
   readonly subjectOfChange: Prisma.FieldRef<"Pcn", 'String'>
   readonly pcn: Prisma.FieldRef<"Pcn", 'String'>
-  readonly tr: Prisma.FieldRef<"Pcn", 'String'>
+  readonly lrn: Prisma.FieldRef<"Pcn", 'String'>
   readonly drn: Prisma.FieldRef<"Pcn", 'String'>
   readonly cl: Prisma.FieldRef<"Pcn", 'String'>
   readonly date: Prisma.FieldRef<"Pcn", 'DateTime'>

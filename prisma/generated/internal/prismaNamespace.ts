@@ -1137,7 +1137,7 @@ export const PcnScalarFieldEnum = {
   encodedBy: 'encodedBy',
   subjectOfChange: 'subjectOfChange',
   pcn: 'pcn',
-  tr: 'tr',
+  lrn: 'lrn',
   drn: 'drn',
   cl: 'cl',
   date: 'date',

@@ -20,7 +20,7 @@ export class PcnService {
     const checkDuplicate = await this.prisma.client.pcn.findFirst({
       where : {
          pcn : createPcnDto.pcn,
-         tr : createPcnDto.tr
+         lrn : createPcnDto.lrn
       }
     })
 
@@ -33,6 +33,7 @@ export class PcnService {
         ...createPcnDto,
         encodedBy: user.govUsername,
         userId: user.id,
+        date : new Date()
       },
     });
 
@@ -41,7 +42,7 @@ export class PcnService {
         documentType: 'PCN',
         documentId: result.id,
         userId: user.id,
-        date: createPcnDto.date,
+        date: new Date(),
         subjectOfChange: createPcnDto.subjectOfChange,
         idNumber: createPcnDto.hhId ?? '',
         name: createPcnDto.granteeName ?? '',

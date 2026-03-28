@@ -40,7 +40,6 @@ export class BusService {
         message: 'Duplicate record found. Bus record not created.',
       };
     }
-    console.log('Gov Username : ', user.govUsername);
     // Create new bus record
     const result = await this.prisma.client.bus.create({
       data: {

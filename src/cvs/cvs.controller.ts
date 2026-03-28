@@ -3,6 +3,8 @@ import { CvsService } from './cvs.service.js';
 import { CreateCvDto } from './dto/create-cv.dto.js';
 import { UpdateCvDto } from './dto/update-cv.dto.js';
 import type { Request } from 'express';
+
+
 @Controller('cvs')
 export class CvsController {
   constructor(private readonly cvsService: CvsService) {}
@@ -13,6 +15,17 @@ export class CvsController {
     @Req() req : Request
   ) {
     return this.cvsService.create(createCvDto,req);
+  }
+
+  @Get("/record/:id")
+  GetSelectedCVS(@Req() req : Request, @Param("id") id :string){
+    return this.cvsService.getSelectedCVS(req, id)
+  }
+
+  @Get("recent")
+  RecentCVS(@Req() req : Request){
+    console.log("FETCHING RECENT CVS")
+    return this.cvsService.RecentCVS(req)
   }
 
   @Get()

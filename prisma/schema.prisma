@@ -105,8 +105,8 @@ model Pcn {
   issue           String?
   encodedBy       String
   subjectOfChange String
-  pcn             String?  @unique
-  tr              String?  @unique
+  pcn             String?  
+  lrn              String?  
   drn             String?
   cl              String?
   date            DateTime

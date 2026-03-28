@@ -35,7 +35,7 @@ export class CreatePcnDto {
 
   @IsOptional()
   @IsString()
-  tr?: string
+  lrn?: string
 
   @IsOptional()
   @IsString()
@@ -45,8 +45,6 @@ export class CreatePcnDto {
   @IsString()
   cl?: string
 
-  @IsDateString()
-  date: Date
 
   @IsOptional()
   @IsString()

@@ -3,6 +3,7 @@ import { CreateCvDto } from './dto/create-cv.dto.js';
 import { UpdateCvDto } from './dto/update-cv.dto.js';
 import type { Request } from 'express';
 import { PrismaService } from './../prisma/prisma.service.js';
+import { error } from 'console';
 @Injectable()
 export class CvsService {
 
@@ -37,8 +38,37 @@ export class CvsService {
         date: new Date()
       }
     })
-
+    console.log("INSERTED ", uploadCvs)
     return { upload : true , message : "CVS Upload Complete", globalUpload : globalUpload}
+  }
+  async getSelectedCVS(req : Request, id : string){
+    const user = req.user
+    if(!user){
+      return { message : "NOT AUTHENTICATED"}
+    }
+    const data = await this.prisma.client.cVS.findUnique({
+      where : {
+        id : user.id
+      }
+    })
+
+    return data
+  }
+
+  RecentCVS(req :Request){
+    const user = req.user
+
+    if(!user){
+      return {upload : false , message : "PLEASE LOGIN FIRST"}
+    }
+
+
+    const getRecent = this.prisma.client.cVS.findMany({
+      where : {
+        userId : user.id
+      }
+    })
+    return getRecent
   }
 
   findAll() {
