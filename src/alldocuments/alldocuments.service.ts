@@ -3,7 +3,8 @@ import { CreateAlldocumentDto } from './dto/create-alldocument.dto.js';
 import { UpdateAlldocumentDto } from './dto/update-alldocument.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import type { Request } from 'express';
-
+import { NotFoundException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 @Injectable()
 export class AlldocumentsService {
   constructor(private prisma: PrismaService) {}
@@ -111,7 +112,41 @@ export class AlldocumentsService {
     return `This action updates a #${id} alldocument`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} alldocument`;
+async remove(id: number) {
+  const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
+    where: { id },
+  });
+
+  if (!deleteDocument) {
+    throw new NotFoundException(`Document #${id} not found`);
   }
+
+  const { documentType, documentId } = deleteDocument;
+
+  // Delete from the specific model based on documentType
+  switch (documentType) {
+    case 'BUS':
+      await this.prisma.client.bus.delete({ where: { id: documentId } });
+      break;
+    case 'PCN':
+      await this.prisma.client.pcn.delete({ where: { id: documentId } });
+      break;
+    case 'SWDI':
+      await this.prisma.client.swdi.delete({ where: { id: documentId } });
+      break;
+    case 'CVS':
+      await this.prisma.client.cVS.delete({ where: { id: documentId } });
+      break;
+    case 'MISC':
+      await this.prisma.client.miscellaneous.delete({ where: { id: documentId } });
+      break;
+    default:
+      throw new BadRequestException(`Unknown documentType: ${documentType}`);
+  }
+
+  // Delete the global encoded document record
+  await this.prisma.client.encodedDocument.delete({ where: { id } });
+
+  return { deleted: true, message: `${documentType} #${documentId} deleted successfully` };
+}
 }

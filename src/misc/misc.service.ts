@@ -1,23 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCvDto } from './dto/create-cv.dto.js';
-import { UpdateCvDto } from './dto/update-cv.dto.js';
+import { CreateMiscDto } from './dto/create-misc.dto.js';
+import { UpdateMiscDto } from './dto/update-misc.dto.js';
 import type { Request } from 'express';
-import { PrismaService } from './../prisma/prisma.service.js';
-import { error } from 'console';
+import { PrismaService } from '..//prisma/prisma.service.js';
+
 @Injectable()
-export class CvsService {
+export class MiscService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createCvDto: CreateCvDto, req: Request) {
+  async create(createMiscDto: CreateMiscDto, req: Request) {
     const user = req.user;
 
     if (!user || !user.govUsername || !user.id) {
       throw new Error('User not authenticated');
     }
 
-    const uploadCvs = await this.prisma.client.cVS.create({
+    const uploadCvs = await this.prisma.client.miscellaneous.create({
       data: {
-        ...createCvDto,
+        ...createMiscDto,
         date: new Date(),
         userId: user.id,
       },
@@ -25,11 +25,11 @@ export class CvsService {
 
     const globalUpload = await this.prisma.client.encodedDocument.create({
       data: {
-        idNumber: String(uploadCvs.idNumber),
-        name: uploadCvs.facilityName,
-        documentType: 'CVS',
+        idNumber: String(uploadCvs.hhId),
+        name: uploadCvs.granteeName,
+        documentType: 'MISC',
         documentId: uploadCvs.id,
-        subjectOfChange: uploadCvs.formType,
+        subjectOfChange: uploadCvs.documentType,
         remarks: uploadCvs.remarks,
         userId: user.id,
         govUsername: user.govUsername,
@@ -39,31 +39,31 @@ export class CvsService {
     console.log('INSERTED ', uploadCvs);
     return {
       upload: true,
-      message: 'CVS Upload Complete',
+      message: 'MISC Upload Complete',
       globalUpload: globalUpload,
     };
   }
-  async getSelectedCVS(req: Request, id: string) {
+
+  async getSelectedMISC(req: Request, id: string) {
     const user = req.user;
     if (!user) {
       return { message: 'NOT AUTHENTICATED' };
     }
-    const data = await this.prisma.client.cVS.findUnique({
+    const data = await this.prisma.client.miscellaneous.findUnique({
       where: {
         id: Number(id),
       },
     });
-
     return data;
   }
 
-  RecentCVS(req: Request) {
+  async GetRecentMisc(req: Request) {
     const user = req.user;
     if (!user) {
       throw new Error('User not authenticated');
     }
 
-    return this.prisma.client.cVS.findMany({
+    return this.prisma.client.miscellaneous.findMany({
       where: {
         userId: user.id,
       },
@@ -75,18 +75,18 @@ export class CvsService {
   }
 
   findAll() {
-    return `This action returns all cvs`;
+    return `This action returns all misc`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} cv`;
+    return `This action returns a #${id} misc`;
   }
 
-  update(id: number, updateCvDto: UpdateCvDto) {
-    return `This action updates a #${id} cv`;
+  update(id: number, updateMiscDto: UpdateMiscDto) {
+    return `This action updates a #${id} misc`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} cv`;
+    return `This action removes a #${id} misc`;
   }
 }

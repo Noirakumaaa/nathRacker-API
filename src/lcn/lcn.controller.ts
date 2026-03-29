@@ -17,7 +17,7 @@ export class PcnController {
     return this.pcnService.create(createPcnDto, req);
   }
 
-  @Get('UserRecent')
+  @Get('recent')
   UserRecent(@Req() req: Request) {
     return this.pcnService.UserRecent(req);
   }

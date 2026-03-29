@@ -11,6 +11,7 @@ import { SwdiModule } from './swdi/swdi.module.js';
 import { AlldocumentsModule } from './alldocuments/alldocuments.module.js';
 import { PcnModule } from './lcn/lcn.module.js';
 import { CvsModule } from './cvs/cvs.module.js';
+import { MiscModule } from './misc/misc.module.js';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CvsModule } from './cvs/cvs.module.js';
     AlldocumentsModule,
     PcnModule,
     CvsModule,
+    MiscModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],

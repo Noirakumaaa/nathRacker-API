@@ -56,7 +56,7 @@ export class AlldocumentsController {
     return this.alldocumentsService.update(+id, updateAlldocumentDto);
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   remove(@Param('id') id: string) {
     return this.alldocumentsService.remove(+id);
   }

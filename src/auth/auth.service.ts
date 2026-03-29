@@ -153,6 +153,6 @@ export class AuthService {
       httpOnly: true,
       sameSite: 'lax',
     });
-    return res.json({ message: 'Logout successful' });
+    return res.json({ message: 'Logout successful', logout : true });
   }
 }
