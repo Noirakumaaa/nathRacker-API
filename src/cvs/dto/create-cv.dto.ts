@@ -23,5 +23,9 @@ export class CreateCvDto {
   @IsString()
   remarks: string
 
+  @IsString()
+  issue: string
 
+  @IsString()
+  period : string
 }

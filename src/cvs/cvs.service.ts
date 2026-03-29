@@ -31,6 +31,7 @@ export class CvsService {
         documentId: uploadCvs.id,
         subjectOfChange: uploadCvs.formType,
         remarks: uploadCvs.remarks,
+        drn : uploadCvs.period ?? " ",
         userId: user.id,
         govUsername: user.govUsername,
         date: new Date(),

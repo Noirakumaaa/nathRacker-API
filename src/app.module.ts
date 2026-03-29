@@ -12,6 +12,8 @@ import { AlldocumentsModule } from './alldocuments/alldocuments.module.js';
 import { PcnModule } from './lcn/lcn.module.js';
 import { CvsModule } from './cvs/cvs.module.js';
 import { MiscModule } from './misc/misc.module.js';
+import { SummaryModule } from './summary/summary.module.js';
+import { SettingsModule } from './settings/settings.module.js';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { MiscModule } from './misc/misc.module.js';
     PcnModule,
     CvsModule,
     MiscModule,
+    SummaryModule,
+    SettingsModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],

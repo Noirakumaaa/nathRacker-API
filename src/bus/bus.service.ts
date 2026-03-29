@@ -58,6 +58,7 @@ export class BusService {
         documentId: result.id,
         subjectOfChange: result.subjectOfChange,
         userId: user.id,
+        drn : result.drn ?? " ",
         date: new Date(),
         remarks: result.remarks,
         govUsername: user.govUsername

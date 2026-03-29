@@ -1161,6 +1161,8 @@ export const CVSScalarFieldEnum = {
   formType: 'formType',
   remarks: 'remarks',
   userId: 'userId',
+  issue: 'issue',
+  period: 'period',
   date: 'date',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1200,6 +1202,7 @@ export const EncodedDocumentScalarFieldEnum = {
   documentId: 'documentId',
   subjectOfChange: 'subjectOfChange',
   remarks: 'remarks',
+  drn: 'drn',
   userId: 'userId',
   govUsername: 'govUsername',
   date: 'date',

@@ -46,6 +46,7 @@ export type EncodedDocumentMinAggregateOutputType = {
   documentId: number | null
   subjectOfChange: string | null
   remarks: string | null
+  drn: string | null
   userId: number | null
   govUsername: string | null
   date: Date | null
@@ -62,6 +63,7 @@ export type EncodedDocumentMaxAggregateOutputType = {
   documentId: number | null
   subjectOfChange: string | null
   remarks: string | null
+  drn: string | null
   userId: number | null
   govUsername: string | null
   date: Date | null
@@ -78,6 +80,7 @@ export type EncodedDocumentCountAggregateOutputType = {
   documentId: number
   subjectOfChange: number
   remarks: number
+  drn: number
   userId: number
   govUsername: number
   date: number
@@ -108,6 +111,7 @@ export type EncodedDocumentMinAggregateInputType = {
   documentId?: true
   subjectOfChange?: true
   remarks?: true
+  drn?: true
   userId?: true
   govUsername?: true
   date?: true
@@ -124,6 +128,7 @@ export type EncodedDocumentMaxAggregateInputType = {
   documentId?: true
   subjectOfChange?: true
   remarks?: true
+  drn?: true
   userId?: true
   govUsername?: true
   date?: true
@@ -140,6 +145,7 @@ export type EncodedDocumentCountAggregateInputType = {
   documentId?: true
   subjectOfChange?: true
   remarks?: true
+  drn?: true
   userId?: true
   govUsername?: true
   date?: true
@@ -243,6 +249,7 @@ export type EncodedDocumentGroupByOutputType = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   userId: number
   govUsername: string
   date: Date
@@ -282,6 +289,7 @@ export type EncodedDocumentWhereInput = {
   documentId?: Prisma.IntFilter<"EncodedDocument"> | number
   subjectOfChange?: Prisma.StringFilter<"EncodedDocument"> | string
   remarks?: Prisma.StringFilter<"EncodedDocument"> | string
+  drn?: Prisma.StringFilter<"EncodedDocument"> | string
   userId?: Prisma.IntFilter<"EncodedDocument"> | number
   govUsername?: Prisma.StringFilter<"EncodedDocument"> | string
   date?: Prisma.DateTimeFilter<"EncodedDocument"> | Date | string
@@ -300,6 +308,7 @@ export type EncodedDocumentOrderByWithRelationInput = {
   documentId?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -321,6 +330,7 @@ export type EncodedDocumentWhereUniqueInput = Prisma.AtLeast<{
   documentId?: Prisma.IntFilter<"EncodedDocument"> | number
   subjectOfChange?: Prisma.StringFilter<"EncodedDocument"> | string
   remarks?: Prisma.StringFilter<"EncodedDocument"> | string
+  drn?: Prisma.StringFilter<"EncodedDocument"> | string
   userId?: Prisma.IntFilter<"EncodedDocument"> | number
   govUsername?: Prisma.StringFilter<"EncodedDocument"> | string
   date?: Prisma.DateTimeFilter<"EncodedDocument"> | Date | string
@@ -339,6 +349,7 @@ export type EncodedDocumentOrderByWithAggregationInput = {
   documentId?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -363,6 +374,7 @@ export type EncodedDocumentScalarWhereWithAggregatesInput = {
   documentId?: Prisma.IntWithAggregatesFilter<"EncodedDocument"> | number
   subjectOfChange?: Prisma.StringWithAggregatesFilter<"EncodedDocument"> | string
   remarks?: Prisma.StringWithAggregatesFilter<"EncodedDocument"> | string
+  drn?: Prisma.StringWithAggregatesFilter<"EncodedDocument"> | string
   userId?: Prisma.IntWithAggregatesFilter<"EncodedDocument"> | number
   govUsername?: Prisma.StringWithAggregatesFilter<"EncodedDocument"> | string
   date?: Prisma.DateTimeWithAggregatesFilter<"EncodedDocument"> | Date | string
@@ -378,6 +390,7 @@ export type EncodedDocumentCreateInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   date: Date | string
   verifiedBy?: string
   verified?: string
@@ -394,6 +407,7 @@ export type EncodedDocumentUncheckedCreateInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   userId: number
   govUsername: string
   date: Date | string
@@ -409,6 +423,7 @@ export type EncodedDocumentUpdateInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
@@ -425,6 +440,7 @@ export type EncodedDocumentUncheckedUpdateInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -441,6 +457,7 @@ export type EncodedDocumentCreateManyInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   userId: number
   govUsername: string
   date: Date | string
@@ -456,6 +473,7 @@ export type EncodedDocumentUpdateManyMutationInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
@@ -470,6 +488,7 @@ export type EncodedDocumentUncheckedUpdateManyInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -496,6 +515,7 @@ export type EncodedDocumentCountOrderByAggregateInput = {
   documentId?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -518,6 +538,7 @@ export type EncodedDocumentMaxOrderByAggregateInput = {
   documentId?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -534,6 +555,7 @@ export type EncodedDocumentMinOrderByAggregateInput = {
   documentId?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
   date?: Prisma.SortOrder
@@ -639,6 +661,7 @@ export type EncodedDocumentCreateWithoutUserByIdInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   date: Date | string
   verifiedBy?: string
   verified?: string
@@ -654,6 +677,7 @@ export type EncodedDocumentUncheckedCreateWithoutUserByIdInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   govUsername: string
   date: Date | string
   verifiedBy?: string
@@ -678,6 +702,7 @@ export type EncodedDocumentCreateWithoutGovUserByUsernameInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   date: Date | string
   verifiedBy?: string
   verified?: string
@@ -693,6 +718,7 @@ export type EncodedDocumentUncheckedCreateWithoutGovUserByUsernameInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   userId: number
   date: Date | string
   verifiedBy?: string
@@ -737,6 +763,7 @@ export type EncodedDocumentScalarWhereInput = {
   documentId?: Prisma.IntFilter<"EncodedDocument"> | number
   subjectOfChange?: Prisma.StringFilter<"EncodedDocument"> | string
   remarks?: Prisma.StringFilter<"EncodedDocument"> | string
+  drn?: Prisma.StringFilter<"EncodedDocument"> | string
   userId?: Prisma.IntFilter<"EncodedDocument"> | number
   govUsername?: Prisma.StringFilter<"EncodedDocument"> | string
   date?: Prisma.DateTimeFilter<"EncodedDocument"> | Date | string
@@ -769,6 +796,7 @@ export type EncodedDocumentCreateManyUserByIdInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   govUsername: string
   date: Date | string
   verifiedBy?: string
@@ -784,6 +812,7 @@ export type EncodedDocumentCreateManyGovUserByUsernameInput = {
   documentId: number
   subjectOfChange: string
   remarks: string
+  drn: string
   userId: number
   date: Date | string
   verifiedBy?: string
@@ -798,6 +827,7 @@ export type EncodedDocumentUpdateWithoutUserByIdInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
@@ -813,6 +843,7 @@ export type EncodedDocumentUncheckedUpdateWithoutUserByIdInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -828,6 +859,7 @@ export type EncodedDocumentUncheckedUpdateManyWithoutUserByIdInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -842,6 +874,7 @@ export type EncodedDocumentUpdateWithoutGovUserByUsernameInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
@@ -857,6 +890,7 @@ export type EncodedDocumentUncheckedUpdateWithoutGovUserByUsernameInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -872,6 +906,7 @@ export type EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameInput = {
   documentId?: Prisma.IntFieldUpdateOperationsInput | number
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -889,6 +924,7 @@ export type EncodedDocumentSelect<ExtArgs extends runtime.Types.Extensions.Inter
   documentId?: boolean
   subjectOfChange?: boolean
   remarks?: boolean
+  drn?: boolean
   userId?: boolean
   govUsername?: boolean
   date?: boolean
@@ -907,6 +943,7 @@ export type EncodedDocumentSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   documentId?: boolean
   subjectOfChange?: boolean
   remarks?: boolean
+  drn?: boolean
   userId?: boolean
   govUsername?: boolean
   date?: boolean
@@ -925,6 +962,7 @@ export type EncodedDocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   documentId?: boolean
   subjectOfChange?: boolean
   remarks?: boolean
+  drn?: boolean
   userId?: boolean
   govUsername?: boolean
   date?: boolean
@@ -943,6 +981,7 @@ export type EncodedDocumentSelectScalar = {
   documentId?: boolean
   subjectOfChange?: boolean
   remarks?: boolean
+  drn?: boolean
   userId?: boolean
   govUsername?: boolean
   date?: boolean
@@ -951,7 +990,7 @@ export type EncodedDocumentSelectScalar = {
   createdAt?: boolean
 }
 
-export type EncodedDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idNumber" | "name" | "documentType" | "documentId" | "subjectOfChange" | "remarks" | "userId" | "govUsername" | "date" | "verifiedBy" | "verified" | "createdAt", ExtArgs["result"]["encodedDocument"]>
+export type EncodedDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idNumber" | "name" | "documentType" | "documentId" | "subjectOfChange" | "remarks" | "drn" | "userId" | "govUsername" | "date" | "verifiedBy" | "verified" | "createdAt", ExtArgs["result"]["encodedDocument"]>
 export type EncodedDocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   govUserByUsername?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -979,6 +1018,7 @@ export type $EncodedDocumentPayload<ExtArgs extends runtime.Types.Extensions.Int
     documentId: number
     subjectOfChange: string
     remarks: string
+    drn: string
     userId: number
     govUsername: string
     date: Date
@@ -1417,6 +1457,7 @@ export interface EncodedDocumentFieldRefs {
   readonly documentId: Prisma.FieldRef<"EncodedDocument", 'Int'>
   readonly subjectOfChange: Prisma.FieldRef<"EncodedDocument", 'String'>
   readonly remarks: Prisma.FieldRef<"EncodedDocument", 'String'>
+  readonly drn: Prisma.FieldRef<"EncodedDocument", 'String'>
   readonly userId: Prisma.FieldRef<"EncodedDocument", 'Int'>
   readonly govUsername: Prisma.FieldRef<"EncodedDocument", 'String'>
   readonly date: Prisma.FieldRef<"EncodedDocument", 'DateTime'>

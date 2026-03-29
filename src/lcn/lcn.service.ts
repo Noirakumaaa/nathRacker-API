@@ -17,6 +17,10 @@ export class PcnService {
       throw new Error('User not authenticated');
     }
 
+    if (!createPcnDto.pcn && !createPcnDto.lrn) {
+      return { upload: false, message: 'At least one of PCN or LRN is required.' };
+    }
+
     const checkDuplicate = await this.prisma.client.pcn.findFirst({
       where : {
          pcn : createPcnDto.pcn,
@@ -46,6 +50,7 @@ export class PcnService {
         subjectOfChange: createPcnDto.subjectOfChange,
         idNumber: createPcnDto.hhId ?? '',
         name: createPcnDto.granteeName ?? '',
+        drn: result.drn ?? " ",
         remarks: createPcnDto.remarks ?? '',
         govUsername: user.govUsername,
       },

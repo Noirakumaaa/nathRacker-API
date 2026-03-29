@@ -45,6 +45,8 @@ export type CVSMinAggregateOutputType = {
   formType: string | null
   remarks: string | null
   userId: number | null
+  issue: string | null
+  period: string | null
   date: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -59,6 +61,8 @@ export type CVSMaxAggregateOutputType = {
   formType: string | null
   remarks: string | null
   userId: number | null
+  issue: string | null
+  period: string | null
   date: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -73,6 +77,8 @@ export type CVSCountAggregateOutputType = {
   formType: number
   remarks: number
   userId: number
+  issue: number
+  period: number
   date: number
   createdAt: number
   updatedAt: number
@@ -99,6 +105,8 @@ export type CVSMinAggregateInputType = {
   formType?: true
   remarks?: true
   userId?: true
+  issue?: true
+  period?: true
   date?: true
   createdAt?: true
   updatedAt?: true
@@ -113,6 +121,8 @@ export type CVSMaxAggregateInputType = {
   formType?: true
   remarks?: true
   userId?: true
+  issue?: true
+  period?: true
   date?: true
   createdAt?: true
   updatedAt?: true
@@ -127,6 +137,8 @@ export type CVSCountAggregateInputType = {
   formType?: true
   remarks?: true
   userId?: true
+  issue?: true
+  period?: true
   date?: true
   createdAt?: true
   updatedAt?: true
@@ -228,6 +240,8 @@ export type CVSGroupByOutputType = {
   formType: string
   remarks: string
   userId: number
+  issue: string | null
+  period: string
   date: Date
   createdAt: Date
   updatedAt: Date
@@ -265,6 +279,8 @@ export type CVSWhereInput = {
   formType?: Prisma.StringFilter<"CVS"> | string
   remarks?: Prisma.StringFilter<"CVS"> | string
   userId?: Prisma.IntFilter<"CVS"> | number
+  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
+  period?: Prisma.StringFilter<"CVS"> | string
   date?: Prisma.DateTimeFilter<"CVS"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
@@ -280,6 +296,8 @@ export type CVSOrderByWithRelationInput = {
   formType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
+  period?: Prisma.SortOrder
   date?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -298,6 +316,8 @@ export type CVSWhereUniqueInput = Prisma.AtLeast<{
   formType?: Prisma.StringFilter<"CVS"> | string
   remarks?: Prisma.StringFilter<"CVS"> | string
   userId?: Prisma.IntFilter<"CVS"> | number
+  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
+  period?: Prisma.StringFilter<"CVS"> | string
   date?: Prisma.DateTimeFilter<"CVS"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
@@ -313,6 +333,8 @@ export type CVSOrderByWithAggregationInput = {
   formType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
+  period?: Prisma.SortOrder
   date?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -335,6 +357,8 @@ export type CVSScalarWhereWithAggregatesInput = {
   formType?: Prisma.StringWithAggregatesFilter<"CVS"> | string
   remarks?: Prisma.StringWithAggregatesFilter<"CVS"> | string
   userId?: Prisma.IntWithAggregatesFilter<"CVS"> | number
+  issue?: Prisma.StringNullableWithAggregatesFilter<"CVS"> | string | null
+  period?: Prisma.StringWithAggregatesFilter<"CVS"> | string
   date?: Prisma.DateTimeWithAggregatesFilter<"CVS"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CVS"> | Date | string
@@ -347,6 +371,8 @@ export type CVSCreateInput = {
   facilityName: string
   formType: string
   remarks: string
+  issue?: string | null
+  period: string
   date: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -362,6 +388,8 @@ export type CVSUncheckedCreateInput = {
   formType: string
   remarks: string
   userId: number
+  issue?: string | null
+  period: string
   date: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -374,6 +402,8 @@ export type CVSUpdateInput = {
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -389,6 +419,8 @@ export type CVSUncheckedUpdateInput = {
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -403,6 +435,8 @@ export type CVSCreateManyInput = {
   formType: string
   remarks: string
   userId: number
+  issue?: string | null
+  period: string
   date: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -415,6 +449,8 @@ export type CVSUpdateManyMutationInput = {
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -429,6 +465,8 @@ export type CVSUncheckedUpdateManyInput = {
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -453,6 +491,8 @@ export type CVSCountOrderByAggregateInput = {
   formType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  period?: Prisma.SortOrder
   date?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -472,6 +512,8 @@ export type CVSMaxOrderByAggregateInput = {
   formType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  period?: Prisma.SortOrder
   date?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -486,6 +528,8 @@ export type CVSMinOrderByAggregateInput = {
   formType?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  period?: Prisma.SortOrder
   date?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -545,6 +589,8 @@ export type CVSCreateWithoutUserByIdInput = {
   facilityName: string
   formType: string
   remarks: string
+  issue?: string | null
+  period: string
   date: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -558,6 +604,8 @@ export type CVSUncheckedCreateWithoutUserByIdInput = {
   facilityName: string
   formType: string
   remarks: string
+  issue?: string | null
+  period: string
   date: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -601,6 +649,8 @@ export type CVSScalarWhereInput = {
   formType?: Prisma.StringFilter<"CVS"> | string
   remarks?: Prisma.StringFilter<"CVS"> | string
   userId?: Prisma.IntFilter<"CVS"> | number
+  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
+  period?: Prisma.StringFilter<"CVS"> | string
   date?: Prisma.DateTimeFilter<"CVS"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
@@ -614,6 +664,8 @@ export type CVSCreateManyUserByIdInput = {
   facilityName: string
   formType: string
   remarks: string
+  issue?: string | null
+  period: string
   date: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -626,6 +678,8 @@ export type CVSUpdateWithoutUserByIdInput = {
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -639,6 +693,8 @@ export type CVSUncheckedUpdateWithoutUserByIdInput = {
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -652,6 +708,8 @@ export type CVSUncheckedUpdateManyWithoutUserByIdInput = {
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -668,6 +726,8 @@ export type CVSSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   formType?: boolean
   remarks?: boolean
   userId?: boolean
+  issue?: boolean
+  period?: boolean
   date?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -683,6 +743,8 @@ export type CVSSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   formType?: boolean
   remarks?: boolean
   userId?: boolean
+  issue?: boolean
+  period?: boolean
   date?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -698,6 +760,8 @@ export type CVSSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   formType?: boolean
   remarks?: boolean
   userId?: boolean
+  issue?: boolean
+  period?: boolean
   date?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -713,12 +777,14 @@ export type CVSSelectScalar = {
   formType?: boolean
   remarks?: boolean
   userId?: boolean
+  issue?: boolean
+  period?: boolean
   date?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CVSOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idNumber" | "lgu" | "barangay" | "facilityName" | "formType" | "remarks" | "userId" | "date" | "createdAt" | "updatedAt", ExtArgs["result"]["cVS"]>
+export type CVSOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idNumber" | "lgu" | "barangay" | "facilityName" | "formType" | "remarks" | "userId" | "issue" | "period" | "date" | "createdAt" | "updatedAt", ExtArgs["result"]["cVS"]>
 export type CVSInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -743,6 +809,8 @@ export type $CVSPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     formType: string
     remarks: string
     userId: number
+    issue: string | null
+    period: string
     date: Date
     createdAt: Date
     updatedAt: Date
@@ -1178,6 +1246,8 @@ export interface CVSFieldRefs {
   readonly formType: Prisma.FieldRef<"CVS", 'String'>
   readonly remarks: Prisma.FieldRef<"CVS", 'String'>
   readonly userId: Prisma.FieldRef<"CVS", 'Int'>
+  readonly issue: Prisma.FieldRef<"CVS", 'String'>
+  readonly period: Prisma.FieldRef<"CVS", 'String'>
   readonly date: Prisma.FieldRef<"CVS", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"CVS", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CVS", 'DateTime'>

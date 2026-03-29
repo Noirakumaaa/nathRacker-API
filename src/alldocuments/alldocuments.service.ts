@@ -25,7 +25,7 @@ export class AlldocumentsService {
         userId: userId,
       },
       orderBy: {
-        date: 'desc',
+        date: 'asc',
       },
     });
   }
@@ -84,7 +84,6 @@ export class AlldocumentsService {
     return result;
   }
 
-
   UserEncoded(req: Request) {
     const user = req.user;
     if (!user) throw new Error('User not authenticated');
@@ -96,7 +95,7 @@ export class AlldocumentsService {
 
   globalRecords() {
     return this.prisma.client.encodedDocument.findMany({
-      orderBy: { date: 'asc' },
+      orderBy: { date: 'desc' },
     });
   }
 
@@ -112,41 +111,46 @@ export class AlldocumentsService {
     return `This action updates a #${id} alldocument`;
   }
 
-async remove(id: number) {
-  const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
-    where: { id },
-  });
+  async remove(id: number) {
+    const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
+      where: { id },
+    });
 
-  if (!deleteDocument) {
-    throw new NotFoundException(`Document #${id} not found`);
+    if (!deleteDocument) {
+      throw new NotFoundException(`Document #${id} not found`);
+    }
+
+    const { documentType, documentId } = deleteDocument;
+
+    // Delete from the specific model based on documentType
+    switch (documentType) {
+      case 'BUS':
+        await this.prisma.client.bus.delete({ where: { id: documentId } });
+        break;
+      case 'PCN':
+        await this.prisma.client.pcn.delete({ where: { id: documentId } });
+        break;
+      case 'SWDI':
+        await this.prisma.client.swdi.delete({ where: { id: documentId } });
+        break;
+      case 'CVS':
+        await this.prisma.client.cVS.delete({ where: { id: documentId } });
+        break;
+      case 'MISC':
+        await this.prisma.client.miscellaneous.delete({
+          where: { id: documentId },
+        });
+        break;
+      default:
+        throw new BadRequestException(`Unknown documentType: ${documentType}`);
+    }
+
+    // Delete the global encoded document record
+    await this.prisma.client.encodedDocument.delete({ where: { id } });
+
+    return {
+      deleted: true,
+      message: `${documentType} #${documentId} deleted successfully`,
+    };
   }
-
-  const { documentType, documentId } = deleteDocument;
-
-  // Delete from the specific model based on documentType
-  switch (documentType) {
-    case 'BUS':
-      await this.prisma.client.bus.delete({ where: { id: documentId } });
-      break;
-    case 'PCN':
-      await this.prisma.client.pcn.delete({ where: { id: documentId } });
-      break;
-    case 'SWDI':
-      await this.prisma.client.swdi.delete({ where: { id: documentId } });
-      break;
-    case 'CVS':
-      await this.prisma.client.cVS.delete({ where: { id: documentId } });
-      break;
-    case 'MISC':
-      await this.prisma.client.miscellaneous.delete({ where: { id: documentId } });
-      break;
-    default:
-      throw new BadRequestException(`Unknown documentType: ${documentType}`);
-  }
-
-  // Delete the global encoded document record
-  await this.prisma.client.encodedDocument.delete({ where: { id } });
-
-  return { deleted: true, message: `${documentType} #${documentId} deleted successfully` };
-}
 }

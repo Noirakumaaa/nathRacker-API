@@ -46,7 +46,8 @@ export class SwdiService {
         documentType: 'SWDI',
         documentId: uploadSwdi.id,
         userId: user.id,
-        date: new Date(),
+        date: uploadSwdi.date,
+        drn : uploadSwdi.drn ?? " ",
         remarks: uploadSwdi.remarks,
         subjectOfChange: "",
         govUsername: user.govUsername

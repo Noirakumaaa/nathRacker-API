@@ -18,6 +18,7 @@ export class MiscService {
     const uploadCvs = await this.prisma.client.miscellaneous.create({
       data: {
         ...createMiscDto,
+        subjectOfChange: createMiscDto.subjectOfChange || createMiscDto.granteeName,
         date: new Date(),
         userId: user.id,
       },
@@ -32,6 +33,7 @@ export class MiscService {
         subjectOfChange: uploadCvs.documentType,
         remarks: uploadCvs.remarks,
         userId: user.id,
+        drn: uploadCvs.drn ?? " ",
         govUsername: user.govUsername,
         date: new Date(),
       },

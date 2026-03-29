@@ -131,6 +131,8 @@ model CVS {
   formType     String
   remarks      String
   userId       Int
+  issue        String?
+  period       String
   date         DateTime
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -171,6 +173,7 @@ model EncodedDocument {
   documentId        Int
   subjectOfChange   String
   remarks           String
+  drn               String
   userId            Int
   govUsername       String
   date              DateTime
