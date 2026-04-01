@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { AppController } from './app.controller.js';
+import { AppService } from './app.service.js';
 import { AuthModule } from './auth/auth.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 import { JwtStrategy } from './../component/jwt.strategy.js';
@@ -37,8 +39,8 @@ import { AdminModule } from './admin/admin.module.js';
     SettingsModule,
     AdminModule,
   ],
-  controllers: [],
-  providers: [ JwtStrategy, { provide: APP_GUARD, useClass: ThrottlerGuard }],
+  controllers: [AppController],
+  providers: [AppService, JwtStrategy, { provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 
 export class AppModule implements NestModule {

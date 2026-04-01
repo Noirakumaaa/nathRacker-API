@@ -220,6 +220,14 @@ export class SettingsService {
         MISC: 'miscellaneous',
       };
 
+      const duplicateKeyMap: Record<Module, (row: Record<string, unknown>) => Record<string, unknown>> = {
+        BUS:  (r) => ({ hhId: r['hhId'], typeOfUpdate: r['typeOfUpdate'], subjectOfChange: r['subjectOfChange'], date: r['date'] }),
+        PCN:  (r) => ({ hhId: r['hhId'], subjectOfChange: r['subjectOfChange'], date: r['date'] }),
+        SWDI: (r) => ({ hhId: r['hhId'], date: r['date'] }),
+        CVS:  (r) => ({ idNumber: r['idNumber'], formType: r['formType'], date: r['date'] }),
+        MISC: (r) => ({ hhId: r['hhId'], documentType: r['documentType'], date: r['date'] }),
+      };
+
       const model = modelMap[module];
       const allowedFields = new Set(Object.keys(MODULE_SCHEMA[module].fields));
       let inserted = 0;
@@ -248,6 +256,11 @@ export class SettingsService {
 
           const payload = { ...filteredRow, encodedBy: user.govUsername, userId: user.id };
           if (i === 0) console.log('Row 2 payload:', JSON.stringify(payload, null, 2));
+
+          const duplicateWhere = duplicateKeyMap[module](filteredRow);
+          const existing = await (this.prisma.client as any)[model].findFirst({ where: duplicateWhere });
+          if (existing) continue;
+
           const created = await (this.prisma.client as any)[model].create({
             data: payload,
           });
