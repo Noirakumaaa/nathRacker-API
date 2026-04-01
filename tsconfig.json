@@ -19,6 +19,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
+    "rootDir": "./src",
     "noFallthroughCasesInSwitch": false
   }
 }
