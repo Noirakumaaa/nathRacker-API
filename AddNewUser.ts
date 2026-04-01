@@ -11,17 +11,17 @@ function createPrisma() {
 
 const newUsers = [
   {
-    firstName: 'Nathaniel',
-    lastName: 'Hernandez',
-    middleName: 'Barbasa',
-    govUsername: 'nbhernandez_encoder',
-    email: 'hernandezlnathaniel@gmail.com',
+    firstName: 'ADMIN',
+    lastName: 'ADMIN',
+    middleName: '',
+    govUsername: 'ADMIN',
+    email: 'hernandezlnathaniel9@@gmail.com',
     password: 'ADMIN',
-    phone: '09166575886',
+    phone: '09000000000',
     role: 'ADMIN' as const,
     assignedLGUID: 4,
     assignedOperationId: 8,
-    assignedBarangayId: 1,
+    assignedBarangayId: 3,
   },
 ];
 
@@ -165,8 +165,10 @@ async function verifyData() {
 }
 
 // ─── Call the function you need ──────────────────────────────────────────────
-addNewUsers();
-// addOperationsOffices();
-// addLgus();
-// addBarangays();
-// verifyData();
+(async () => {
+  await addOperationsOffices();
+  await addLgus();
+  await addBarangays();
+  await verifyData();
+  await addNewUsers();
+})();
