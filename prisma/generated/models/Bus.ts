@@ -54,6 +54,7 @@ export type BusMinAggregateOutputType = {
   note: string | null
   verifiedBy: string | null
   verified: string | null
+  verificationIssue: string | null
   userId: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -77,6 +78,7 @@ export type BusMaxAggregateOutputType = {
   note: string | null
   verifiedBy: string | null
   verified: string | null
+  verificationIssue: string | null
   userId: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -100,6 +102,7 @@ export type BusCountAggregateOutputType = {
   note: number
   verifiedBy: number
   verified: number
+  verificationIssue: number
   userId: number
   createdAt: number
   updatedAt: number
@@ -135,6 +138,7 @@ export type BusMinAggregateInputType = {
   note?: true
   verifiedBy?: true
   verified?: true
+  verificationIssue?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
@@ -158,6 +162,7 @@ export type BusMaxAggregateInputType = {
   note?: true
   verifiedBy?: true
   verified?: true
+  verificationIssue?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
@@ -181,6 +186,7 @@ export type BusCountAggregateInputType = {
   note?: true
   verifiedBy?: true
   verified?: true
+  verificationIssue?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
@@ -291,6 +297,7 @@ export type BusGroupByOutputType = {
   note: string | null
   verifiedBy: string
   verified: string
+  verificationIssue: string | null
   userId: number
   createdAt: Date
   updatedAt: Date
@@ -337,6 +344,7 @@ export type BusWhereInput = {
   note?: Prisma.StringNullableFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringFilter<"Bus"> | string
   verified?: Prisma.StringFilter<"Bus"> | string
+  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   userId?: Prisma.IntFilter<"Bus"> | number
   createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
@@ -361,6 +369,7 @@ export type BusOrderByWithRelationInput = {
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -388,6 +397,7 @@ export type BusWhereUniqueInput = Prisma.AtLeast<{
   note?: Prisma.StringNullableFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringFilter<"Bus"> | string
   verified?: Prisma.StringFilter<"Bus"> | string
+  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   userId?: Prisma.IntFilter<"Bus"> | number
   createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
@@ -412,6 +422,7 @@ export type BusOrderByWithAggregationInput = {
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -443,6 +454,7 @@ export type BusScalarWhereWithAggregatesInput = {
   note?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   verified?: Prisma.StringWithAggregatesFilter<"Bus"> | string
+  verificationIssue?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"Bus"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Bus"> | Date | string
@@ -465,6 +477,7 @@ export type BusCreateInput = {
   note?: string | null
   verifiedBy?: string
   verified?: string
+  verificationIssue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   userById: Prisma.UserCreateNestedOneWithoutBusByIdInput
@@ -488,6 +501,7 @@ export type BusUncheckedCreateInput = {
   note?: string | null
   verifiedBy?: string
   verified?: string
+  verificationIssue?: string | null
   userId: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -510,6 +524,7 @@ export type BusUpdateInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userById?: Prisma.UserUpdateOneRequiredWithoutBusByIdNestedInput
@@ -533,6 +548,7 @@ export type BusUncheckedUpdateInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -556,6 +572,7 @@ export type BusCreateManyInput = {
   note?: string | null
   verifiedBy?: string
   verified?: string
+  verificationIssue?: string | null
   userId: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -578,6 +595,7 @@ export type BusUpdateManyMutationInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -600,6 +618,7 @@ export type BusUncheckedUpdateManyInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -633,6 +652,7 @@ export type BusCountOrderByAggregateInput = {
   note?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -661,6 +681,7 @@ export type BusMaxOrderByAggregateInput = {
   note?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -684,6 +705,7 @@ export type BusMinOrderByAggregateInput = {
   note?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -757,6 +779,7 @@ export type BusCreateWithoutUserByIdInput = {
   note?: string | null
   verifiedBy?: string
   verified?: string
+  verificationIssue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -779,6 +802,7 @@ export type BusUncheckedCreateWithoutUserByIdInput = {
   note?: string | null
   verifiedBy?: string
   verified?: string
+  verificationIssue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -830,6 +854,7 @@ export type BusScalarWhereInput = {
   note?: Prisma.StringNullableFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringFilter<"Bus"> | string
   verified?: Prisma.StringFilter<"Bus"> | string
+  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   userId?: Prisma.IntFilter<"Bus"> | number
   createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
@@ -853,6 +878,7 @@ export type BusCreateManyUserByIdInput = {
   note?: string | null
   verifiedBy?: string
   verified?: string
+  verificationIssue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -874,6 +900,7 @@ export type BusUpdateWithoutUserByIdInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -896,6 +923,7 @@ export type BusUncheckedUpdateWithoutUserByIdInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -918,6 +946,7 @@ export type BusUncheckedUpdateManyWithoutUserByIdInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -942,6 +971,7 @@ export type BusSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   note?: boolean
   verifiedBy?: boolean
   verified?: boolean
+  verificationIssue?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -966,6 +996,7 @@ export type BusSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   note?: boolean
   verifiedBy?: boolean
   verified?: boolean
+  verificationIssue?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -990,6 +1021,7 @@ export type BusSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   note?: boolean
   verifiedBy?: boolean
   verified?: boolean
+  verificationIssue?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1014,12 +1046,13 @@ export type BusSelectScalar = {
   note?: boolean
   verifiedBy?: boolean
   verified?: boolean
+  verificationIssue?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "typeOfUpdate" | "remarks" | "issue" | "encodedBy" | "updateInfo" | "subjectOfChange" | "drn" | "cl" | "date" | "note" | "verifiedBy" | "verified" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["bus"]>
+export type BusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "typeOfUpdate" | "remarks" | "issue" | "encodedBy" | "updateInfo" | "subjectOfChange" | "drn" | "cl" | "date" | "note" | "verifiedBy" | "verified" | "verificationIssue" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["bus"]>
 export type BusInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -1053,6 +1086,7 @@ export type $BusPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     note: string | null
     verifiedBy: string
     verified: string
+    verificationIssue: string | null
     userId: number
     createdAt: Date
     updatedAt: Date
@@ -1497,6 +1531,7 @@ export interface BusFieldRefs {
   readonly note: Prisma.FieldRef<"Bus", 'String'>
   readonly verifiedBy: Prisma.FieldRef<"Bus", 'String'>
   readonly verified: Prisma.FieldRef<"Bus", 'String'>
+  readonly verificationIssue: Prisma.FieldRef<"Bus", 'String'>
   readonly userId: Prisma.FieldRef<"Bus", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Bus", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Bus", 'DateTime'>

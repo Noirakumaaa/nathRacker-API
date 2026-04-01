@@ -10,11 +10,7 @@ import { JwtAuthGuard } from '../../guard/jwt-guard.js';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Public()
-  @Post('register')
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.Register(createAuthDto);
-  }
+
 
   @Public()
   @Post('login')

@@ -72,8 +72,16 @@ export class BusService {
     };
   }
 
-  findAll() {
-    return `This action returns all bus`;
+  async findAll(req) {
+    const user = req.user
+
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+
+    return await this.prisma.client.bus.findMany()
+
+  
   }
 
   recent(req: Request) {
@@ -129,6 +137,20 @@ export class BusService {
     return {count : count};
   }
 
+  async verify(id: number, dto: { verified: string; verificationIssue?: string }, req: Request) {
+    const user = req.user;
+    if (!user) throw new Error('User not authenticated');
+
+    return this.prisma.client.bus.update({
+      where: { id },
+      data: {
+        verified: dto.verified,
+        verificationIssue: dto.verificationIssue ?? null,
+        verifiedBy: user.govUsername,
+      },
+    });
+  }
+
   update(id: number, updateBusDto: UpdateBusDto) {
     return `This action updates a #${id} bus`;
   }
@@ -136,4 +158,6 @@ export class BusService {
   remove(id: number) {
     return `This action removes a #${id} bus`;
   }
+
+
 }

@@ -1,6 +1,7 @@
 import {
   Controller,
   Post,
+  Get,
   Body,
   UploadedFile,
   UseInterceptors,
@@ -14,8 +15,11 @@ import { SettingsService } from './settings.service.js';
 import type { Module } from './dto/create-setting.dto.js';
 import type { Request } from 'express';
 import { JwtAuthGuard } from './../../guard/jwt-guard.js';
+import { Role } from './../../enums/roles.enum.js';
+import { Roles } from './../../decorator/roles.decorator.js';
 
 @UseGuards(JwtAuthGuard)
+@Roles(Role.ADMIN) 
 @Controller('settings')
 export class SettingsController {
   constructor(private readonly settingsService: SettingsService) {}
@@ -31,5 +35,13 @@ export class SettingsController {
     if (!module) throw new BadRequestException('Module is required');
 
     return this.settingsService.processImport(file, module, req);
+  }
+
+
+  @Get("UserInfo")
+  GetUserInfo(
+    @Req() req : Request
+  ){
+    return this.settingsService.GetUserInfo(req);
   }
 }

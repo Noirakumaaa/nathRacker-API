@@ -4,7 +4,13 @@ import { CreateCvDto } from './dto/create-cv.dto.js';
 import { UpdateCvDto } from './dto/update-cv.dto.js';
 import type { Request } from 'express';
 
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from './../../guard/jwt-guard.js';
+import { Role } from './../../enums/roles.enum.js';
+import { Roles } from './../../decorator/roles.decorator.js';
 
+@UseGuards(JwtAuthGuard)
+@Roles(Role.ADMIN) 
 @Controller('cvs')
 export class CvsController {
   constructor(private readonly cvsService: CvsService) {}

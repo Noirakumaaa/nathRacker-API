@@ -79,3 +79,18 @@ export type Miscellaneous = Prisma.MiscellaneousModel
  * 
  */
 export type EncodedDocument = Prisma.EncodedDocumentModel
+/**
+ * Model OperationsOfficeNum
+ * 
+ */
+export type OperationsOfficeNum = Prisma.OperationsOfficeNumModel
+/**
+ * Model Lgu
+ * 
+ */
+export type Lgu = Prisma.LguModel
+/**
+ * Model Barangay
+ * 
+ */
+export type Barangay = Prisma.BarangayModel

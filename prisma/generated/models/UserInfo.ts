@@ -29,12 +29,18 @@ export type AggregateUserInfo = {
 export type UserInfoAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  assignedOperationId: number | null
+  assignedLGUID: number | null
+  assignedBarangayId: number | null
   sessionTime: number | null
 }
 
 export type UserInfoSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  assignedOperationId: number | null
+  assignedLGUID: number | null
+  assignedBarangayId: number | null
   sessionTime: number | null
 }
 
@@ -43,6 +49,10 @@ export type UserInfoMinAggregateOutputType = {
   userId: number | null
   firstName: string | null
   lastName: string | null
+  middleName: string | null
+  assignedOperationId: number | null
+  assignedLGUID: number | null
+  assignedBarangayId: number | null
   phone: string | null
   sessionTime: number | null
   language: string | null
@@ -61,6 +71,10 @@ export type UserInfoMaxAggregateOutputType = {
   userId: number | null
   firstName: string | null
   lastName: string | null
+  middleName: string | null
+  assignedOperationId: number | null
+  assignedLGUID: number | null
+  assignedBarangayId: number | null
   phone: string | null
   sessionTime: number | null
   language: string | null
@@ -79,6 +93,10 @@ export type UserInfoCountAggregateOutputType = {
   userId: number
   firstName: number
   lastName: number
+  middleName: number
+  assignedOperationId: number
+  assignedLGUID: number
+  assignedBarangayId: number
   phone: number
   sessionTime: number
   language: number
@@ -97,12 +115,18 @@ export type UserInfoCountAggregateOutputType = {
 export type UserInfoAvgAggregateInputType = {
   id?: true
   userId?: true
+  assignedOperationId?: true
+  assignedLGUID?: true
+  assignedBarangayId?: true
   sessionTime?: true
 }
 
 export type UserInfoSumAggregateInputType = {
   id?: true
   userId?: true
+  assignedOperationId?: true
+  assignedLGUID?: true
+  assignedBarangayId?: true
   sessionTime?: true
 }
 
@@ -111,6 +135,10 @@ export type UserInfoMinAggregateInputType = {
   userId?: true
   firstName?: true
   lastName?: true
+  middleName?: true
+  assignedOperationId?: true
+  assignedLGUID?: true
+  assignedBarangayId?: true
   phone?: true
   sessionTime?: true
   language?: true
@@ -129,6 +157,10 @@ export type UserInfoMaxAggregateInputType = {
   userId?: true
   firstName?: true
   lastName?: true
+  middleName?: true
+  assignedOperationId?: true
+  assignedLGUID?: true
+  assignedBarangayId?: true
   phone?: true
   sessionTime?: true
   language?: true
@@ -147,6 +179,10 @@ export type UserInfoCountAggregateInputType = {
   userId?: true
   firstName?: true
   lastName?: true
+  middleName?: true
+  assignedOperationId?: true
+  assignedLGUID?: true
+  assignedBarangayId?: true
   phone?: true
   sessionTime?: true
   language?: true
@@ -252,6 +288,10 @@ export type UserInfoGroupByOutputType = {
   userId: number
   firstName: string
   lastName: string
+  middleName: string
+  assignedOperationId: number | null
+  assignedLGUID: number | null
+  assignedBarangayId: number | null
   phone: string
   sessionTime: number
   language: string
@@ -293,6 +333,10 @@ export type UserInfoWhereInput = {
   userId?: Prisma.IntFilter<"UserInfo"> | number
   firstName?: Prisma.StringFilter<"UserInfo"> | string
   lastName?: Prisma.StringFilter<"UserInfo"> | string
+  middleName?: Prisma.StringFilter<"UserInfo"> | string
+  assignedOperationId?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  assignedLGUID?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  assignedBarangayId?: Prisma.IntNullableFilter<"UserInfo"> | number | null
   phone?: Prisma.StringFilter<"UserInfo"> | string
   sessionTime?: Prisma.IntFilter<"UserInfo"> | number
   language?: Prisma.StringFilter<"UserInfo"> | string
@@ -305,6 +349,9 @@ export type UserInfoWhereInput = {
   weeklyReportAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
   theme?: Prisma.EnumthemeFilter<"UserInfo"> | $Enums.theme
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  assignedArea?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
+  assignedLgu?: Prisma.XOR<Prisma.LguNullableScalarRelationFilter, Prisma.LguWhereInput> | null
+  assignedBarangay?: Prisma.XOR<Prisma.BarangayNullableScalarRelationFilter, Prisma.BarangayWhereInput> | null
 }
 
 export type UserInfoOrderByWithRelationInput = {
@@ -312,6 +359,10 @@ export type UserInfoOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
+  middleName?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
   language?: Prisma.SortOrder
@@ -324,6 +375,9 @@ export type UserInfoOrderByWithRelationInput = {
   weeklyReportAlert?: Prisma.SortOrder
   theme?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  assignedArea?: Prisma.OperationsOfficeNumOrderByWithRelationInput
+  assignedLgu?: Prisma.LguOrderByWithRelationInput
+  assignedBarangay?: Prisma.BarangayOrderByWithRelationInput
 }
 
 export type UserInfoWhereUniqueInput = Prisma.AtLeast<{
@@ -334,6 +388,10 @@ export type UserInfoWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserInfoWhereInput | Prisma.UserInfoWhereInput[]
   firstName?: Prisma.StringFilter<"UserInfo"> | string
   lastName?: Prisma.StringFilter<"UserInfo"> | string
+  middleName?: Prisma.StringFilter<"UserInfo"> | string
+  assignedOperationId?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  assignedLGUID?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  assignedBarangayId?: Prisma.IntNullableFilter<"UserInfo"> | number | null
   phone?: Prisma.StringFilter<"UserInfo"> | string
   sessionTime?: Prisma.IntFilter<"UserInfo"> | number
   language?: Prisma.StringFilter<"UserInfo"> | string
@@ -346,6 +404,9 @@ export type UserInfoWhereUniqueInput = Prisma.AtLeast<{
   weeklyReportAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
   theme?: Prisma.EnumthemeFilter<"UserInfo"> | $Enums.theme
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  assignedArea?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
+  assignedLgu?: Prisma.XOR<Prisma.LguNullableScalarRelationFilter, Prisma.LguWhereInput> | null
+  assignedBarangay?: Prisma.XOR<Prisma.BarangayNullableScalarRelationFilter, Prisma.BarangayWhereInput> | null
 }, "id" | "userId">
 
 export type UserInfoOrderByWithAggregationInput = {
@@ -353,6 +414,10 @@ export type UserInfoOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
+  middleName?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
   language?: Prisma.SortOrder
@@ -379,6 +444,10 @@ export type UserInfoScalarWhereWithAggregatesInput = {
   userId?: Prisma.IntWithAggregatesFilter<"UserInfo"> | number
   firstName?: Prisma.StringWithAggregatesFilter<"UserInfo"> | string
   lastName?: Prisma.StringWithAggregatesFilter<"UserInfo"> | string
+  middleName?: Prisma.StringWithAggregatesFilter<"UserInfo"> | string
+  assignedOperationId?: Prisma.IntNullableWithAggregatesFilter<"UserInfo"> | number | null
+  assignedLGUID?: Prisma.IntNullableWithAggregatesFilter<"UserInfo"> | number | null
+  assignedBarangayId?: Prisma.IntNullableWithAggregatesFilter<"UserInfo"> | number | null
   phone?: Prisma.StringWithAggregatesFilter<"UserInfo"> | string
   sessionTime?: Prisma.IntWithAggregatesFilter<"UserInfo"> | number
   language?: Prisma.StringWithAggregatesFilter<"UserInfo"> | string
@@ -395,6 +464,7 @@ export type UserInfoScalarWhereWithAggregatesInput = {
 export type UserInfoCreateInput = {
   firstName?: string
   lastName?: string
+  middleName?: string
   phone?: string
   sessionTime?: number
   language?: string
@@ -407,6 +477,9 @@ export type UserInfoCreateInput = {
   weeklyReportAlert?: boolean
   theme?: $Enums.theme
   user: Prisma.UserCreateNestedOneWithoutUserInfoInput
+  assignedArea?: Prisma.OperationsOfficeNumCreateNestedOneWithoutUserInfoInput
+  assignedLgu?: Prisma.LguCreateNestedOneWithoutUserInfoInput
+  assignedBarangay?: Prisma.BarangayCreateNestedOneWithoutUserInfoInput
 }
 
 export type UserInfoUncheckedCreateInput = {
@@ -414,6 +487,10 @@ export type UserInfoUncheckedCreateInput = {
   userId: number
   firstName?: string
   lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedLGUID?: number | null
+  assignedBarangayId?: number | null
   phone?: string
   sessionTime?: number
   language?: string
@@ -430,6 +507,7 @@ export type UserInfoUncheckedCreateInput = {
 export type UserInfoUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
   language?: Prisma.StringFieldUpdateOperationsInput | string
@@ -442,6 +520,9 @@ export type UserInfoUpdateInput = {
   weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
   theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
   user?: Prisma.UserUpdateOneRequiredWithoutUserInfoNestedInput
+  assignedArea?: Prisma.OperationsOfficeNumUpdateOneWithoutUserInfoNestedInput
+  assignedLgu?: Prisma.LguUpdateOneWithoutUserInfoNestedInput
+  assignedBarangay?: Prisma.BarangayUpdateOneWithoutUserInfoNestedInput
 }
 
 export type UserInfoUncheckedUpdateInput = {
@@ -449,6 +530,10 @@ export type UserInfoUncheckedUpdateInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
   language?: Prisma.StringFieldUpdateOperationsInput | string
@@ -467,6 +552,10 @@ export type UserInfoCreateManyInput = {
   userId: number
   firstName?: string
   lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedLGUID?: number | null
+  assignedBarangayId?: number | null
   phone?: string
   sessionTime?: number
   language?: string
@@ -483,6 +572,7 @@ export type UserInfoCreateManyInput = {
 export type UserInfoUpdateManyMutationInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
   language?: Prisma.StringFieldUpdateOperationsInput | string
@@ -501,6 +591,10 @@ export type UserInfoUncheckedUpdateManyInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
   language?: Prisma.StringFieldUpdateOperationsInput | string
@@ -524,6 +618,10 @@ export type UserInfoCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
+  middleName?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
   language?: Prisma.SortOrder
@@ -540,6 +638,9 @@ export type UserInfoCountOrderByAggregateInput = {
 export type UserInfoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
 }
 
@@ -548,6 +649,10 @@ export type UserInfoMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
+  middleName?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
   language?: Prisma.SortOrder
@@ -566,6 +671,10 @@ export type UserInfoMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
+  middleName?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
   language?: Prisma.SortOrder
@@ -582,7 +691,20 @@ export type UserInfoMinOrderByAggregateInput = {
 export type UserInfoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  assignedOperationId?: Prisma.SortOrder
+  assignedLGUID?: Prisma.SortOrder
+  assignedBarangayId?: Prisma.SortOrder
   sessionTime?: Prisma.SortOrder
+}
+
+export type UserInfoListRelationFilter = {
+  every?: Prisma.UserInfoWhereInput
+  some?: Prisma.UserInfoWhereInput
+  none?: Prisma.UserInfoWhereInput
+}
+
+export type UserInfoOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type UserInfoCreateNestedOneWithoutUserInput = {
@@ -625,9 +747,144 @@ export type EnumthemeFieldUpdateOperationsInput = {
   set?: $Enums.theme
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type UserInfoCreateNestedManyWithoutAssignedAreaInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput> | Prisma.UserInfoCreateWithoutAssignedAreaInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput | Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedAreaInputEnvelope
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+}
+
+export type UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput> | Prisma.UserInfoCreateWithoutAssignedAreaInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput | Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedAreaInputEnvelope
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+}
+
+export type UserInfoUpdateManyWithoutAssignedAreaNestedInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput> | Prisma.UserInfoCreateWithoutAssignedAreaInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput | Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput[]
+  upsert?: Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedAreaInput | Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedAreaInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedAreaInputEnvelope
+  set?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  disconnect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  delete?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  update?: Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedAreaInput | Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedAreaInput[]
+  updateMany?: Prisma.UserInfoUpdateManyWithWhereWithoutAssignedAreaInput | Prisma.UserInfoUpdateManyWithWhereWithoutAssignedAreaInput[]
+  deleteMany?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+}
+
+export type UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput> | Prisma.UserInfoCreateWithoutAssignedAreaInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput | Prisma.UserInfoCreateOrConnectWithoutAssignedAreaInput[]
+  upsert?: Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedAreaInput | Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedAreaInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedAreaInputEnvelope
+  set?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  disconnect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  delete?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  update?: Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedAreaInput | Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedAreaInput[]
+  updateMany?: Prisma.UserInfoUpdateManyWithWhereWithoutAssignedAreaInput | Prisma.UserInfoUpdateManyWithWhereWithoutAssignedAreaInput[]
+  deleteMany?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+}
+
+export type UserInfoCreateNestedManyWithoutAssignedLguInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedLguInput, Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput> | Prisma.UserInfoCreateWithoutAssignedLguInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput | Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedLguInputEnvelope
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+}
+
+export type UserInfoUncheckedCreateNestedManyWithoutAssignedLguInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedLguInput, Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput> | Prisma.UserInfoCreateWithoutAssignedLguInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput | Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedLguInputEnvelope
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+}
+
+export type UserInfoUpdateManyWithoutAssignedLguNestedInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedLguInput, Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput> | Prisma.UserInfoCreateWithoutAssignedLguInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput | Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput[]
+  upsert?: Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedLguInput | Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedLguInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedLguInputEnvelope
+  set?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  disconnect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  delete?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  update?: Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedLguInput | Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedLguInput[]
+  updateMany?: Prisma.UserInfoUpdateManyWithWhereWithoutAssignedLguInput | Prisma.UserInfoUpdateManyWithWhereWithoutAssignedLguInput[]
+  deleteMany?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+}
+
+export type UserInfoUncheckedUpdateManyWithoutAssignedLguNestedInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedLguInput, Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput> | Prisma.UserInfoCreateWithoutAssignedLguInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput | Prisma.UserInfoCreateOrConnectWithoutAssignedLguInput[]
+  upsert?: Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedLguInput | Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedLguInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedLguInputEnvelope
+  set?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  disconnect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  delete?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  update?: Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedLguInput | Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedLguInput[]
+  updateMany?: Prisma.UserInfoUpdateManyWithWhereWithoutAssignedLguInput | Prisma.UserInfoUpdateManyWithWhereWithoutAssignedLguInput[]
+  deleteMany?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+}
+
+export type UserInfoCreateNestedManyWithoutAssignedBarangayInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput> | Prisma.UserInfoCreateWithoutAssignedBarangayInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput | Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedBarangayInputEnvelope
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+}
+
+export type UserInfoUncheckedCreateNestedManyWithoutAssignedBarangayInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput> | Prisma.UserInfoCreateWithoutAssignedBarangayInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput | Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedBarangayInputEnvelope
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+}
+
+export type UserInfoUpdateManyWithoutAssignedBarangayNestedInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput> | Prisma.UserInfoCreateWithoutAssignedBarangayInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput | Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput[]
+  upsert?: Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedBarangayInput | Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedBarangayInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedBarangayInputEnvelope
+  set?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  disconnect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  delete?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  update?: Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedBarangayInput | Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedBarangayInput[]
+  updateMany?: Prisma.UserInfoUpdateManyWithWhereWithoutAssignedBarangayInput | Prisma.UserInfoUpdateManyWithWhereWithoutAssignedBarangayInput[]
+  deleteMany?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+}
+
+export type UserInfoUncheckedUpdateManyWithoutAssignedBarangayNestedInput = {
+  create?: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput> | Prisma.UserInfoCreateWithoutAssignedBarangayInput[] | Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput[]
+  connectOrCreate?: Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput | Prisma.UserInfoCreateOrConnectWithoutAssignedBarangayInput[]
+  upsert?: Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedBarangayInput | Prisma.UserInfoUpsertWithWhereUniqueWithoutAssignedBarangayInput[]
+  createMany?: Prisma.UserInfoCreateManyAssignedBarangayInputEnvelope
+  set?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  disconnect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  delete?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  connect?: Prisma.UserInfoWhereUniqueInput | Prisma.UserInfoWhereUniqueInput[]
+  update?: Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedBarangayInput | Prisma.UserInfoUpdateWithWhereUniqueWithoutAssignedBarangayInput[]
+  updateMany?: Prisma.UserInfoUpdateManyWithWhereWithoutAssignedBarangayInput | Prisma.UserInfoUpdateManyWithWhereWithoutAssignedBarangayInput[]
+  deleteMany?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+}
+
 export type UserInfoCreateWithoutUserInput = {
   firstName?: string
   lastName?: string
+  middleName?: string
   phone?: string
   sessionTime?: number
   language?: string
@@ -639,12 +896,19 @@ export type UserInfoCreateWithoutUserInput = {
   emailAlert?: boolean
   weeklyReportAlert?: boolean
   theme?: $Enums.theme
+  assignedArea?: Prisma.OperationsOfficeNumCreateNestedOneWithoutUserInfoInput
+  assignedLgu?: Prisma.LguCreateNestedOneWithoutUserInfoInput
+  assignedBarangay?: Prisma.BarangayCreateNestedOneWithoutUserInfoInput
 }
 
 export type UserInfoUncheckedCreateWithoutUserInput = {
   id?: number
   firstName?: string
   lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedLGUID?: number | null
+  assignedBarangayId?: number | null
   phone?: string
   sessionTime?: number
   language?: string
@@ -677,6 +941,31 @@ export type UserInfoUpdateToOneWithWhereWithoutUserInput = {
 export type UserInfoUpdateWithoutUserInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+  assignedArea?: Prisma.OperationsOfficeNumUpdateOneWithoutUserInfoNestedInput
+  assignedLgu?: Prisma.LguUpdateOneWithoutUserInfoNestedInput
+  assignedBarangay?: Prisma.BarangayUpdateOneWithoutUserInfoNestedInput
+}
+
+export type UserInfoUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
   language?: Prisma.StringFieldUpdateOperationsInput | string
@@ -690,10 +979,468 @@ export type UserInfoUpdateWithoutUserInput = {
   theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
 }
 
-export type UserInfoUncheckedUpdateWithoutUserInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+export type UserInfoCreateWithoutAssignedAreaInput = {
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+  user: Prisma.UserCreateNestedOneWithoutUserInfoInput
+  assignedLgu?: Prisma.LguCreateNestedOneWithoutUserInfoInput
+  assignedBarangay?: Prisma.BarangayCreateNestedOneWithoutUserInfoInput
+}
+
+export type UserInfoUncheckedCreateWithoutAssignedAreaInput = {
+  id?: number
+  userId: number
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  assignedLGUID?: number | null
+  assignedBarangayId?: number | null
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+}
+
+export type UserInfoCreateOrConnectWithoutAssignedAreaInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput>
+}
+
+export type UserInfoCreateManyAssignedAreaInputEnvelope = {
+  data: Prisma.UserInfoCreateManyAssignedAreaInput | Prisma.UserInfoCreateManyAssignedAreaInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserInfoUpsertWithWhereUniqueWithoutAssignedAreaInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserInfoUpdateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedUpdateWithoutAssignedAreaInput>
+  create: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedCreateWithoutAssignedAreaInput>
+}
+
+export type UserInfoUpdateWithWhereUniqueWithoutAssignedAreaInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserInfoUpdateWithoutAssignedAreaInput, Prisma.UserInfoUncheckedUpdateWithoutAssignedAreaInput>
+}
+
+export type UserInfoUpdateManyWithWhereWithoutAssignedAreaInput = {
+  where: Prisma.UserInfoScalarWhereInput
+  data: Prisma.XOR<Prisma.UserInfoUpdateManyMutationInput, Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaInput>
+}
+
+export type UserInfoScalarWhereInput = {
+  AND?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+  OR?: Prisma.UserInfoScalarWhereInput[]
+  NOT?: Prisma.UserInfoScalarWhereInput | Prisma.UserInfoScalarWhereInput[]
+  id?: Prisma.IntFilter<"UserInfo"> | number
+  userId?: Prisma.IntFilter<"UserInfo"> | number
+  firstName?: Prisma.StringFilter<"UserInfo"> | string
+  lastName?: Prisma.StringFilter<"UserInfo"> | string
+  middleName?: Prisma.StringFilter<"UserInfo"> | string
+  assignedOperationId?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  assignedLGUID?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  assignedBarangayId?: Prisma.IntNullableFilter<"UserInfo"> | number | null
+  phone?: Prisma.StringFilter<"UserInfo"> | string
+  sessionTime?: Prisma.IntFilter<"UserInfo"> | number
+  language?: Prisma.StringFilter<"UserInfo"> | string
+  timezone?: Prisma.StringFilter<"UserInfo"> | string
+  twoFactorAuth?: Prisma.BoolFilter<"UserInfo"> | boolean
+  smsAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
+  loginAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
+  SecuritAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
+  emailAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
+  weeklyReportAlert?: Prisma.BoolFilter<"UserInfo"> | boolean
+  theme?: Prisma.EnumthemeFilter<"UserInfo"> | $Enums.theme
+}
+
+export type UserInfoCreateWithoutAssignedLguInput = {
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+  user: Prisma.UserCreateNestedOneWithoutUserInfoInput
+  assignedArea?: Prisma.OperationsOfficeNumCreateNestedOneWithoutUserInfoInput
+  assignedBarangay?: Prisma.BarangayCreateNestedOneWithoutUserInfoInput
+}
+
+export type UserInfoUncheckedCreateWithoutAssignedLguInput = {
+  id?: number
+  userId: number
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedBarangayId?: number | null
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+}
+
+export type UserInfoCreateOrConnectWithoutAssignedLguInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedLguInput, Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput>
+}
+
+export type UserInfoCreateManyAssignedLguInputEnvelope = {
+  data: Prisma.UserInfoCreateManyAssignedLguInput | Prisma.UserInfoCreateManyAssignedLguInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserInfoUpsertWithWhereUniqueWithoutAssignedLguInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserInfoUpdateWithoutAssignedLguInput, Prisma.UserInfoUncheckedUpdateWithoutAssignedLguInput>
+  create: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedLguInput, Prisma.UserInfoUncheckedCreateWithoutAssignedLguInput>
+}
+
+export type UserInfoUpdateWithWhereUniqueWithoutAssignedLguInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserInfoUpdateWithoutAssignedLguInput, Prisma.UserInfoUncheckedUpdateWithoutAssignedLguInput>
+}
+
+export type UserInfoUpdateManyWithWhereWithoutAssignedLguInput = {
+  where: Prisma.UserInfoScalarWhereInput
+  data: Prisma.XOR<Prisma.UserInfoUpdateManyMutationInput, Prisma.UserInfoUncheckedUpdateManyWithoutAssignedLguInput>
+}
+
+export type UserInfoCreateWithoutAssignedBarangayInput = {
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+  user: Prisma.UserCreateNestedOneWithoutUserInfoInput
+  assignedArea?: Prisma.OperationsOfficeNumCreateNestedOneWithoutUserInfoInput
+  assignedLgu?: Prisma.LguCreateNestedOneWithoutUserInfoInput
+}
+
+export type UserInfoUncheckedCreateWithoutAssignedBarangayInput = {
+  id?: number
+  userId: number
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedLGUID?: number | null
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+}
+
+export type UserInfoCreateOrConnectWithoutAssignedBarangayInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput>
+}
+
+export type UserInfoCreateManyAssignedBarangayInputEnvelope = {
+  data: Prisma.UserInfoCreateManyAssignedBarangayInput | Prisma.UserInfoCreateManyAssignedBarangayInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserInfoUpsertWithWhereUniqueWithoutAssignedBarangayInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserInfoUpdateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedUpdateWithoutAssignedBarangayInput>
+  create: Prisma.XOR<Prisma.UserInfoCreateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedCreateWithoutAssignedBarangayInput>
+}
+
+export type UserInfoUpdateWithWhereUniqueWithoutAssignedBarangayInput = {
+  where: Prisma.UserInfoWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserInfoUpdateWithoutAssignedBarangayInput, Prisma.UserInfoUncheckedUpdateWithoutAssignedBarangayInput>
+}
+
+export type UserInfoUpdateManyWithWhereWithoutAssignedBarangayInput = {
+  where: Prisma.UserInfoScalarWhereInput
+  data: Prisma.XOR<Prisma.UserInfoUpdateManyMutationInput, Prisma.UserInfoUncheckedUpdateManyWithoutAssignedBarangayInput>
+}
+
+export type UserInfoCreateManyAssignedAreaInput = {
+  id?: number
+  userId: number
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  assignedLGUID?: number | null
+  assignedBarangayId?: number | null
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+}
+
+export type UserInfoUpdateWithoutAssignedAreaInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+  user?: Prisma.UserUpdateOneRequiredWithoutUserInfoNestedInput
+  assignedLgu?: Prisma.LguUpdateOneWithoutUserInfoNestedInput
+  assignedBarangay?: Prisma.BarangayUpdateOneWithoutUserInfoNestedInput
+}
+
+export type UserInfoUncheckedUpdateWithoutAssignedAreaInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+}
+
+export type UserInfoUncheckedUpdateManyWithoutAssignedAreaInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+}
+
+export type UserInfoCreateManyAssignedLguInput = {
+  id?: number
+  userId: number
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedBarangayId?: number | null
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+}
+
+export type UserInfoUpdateWithoutAssignedLguInput = {
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+  user?: Prisma.UserUpdateOneRequiredWithoutUserInfoNestedInput
+  assignedArea?: Prisma.OperationsOfficeNumUpdateOneWithoutUserInfoNestedInput
+  assignedBarangay?: Prisma.BarangayUpdateOneWithoutUserInfoNestedInput
+}
+
+export type UserInfoUncheckedUpdateWithoutAssignedLguInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+}
+
+export type UserInfoUncheckedUpdateManyWithoutAssignedLguInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedBarangayId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+}
+
+export type UserInfoCreateManyAssignedBarangayInput = {
+  id?: number
+  userId: number
+  firstName?: string
+  lastName?: string
+  middleName?: string
+  assignedOperationId?: number | null
+  assignedLGUID?: number | null
+  phone?: string
+  sessionTime?: number
+  language?: string
+  timezone?: string
+  twoFactorAuth?: boolean
+  smsAlert?: boolean
+  loginAlert?: boolean
+  SecuritAlert?: boolean
+  emailAlert?: boolean
+  weeklyReportAlert?: boolean
+  theme?: $Enums.theme
+}
+
+export type UserInfoUpdateWithoutAssignedBarangayInput = {
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+  user?: Prisma.UserUpdateOneRequiredWithoutUserInfoNestedInput
+  assignedArea?: Prisma.OperationsOfficeNumUpdateOneWithoutUserInfoNestedInput
+  assignedLgu?: Prisma.LguUpdateOneWithoutUserInfoNestedInput
+}
+
+export type UserInfoUncheckedUpdateWithoutAssignedBarangayInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  twoFactorAuth?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SecuritAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  weeklyReportAlert?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  theme?: Prisma.EnumthemeFieldUpdateOperationsInput | $Enums.theme
+}
+
+export type UserInfoUncheckedUpdateManyWithoutAssignedBarangayInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.StringFieldUpdateOperationsInput | string
+  assignedOperationId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  assignedLGUID?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   sessionTime?: Prisma.IntFieldUpdateOperationsInput | number
   language?: Prisma.StringFieldUpdateOperationsInput | string
@@ -714,6 +1461,10 @@ export type UserInfoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   userId?: boolean
   firstName?: boolean
   lastName?: boolean
+  middleName?: boolean
+  assignedOperationId?: boolean
+  assignedLGUID?: boolean
+  assignedBarangayId?: boolean
   phone?: boolean
   sessionTime?: boolean
   language?: boolean
@@ -726,6 +1477,9 @@ export type UserInfoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   weeklyReportAlert?: boolean
   theme?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  assignedArea?: boolean | Prisma.UserInfo$assignedAreaArgs<ExtArgs>
+  assignedLgu?: boolean | Prisma.UserInfo$assignedLguArgs<ExtArgs>
+  assignedBarangay?: boolean | Prisma.UserInfo$assignedBarangayArgs<ExtArgs>
 }, ExtArgs["result"]["userInfo"]>
 
 export type UserInfoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -733,6 +1487,10 @@ export type UserInfoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   userId?: boolean
   firstName?: boolean
   lastName?: boolean
+  middleName?: boolean
+  assignedOperationId?: boolean
+  assignedLGUID?: boolean
+  assignedBarangayId?: boolean
   phone?: boolean
   sessionTime?: boolean
   language?: boolean
@@ -745,6 +1503,9 @@ export type UserInfoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   weeklyReportAlert?: boolean
   theme?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  assignedArea?: boolean | Prisma.UserInfo$assignedAreaArgs<ExtArgs>
+  assignedLgu?: boolean | Prisma.UserInfo$assignedLguArgs<ExtArgs>
+  assignedBarangay?: boolean | Prisma.UserInfo$assignedBarangayArgs<ExtArgs>
 }, ExtArgs["result"]["userInfo"]>
 
 export type UserInfoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -752,6 +1513,10 @@ export type UserInfoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   userId?: boolean
   firstName?: boolean
   lastName?: boolean
+  middleName?: boolean
+  assignedOperationId?: boolean
+  assignedLGUID?: boolean
+  assignedBarangayId?: boolean
   phone?: boolean
   sessionTime?: boolean
   language?: boolean
@@ -764,6 +1529,9 @@ export type UserInfoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   weeklyReportAlert?: boolean
   theme?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  assignedArea?: boolean | Prisma.UserInfo$assignedAreaArgs<ExtArgs>
+  assignedLgu?: boolean | Prisma.UserInfo$assignedLguArgs<ExtArgs>
+  assignedBarangay?: boolean | Prisma.UserInfo$assignedBarangayArgs<ExtArgs>
 }, ExtArgs["result"]["userInfo"]>
 
 export type UserInfoSelectScalar = {
@@ -771,6 +1539,10 @@ export type UserInfoSelectScalar = {
   userId?: boolean
   firstName?: boolean
   lastName?: boolean
+  middleName?: boolean
+  assignedOperationId?: boolean
+  assignedLGUID?: boolean
+  assignedBarangayId?: boolean
   phone?: boolean
   sessionTime?: boolean
   language?: boolean
@@ -784,27 +1556,43 @@ export type UserInfoSelectScalar = {
   theme?: boolean
 }
 
-export type UserInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "firstName" | "lastName" | "phone" | "sessionTime" | "language" | "timezone" | "twoFactorAuth" | "smsAlert" | "loginAlert" | "SecuritAlert" | "emailAlert" | "weeklyReportAlert" | "theme", ExtArgs["result"]["userInfo"]>
+export type UserInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "firstName" | "lastName" | "middleName" | "assignedOperationId" | "assignedLGUID" | "assignedBarangayId" | "phone" | "sessionTime" | "language" | "timezone" | "twoFactorAuth" | "smsAlert" | "loginAlert" | "SecuritAlert" | "emailAlert" | "weeklyReportAlert" | "theme", ExtArgs["result"]["userInfo"]>
 export type UserInfoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  assignedArea?: boolean | Prisma.UserInfo$assignedAreaArgs<ExtArgs>
+  assignedLgu?: boolean | Prisma.UserInfo$assignedLguArgs<ExtArgs>
+  assignedBarangay?: boolean | Prisma.UserInfo$assignedBarangayArgs<ExtArgs>
 }
 export type UserInfoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  assignedArea?: boolean | Prisma.UserInfo$assignedAreaArgs<ExtArgs>
+  assignedLgu?: boolean | Prisma.UserInfo$assignedLguArgs<ExtArgs>
+  assignedBarangay?: boolean | Prisma.UserInfo$assignedBarangayArgs<ExtArgs>
 }
 export type UserInfoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  assignedArea?: boolean | Prisma.UserInfo$assignedAreaArgs<ExtArgs>
+  assignedLgu?: boolean | Prisma.UserInfo$assignedLguArgs<ExtArgs>
+  assignedBarangay?: boolean | Prisma.UserInfo$assignedBarangayArgs<ExtArgs>
 }
 
 export type $UserInfoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "UserInfo"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    assignedArea: Prisma.$OperationsOfficeNumPayload<ExtArgs> | null
+    assignedLgu: Prisma.$LguPayload<ExtArgs> | null
+    assignedBarangay: Prisma.$BarangayPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     userId: number
     firstName: string
     lastName: string
+    middleName: string
+    assignedOperationId: number | null
+    assignedLGUID: number | null
+    assignedBarangayId: number | null
     phone: string
     sessionTime: number
     language: string
@@ -1211,6 +1999,9 @@ readonly fields: UserInfoFieldRefs;
 export interface Prisma__UserInfoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  assignedArea<T extends Prisma.UserInfo$assignedAreaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserInfo$assignedAreaArgs<ExtArgs>>): Prisma.Prisma__OperationsOfficeNumClient<runtime.Types.Result.GetResult<Prisma.$OperationsOfficeNumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  assignedLgu<T extends Prisma.UserInfo$assignedLguArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserInfo$assignedLguArgs<ExtArgs>>): Prisma.Prisma__LguClient<runtime.Types.Result.GetResult<Prisma.$LguPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  assignedBarangay<T extends Prisma.UserInfo$assignedBarangayArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserInfo$assignedBarangayArgs<ExtArgs>>): Prisma.Prisma__BarangayClient<runtime.Types.Result.GetResult<Prisma.$BarangayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1244,6 +2035,10 @@ export interface UserInfoFieldRefs {
   readonly userId: Prisma.FieldRef<"UserInfo", 'Int'>
   readonly firstName: Prisma.FieldRef<"UserInfo", 'String'>
   readonly lastName: Prisma.FieldRef<"UserInfo", 'String'>
+  readonly middleName: Prisma.FieldRef<"UserInfo", 'String'>
+  readonly assignedOperationId: Prisma.FieldRef<"UserInfo", 'Int'>
+  readonly assignedLGUID: Prisma.FieldRef<"UserInfo", 'Int'>
+  readonly assignedBarangayId: Prisma.FieldRef<"UserInfo", 'Int'>
   readonly phone: Prisma.FieldRef<"UserInfo", 'String'>
   readonly sessionTime: Prisma.FieldRef<"UserInfo", 'Int'>
   readonly language: Prisma.FieldRef<"UserInfo", 'String'>
@@ -1648,6 +2443,63 @@ export type UserInfoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Limit how many UserInfos to delete.
    */
   limit?: number
+}
+
+/**
+ * UserInfo.assignedArea
+ */
+export type UserInfo$assignedAreaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OperationsOfficeNum
+   */
+  select?: Prisma.OperationsOfficeNumSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OperationsOfficeNum
+   */
+  omit?: Prisma.OperationsOfficeNumOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OperationsOfficeNumInclude<ExtArgs> | null
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+/**
+ * UserInfo.assignedLgu
+ */
+export type UserInfo$assignedLguArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Lgu
+   */
+  select?: Prisma.LguSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Lgu
+   */
+  omit?: Prisma.LguOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LguInclude<ExtArgs> | null
+  where?: Prisma.LguWhereInput
+}
+
+/**
+ * UserInfo.assignedBarangay
+ */
+export type UserInfo$assignedBarangayArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Barangay
+   */
+  select?: Prisma.BarangaySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Barangay
+   */
+  omit?: Prisma.BarangayOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BarangayInclude<ExtArgs> | null
+  where?: Prisma.BarangayWhereInput
 }
 
 /**

@@ -4,7 +4,13 @@ import { CreatePcnDto } from './dto/create-pcn.dto.js';
 import { UpdatePcnDto } from './dto/update-pcn.dto.js';
 import type { Request } from 'express';
 
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from './../../guard/jwt-guard.js';
+import { Role } from './../../enums/roles.enum.js';
+import { Roles } from './../../decorator/roles.decorator.js';
 
+@UseGuards(JwtAuthGuard)
+@Roles(Role.ADMIN) 
 @Controller('lcn')
 export class PcnController {
   constructor(private readonly pcnService: PcnService) {}

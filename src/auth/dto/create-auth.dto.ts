@@ -17,8 +17,13 @@ export class CreateAuthDto {
   password: string;
 
   @IsString()
+  middleName: string;
+
+  @IsString()
   phone: string;
 
   @IsString()
   role: 'ENCODER' | 'ADMIN';
+
+  assignedLGUID: number;
 }

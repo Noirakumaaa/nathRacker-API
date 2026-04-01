@@ -22,9 +22,11 @@ export class BusController {
     return this.busService.create(createBusDto, req);
   }
 
-  @Get()
-  findAll() {
-    return this.busService.findAll();
+  @Get("/verification")
+  findAll(
+    @Req() req : Request
+  ) {
+    return this.busService.findAll(req);
   }
 
   
@@ -36,6 +38,16 @@ export class BusController {
   @Get('records')
   busRecord() {
     return this.busService.busRecord();
+  }
+
+  @Roles(Role.ADMIN, Role.AREA_COORDINATOR, Role.SOCIAL_WORKER_III)
+  @Patch('verify/:id')
+  verify(
+    @Param('id') id: string,
+    @Body() body: { verified: string; verificationIssue?: string },
+    @Req() req: Request,
+  ) {
+    return this.busService.verify(+id, body, req);
   }
 
   @Patch(':id')

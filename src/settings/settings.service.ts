@@ -310,4 +310,31 @@ export class SettingsService {
 
       return 'This row could not be saved — please check the values and try again';
     }
+
+
+    GetUserInfo(req : Request){
+      const user = req.user
+
+      if(!user){
+        return { message : "AUTHENTICATION FAILED"}
+      }
+
+
+      return this.prisma.client.userInfo.findFirst({
+        where : {
+          userId : user.id
+        },
+        select : {
+          firstName : true,
+          lastName  : true,
+          phone     : true,
+          user      : {
+            select : {
+              govUsername : true,
+              email       : true,
+            }
+          }
+        }
+      })
+    }
 }

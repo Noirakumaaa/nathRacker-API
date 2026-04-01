@@ -44,6 +44,12 @@ export class CreateBusDto {
   @IsString()
   @IsOptional()
   cl: string;
+  @IsString()
+  verified: 'YES' | 'ISSUE';
+  
+  @IsString()
+  @IsOptional()
+  verificationIssue?: string;
 
 
   @IsString()

@@ -4,7 +4,13 @@ import { CreateMiscDto } from './dto/create-misc.dto.js';
 import { UpdateMiscDto } from './dto/update-misc.dto.js';
 import type { Request } from 'express';
 
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from './../../guard/jwt-guard.js';
+import { Role } from './../../enums/roles.enum.js';
+import { Roles } from './../../decorator/roles.decorator.js';
 
+@UseGuards(JwtAuthGuard)
+@Roles(Role.ADMIN) 
 @Controller('miscellaneous')
 export class MiscController {
   constructor(private readonly miscService: MiscService) {}

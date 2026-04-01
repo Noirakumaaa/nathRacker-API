@@ -4,6 +4,7 @@ import { CreateAuthDto } from './dto/create-auth.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
+import { Upload } from 'lucide-react';
 
 declare global {
   namespace Express {
@@ -39,35 +40,6 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async Register(createAuthDto: CreateAuthDto) {
-    const checkDuplicate = await this.prisma.client.user.findUnique({
-      where: { email: createAuthDto.email },
-    });
-
-    if (checkDuplicate) {
-      throw new BadRequestException('Email already exists');
-    }
-
-    const hashedPassword = await argon2.hash(createAuthDto.password);
-
-    const user = await this.prisma.client.user.create({
-      data: {
-        govUsername: createAuthDto.govUsername,
-        email: createAuthDto.email,
-        password: hashedPassword,
-        role: createAuthDto.role,
-        userInfo: {
-          create: {
-            firstName: createAuthDto.firstName,
-            lastName: createAuthDto.lastName,
-            phone: createAuthDto.phone,
-          },
-        },
-      },
-    });
-    return { Register : true, newUser : user.govUsername}
-  }
-
   async login(createAuthDto: CreateAuthDto, res: Response) {
     const checkUser = await this.prisma.client.user.findFirst({
       where: {
@@ -78,12 +50,8 @@ export class AuthService {
       },
     });
 
-    const sessionTimeout = await this.prisma.client.userInfo.findFirst({
-      where: { userId: checkUser?.id },
-    });
-
     if (!checkUser) {
-      throw new BadRequestException('Invalid email or password');
+      return res.status(400).json({ message: 'Invalid email or password', upload: false });
     }
 
     const validPassword = await argon2.verify(
@@ -91,7 +59,16 @@ export class AuthService {
       createAuthDto.password,
     );
     if (!validPassword) {
-      throw new BadRequestException('Invalid email or password');
+      return res.status(400).json({ message: 'Incorrect Password', upload: false });
+    }
+
+    let sessionTimeout: Awaited<ReturnType<typeof this.prisma.client.userInfo.findFirst>>;
+    try {
+      sessionTimeout = await this.prisma.client.userInfo.findFirst({
+        where: { userId: checkUser.id },
+      });
+    } catch {
+      return res.status(400).json({ message: 'Not register upload failed', upload: false });
     }
 
     const payload = {
@@ -99,6 +76,9 @@ export class AuthService {
       govUsername: checkUser.govUsername,
       firstName: sessionTimeout?.firstName,
       lastName: sessionTimeout?.lastName,
+      operationOffice : sessionTimeout?.assignedOperationId,
+      lgu : sessionTimeout?.assignedLGUID,
+      barangay : sessionTimeout?.assignedBarangayId,
       role: checkUser.role,
       id: checkUser.id,
     };
@@ -116,7 +96,8 @@ export class AuthService {
         ] || sessionTimeoutFormat[15],
     });
 
-    return res.json({ message: 'Login successful', token });
+    console.log(`Login successful: ${checkUser.govUsername} (${checkUser.email})`);
+    return res.json({ message: 'Login successful', upload : true, token });
   }
 
   checkAuth(req: Request) {

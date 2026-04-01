@@ -1,198 +1,230 @@
-generator client {
-  provider = "prisma-client"
-  output   = "./generated"
-  //engineType = "client"
-}
+  generator client {
+    provider = "prisma-client"
+    output   = "./generated"
+    //engineType = "client"
+  }
 
-datasource db {
-  provider = "postgresql"
-}
+  datasource db {
+    provider = "postgresql"
+  }
 
-model User {
-  id               Int               @id @default(autoincrement())
-  createdAt        DateTime          @default(now())
-  email            String            @unique
-  password         String
-  role             Role              @default(ENCODER)
-  govUsername      String            @unique
-  busById          Bus[]             @relation("UserById")
-  encDocByID       EncodedDocument[] @relation("UserById")
-  encDocByUsername EncodedDocument[] @relation("UserByUsername")
-  miscByID         Miscellaneous[]   @relation("UserById")
-  pcnByID          Pcn[]             @relation("UserById")
-  swdiByID         Swdi[]            @relation("UserById")
-  cvsByID          CVS[]             @relation("UserById")
-  userInfo         UserInfo?
-}
+  model User {
+    id               Int               @id @default(autoincrement())
+    createdAt        DateTime          @default(now())
+    email            String            @unique
+    password         String
+    role             Role              @default(ENCODER)
+    govUsername      String            @unique
+    busById          Bus[]             @relation("UserById")
+    encDocByID       EncodedDocument[] @relation("UserById")
+    encDocByUsername EncodedDocument[] @relation("UserByUsername")
+    miscByID         Miscellaneous[]   @relation("UserById")
+    pcnByID          Pcn[]             @relation("UserById")
+    swdiByID         Swdi[]            @relation("UserById")
+    cvsByID          CVS[]             @relation("UserById")
+    userInfo         UserInfo?
+  }
 
-model UserInfo {
-  id                Int     @id @default(autoincrement())
-  userId            Int     @unique
-  firstName         String  @default("")
-  lastName          String  @default("")
-  phone             String  @default("")
-  sessionTime       Int     @default(30)
-  language          String  @default("ENGLISH")
-  timezone          String  @default("UTC")
-  twoFactorAuth     Boolean @default(false)
-  smsAlert          Boolean @default(false)
-  loginAlert        Boolean @default(false)
-  SecuritAlert      Boolean @default(false)
-  emailAlert        Boolean @default(false)
-  weeklyReportAlert Boolean @default(false)
-  theme             theme   @default(DARK)
-  user              User    @relation(fields: [userId], references: [id])
-}
+  model UserInfo {
+    id                  Int                  @id @default(autoincrement())
+    userId              Int                  @unique
+    firstName           String               @default("")
+    lastName            String               @default("")
+    middleName          String               @default("")
+    assignedOperationId Int?
+    assignedLGUID       Int?
+    assignedBarangayId  Int?
+    phone               String               @default("")
+    sessionTime         Int                  @default(30)
+    language            String               @default("ENGLISH")
+    timezone            String               @default("UTC")
+    twoFactorAuth       Boolean              @default(false)
+    smsAlert            Boolean              @default(false)
+    loginAlert          Boolean              @default(false)
+    SecuritAlert        Boolean              @default(false)
+    emailAlert          Boolean              @default(false)
+    weeklyReportAlert   Boolean              @default(false)
+    theme               theme                @default(DARK)
+    user                User                 @relation(fields: [userId], references: [id])
+    assignedArea        OperationsOfficeNum? @relation(fields: [assignedOperationId], references: [id])
+    assignedLgu         Lgu?                 @relation(fields: [assignedLGUID], references: [id])
+    assignedBarangay    Barangay?            @relation(fields: [assignedBarangayId], references: [id])
+  }
 
-model Bus {
-  id              Int      @id @default(autoincrement())
-  lgu             String
-  barangay        String
-  hhId            String
-  granteeName     String
-  typeOfUpdate    String
-  remarks         String
-  issue           String?
-  encodedBy       String
-  updateInfo      String
-  subjectOfChange String
-  drn             String
-  cl              String
-  date            DateTime
-  note            String?
-  verifiedBy      String   @default("")
-  verified        String   @default("NO")
-  userId          Int
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  userById        User     @relation("UserById", fields: [userId], references: [id])
+  model Bus {
+    id              Int      @id @default(autoincrement())
+    lgu             String
+    barangay        String
+    hhId            String
+    granteeName     String
+    typeOfUpdate    String
+    remarks         String
+    issue           String?
+    encodedBy       String
+    updateInfo      String
+    subjectOfChange String
+    drn             String
+    cl              String
+    date            DateTime
+    note            String?
+    verifiedBy      String   @default("")
+    verified        String   @default("NO")
+    verificationIssue String?
+    userId          Int
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    userById        User     @relation("UserById", fields: [userId], references: [id])
 
-  @@index([hhId])
-}
+    @@index([hhId])
+  }
 
-model Swdi {
-  id         Int      @id @default(autoincrement())
-  hhId       String
-  lgu        String
-  barangay   String
-  grantee    String
-  swdiScore  Float
-  swdiLevel  String
-  encodedBy  String
-  remarks    String
-  issue      String?
-  cl         String?
-  drn        String?
-  date       DateTime
-  note       String?
-  verifiedBy String   @default("")
-  verified   String   @default("NO")
-  userId     Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  userById   User     @relation("UserById", fields: [userId], references: [id])
+  model Swdi {
+    id         Int      @id @default(autoincrement())
+    hhId       String
+    lgu        String
+    barangay   String
+    grantee    String
+    swdiScore  Float
+    swdiLevel  String
+    encodedBy  String
+    remarks    String
+    issue      String?
+    cl         String?
+    drn        String?
+    date       DateTime
+    note       String?
+    verifiedBy String   @default("")
+    verified   String   @default("NO")
+    userId     Int
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    userById   User     @relation("UserById", fields: [userId], references: [id])
 
-  @@index([hhId])
-}
+    @@index([hhId])
+  }
 
-model Pcn {
-  id              Int      @id @default(autoincrement())
-  lgu             String?
-  barangay        String?
-  hhId            String
-  granteeName     String?
-  remarks         String
-  issue           String?
-  encodedBy       String
-  subjectOfChange String
-  pcn             String?  
-  lrn              String?  
-  drn             String?
-  cl              String?
-  date            DateTime
-  note            String?
-  verifiedBy      String   @default("")
-  verified        String   @default("NO")
-  userId          Int
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  userById        User     @relation("UserById", fields: [userId], references: [id])
+  model Pcn {
+    id              Int      @id @default(autoincrement())
+    lgu             String?
+    barangay        String?
+    hhId            String
+    granteeName     String?
+    remarks         String
+    issue           String?
+    encodedBy       String
+    subjectOfChange String
+    pcn             String?
+    lrn             String?
+    drn             String?
+    cl              String?
+    date            DateTime
+    note            String?
+    verifiedBy      String   @default("")
+    verified        String   @default("NO")
+    userId          Int
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    userById        User     @relation("UserById", fields: [userId], references: [id])
 
-  @@index([hhId])
-  @@index([granteeName])
-}
+    @@index([hhId])
+    @@index([granteeName])
+  }
 
-model CVS {
-  id           Int      @id @default(autoincrement())
-  idNumber     String
-  lgu          String
-  barangay     String
-  facilityName String
-  formType     String
-  remarks      String
-  userId       Int
-  issue        String?
-  period       String
-  date         DateTime
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  userById     User     @relation("UserById", fields: [userId], references: [id])
+  model CVS {
+    id           Int      @id @default(autoincrement())
+    idNumber     String
+    lgu          String
+    barangay     String
+    facilityName String
+    formType     String
+    remarks      String
+    userId       Int
+    issue        String?
+    period       String
+    date         DateTime
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    userById     User     @relation("UserById", fields: [userId], references: [id])
 
-  @@index([id])
-  @@index([idNumber])
-}
+    @@index([id])
+    @@index([idNumber])
+  }
 
-model Miscellaneous {
-  id              Int      @id @default(autoincrement())
-  lgu             String
-  barangay        String
-  hhId            String
-  granteeName     String
-  documentType    String
-  remarks         String
-  issue           String?
-  encodedBy       String
-  subjectOfChange String?
-  drn             String?
-  cl              String?
-  date            DateTime
-  note            String?
-  userId          Int
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  userById        User     @relation("UserById", fields: [userId], references: [id])
+  model Miscellaneous {
+    id              Int      @id @default(autoincrement())
+    lgu             String
+    barangay        String
+    hhId            String
+    granteeName     String
+    documentType    String
+    remarks         String
+    issue           String?
+    encodedBy       String
+    subjectOfChange String?
+    drn             String?
+    cl              String?
+    date            DateTime
+    note            String?
+    userId          Int
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    userById        User     @relation("UserById", fields: [userId], references: [id])
 
-  @@index([id])
-}
+    @@index([id])
+  }
 
-model EncodedDocument {
-  id                Int      @id @default(autoincrement())
-  idNumber          String   @default("")
-  name              String
-  documentType      String
-  documentId        Int
-  subjectOfChange   String
-  remarks           String
-  drn               String
-  userId            Int
-  govUsername       String
-  date              DateTime
-  verifiedBy        String   @default("")
-  verified          String   @default("NO")
-  createdAt         DateTime @default(now())
-  userById          User     @relation("UserById", fields: [userId], references: [id])
-  govUserByUsername User     @relation("UserByUsername", fields: [govUsername], references: [govUsername])
+  model EncodedDocument {
+    id                Int      @id @default(autoincrement())
+    idNumber          String   @default("")
+    name              String
+    documentType      String
+    documentId        Int
+    subjectOfChange   String
+    remarks           String
+    drn               String
+    userId            Int
+    govUsername       String
+    date              DateTime
+    verifiedBy        String   @default("")
+    verified          String   @default("NO")
+    createdAt         DateTime @default(now())
+    userById          User     @relation("UserById", fields: [userId], references: [id])
+    govUserByUsername User     @relation("UserByUsername", fields: [govUsername], references: [govUsername])
 
-  @@index([id])
-  @@index([documentId])
-}
+    @@index([id])
+    @@index([documentId])
+  }
 
-enum theme {
-  LIGHT
-  DARK
-}
+  model OperationsOfficeNum {
+    id       Int        @id @default(autoincrement())
+    name     String
+    lgu      Lgu[]
+    userInfo UserInfo[]
+  }
 
-enum Role {
-  ENCODER
-  ADMIN
-}
+  model Lgu {
+    id                    Int                 @id @default(autoincrement())
+    name                  String
+    operationsOfficeNumId Int
+    operationsOfficeNum   OperationsOfficeNum @relation(fields: [operationsOfficeNumId], references: [id])
+    barangay              Barangay[]
+    userInfo              UserInfo[]
+  }
+
+  model Barangay {
+    id       Int        @id @default(autoincrement())
+    name     String
+    lguId    Int
+    lgu      Lgu        @relation(fields: [lguId], references: [id])
+    userInfo UserInfo[]
+  }
+
+  enum theme {
+    LIGHT
+    DARK
+  }
+
+  enum Role {
+    ENCODER
+    ADMIN
+  }

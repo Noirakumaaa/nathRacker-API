@@ -58,7 +58,10 @@ export const ModelName = {
   Pcn: 'Pcn',
   CVS: 'CVS',
   Miscellaneous: 'Miscellaneous',
-  EncodedDocument: 'EncodedDocument'
+  EncodedDocument: 'EncodedDocument',
+  OperationsOfficeNum: 'OperationsOfficeNum',
+  Lgu: 'Lgu',
+  Barangay: 'Barangay'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -94,6 +97,10 @@ export const UserInfoScalarFieldEnum = {
   userId: 'userId',
   firstName: 'firstName',
   lastName: 'lastName',
+  middleName: 'middleName',
+  assignedOperationId: 'assignedOperationId',
+  assignedLGUID: 'assignedLGUID',
+  assignedBarangayId: 'assignedBarangayId',
   phone: 'phone',
   sessionTime: 'sessionTime',
   language: 'language',
@@ -128,6 +135,7 @@ export const BusScalarFieldEnum = {
   note: 'note',
   verifiedBy: 'verifiedBy',
   verified: 'verified',
+  verificationIssue: 'verificationIssue',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -247,6 +255,32 @@ export const EncodedDocumentScalarFieldEnum = {
 } as const
 
 export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
+
+
+export const OperationsOfficeNumScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type OperationsOfficeNumScalarFieldEnum = (typeof OperationsOfficeNumScalarFieldEnum)[keyof typeof OperationsOfficeNumScalarFieldEnum]
+
+
+export const LguScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  operationsOfficeNumId: 'operationsOfficeNumId'
+} as const
+
+export type LguScalarFieldEnum = (typeof LguScalarFieldEnum)[keyof typeof LguScalarFieldEnum]
+
+
+export const BarangayScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  lguId: 'lguId'
+} as const
+
+export type BarangayScalarFieldEnum = (typeof BarangayScalarFieldEnum)[keyof typeof BarangayScalarFieldEnum]
 
 
 export const SortOrder = {

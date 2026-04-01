@@ -21,7 +21,8 @@ async function bootstrap() {
     "http://192.168.128.11:5173",
     "http://192.168.68.16:5173",
     "http://192.168.100.19:3000",
-    "https://667d-136-158-11-78.ngrok-free.app"
+    "https://667d-136-158-11-78.ngrok-free.app",
+    "http://192.168.68.43:3000"
   ];
 
   app.enableCors({
