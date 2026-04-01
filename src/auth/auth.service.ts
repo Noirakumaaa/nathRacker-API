@@ -89,7 +89,8 @@ export class AuthService {
 
     res.cookie('accessToken', token, {
       httpOnly: true,
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'none',
       maxAge:
         sessionTimeoutFormat[
           sessionTimeout?.sessionTime as keyof typeof sessionTimeoutFormat
@@ -132,7 +133,8 @@ export class AuthService {
   logout(res: Response) {
     res.clearCookie('accessToken', {
       httpOnly: true,
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'none',
     });
     return res.json({ message: 'Logout successful', logout : true });
   }
