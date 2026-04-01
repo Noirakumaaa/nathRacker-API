@@ -2,8 +2,8 @@ import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './logger.middleware.js';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { AppController } from './app.controller.js';
-import { AppService } from './app.service.js';
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 import { JwtStrategy } from './../component/jwt.strategy.js';
@@ -20,8 +20,9 @@ import { AdminModule } from './admin/admin.module.js';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRoot([{ ttl: 60000, limit: 100 }]),
     JwtModule.register({
-      secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
+      secret: process.env.JWT_SECRET_KEY,
       signOptions: { expiresIn: '1h' },
     }),
     AuthModule,
@@ -36,8 +37,8 @@ import { AdminModule } from './admin/admin.module.js';
     SettingsModule,
     AdminModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, JwtStrategy],
+  controllers: [],
+  providers: [ JwtStrategy, { provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 
 export class AppModule implements NestModule {

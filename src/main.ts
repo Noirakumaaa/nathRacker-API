@@ -1,30 +1,56 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module.js';
 import { JwtAuthGuard } from './../guard/jwt-guard.js';
-import { Logger } from '@nestjs/common';
+import {
+  Logger,
+  ValidationPipe,
+} from '@nestjs/common';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import compression from 'compression';
+import { AllExceptionsFilter } from './filters/all-exceptions.filter.js';
+
+function validateEnv() {
+  const required = ['JWT_SECRET_KEY', 'DATABASE_URL'];
+  const missing = required.filter((key) => !process.env[key]);
+  if (missing.length > 0) {
+    throw new Error(
+      `Missing required environment variables: ${missing.join(', ')}`,
+    );
+  }
+}
 
 async function bootstrap() {
+  validateEnv();
+
   const logger = new Logger('Bootstrap');
 
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['error', 'warn', 'log'],
+  });
+
+  app.use(helmet());
+  app.use(compression());
   app.use(cookieParser());
 
   const reflector = app.get(Reflector);
   app.useGlobalGuards(new JwtAuthGuard(reflector));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
+  app.useGlobalFilters(new AllExceptionsFilter());
+
   app.setGlobalPrefix('api');
+
   const allowedOrigins = [
-    'http://localhost:5173',
-    'http://192.168.68.45:3000',
     'http://localhost:3000',
-    'http://192.168.128.1:5173',
-    'http://192.168.128.11:5173',
-    'http://192.168.68.16:5173',
-    'http://192.168.100.19:3000',
-    'https://667d-136-158-11-78.ngrok-free.app',
     'http://192.168.68.43:3000',
     process.env.URL,
-  ].filter(Boolean);
+  ].filter(Boolean) as string[];
 
   app.enableCors({
     origin: (origin, callback) => {
@@ -45,9 +71,14 @@ async function bootstrap() {
     ],
   });
 
+  app.enableShutdownHooks();
+
   const port = process.env.PORT || 3001;
   await app.listen(port, '0.0.0.0');
-  logger.log(`Application is running on: http://localhost:${port}`);
+  logger.log(`Application is running on port ${port}`);
 }
 
-bootstrap();
+bootstrap().catch((err) => {
+  console.error('Failed to start application:', err);
+  process.exit(1);
+});

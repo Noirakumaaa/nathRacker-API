@@ -3,7 +3,8 @@ import { CreatePcnDto } from './dto/create-pcn.dto.js';
 import { UpdatePcnDto } from './dto/update-pcn.dto.js';
 import type { Request } from 'express';
 import { PrismaService } from '../prisma/prisma.service.js';
-import { Pcn } from './entities/pcn.entity.js';
+
+
 @Injectable()
 export class PcnService {
   constructor(private prisma: PrismaService) {}
