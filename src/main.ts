@@ -1,10 +1,7 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module.js';
 import { JwtAuthGuard } from './../guard/jwt-guard.js';
-import {
-  Logger,
-  ValidationPipe,
-} from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -14,46 +11,28 @@ function validateEnv() {
   const required = ['JWT_SECRET_KEY', 'DATABASE_URL'];
   const missing = required.filter((key) => !process.env[key]);
   if (missing.length > 0) {
-    throw new Error(
-      `Missing required environment variables: ${missing.join(', ')}`,
-    );
+    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
   }
 }
 
 async function bootstrap() {
   validateEnv();
-
   const logger = new Logger('Bootstrap');
-
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'log'],
   });
 
-  app.use(helmet());
-  app.use(compression());
-  app.use(cookieParser());
-
-  const reflector = app.get(Reflector);
-  app.useGlobalGuards(new JwtAuthGuard(reflector));
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-    }),
-  );
-  app.useGlobalFilters(new AllExceptionsFilter());
-
-  app.setGlobalPrefix('api');
-
   const allowedOrigins = [
     'http://localhost:3000',
     'http://192.168.68.43:3000',
+    'https://nath-racker.vercel.app', // hardcoded as backup
     process.env.URL,
   ].filter(Boolean) as string[];
 
+  // ✅ CORS must be before helmet
   app.enableCors({
     origin: (origin, callback) => {
+      console.log('CORS origin:', origin); // temp log, remove after fix
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -69,12 +48,33 @@ async function bootstrap() {
       'credentials',
       'X-CSRF-Token',
     ],
+    preflightContinue: false,       // ✅ added
+    optionsSuccessStatus: 204,      // ✅ added
   });
 
-  app.enableShutdownHooks();
+  // ✅ helmet after CORS, with crossOriginResourcePolicy disabled
+  app.use(helmet({
+    crossOriginResourcePolicy: false,
+  }));
+
+  app.use(compression());
+  app.use(cookieParser());
+
+  const reflector = app.get(Reflector);
+  app.useGlobalGuards(new JwtAuthGuard(reflector));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
+  app.useGlobalFilters(new AllExceptionsFilter());
+  app.setGlobalPrefix('api');
 
   const port = process.env.PORT || 3001;
   await app.listen(port, '0.0.0.0');
+  logger.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
   logger.log(`Application is running on port ${port}`);
 }
 
