@@ -12,21 +12,22 @@ async function bootstrap() {
 
   const reflector = app.get(Reflector);
   app.useGlobalGuards(new JwtAuthGuard(reflector));
-  app.setGlobalPrefix('api')
+  app.setGlobalPrefix('api');
   const allowedOrigins = [
-    "http://localhost:5173",
-    "http://192.168.68.45:3000",
-    "http://localhost:3000",
-    "http://192.168.128.1:5173",
-    "http://192.168.128.11:5173",
-    "http://192.168.68.16:5173",
-    "http://192.168.100.19:3000",
-    "https://667d-136-158-11-78.ngrok-free.app",
-    "http://192.168.68.43:3000"
-  ];
+    'http://localhost:5173',
+    'http://192.168.68.45:3000',
+    'http://localhost:3000',
+    'http://192.168.128.1:5173',
+    'http://192.168.128.11:5173',
+    'http://192.168.68.16:5173',
+    'http://192.168.100.19:3000',
+    'https://667d-136-158-11-78.ngrok-free.app',
+    'http://192.168.68.43:3000',
+    process.env.URL,
+  ].filter(Boolean);
 
   app.enableCors({
-    origin: (origin, callback) => { 
+    origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -36,7 +37,12 @@ async function bootstrap() {
     },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'credentials', 'X-CSRF-Token'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'credentials',
+      'X-CSRF-Token',
+    ],
   });
 
   const port = process.env.PORT || 3001;
