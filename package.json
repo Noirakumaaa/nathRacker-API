@@ -7,8 +7,8 @@
   "private": true,
   "license": "UNLICENSED",
 "scripts": {
-   "build": "prisma generate && nest build",
-  "start:prod": "prisma migrate deploy && node dist/main",
+  "build": "prisma generate && nest build",
+  "start:prod": "prisma migrate deploy && npx tsx --env-file=.env AddNewUser.ts && node dist/main",
   "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
   "start": "nest start",
   "start:dev": "nest start --watch",
@@ -17,7 +17,7 @@
   "test": "jest",
   "test:watch": "jest --watch",
   "test:cov": "jest --coverage",
-  "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+  "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin.jest --runInBand",
   "test:e2e": "jest --config ./test/jest-e2e.json"
 },
   "dependencies": {
