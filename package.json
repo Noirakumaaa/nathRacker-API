@@ -8,7 +8,7 @@
   "license": "UNLICENSED",
 "scripts": {
   "build": "prisma generate && nest build",
-  "start:prod": "prisma migrate deploy && npx tsx AddNewUser.ts && node dist/main",
+  "start:prod": "prisma migrate deploy && npx tsx AddNewUser.ts && node dist/src/main",
   "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
   "start": "nest start",
   "start:dev": "nest start --watch",
