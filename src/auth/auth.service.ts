@@ -23,6 +23,15 @@ declare global {
   }
 }
 
+const isProduction = process.env.NODE_ENV === 'PRODUCTION';
+const isStaging = process.env.NODE_ENV === 'STAGING';
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: isProduction || isStaging,
+  sameSite: (isProduction || isStaging ? 'none' : 'lax') as 'none' | 'lax',
+};
+
 const sessionTimeoutFormat = {
   15: 15 * 60 * 1000,
   30: 30 * 60 * 1000,
@@ -88,9 +97,7 @@ export class AuthService {
     });
 
     res.cookie('accessToken', token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
+      ...cookieOptions,
       maxAge:
         sessionTimeoutFormat[
           sessionTimeout?.sessionTime as keyof typeof sessionTimeoutFormat
@@ -131,11 +138,7 @@ export class AuthService {
   }
 
   logout(res: Response) {
-    res.clearCookie('accessToken', {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
-    });
+    res.clearCookie('accessToken', cookieOptions);
     return res.json({ message: 'Logout successful', logout : true });
   }
 }

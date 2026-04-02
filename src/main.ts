@@ -23,10 +23,8 @@ async function bootstrap() {
   });
 
   const allowedOrigins = [
-    'http://localhost:3000',
-    'http://192.168.68.43:3000',
-    'https://nath-racker.vercel.app', // hardcoded as backup
     process.env.URL,
+    process.env.LOCAL_URL,
   ].filter(Boolean) as string[];
 
   // ✅ CORS must be before helmet
