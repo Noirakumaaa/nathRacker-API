@@ -30,7 +30,7 @@ export class SwdiController {
   }
 
 
-  @Get('records/:id')
+  @Get('record/:id')
   swdiRecordsById(@Req() req: Request, @Param('id') id: string) {
     return this.swdiService.swdiRecordsById(req, +id);
   }

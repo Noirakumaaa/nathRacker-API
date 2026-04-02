@@ -1,5 +1,5 @@
-import { IsInt, IsString, IsNotEmpty, IsDateString } from 'class-validator'
-
+import { IsString, IsNotEmpty, IsOptional, IsDate } from 'class-validator'
+import { Type } from 'class-transformer'
 export class CreateCvDto {
   @IsString()
   idNumber: string
@@ -23,9 +23,14 @@ export class CreateCvDto {
   @IsString()
   remarks: string
 
+  @IsOptional()
   @IsString()
   issue: string
 
   @IsString()
   period : string
+
+  @Type(() => Date)
+  @IsDate()
+  date : Date
 }

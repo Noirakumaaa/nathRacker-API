@@ -19,6 +19,7 @@ export class MiscService {
       data: {
         ...createMiscDto,
         subjectOfChange: createMiscDto.subjectOfChange || createMiscDto.granteeName,
+        encodedBy : user.govUsername,
         date: new Date(),
         userId: user.id,
       },

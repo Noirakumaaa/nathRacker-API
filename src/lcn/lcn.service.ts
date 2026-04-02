@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { CreatePcnDto } from './dto/create-pcn.dto.js';
 import { UpdatePcnDto } from './dto/update-pcn.dto.js';
 import type { Request } from 'express';
@@ -19,7 +19,7 @@ export class PcnService {
     }
 
     if (!createPcnDto.pcn && !createPcnDto.lrn) {
-      return { upload: false, message: 'At least one of PCN or LRN is required.' };
+      throw new HttpException({ upload: false, message: 'At least one of PCN or LRN is required.' }, HttpStatus.BAD_REQUEST);
     }
 
     const checkDuplicate = await this.prisma.client.pcn.findFirst({

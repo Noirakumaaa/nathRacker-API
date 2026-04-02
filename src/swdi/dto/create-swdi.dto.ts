@@ -1,4 +1,5 @@
-import { IsString, IsNotEmpty, IsOptional, IsInt } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsNumber, IsDate } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateSwdiDto {
   @IsString()
@@ -17,7 +18,8 @@ export class CreateSwdiDto {
   @IsNotEmpty()
   grantee: string;
 
-  @IsInt()
+  @Type(() => Number)
+  @IsNumber()
   @IsNotEmpty()
   swdiScore: number;
 
@@ -31,7 +33,18 @@ export class CreateSwdiDto {
 
   @IsOptional()
   @IsString()
+  drn : string;
+
+  @IsString()
+  cl : string;
+
+  @IsOptional()
+  @IsString()
   issue?: string;
+
+  @Type(() => Date)
+  @IsDate()
+  date : Date;
 
   @IsOptional()
   @IsString()

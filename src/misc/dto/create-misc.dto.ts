@@ -1,13 +1,15 @@
 
-import { IsString, IsNotEmpty, IsOptional, IsDateString, IsInt } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsDateString, IsInt, IsDate } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateMiscDto {
-    @IsString()
-  @IsNotEmpty()
+
+  @IsOptional()
+  @IsString()
   lgu: string;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
   barangay: string;
 
   @IsString()
@@ -31,10 +33,6 @@ export class CreateMiscDto {
   issue?: string;
 
   @IsString()
-  @IsNotEmpty()
-  encodedBy: string;
-
-  @IsString()
   @IsOptional()
   subjectOfChange?: string;
 
@@ -50,4 +48,7 @@ export class CreateMiscDto {
   @IsOptional()
   note?: string;
 
+  @Type(() => Date)
+  @IsDate()
+  date : Date;
 }

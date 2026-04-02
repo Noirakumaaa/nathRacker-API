@@ -1,5 +1,5 @@
-import { IsInt, IsOptional, IsString, IsDateString } from 'class-validator'
-
+import { IsOptional, IsString ,IsDate} from 'class-validator'
+import { Type } from 'class-transformer';
 export class CreatePcnDto {
   @IsOptional()
   @IsString()
@@ -44,6 +44,10 @@ export class CreatePcnDto {
   @IsOptional()
   @IsString()
   cl?: string
+
+  @Type(() => Date)
+  @IsDate()
+  date : Date;
 
 
   @IsOptional()

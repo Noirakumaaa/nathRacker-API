@@ -15,6 +15,19 @@ export class CvsService {
       throw new Error('User not authenticated');
     }
 
+    const duplicate = await this.prisma.client.cVS.findFirst({
+      where: {
+        idNumber: createCvDto.idNumber,
+        formType: createCvDto.formType,
+        period: createCvDto.period,
+        facilityName: createCvDto.facilityName,
+      },
+    });
+
+    if (duplicate) {
+      return { upload: false, message: 'Duplicate record found. CVS record not created.' };
+    }
+
     const uploadCvs = await this.prisma.client.cVS.create({
       data: {
         ...createCvDto,
@@ -44,6 +57,10 @@ export class CvsService {
       globalUpload: globalUpload,
     };
   }
+
+
+
+  
   async getSelectedCVS(req: Request, id: string) {
     const user = req.user;
     if (!user) {
