@@ -25,13 +25,11 @@ async function bootstrap() {
   const allowedOrigins = [
     process.env.URL,
     process.env.LOCAL_URL,
-    "https://nath-racker.vercel.app"
   ].filter(Boolean) as string[];
 
   // ✅ CORS must be before helmet
   app.enableCors({
     origin: (origin, callback) => {
-      console.log('CORS origin:', origin); // temp log, remove after fix
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {

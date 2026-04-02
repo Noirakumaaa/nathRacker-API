@@ -1,4 +1,5 @@
 export class CreateSettingDto {}
+
 export type Module = 'BUS' | 'PCN' | 'SWDI' | 'CVS' | 'MISC';
 
 export type FieldType = 'string' | 'date' | 'number' | 'optional-string';

@@ -2,6 +2,7 @@ import {
   Controller,
   Post,
   Get,
+  Put,
   Body,
   UploadedFile,
   UseInterceptors,
@@ -13,6 +14,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { SettingsService } from './settings.service.js';
 import type { Module } from './dto/create-setting.dto.js';
+import { SecurityData } from './dto/update-security.dto.js';
 import type { Request } from 'express';
 import { JwtAuthGuard } from './../../guard/jwt-guard.js';
 import { Role } from './../../enums/roles.enum.js';
@@ -43,5 +45,25 @@ export class SettingsController {
     @Req() req : Request
   ){
     return this.settingsService.GetUserInfo(req);
+  }
+  
+
+  @Put('security')
+  UpdateSecuritySetting(
+    @Body() securityData: SecurityData,
+    @Req() req: Request,
+  ) {
+    return this.settingsService.UpdateSecuritySetting(securityData, req);
+  }
+
+
+  @Get('security')
+  GetSecurityData(@Req() req: Request) {
+    return this.settingsService.GetSecurityData(req);
+  }
+
+  @Put('theme')
+  UpdateTheme(@Body('theme') theme: 'LIGHT' | 'DARK', @Req() req: Request) {
+    return this.settingsService.UpdateTheme(theme, req);
   }
 }
