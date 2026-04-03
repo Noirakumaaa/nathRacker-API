@@ -22,7 +22,7 @@ const newUsers = [
     role: 'ADMIN' as const,
     assignedLGUID: 4,
     assignedOperationId: 8,
-    assignedBarangayId: 3,
+    assignedBarangayId: 1,
   },
 ];
 

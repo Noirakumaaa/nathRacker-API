@@ -25,6 +25,8 @@ async function bootstrap() {
   const allowedOrigins = [
     process.env.URL,
     process.env.LOCAL_URL,
+    "http://nathdomain.com",
+    "https://nathdomain.com"
   ].filter(Boolean) as string[];
 
   // ✅ CORS must be before helmet
