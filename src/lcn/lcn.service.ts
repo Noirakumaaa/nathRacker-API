@@ -98,20 +98,38 @@ export class PcnService {
     return `This action returns a #${id} pcn`;
   }
 
-  update(id: number, updatePcnDto: UpdatePcnDto) {
-    return `This action updates a #${id} pcn`;
+
+  async update(id: number, dto: UpdatePcnDto) {
+    const pcnUpdate = await this.prisma.client.pcn.update({
+      where: { id },
+      data: { ...dto },
+    });
+
+    await this.prisma.client.encodedDocument.update({
+      where: { documentId: pcnUpdate.id },
+      data: {
+        idNumber: pcnUpdate.hhId ?? '',
+        name: pcnUpdate.granteeName ?? '',
+        documentType: 'PCN',
+        documentId: pcnUpdate.id,
+        subjectOfChange: pcnUpdate.subjectOfChange,
+        drn: pcnUpdate.drn ?? ' ',
+        remarks: pcnUpdate.remarks ?? '',
+      },
+    });
+
+    return { message: `Updated Item ${pcnUpdate.hhId}`, update: true };
   }
 
   async remove(id: number) {
-   const lcnDelete = await this.prisma.client.pcn.delete({
-    where : { 
-      id : id 
-    }
-   })
-   await this.prisma.client.encodedDocument.delete({
-    where : {
-      documentId : lcnDelete.id
-    }
-   })
+    const deletePcn = await this.prisma.client.pcn.delete({
+      where: { id },
+    });
+
+    await this.prisma.client.encodedDocument.delete({
+      where: { documentId: id },
+    });
+
+    return { message: `Deleted Item ${deletePcn.hhId}`, deleted: true };
   }
 }

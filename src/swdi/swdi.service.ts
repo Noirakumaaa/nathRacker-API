@@ -111,20 +111,38 @@ export class SwdiService {
     return `This action returns a #${id} swdi`;
   }
 
-  update(id: number, updateSwdiDto: UpdateSwdiDto) {
-    return `This action updates a #${id} swdi`;
+
+  async update(id: number, dto: UpdateSwdiDto) {
+    const swdiUpdate = await this.prisma.client.swdi.update({
+      where: { id },
+      data: { ...dto },
+    });
+
+    await this.prisma.client.encodedDocument.update({
+      where: { documentId: swdiUpdate.id },
+      data: {
+        idNumber: swdiUpdate.hhId,
+        name: swdiUpdate.grantee,
+        documentType: 'SWDI',
+        documentId: swdiUpdate.id,
+        subjectOfChange: '',
+        drn: swdiUpdate.drn ?? ' ',
+        remarks: swdiUpdate.remarks,
+      },
+    });
+
+    return { message: `Updated Item ${swdiUpdate.hhId}`, update: true };
   }
 
- async remove(id: number) {
-   const lcnDelete = await this.prisma.client.swdi.delete({
-    where : { 
-      id : id 
-    }
-   })
-   await this.prisma.client.encodedDocument.delete({
-    where : {
-      documentId : lcnDelete.id
-    }
-   })
+  async remove(id: number) {
+    const deleteSwdi = await this.prisma.client.swdi.delete({
+      where: { id },
+    });
+
+    await this.prisma.client.encodedDocument.delete({
+      where: { documentId: id },
+    });
+
+    return { message: `Deleted Item ${deleteSwdi.hhId}`, deleted: true };
   }
 }

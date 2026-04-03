@@ -102,22 +102,38 @@ export class CvsService {
     return `This action returns a #${id} cv`;
   }
 
-  update(id: number, updateCvDto: UpdateCvDto) {
-    return `This action updates a #${id} cv`;
+
+  async update(id: number, dto: UpdateCvDto) {
+    const cvsUpdate = await this.prisma.client.cVS.update({
+      where: { id },
+      data: { ...dto },
+    });
+
+    await this.prisma.client.encodedDocument.update({
+      where: { documentId: cvsUpdate.id },
+      data: {
+        idNumber: String(cvsUpdate.idNumber),
+        name: cvsUpdate.facilityName,
+        documentType: 'CVS',
+        documentId: cvsUpdate.id,
+        subjectOfChange: cvsUpdate.formType,
+        drn: cvsUpdate.period ?? ' ',
+        remarks: cvsUpdate.remarks,
+      },
+    });
+
+    return { message: `Updated Item ${cvsUpdate.idNumber}`, update: true };
   }
 
   async remove(id: number) {
-    const cvsDelete = await this.prisma.client.cVS.delete({
-      where : {
-        id : id
-      }
-    })
+    const deleteCvs = await this.prisma.client.cVS.delete({
+      where: { id },
+    });
 
     await this.prisma.client.encodedDocument.delete({
-      where : {
-        documentId : cvsDelete.id
-      }
-    })
+      where: { documentId: id },
+    });
 
+    return { message: `Deleted Item ${deleteCvs.idNumber}`, deleted: true };
   }
 }

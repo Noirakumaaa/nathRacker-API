@@ -49,10 +49,6 @@ export class BusController {
     return this.busService.verify(+id, body, req);
   }
 
-  @Patch('update')
-  update(@Body() updateBusDto: UpdateBusDto) {
-    return this.busService.update(updateBusDto);
-  }
 
   @Get('records/:id',)
   busRecordsById(@Param('id') id: string) {
@@ -62,6 +58,12 @@ export class BusController {
   @Get('count')
   busCountbyId(@Req() req: Request) {
     return this.busService.busCountbyId(req);
+  }
+
+
+  @Patch('update')
+  update(@Body() updateBusDto: UpdateBusDto) {
+    return this.busService.update(updateBusDto);
   }
 
   @Delete('delete/:id')

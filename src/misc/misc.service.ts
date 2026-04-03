@@ -87,20 +87,38 @@ export class MiscService {
     return `This action returns a #${id} misc`;
   }
 
-  update(id: number, updateMiscDto: UpdateMiscDto) {
-    return `This action updates a #${id} misc`;
+
+  async update(id: number, dto: UpdateMiscDto) {
+    const miscUpdate = await this.prisma.client.miscellaneous.update({
+      where: { id },
+      data: { ...dto },
+    });
+
+    await this.prisma.client.encodedDocument.update({
+      where: { documentId: miscUpdate.id },
+      data: {
+        idNumber: String(miscUpdate.hhId),
+        name: miscUpdate.granteeName,
+        documentType: 'MISC',
+        documentId: miscUpdate.id,
+        subjectOfChange: miscUpdate.documentType,
+        drn: miscUpdate.drn ?? ' ',
+        remarks: miscUpdate.remarks,
+      },
+    });
+
+    return { message: `Updated Item ${miscUpdate.hhId}`, update: true };
   }
 
- async remove(id: number) {
-   const lcnDelete = await this.prisma.client.miscellaneous.delete({
-    where : { 
-      id : id 
-    }
-   })
-   await this.prisma.client.encodedDocument.delete({
-    where : {
-      documentId : lcnDelete.id
-    }
-   })
+  async remove(id: number) {
+    const deleteMisc = await this.prisma.client.miscellaneous.delete({
+      where: { id },
+    });
+
+    await this.prisma.client.encodedDocument.delete({
+      where: { documentId: id },
+    });
+
+    return { message: `Deleted Item ${deleteMisc.hhId}`, deleted: true };
   }
 }
