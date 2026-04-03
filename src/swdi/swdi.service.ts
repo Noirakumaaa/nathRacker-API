@@ -35,6 +35,7 @@ export class SwdiService {
         ...createSwdiDto,
         userId: user.id,
         encodedBy: user.govUsername,
+        operationsOfficeNumId : user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -50,6 +51,7 @@ export class SwdiService {
         drn : uploadSwdi.drn ?? " ",
         remarks: uploadSwdi.remarks,
         subjectOfChange: "",
+        operationsOfficeNumId : user.assignedOperationId,
         govUsername: user.govUsername
       },
     });
@@ -113,7 +115,16 @@ export class SwdiService {
     return `This action updates a #${id} swdi`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} swdi`;
+ async remove(id: number) {
+   const lcnDelete = await this.prisma.client.swdi.delete({
+    where : { 
+      id : id 
+    }
+   })
+   await this.prisma.client.encodedDocument.delete({
+    where : {
+      documentId : lcnDelete.id
+    }
+   })
   }
 }

@@ -8,6 +8,9 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/OperationsOfficeNum.js'
+export type * from './models/Lgu.js'
+export type * from './models/Barangay.js'
 export type * from './models/User.js'
 export type * from './models/UserInfo.js'
 export type * from './models/Bus.js'
@@ -16,7 +19,4 @@ export type * from './models/Pcn.js'
 export type * from './models/CVS.js'
 export type * from './models/Miscellaneous.js'
 export type * from './models/EncodedDocument.js'
-export type * from './models/OperationsOfficeNum.js'
-export type * from './models/Lgu.js'
-export type * from './models/Barangay.js'
 export type * from './commonInputTypes.js'

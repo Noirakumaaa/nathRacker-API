@@ -29,6 +29,12 @@ export class AlldocumentsController {
     return this.alldocumentsService.alldocumentCountbyId(req);
   }
 
+  @Get('count/OperationDashboard')
+  OperationTotalCount(@Req() req: Request) {
+    return this.alldocumentsService.OperationTotalCount(req);
+  }
+
+
   @Get('weekly-count')
   allDocumentWeeklyCount(@Req() req: Request) {
     return this.alldocumentsService.allDocumentWeeklyCount(req);
@@ -41,9 +47,8 @@ export class AlldocumentsController {
 
 
   @Get('globalRecords')
-  @Get()
-  findAll() {
-    return this.alldocumentsService.globalRecords();
+  findAll(@Req() req : Request) {
+    return this.alldocumentsService.globalRecords(req);
   }
 
   @Get(':id')

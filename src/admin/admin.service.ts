@@ -19,6 +19,63 @@ export class AdminService {
     return 'This action adds a new admin';
   }
 
+    async alldocumentCountbyId(req: Request) {
+    const user = req.user;
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+    const countPerDocumentType =
+      await this.prisma.client.encodedDocument.groupBy({
+        by: ['documentType'],
+        where: {
+          userId: user.id,
+          operationsOfficeNumId : user.assignedOperationId
+        },
+        _count: {
+          documentType: true,
+        },
+      });
+
+    const result = countPerDocumentType.map((item) => ({
+      documentType: item.documentType,
+      count: item._count.documentType,
+    }));
+    return result;
+  }
+
+  async documentCountByOffice(officeId: number) {
+    const countPerDocumentType =
+      await this.prisma.client.encodedDocument.groupBy({
+        by: ['documentType'],
+        where: {
+          operationsOfficeNumId: officeId,
+        },
+        _count: {
+          documentType: true,
+        },
+      });
+
+    return countPerDocumentType.map((item) => ({
+      documentType: item.documentType,
+      count: item._count.documentType,
+    }));
+  }
+
+  async documentCountAll() {
+    const countPerDocumentType =
+      await this.prisma.client.encodedDocument.groupBy({
+        by: ['documentType'],
+        _count: {
+          documentType: true,
+        },
+      });
+
+    return countPerDocumentType.map((item) => ({
+      documentType: item.documentType,
+      count: item._count.documentType,
+    }));
+  }
+
   async createLgu(lgu: CreateLgu, req: Request) {
     const user = req.user;
 

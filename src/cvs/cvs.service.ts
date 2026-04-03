@@ -33,6 +33,7 @@ export class CvsService {
         ...createCvDto,
         date: new Date(),
         userId: user.id,
+        operationsOfficeNumId : user.assignedOperationId,
       },
     });
 
@@ -47,6 +48,7 @@ export class CvsService {
         drn : uploadCvs.period ?? " ",
         userId: user.id,
         govUsername: user.govUsername,
+        operationsOfficeNumId : user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -104,7 +106,18 @@ export class CvsService {
     return `This action updates a #${id} cv`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cv`;
+  async remove(id: number) {
+    const cvsDelete = await this.prisma.client.cVS.delete({
+      where : {
+        id : id
+      }
+    })
+
+    await this.prisma.client.encodedDocument.delete({
+      where : {
+        documentId : cvsDelete.id
+      }
+    })
+
   }
 }

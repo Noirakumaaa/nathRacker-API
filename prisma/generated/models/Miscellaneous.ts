@@ -29,69 +29,74 @@ export type AggregateMiscellaneous = {
 export type MiscellaneousAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type MiscellaneousSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type MiscellaneousMinAggregateOutputType = {
   id: number | null
+  hhId: string | null
   lgu: string | null
   barangay: string | null
-  hhId: string | null
   granteeName: string | null
   documentType: string | null
-  remarks: string | null
-  issue: string | null
-  encodedBy: string | null
   subjectOfChange: string | null
   drn: string | null
   cl: string | null
   date: Date | null
+  encodedBy: string | null
+  remarks: string | null
   note: string | null
+  issue: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type MiscellaneousMaxAggregateOutputType = {
   id: number | null
+  hhId: string | null
   lgu: string | null
   barangay: string | null
-  hhId: string | null
   granteeName: string | null
   documentType: string | null
-  remarks: string | null
-  issue: string | null
-  encodedBy: string | null
   subjectOfChange: string | null
   drn: string | null
   cl: string | null
   date: Date | null
+  encodedBy: string | null
+  remarks: string | null
   note: string | null
+  issue: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type MiscellaneousCountAggregateOutputType = {
   id: number
+  hhId: number
   lgu: number
   barangay: number
-  hhId: number
   granteeName: number
   documentType: number
-  remarks: number
-  issue: number
-  encodedBy: number
   subjectOfChange: number
   drn: number
   cl: number
   date: number
+  encodedBy: number
+  remarks: number
   note: number
+  issue: number
   userId: number
+  operationsOfficeNumId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -101,69 +106,74 @@ export type MiscellaneousCountAggregateOutputType = {
 export type MiscellaneousAvgAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type MiscellaneousSumAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type MiscellaneousMinAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
   documentType?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
   subjectOfChange?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  remarks?: true
   note?: true
+  issue?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type MiscellaneousMaxAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
   documentType?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
   subjectOfChange?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  remarks?: true
   note?: true
+  issue?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type MiscellaneousCountAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
   documentType?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
   subjectOfChange?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  remarks?: true
   note?: true
+  issue?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -257,20 +267,21 @@ export type MiscellaneousGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type MiscellaneousGroupByOutputType = {
   id: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue: string | null
-  encodedBy: string
   subjectOfChange: string | null
   drn: string | null
   cl: string | null
   date: Date
+  encodedBy: string
+  remarks: string
   note: string | null
+  issue: string | null
   userId: number
+  operationsOfficeNumId: number | null
   createdAt: Date
   updatedAt: Date
   _count: MiscellaneousCountAggregateOutputType | null
@@ -300,44 +311,48 @@ export type MiscellaneousWhereInput = {
   OR?: Prisma.MiscellaneousWhereInput[]
   NOT?: Prisma.MiscellaneousWhereInput | Prisma.MiscellaneousWhereInput[]
   id?: Prisma.IntFilter<"Miscellaneous"> | number
+  hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   lgu?: Prisma.StringFilter<"Miscellaneous"> | string
   barangay?: Prisma.StringFilter<"Miscellaneous"> | string
-  hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
   documentType?: Prisma.StringFilter<"Miscellaneous"> | string
-  remarks?: Prisma.StringFilter<"Miscellaneous"> | string
-  issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
   subjectOfChange?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   drn?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   cl?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   date?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
+  remarks?: Prisma.StringFilter<"Miscellaneous"> | string
   note?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   userId?: Prisma.IntFilter<"Miscellaneous"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Miscellaneous"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }
 
 export type MiscellaneousOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrderInput | Prisma.SortOrder
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   cl?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userById?: Prisma.UserOrderByWithRelationInput
+  operationsOffice?: Prisma.OperationsOfficeNumOrderByWithRelationInput
 }
 
 export type MiscellaneousWhereUniqueInput = Prisma.AtLeast<{
@@ -345,41 +360,44 @@ export type MiscellaneousWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.MiscellaneousWhereInput | Prisma.MiscellaneousWhereInput[]
   OR?: Prisma.MiscellaneousWhereInput[]
   NOT?: Prisma.MiscellaneousWhereInput | Prisma.MiscellaneousWhereInput[]
+  hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   lgu?: Prisma.StringFilter<"Miscellaneous"> | string
   barangay?: Prisma.StringFilter<"Miscellaneous"> | string
-  hhId?: Prisma.StringFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
   documentType?: Prisma.StringFilter<"Miscellaneous"> | string
-  remarks?: Prisma.StringFilter<"Miscellaneous"> | string
-  issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
   subjectOfChange?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   drn?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   cl?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   date?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
+  remarks?: Prisma.StringFilter<"Miscellaneous"> | string
   note?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
   userId?: Prisma.IntFilter<"Miscellaneous"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Miscellaneous"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }, "id">
 
 export type MiscellaneousOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrderInput | Prisma.SortOrder
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   cl?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.MiscellaneousCountOrderByAggregateInput
@@ -394,156 +412,163 @@ export type MiscellaneousScalarWhereWithAggregatesInput = {
   OR?: Prisma.MiscellaneousScalarWhereWithAggregatesInput[]
   NOT?: Prisma.MiscellaneousScalarWhereWithAggregatesInput | Prisma.MiscellaneousScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Miscellaneous"> | number
+  hhId?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   lgu?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   barangay?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
-  hhId?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   granteeName?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   documentType?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
-  remarks?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
-  issue?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
-  encodedBy?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   subjectOfChange?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
   drn?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
   cl?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
   date?: Prisma.DateTimeWithAggregatesFilter<"Miscellaneous"> | Date | string
+  encodedBy?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
+  remarks?: Prisma.StringWithAggregatesFilter<"Miscellaneous"> | string
   note?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
+  issue?: Prisma.StringNullableWithAggregatesFilter<"Miscellaneous"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"Miscellaneous"> | number
+  operationsOfficeNumId?: Prisma.IntNullableWithAggregatesFilter<"Miscellaneous"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Miscellaneous"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Miscellaneous"> | Date | string
 }
 
 export type MiscellaneousCreateInput = {
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   userById: Prisma.UserCreateNestedOneWithoutMiscByIDInput
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutMiscellaneousInput
 }
 
 export type MiscellaneousUncheckedCreateInput = {
   id?: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type MiscellaneousUpdateInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userById?: Prisma.UserUpdateOneRequiredWithoutMiscByIDNestedInput
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutMiscellaneousNestedInput
 }
 
 export type MiscellaneousUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type MiscellaneousCreateManyInput = {
   id?: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type MiscellaneousUpdateManyMutationInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type MiscellaneousUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -560,20 +585,21 @@ export type MiscellaneousOrderByRelationAggregateInput = {
 
 export type MiscellaneousCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -581,44 +607,47 @@ export type MiscellaneousCountOrderByAggregateInput = {
 export type MiscellaneousAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
 }
 
 export type MiscellaneousMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type MiscellaneousMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -626,6 +655,49 @@ export type MiscellaneousMinOrderByAggregateInput = {
 export type MiscellaneousSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
+}
+
+export type MiscellaneousCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.MiscellaneousCreateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput> | Prisma.MiscellaneousCreateWithoutOperationsOfficeInput[] | Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput | Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.MiscellaneousCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+}
+
+export type MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.MiscellaneousCreateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput> | Prisma.MiscellaneousCreateWithoutOperationsOfficeInput[] | Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput | Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.MiscellaneousCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+}
+
+export type MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.MiscellaneousCreateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput> | Prisma.MiscellaneousCreateWithoutOperationsOfficeInput[] | Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput | Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.MiscellaneousUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.MiscellaneousUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.MiscellaneousCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  disconnect?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  delete?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  connect?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  update?: Prisma.MiscellaneousUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.MiscellaneousUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.MiscellaneousUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.MiscellaneousUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
+}
+
+export type MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.MiscellaneousCreateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput> | Prisma.MiscellaneousCreateWithoutOperationsOfficeInput[] | Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput | Prisma.MiscellaneousCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.MiscellaneousUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.MiscellaneousUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.MiscellaneousCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  disconnect?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  delete?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  connect?: Prisma.MiscellaneousWhereUniqueInput | Prisma.MiscellaneousWhereUniqueInput[]
+  update?: Prisma.MiscellaneousUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.MiscellaneousUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.MiscellaneousUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.MiscellaneousUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
 }
 
 export type MiscellaneousCreateNestedManyWithoutUserByIdInput = {
@@ -670,39 +742,130 @@ export type MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput = {
   deleteMany?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
 }
 
-export type MiscellaneousCreateWithoutUserByIdInput = {
+export type MiscellaneousCreateWithoutOperationsOfficeInput = {
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userById: Prisma.UserCreateNestedOneWithoutMiscByIDInput
+}
+
+export type MiscellaneousUncheckedCreateWithoutOperationsOfficeInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  granteeName: string
+  documentType: string
+  subjectOfChange?: string | null
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  userId: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type MiscellaneousUncheckedCreateWithoutUserByIdInput = {
-  id?: number
+export type MiscellaneousCreateOrConnectWithoutOperationsOfficeInput = {
+  where: Prisma.MiscellaneousWhereUniqueInput
+  create: Prisma.XOR<Prisma.MiscellaneousCreateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type MiscellaneousCreateManyOperationsOfficeInputEnvelope = {
+  data: Prisma.MiscellaneousCreateManyOperationsOfficeInput | Prisma.MiscellaneousCreateManyOperationsOfficeInput[]
+  skipDuplicates?: boolean
+}
+
+export type MiscellaneousUpsertWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.MiscellaneousWhereUniqueInput
+  update: Prisma.XOR<Prisma.MiscellaneousUpdateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedUpdateWithoutOperationsOfficeInput>
+  create: Prisma.XOR<Prisma.MiscellaneousCreateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type MiscellaneousUpdateWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.MiscellaneousWhereUniqueInput
+  data: Prisma.XOR<Prisma.MiscellaneousUpdateWithoutOperationsOfficeInput, Prisma.MiscellaneousUncheckedUpdateWithoutOperationsOfficeInput>
+}
+
+export type MiscellaneousUpdateManyWithWhereWithoutOperationsOfficeInput = {
+  where: Prisma.MiscellaneousScalarWhereInput
+  data: Prisma.XOR<Prisma.MiscellaneousUpdateManyMutationInput, Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeInput>
+}
+
+export type MiscellaneousScalarWhereInput = {
+  AND?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
+  OR?: Prisma.MiscellaneousScalarWhereInput[]
+  NOT?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
+  id?: Prisma.IntFilter<"Miscellaneous"> | number
+  hhId?: Prisma.StringFilter<"Miscellaneous"> | string
+  lgu?: Prisma.StringFilter<"Miscellaneous"> | string
+  barangay?: Prisma.StringFilter<"Miscellaneous"> | string
+  granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
+  documentType?: Prisma.StringFilter<"Miscellaneous"> | string
+  subjectOfChange?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  drn?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  cl?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  date?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
+  remarks?: Prisma.StringFilter<"Miscellaneous"> | string
+  note?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
+  userId?: Prisma.IntFilter<"Miscellaneous"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Miscellaneous"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
+}
+
+export type MiscellaneousCreateWithoutUserByIdInput = {
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutMiscellaneousInput
+}
+
+export type MiscellaneousUncheckedCreateWithoutUserByIdInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  granteeName: string
+  documentType: string
+  subjectOfChange?: string | null
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -733,100 +896,160 @@ export type MiscellaneousUpdateManyWithWhereWithoutUserByIdInput = {
   data: Prisma.XOR<Prisma.MiscellaneousUpdateManyMutationInput, Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdInput>
 }
 
-export type MiscellaneousScalarWhereInput = {
-  AND?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
-  OR?: Prisma.MiscellaneousScalarWhereInput[]
-  NOT?: Prisma.MiscellaneousScalarWhereInput | Prisma.MiscellaneousScalarWhereInput[]
-  id?: Prisma.IntFilter<"Miscellaneous"> | number
-  lgu?: Prisma.StringFilter<"Miscellaneous"> | string
-  barangay?: Prisma.StringFilter<"Miscellaneous"> | string
-  hhId?: Prisma.StringFilter<"Miscellaneous"> | string
-  granteeName?: Prisma.StringFilter<"Miscellaneous"> | string
-  documentType?: Prisma.StringFilter<"Miscellaneous"> | string
-  remarks?: Prisma.StringFilter<"Miscellaneous"> | string
-  issue?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  encodedBy?: Prisma.StringFilter<"Miscellaneous"> | string
-  subjectOfChange?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  drn?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  cl?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  date?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
-  note?: Prisma.StringNullableFilter<"Miscellaneous"> | string | null
-  userId?: Prisma.IntFilter<"Miscellaneous"> | number
-  createdAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Miscellaneous"> | Date | string
-}
-
-export type MiscellaneousCreateManyUserByIdInput = {
+export type MiscellaneousCreateManyOperationsOfficeInput = {
   id?: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   documentType: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type MiscellaneousUpdateWithoutOperationsOfficeInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  granteeName?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
+  subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userById?: Prisma.UserUpdateOneRequiredWithoutMiscByIDNestedInput
+}
+
+export type MiscellaneousUncheckedUpdateWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  granteeName?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
+  subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  granteeName?: Prisma.StringFieldUpdateOperationsInput | string
+  documentType?: Prisma.StringFieldUpdateOperationsInput | string
+  subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type MiscellaneousCreateManyUserByIdInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  granteeName: string
+  documentType: string
+  subjectOfChange?: string | null
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type MiscellaneousUpdateWithoutUserByIdInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutMiscellaneousNestedInput
 }
 
 export type MiscellaneousUncheckedUpdateWithoutUserByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type MiscellaneousUncheckedUpdateManyWithoutUserByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -835,119 +1058,131 @@ export type MiscellaneousUncheckedUpdateManyWithoutUserByIdInput = {
 
 export type MiscellaneousSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   documentType?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["miscellaneous"]>
 
 export type MiscellaneousSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   documentType?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["miscellaneous"]>
 
 export type MiscellaneousSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   documentType?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["miscellaneous"]>
 
 export type MiscellaneousSelectScalar = {
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   documentType?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type MiscellaneousOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "documentType" | "remarks" | "issue" | "encodedBy" | "subjectOfChange" | "drn" | "cl" | "date" | "note" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["miscellaneous"]>
+export type MiscellaneousOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "granteeName" | "documentType" | "subjectOfChange" | "drn" | "cl" | "date" | "encodedBy" | "remarks" | "note" | "issue" | "userId" | "operationsOfficeNumId" | "createdAt" | "updatedAt", ExtArgs["result"]["miscellaneous"]>
 export type MiscellaneousInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>
 }
 export type MiscellaneousIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>
 }
 export type MiscellaneousIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>
 }
 
 export type $MiscellaneousPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Miscellaneous"
   objects: {
     userById: Prisma.$UserPayload<ExtArgs>
+    operationsOffice: Prisma.$OperationsOfficeNumPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    hhId: string
     lgu: string
     barangay: string
-    hhId: string
     granteeName: string
     documentType: string
-    remarks: string
-    issue: string | null
-    encodedBy: string
     subjectOfChange: string | null
     drn: string | null
     cl: string | null
     date: Date
+    encodedBy: string
+    remarks: string
     note: string | null
+    issue: string | null
     userId: number
+    operationsOfficeNumId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["miscellaneous"]>
@@ -1345,6 +1580,7 @@ readonly fields: MiscellaneousFieldRefs;
 export interface Prisma__MiscellaneousClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   userById<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  operationsOffice<T extends Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Miscellaneous$operationsOfficeArgs<ExtArgs>>): Prisma.Prisma__OperationsOfficeNumClient<runtime.Types.Result.GetResult<Prisma.$OperationsOfficeNumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1375,20 +1611,21 @@ export interface Prisma__MiscellaneousClient<T, Null = never, ExtArgs extends ru
  */
 export interface MiscellaneousFieldRefs {
   readonly id: Prisma.FieldRef<"Miscellaneous", 'Int'>
+  readonly hhId: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly lgu: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly barangay: Prisma.FieldRef<"Miscellaneous", 'String'>
-  readonly hhId: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly granteeName: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly documentType: Prisma.FieldRef<"Miscellaneous", 'String'>
-  readonly remarks: Prisma.FieldRef<"Miscellaneous", 'String'>
-  readonly issue: Prisma.FieldRef<"Miscellaneous", 'String'>
-  readonly encodedBy: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly subjectOfChange: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly drn: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly cl: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly date: Prisma.FieldRef<"Miscellaneous", 'DateTime'>
+  readonly encodedBy: Prisma.FieldRef<"Miscellaneous", 'String'>
+  readonly remarks: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly note: Prisma.FieldRef<"Miscellaneous", 'String'>
+  readonly issue: Prisma.FieldRef<"Miscellaneous", 'String'>
   readonly userId: Prisma.FieldRef<"Miscellaneous", 'Int'>
+  readonly operationsOfficeNumId: Prisma.FieldRef<"Miscellaneous", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Miscellaneous", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Miscellaneous", 'DateTime'>
 }
@@ -1784,6 +2021,25 @@ export type MiscellaneousDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many Miscellaneous to delete.
    */
   limit?: number
+}
+
+/**
+ * Miscellaneous.operationsOffice
+ */
+export type Miscellaneous$operationsOfficeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OperationsOfficeNum
+   */
+  select?: Prisma.OperationsOfficeNumSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OperationsOfficeNum
+   */
+  omit?: Prisma.OperationsOfficeNumOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OperationsOfficeNumInclude<ExtArgs> | null
+  where?: Prisma.OperationsOfficeNumWhereInput
 }
 
 /**

@@ -29,81 +29,86 @@ export type AggregateBus = {
 export type BusAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type BusSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type BusMinAggregateOutputType = {
   id: number | null
+  hhId: string | null
   lgu: string | null
   barangay: string | null
-  hhId: string | null
   granteeName: string | null
   typeOfUpdate: string | null
-  remarks: string | null
-  issue: string | null
-  encodedBy: string | null
-  updateInfo: string | null
   subjectOfChange: string | null
   drn: string | null
   cl: string | null
   date: Date | null
+  encodedBy: string | null
+  updateInfo: string | null
+  remarks: string | null
   note: string | null
+  issue: string | null
+  verificationIssue: string | null
   verifiedBy: string | null
   verified: string | null
-  verificationIssue: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type BusMaxAggregateOutputType = {
   id: number | null
+  hhId: string | null
   lgu: string | null
   barangay: string | null
-  hhId: string | null
   granteeName: string | null
   typeOfUpdate: string | null
-  remarks: string | null
-  issue: string | null
-  encodedBy: string | null
-  updateInfo: string | null
   subjectOfChange: string | null
   drn: string | null
   cl: string | null
   date: Date | null
+  encodedBy: string | null
+  updateInfo: string | null
+  remarks: string | null
   note: string | null
+  issue: string | null
+  verificationIssue: string | null
   verifiedBy: string | null
   verified: string | null
-  verificationIssue: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type BusCountAggregateOutputType = {
   id: number
+  hhId: number
   lgu: number
   barangay: number
-  hhId: number
   granteeName: number
   typeOfUpdate: number
-  remarks: number
-  issue: number
-  encodedBy: number
-  updateInfo: number
   subjectOfChange: number
   drn: number
   cl: number
   date: number
+  encodedBy: number
+  updateInfo: number
+  remarks: number
   note: number
+  issue: number
+  verificationIssue: number
   verifiedBy: number
   verified: number
-  verificationIssue: number
   userId: number
+  operationsOfficeNumId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -113,81 +118,86 @@ export type BusCountAggregateOutputType = {
 export type BusAvgAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type BusSumAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type BusMinAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
   typeOfUpdate?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
-  updateInfo?: true
   subjectOfChange?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  updateInfo?: true
+  remarks?: true
   note?: true
+  issue?: true
+  verificationIssue?: true
   verifiedBy?: true
   verified?: true
-  verificationIssue?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type BusMaxAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
   typeOfUpdate?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
-  updateInfo?: true
   subjectOfChange?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  updateInfo?: true
+  remarks?: true
   note?: true
+  issue?: true
+  verificationIssue?: true
   verifiedBy?: true
   verified?: true
-  verificationIssue?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type BusCountAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
   typeOfUpdate?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
-  updateInfo?: true
   subjectOfChange?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  updateInfo?: true
+  remarks?: true
   note?: true
+  issue?: true
+  verificationIssue?: true
   verifiedBy?: true
   verified?: true
-  verificationIssue?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -281,24 +291,25 @@ export type BusGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type BusGroupByOutputType = {
   id: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note: string | null
+  issue: string | null
+  verificationIssue: string | null
   verifiedBy: string
   verified: string
-  verificationIssue: string | null
   userId: number
+  operationsOfficeNumId: number | null
   createdAt: Date
   updatedAt: Date
   _count: BusCountAggregateOutputType | null
@@ -328,52 +339,56 @@ export type BusWhereInput = {
   OR?: Prisma.BusWhereInput[]
   NOT?: Prisma.BusWhereInput | Prisma.BusWhereInput[]
   id?: Prisma.IntFilter<"Bus"> | number
+  hhId?: Prisma.StringFilter<"Bus"> | string
   lgu?: Prisma.StringFilter<"Bus"> | string
   barangay?: Prisma.StringFilter<"Bus"> | string
-  hhId?: Prisma.StringFilter<"Bus"> | string
   granteeName?: Prisma.StringFilter<"Bus"> | string
   typeOfUpdate?: Prisma.StringFilter<"Bus"> | string
-  remarks?: Prisma.StringFilter<"Bus"> | string
-  issue?: Prisma.StringNullableFilter<"Bus"> | string | null
-  encodedBy?: Prisma.StringFilter<"Bus"> | string
-  updateInfo?: Prisma.StringFilter<"Bus"> | string
   subjectOfChange?: Prisma.StringFilter<"Bus"> | string
   drn?: Prisma.StringFilter<"Bus"> | string
   cl?: Prisma.StringFilter<"Bus"> | string
   date?: Prisma.DateTimeFilter<"Bus"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Bus"> | string
+  updateInfo?: Prisma.StringFilter<"Bus"> | string
+  remarks?: Prisma.StringFilter<"Bus"> | string
   note?: Prisma.StringNullableFilter<"Bus"> | string | null
+  issue?: Prisma.StringNullableFilter<"Bus"> | string | null
+  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringFilter<"Bus"> | string
   verified?: Prisma.StringFilter<"Bus"> | string
-  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   userId?: Prisma.IntFilter<"Bus"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Bus"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }
 
 export type BusOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   typeOfUpdate?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
-  updateInfo?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  updateInfo?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
-  verificationIssue?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userById?: Prisma.UserOrderByWithRelationInput
+  operationsOffice?: Prisma.OperationsOfficeNumOrderByWithRelationInput
 }
 
 export type BusWhereUniqueInput = Prisma.AtLeast<{
@@ -381,49 +396,52 @@ export type BusWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.BusWhereInput | Prisma.BusWhereInput[]
   OR?: Prisma.BusWhereInput[]
   NOT?: Prisma.BusWhereInput | Prisma.BusWhereInput[]
+  hhId?: Prisma.StringFilter<"Bus"> | string
   lgu?: Prisma.StringFilter<"Bus"> | string
   barangay?: Prisma.StringFilter<"Bus"> | string
-  hhId?: Prisma.StringFilter<"Bus"> | string
   granteeName?: Prisma.StringFilter<"Bus"> | string
   typeOfUpdate?: Prisma.StringFilter<"Bus"> | string
-  remarks?: Prisma.StringFilter<"Bus"> | string
-  issue?: Prisma.StringNullableFilter<"Bus"> | string | null
-  encodedBy?: Prisma.StringFilter<"Bus"> | string
-  updateInfo?: Prisma.StringFilter<"Bus"> | string
   subjectOfChange?: Prisma.StringFilter<"Bus"> | string
   drn?: Prisma.StringFilter<"Bus"> | string
   cl?: Prisma.StringFilter<"Bus"> | string
   date?: Prisma.DateTimeFilter<"Bus"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Bus"> | string
+  updateInfo?: Prisma.StringFilter<"Bus"> | string
+  remarks?: Prisma.StringFilter<"Bus"> | string
   note?: Prisma.StringNullableFilter<"Bus"> | string | null
+  issue?: Prisma.StringNullableFilter<"Bus"> | string | null
+  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringFilter<"Bus"> | string
   verified?: Prisma.StringFilter<"Bus"> | string
-  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
   userId?: Prisma.IntFilter<"Bus"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Bus"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }, "id">
 
 export type BusOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   typeOfUpdate?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
-  updateInfo?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  updateInfo?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
-  verificationIssue?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BusCountOrderByAggregateInput
@@ -438,188 +456,195 @@ export type BusScalarWhereWithAggregatesInput = {
   OR?: Prisma.BusScalarWhereWithAggregatesInput[]
   NOT?: Prisma.BusScalarWhereWithAggregatesInput | Prisma.BusScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Bus"> | number
+  hhId?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   lgu?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   barangay?: Prisma.StringWithAggregatesFilter<"Bus"> | string
-  hhId?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   granteeName?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   typeOfUpdate?: Prisma.StringWithAggregatesFilter<"Bus"> | string
-  remarks?: Prisma.StringWithAggregatesFilter<"Bus"> | string
-  issue?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
-  encodedBy?: Prisma.StringWithAggregatesFilter<"Bus"> | string
-  updateInfo?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   subjectOfChange?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   drn?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   cl?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   date?: Prisma.DateTimeWithAggregatesFilter<"Bus"> | Date | string
+  encodedBy?: Prisma.StringWithAggregatesFilter<"Bus"> | string
+  updateInfo?: Prisma.StringWithAggregatesFilter<"Bus"> | string
+  remarks?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   note?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
+  issue?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
+  verificationIssue?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
   verifiedBy?: Prisma.StringWithAggregatesFilter<"Bus"> | string
   verified?: Prisma.StringWithAggregatesFilter<"Bus"> | string
-  verificationIssue?: Prisma.StringNullableWithAggregatesFilter<"Bus"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"Bus"> | number
+  operationsOfficeNumId?: Prisma.IntNullableWithAggregatesFilter<"Bus"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Bus"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Bus"> | Date | string
 }
 
 export type BusCreateInput = {
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  verificationIssue?: string | null
   verifiedBy?: string
   verified?: string
-  verificationIssue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   userById: Prisma.UserCreateNestedOneWithoutBusByIdInput
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutBusInput
 }
 
 export type BusUncheckedCreateInput = {
   id?: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  verificationIssue?: string | null
   verifiedBy?: string
   verified?: string
-  verificationIssue?: string | null
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type BusUpdateInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userById?: Prisma.UserUpdateOneRequiredWithoutBusByIdNestedInput
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutBusNestedInput
 }
 
 export type BusUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BusCreateManyInput = {
   id?: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  verificationIssue?: string | null
   verifiedBy?: string
   verified?: string
-  verificationIssue?: string | null
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type BusUpdateManyMutationInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BusUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -636,24 +661,25 @@ export type BusOrderByRelationAggregateInput = {
 
 export type BusCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   typeOfUpdate?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
-  updateInfo?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  updateInfo?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
-  verificationIssue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -661,52 +687,55 @@ export type BusCountOrderByAggregateInput = {
 export type BusAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
 }
 
 export type BusMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   typeOfUpdate?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
-  updateInfo?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  updateInfo?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
-  verificationIssue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type BusMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
   typeOfUpdate?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
-  updateInfo?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  updateInfo?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  verificationIssue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
-  verificationIssue?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -714,6 +743,49 @@ export type BusMinOrderByAggregateInput = {
 export type BusSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
+}
+
+export type BusCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.BusCreateWithoutOperationsOfficeInput, Prisma.BusUncheckedCreateWithoutOperationsOfficeInput> | Prisma.BusCreateWithoutOperationsOfficeInput[] | Prisma.BusUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.BusCreateOrConnectWithoutOperationsOfficeInput | Prisma.BusCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.BusCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+}
+
+export type BusUncheckedCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.BusCreateWithoutOperationsOfficeInput, Prisma.BusUncheckedCreateWithoutOperationsOfficeInput> | Prisma.BusCreateWithoutOperationsOfficeInput[] | Prisma.BusUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.BusCreateOrConnectWithoutOperationsOfficeInput | Prisma.BusCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.BusCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+}
+
+export type BusUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.BusCreateWithoutOperationsOfficeInput, Prisma.BusUncheckedCreateWithoutOperationsOfficeInput> | Prisma.BusCreateWithoutOperationsOfficeInput[] | Prisma.BusUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.BusCreateOrConnectWithoutOperationsOfficeInput | Prisma.BusCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.BusUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.BusUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.BusCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  disconnect?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  delete?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  connect?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  update?: Prisma.BusUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.BusUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.BusUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.BusUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.BusScalarWhereInput | Prisma.BusScalarWhereInput[]
+}
+
+export type BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.BusCreateWithoutOperationsOfficeInput, Prisma.BusUncheckedCreateWithoutOperationsOfficeInput> | Prisma.BusCreateWithoutOperationsOfficeInput[] | Prisma.BusUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.BusCreateOrConnectWithoutOperationsOfficeInput | Prisma.BusCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.BusUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.BusUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.BusCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  disconnect?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  delete?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  connect?: Prisma.BusWhereUniqueInput | Prisma.BusWhereUniqueInput[]
+  update?: Prisma.BusUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.BusUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.BusUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.BusUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.BusScalarWhereInput | Prisma.BusScalarWhereInput[]
 }
 
 export type BusCreateNestedManyWithoutUserByIdInput = {
@@ -762,47 +834,150 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type BusCreateWithoutUserByIdInput = {
+export type BusCreateWithoutOperationsOfficeInput = {
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  verificationIssue?: string | null
   verifiedBy?: string
   verified?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userById: Prisma.UserCreateNestedOneWithoutBusByIdInput
+}
+
+export type BusUncheckedCreateWithoutOperationsOfficeInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  granteeName: string
+  typeOfUpdate: string
+  subjectOfChange: string
+  drn: string
+  cl: string
+  date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
   verificationIssue?: string | null
+  verifiedBy?: string
+  verified?: string
+  userId: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type BusUncheckedCreateWithoutUserByIdInput = {
-  id?: number
+export type BusCreateOrConnectWithoutOperationsOfficeInput = {
+  where: Prisma.BusWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusCreateWithoutOperationsOfficeInput, Prisma.BusUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type BusCreateManyOperationsOfficeInputEnvelope = {
+  data: Prisma.BusCreateManyOperationsOfficeInput | Prisma.BusCreateManyOperationsOfficeInput[]
+  skipDuplicates?: boolean
+}
+
+export type BusUpsertWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.BusWhereUniqueInput
+  update: Prisma.XOR<Prisma.BusUpdateWithoutOperationsOfficeInput, Prisma.BusUncheckedUpdateWithoutOperationsOfficeInput>
+  create: Prisma.XOR<Prisma.BusCreateWithoutOperationsOfficeInput, Prisma.BusUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type BusUpdateWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.BusWhereUniqueInput
+  data: Prisma.XOR<Prisma.BusUpdateWithoutOperationsOfficeInput, Prisma.BusUncheckedUpdateWithoutOperationsOfficeInput>
+}
+
+export type BusUpdateManyWithWhereWithoutOperationsOfficeInput = {
+  where: Prisma.BusScalarWhereInput
+  data: Prisma.XOR<Prisma.BusUpdateManyMutationInput, Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeInput>
+}
+
+export type BusScalarWhereInput = {
+  AND?: Prisma.BusScalarWhereInput | Prisma.BusScalarWhereInput[]
+  OR?: Prisma.BusScalarWhereInput[]
+  NOT?: Prisma.BusScalarWhereInput | Prisma.BusScalarWhereInput[]
+  id?: Prisma.IntFilter<"Bus"> | number
+  hhId?: Prisma.StringFilter<"Bus"> | string
+  lgu?: Prisma.StringFilter<"Bus"> | string
+  barangay?: Prisma.StringFilter<"Bus"> | string
+  granteeName?: Prisma.StringFilter<"Bus"> | string
+  typeOfUpdate?: Prisma.StringFilter<"Bus"> | string
+  subjectOfChange?: Prisma.StringFilter<"Bus"> | string
+  drn?: Prisma.StringFilter<"Bus"> | string
+  cl?: Prisma.StringFilter<"Bus"> | string
+  date?: Prisma.DateTimeFilter<"Bus"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Bus"> | string
+  updateInfo?: Prisma.StringFilter<"Bus"> | string
+  remarks?: Prisma.StringFilter<"Bus"> | string
+  note?: Prisma.StringNullableFilter<"Bus"> | string | null
+  issue?: Prisma.StringNullableFilter<"Bus"> | string | null
+  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
+  verifiedBy?: Prisma.StringFilter<"Bus"> | string
+  verified?: Prisma.StringFilter<"Bus"> | string
+  userId?: Prisma.IntFilter<"Bus"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Bus"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
+}
+
+export type BusCreateWithoutUserByIdInput = {
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  verificationIssue?: string | null
   verifiedBy?: string
   verified?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutBusInput
+}
+
+export type BusUncheckedCreateWithoutUserByIdInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  granteeName: string
+  typeOfUpdate: string
+  subjectOfChange: string
+  drn: string
+  cl: string
+  date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
   verificationIssue?: string | null
+  verifiedBy?: string
+  verified?: string
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -833,120 +1008,192 @@ export type BusUpdateManyWithWhereWithoutUserByIdInput = {
   data: Prisma.XOR<Prisma.BusUpdateManyMutationInput, Prisma.BusUncheckedUpdateManyWithoutUserByIdInput>
 }
 
-export type BusScalarWhereInput = {
-  AND?: Prisma.BusScalarWhereInput | Prisma.BusScalarWhereInput[]
-  OR?: Prisma.BusScalarWhereInput[]
-  NOT?: Prisma.BusScalarWhereInput | Prisma.BusScalarWhereInput[]
-  id?: Prisma.IntFilter<"Bus"> | number
-  lgu?: Prisma.StringFilter<"Bus"> | string
-  barangay?: Prisma.StringFilter<"Bus"> | string
-  hhId?: Prisma.StringFilter<"Bus"> | string
-  granteeName?: Prisma.StringFilter<"Bus"> | string
-  typeOfUpdate?: Prisma.StringFilter<"Bus"> | string
-  remarks?: Prisma.StringFilter<"Bus"> | string
-  issue?: Prisma.StringNullableFilter<"Bus"> | string | null
-  encodedBy?: Prisma.StringFilter<"Bus"> | string
-  updateInfo?: Prisma.StringFilter<"Bus"> | string
-  subjectOfChange?: Prisma.StringFilter<"Bus"> | string
-  drn?: Prisma.StringFilter<"Bus"> | string
-  cl?: Prisma.StringFilter<"Bus"> | string
-  date?: Prisma.DateTimeFilter<"Bus"> | Date | string
-  note?: Prisma.StringNullableFilter<"Bus"> | string | null
-  verifiedBy?: Prisma.StringFilter<"Bus"> | string
-  verified?: Prisma.StringFilter<"Bus"> | string
-  verificationIssue?: Prisma.StringNullableFilter<"Bus"> | string | null
-  userId?: Prisma.IntFilter<"Bus"> | number
-  createdAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Bus"> | Date | string
-}
-
-export type BusCreateManyUserByIdInput = {
+export type BusCreateManyOperationsOfficeInput = {
   id?: number
+  hhId: string
   lgu: string
   barangay: string
-  hhId: string
   granteeName: string
   typeOfUpdate: string
-  remarks: string
-  issue?: string | null
-  encodedBy: string
-  updateInfo: string
   subjectOfChange: string
   drn: string
   cl: string
   date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
   note?: string | null
+  issue?: string | null
+  verificationIssue?: string | null
   verifiedBy?: string
   verified?: string
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type BusUpdateWithoutOperationsOfficeInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  granteeName?: Prisma.StringFieldUpdateOperationsInput | string
+  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
+  cl?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userById?: Prisma.UserUpdateOneRequiredWithoutBusByIdNestedInput
+}
+
+export type BusUncheckedUpdateWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  granteeName?: Prisma.StringFieldUpdateOperationsInput | string
+  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
+  cl?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type BusUncheckedUpdateManyWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  granteeName?: Prisma.StringFieldUpdateOperationsInput | string
+  typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
+  subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.StringFieldUpdateOperationsInput | string
+  cl?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type BusCreateManyUserByIdInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  granteeName: string
+  typeOfUpdate: string
+  subjectOfChange: string
+  drn: string
+  cl: string
+  date: Date | string
+  encodedBy: string
+  updateInfo: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
   verificationIssue?: string | null
+  verifiedBy?: string
+  verified?: string
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type BusUpdateWithoutUserByIdInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutBusNestedInput
 }
 
 export type BusUncheckedUpdateWithoutUserByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BusUncheckedUpdateManyWithoutUserByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.StringFieldUpdateOperationsInput | string
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.StringFieldUpdateOperationsInput | string
   typeOfUpdate?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
-  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   drn?: Prisma.StringFieldUpdateOperationsInput | string
   cl?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updateInfo?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
-  verificationIssue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -955,139 +1202,151 @@ export type BusUncheckedUpdateManyWithoutUserByIdInput = {
 
 export type BusSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   typeOfUpdate?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
-  updateInfo?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  updateInfo?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
+  verificationIssue?: boolean
   verifiedBy?: boolean
   verified?: boolean
-  verificationIssue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Bus$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["bus"]>
 
 export type BusSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   typeOfUpdate?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
-  updateInfo?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  updateInfo?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
+  verificationIssue?: boolean
   verifiedBy?: boolean
   verified?: boolean
-  verificationIssue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Bus$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["bus"]>
 
 export type BusSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   typeOfUpdate?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
-  updateInfo?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  updateInfo?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
+  verificationIssue?: boolean
   verifiedBy?: boolean
   verified?: boolean
-  verificationIssue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Bus$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["bus"]>
 
 export type BusSelectScalar = {
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
   typeOfUpdate?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
-  updateInfo?: boolean
   subjectOfChange?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  updateInfo?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
+  verificationIssue?: boolean
   verifiedBy?: boolean
   verified?: boolean
-  verificationIssue?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "typeOfUpdate" | "remarks" | "issue" | "encodedBy" | "updateInfo" | "subjectOfChange" | "drn" | "cl" | "date" | "note" | "verifiedBy" | "verified" | "verificationIssue" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["bus"]>
+export type BusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "granteeName" | "typeOfUpdate" | "subjectOfChange" | "drn" | "cl" | "date" | "encodedBy" | "updateInfo" | "remarks" | "note" | "issue" | "verificationIssue" | "verifiedBy" | "verified" | "userId" | "operationsOfficeNumId" | "createdAt" | "updatedAt", ExtArgs["result"]["bus"]>
 export type BusInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Bus$operationsOfficeArgs<ExtArgs>
 }
 export type BusIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Bus$operationsOfficeArgs<ExtArgs>
 }
 export type BusIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Bus$operationsOfficeArgs<ExtArgs>
 }
 
 export type $BusPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Bus"
   objects: {
     userById: Prisma.$UserPayload<ExtArgs>
+    operationsOffice: Prisma.$OperationsOfficeNumPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    hhId: string
     lgu: string
     barangay: string
-    hhId: string
     granteeName: string
     typeOfUpdate: string
-    remarks: string
-    issue: string | null
-    encodedBy: string
-    updateInfo: string
     subjectOfChange: string
     drn: string
     cl: string
     date: Date
+    encodedBy: string
+    updateInfo: string
+    remarks: string
     note: string | null
+    issue: string | null
+    verificationIssue: string | null
     verifiedBy: string
     verified: string
-    verificationIssue: string | null
     userId: number
+    operationsOfficeNumId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["bus"]>
@@ -1485,6 +1744,7 @@ readonly fields: BusFieldRefs;
 export interface Prisma__BusClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   userById<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  operationsOffice<T extends Prisma.Bus$operationsOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bus$operationsOfficeArgs<ExtArgs>>): Prisma.Prisma__OperationsOfficeNumClient<runtime.Types.Result.GetResult<Prisma.$OperationsOfficeNumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1515,24 +1775,25 @@ export interface Prisma__BusClient<T, Null = never, ExtArgs extends runtime.Type
  */
 export interface BusFieldRefs {
   readonly id: Prisma.FieldRef<"Bus", 'Int'>
+  readonly hhId: Prisma.FieldRef<"Bus", 'String'>
   readonly lgu: Prisma.FieldRef<"Bus", 'String'>
   readonly barangay: Prisma.FieldRef<"Bus", 'String'>
-  readonly hhId: Prisma.FieldRef<"Bus", 'String'>
   readonly granteeName: Prisma.FieldRef<"Bus", 'String'>
   readonly typeOfUpdate: Prisma.FieldRef<"Bus", 'String'>
-  readonly remarks: Prisma.FieldRef<"Bus", 'String'>
-  readonly issue: Prisma.FieldRef<"Bus", 'String'>
-  readonly encodedBy: Prisma.FieldRef<"Bus", 'String'>
-  readonly updateInfo: Prisma.FieldRef<"Bus", 'String'>
   readonly subjectOfChange: Prisma.FieldRef<"Bus", 'String'>
   readonly drn: Prisma.FieldRef<"Bus", 'String'>
   readonly cl: Prisma.FieldRef<"Bus", 'String'>
   readonly date: Prisma.FieldRef<"Bus", 'DateTime'>
+  readonly encodedBy: Prisma.FieldRef<"Bus", 'String'>
+  readonly updateInfo: Prisma.FieldRef<"Bus", 'String'>
+  readonly remarks: Prisma.FieldRef<"Bus", 'String'>
   readonly note: Prisma.FieldRef<"Bus", 'String'>
+  readonly issue: Prisma.FieldRef<"Bus", 'String'>
+  readonly verificationIssue: Prisma.FieldRef<"Bus", 'String'>
   readonly verifiedBy: Prisma.FieldRef<"Bus", 'String'>
   readonly verified: Prisma.FieldRef<"Bus", 'String'>
-  readonly verificationIssue: Prisma.FieldRef<"Bus", 'String'>
   readonly userId: Prisma.FieldRef<"Bus", 'Int'>
+  readonly operationsOfficeNumId: Prisma.FieldRef<"Bus", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Bus", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Bus", 'DateTime'>
 }
@@ -1928,6 +2189,25 @@ export type BusDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Limit how many Buses to delete.
    */
   limit?: number
+}
+
+/**
+ * Bus.operationsOffice
+ */
+export type Bus$operationsOfficeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OperationsOfficeNum
+   */
+  select?: Prisma.OperationsOfficeNumSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OperationsOfficeNum
+   */
+  omit?: Prisma.OperationsOfficeNumOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OperationsOfficeNumInclude<ExtArgs> | null
+  where?: Prisma.OperationsOfficeNumWhereInput
 }
 
 /**

@@ -50,7 +50,7 @@ export class SwdiController {
     return this.swdiService.update(+id, updateSwdiDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.swdiService.remove(+id);
   }

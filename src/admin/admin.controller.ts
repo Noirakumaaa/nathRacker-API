@@ -7,6 +7,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AdminService } from './admin.service.js';
 import { CreateAdminDto, CreateBarangay } from './dto/create-admin.dto.js';
@@ -30,6 +31,22 @@ export class AdminController {
   @Post('register')
   registerAccount(@Body() createAuthDto: CreateRegisterAccount) {
     return this.adminService.Register(createAuthDto);
+  }
+
+
+  @Get('count/documents')
+  alldocumentCountbyId(@Req() req: Request) {
+    return this.adminService.alldocumentCountbyId(req);
+  }
+
+  @Get('count/documents/by-office')
+  documentCountByOffice(@Query('officeId') officeId: string) {
+    return this.adminService.documentCountByOffice(Number(officeId));
+  }
+
+  @Get('count/documents/all')
+  documentCountAll() {
+    return this.adminService.documentCountAll();
   }
 
   @Post()

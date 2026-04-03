@@ -15,6 +15,7 @@ declare global {
       role: string;
       firstName: string;
       lastName: string;
+      assignedOperationId: number | null;
     }
 
     interface Request {
@@ -85,7 +86,7 @@ export class AuthService {
       govUsername: checkUser.govUsername,
       firstName: sessionTimeout?.firstName,
       lastName: sessionTimeout?.lastName,
-      operationOffice : sessionTimeout?.assignedOperationId,
+      assignedOperationId : sessionTimeout?.assignedOperationId,
       lgu : sessionTimeout?.assignedLGUID,
       barangay : sessionTimeout?.assignedBarangayId,
       role: checkUser.role,

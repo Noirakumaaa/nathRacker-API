@@ -29,8 +29,8 @@ export * from "./enums.js"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more OperationsOfficeNums
+ * const operationsOfficeNums = await prisma.operationsOfficeNum.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,6 +39,21 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model OperationsOfficeNum
+ * 
+ */
+export type OperationsOfficeNum = Prisma.OperationsOfficeNumModel
+/**
+ * Model Lgu
+ * 
+ */
+export type Lgu = Prisma.LguModel
+/**
+ * Model Barangay
+ * 
+ */
+export type Barangay = Prisma.BarangayModel
 /**
  * Model User
  * 
@@ -79,18 +94,3 @@ export type Miscellaneous = Prisma.MiscellaneousModel
  * 
  */
 export type EncodedDocument = Prisma.EncodedDocumentModel
-/**
- * Model OperationsOfficeNum
- * 
- */
-export type OperationsOfficeNum = Prisma.OperationsOfficeNumModel
-/**
- * Model Lgu
- * 
- */
-export type Lgu = Prisma.LguModel
-/**
- * Model Barangay
- * 
- */
-export type Barangay = Prisma.BarangayModel

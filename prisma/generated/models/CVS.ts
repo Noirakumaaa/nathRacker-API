@@ -29,11 +29,13 @@ export type AggregateCVS = {
 export type CVSAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type CVSSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type CVSMinAggregateOutputType = {
@@ -43,11 +45,12 @@ export type CVSMinAggregateOutputType = {
   barangay: string | null
   facilityName: string | null
   formType: string | null
-  remarks: string | null
-  userId: number | null
-  issue: string | null
   period: string | null
   date: Date | null
+  remarks: string | null
+  issue: string | null
+  userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,11 +62,12 @@ export type CVSMaxAggregateOutputType = {
   barangay: string | null
   facilityName: string | null
   formType: string | null
-  remarks: string | null
-  userId: number | null
-  issue: string | null
   period: string | null
   date: Date | null
+  remarks: string | null
+  issue: string | null
+  userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -75,11 +79,12 @@ export type CVSCountAggregateOutputType = {
   barangay: number
   facilityName: number
   formType: number
-  remarks: number
-  userId: number
-  issue: number
   period: number
   date: number
+  remarks: number
+  issue: number
+  userId: number
+  operationsOfficeNumId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -89,11 +94,13 @@ export type CVSCountAggregateOutputType = {
 export type CVSAvgAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type CVSSumAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type CVSMinAggregateInputType = {
@@ -103,11 +110,12 @@ export type CVSMinAggregateInputType = {
   barangay?: true
   facilityName?: true
   formType?: true
-  remarks?: true
-  userId?: true
-  issue?: true
   period?: true
   date?: true
+  remarks?: true
+  issue?: true
+  userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -119,11 +127,12 @@ export type CVSMaxAggregateInputType = {
   barangay?: true
   facilityName?: true
   formType?: true
-  remarks?: true
-  userId?: true
-  issue?: true
   period?: true
   date?: true
+  remarks?: true
+  issue?: true
+  userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -135,11 +144,12 @@ export type CVSCountAggregateInputType = {
   barangay?: true
   facilityName?: true
   formType?: true
-  remarks?: true
-  userId?: true
-  issue?: true
   period?: true
   date?: true
+  remarks?: true
+  issue?: true
+  userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -238,11 +248,12 @@ export type CVSGroupByOutputType = {
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  userId: number
-  issue: string | null
   period: string
   date: Date
+  remarks: string
+  issue: string | null
+  userId: number
+  operationsOfficeNumId: number | null
   createdAt: Date
   updatedAt: Date
   _count: CVSCountAggregateOutputType | null
@@ -277,14 +288,16 @@ export type CVSWhereInput = {
   barangay?: Prisma.StringFilter<"CVS"> | string
   facilityName?: Prisma.StringFilter<"CVS"> | string
   formType?: Prisma.StringFilter<"CVS"> | string
-  remarks?: Prisma.StringFilter<"CVS"> | string
-  userId?: Prisma.IntFilter<"CVS"> | number
-  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
   period?: Prisma.StringFilter<"CVS"> | string
   date?: Prisma.DateTimeFilter<"CVS"> | Date | string
+  remarks?: Prisma.StringFilter<"CVS"> | string
+  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
+  userId?: Prisma.IntFilter<"CVS"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"CVS"> | number | null
   createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }
 
 export type CVSOrderByWithRelationInput = {
@@ -294,14 +307,16 @@ export type CVSOrderByWithRelationInput = {
   barangay?: Prisma.SortOrder
   facilityName?: Prisma.SortOrder
   formType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   period?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userById?: Prisma.UserOrderByWithRelationInput
+  operationsOffice?: Prisma.OperationsOfficeNumOrderByWithRelationInput
 }
 
 export type CVSWhereUniqueInput = Prisma.AtLeast<{
@@ -314,14 +329,16 @@ export type CVSWhereUniqueInput = Prisma.AtLeast<{
   barangay?: Prisma.StringFilter<"CVS"> | string
   facilityName?: Prisma.StringFilter<"CVS"> | string
   formType?: Prisma.StringFilter<"CVS"> | string
-  remarks?: Prisma.StringFilter<"CVS"> | string
-  userId?: Prisma.IntFilter<"CVS"> | number
-  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
   period?: Prisma.StringFilter<"CVS"> | string
   date?: Prisma.DateTimeFilter<"CVS"> | Date | string
+  remarks?: Prisma.StringFilter<"CVS"> | string
+  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
+  userId?: Prisma.IntFilter<"CVS"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"CVS"> | number | null
   createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }, "id">
 
 export type CVSOrderByWithAggregationInput = {
@@ -331,11 +348,12 @@ export type CVSOrderByWithAggregationInput = {
   barangay?: Prisma.SortOrder
   facilityName?: Prisma.SortOrder
   formType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   period?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CVSCountOrderByAggregateInput
@@ -355,11 +373,12 @@ export type CVSScalarWhereWithAggregatesInput = {
   barangay?: Prisma.StringWithAggregatesFilter<"CVS"> | string
   facilityName?: Prisma.StringWithAggregatesFilter<"CVS"> | string
   formType?: Prisma.StringWithAggregatesFilter<"CVS"> | string
-  remarks?: Prisma.StringWithAggregatesFilter<"CVS"> | string
-  userId?: Prisma.IntWithAggregatesFilter<"CVS"> | number
-  issue?: Prisma.StringNullableWithAggregatesFilter<"CVS"> | string | null
   period?: Prisma.StringWithAggregatesFilter<"CVS"> | string
   date?: Prisma.DateTimeWithAggregatesFilter<"CVS"> | Date | string
+  remarks?: Prisma.StringWithAggregatesFilter<"CVS"> | string
+  issue?: Prisma.StringNullableWithAggregatesFilter<"CVS"> | string | null
+  userId?: Prisma.IntWithAggregatesFilter<"CVS"> | number
+  operationsOfficeNumId?: Prisma.IntNullableWithAggregatesFilter<"CVS"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CVS"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CVS"> | Date | string
 }
@@ -370,13 +389,14 @@ export type CVSCreateInput = {
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  issue?: string | null
   period: string
   date: Date | string
+  remarks: string
+  issue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   userById: Prisma.UserCreateNestedOneWithoutCvsByIDInput
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutCvsInput
 }
 
 export type CVSUncheckedCreateInput = {
@@ -386,11 +406,12 @@ export type CVSUncheckedCreateInput = {
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  userId: number
-  issue?: string | null
   period: string
   date: Date | string
+  remarks: string
+  issue?: string | null
+  userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -401,13 +422,14 @@ export type CVSUpdateInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userById?: Prisma.UserUpdateOneRequiredWithoutCvsByIDNestedInput
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutCvsNestedInput
 }
 
 export type CVSUncheckedUpdateInput = {
@@ -417,11 +439,12 @@ export type CVSUncheckedUpdateInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -433,11 +456,12 @@ export type CVSCreateManyInput = {
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  userId: number
-  issue?: string | null
   period: string
   date: Date | string
+  remarks: string
+  issue?: string | null
+  userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -448,10 +472,10 @@ export type CVSUpdateManyMutationInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -463,11 +487,12 @@ export type CVSUncheckedUpdateManyInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -489,11 +514,12 @@ export type CVSCountOrderByAggregateInput = {
   barangay?: Prisma.SortOrder
   facilityName?: Prisma.SortOrder
   formType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
   period?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -501,6 +527,7 @@ export type CVSCountOrderByAggregateInput = {
 export type CVSAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
 }
 
 export type CVSMaxOrderByAggregateInput = {
@@ -510,11 +537,12 @@ export type CVSMaxOrderByAggregateInput = {
   barangay?: Prisma.SortOrder
   facilityName?: Prisma.SortOrder
   formType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
   period?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -526,11 +554,12 @@ export type CVSMinOrderByAggregateInput = {
   barangay?: Prisma.SortOrder
   facilityName?: Prisma.SortOrder
   formType?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
   period?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -538,6 +567,49 @@ export type CVSMinOrderByAggregateInput = {
 export type CVSSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
+}
+
+export type CVSCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.CVSCreateWithoutOperationsOfficeInput, Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput> | Prisma.CVSCreateWithoutOperationsOfficeInput[] | Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput | Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.CVSCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+}
+
+export type CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.CVSCreateWithoutOperationsOfficeInput, Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput> | Prisma.CVSCreateWithoutOperationsOfficeInput[] | Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput | Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.CVSCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+}
+
+export type CVSUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.CVSCreateWithoutOperationsOfficeInput, Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput> | Prisma.CVSCreateWithoutOperationsOfficeInput[] | Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput | Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.CVSUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.CVSUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.CVSCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  disconnect?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  delete?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  connect?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  update?: Prisma.CVSUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.CVSUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.CVSUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.CVSUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
+}
+
+export type CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.CVSCreateWithoutOperationsOfficeInput, Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput> | Prisma.CVSCreateWithoutOperationsOfficeInput[] | Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput | Prisma.CVSCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.CVSUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.CVSUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.CVSCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  disconnect?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  delete?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  connect?: Prisma.CVSWhereUniqueInput | Prisma.CVSWhereUniqueInput[]
+  update?: Prisma.CVSUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.CVSUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.CVSUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.CVSUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
 }
 
 export type CVSCreateNestedManyWithoutUserByIdInput = {
@@ -582,18 +654,96 @@ export type CVSUncheckedUpdateManyWithoutUserByIdNestedInput = {
   deleteMany?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
 }
 
+export type CVSCreateWithoutOperationsOfficeInput = {
+  idNumber: string
+  lgu: string
+  barangay: string
+  facilityName: string
+  formType: string
+  period: string
+  date: Date | string
+  remarks: string
+  issue?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userById: Prisma.UserCreateNestedOneWithoutCvsByIDInput
+}
+
+export type CVSUncheckedCreateWithoutOperationsOfficeInput = {
+  id?: number
+  idNumber: string
+  lgu: string
+  barangay: string
+  facilityName: string
+  formType: string
+  period: string
+  date: Date | string
+  remarks: string
+  issue?: string | null
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CVSCreateOrConnectWithoutOperationsOfficeInput = {
+  where: Prisma.CVSWhereUniqueInput
+  create: Prisma.XOR<Prisma.CVSCreateWithoutOperationsOfficeInput, Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type CVSCreateManyOperationsOfficeInputEnvelope = {
+  data: Prisma.CVSCreateManyOperationsOfficeInput | Prisma.CVSCreateManyOperationsOfficeInput[]
+  skipDuplicates?: boolean
+}
+
+export type CVSUpsertWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.CVSWhereUniqueInput
+  update: Prisma.XOR<Prisma.CVSUpdateWithoutOperationsOfficeInput, Prisma.CVSUncheckedUpdateWithoutOperationsOfficeInput>
+  create: Prisma.XOR<Prisma.CVSCreateWithoutOperationsOfficeInput, Prisma.CVSUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type CVSUpdateWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.CVSWhereUniqueInput
+  data: Prisma.XOR<Prisma.CVSUpdateWithoutOperationsOfficeInput, Prisma.CVSUncheckedUpdateWithoutOperationsOfficeInput>
+}
+
+export type CVSUpdateManyWithWhereWithoutOperationsOfficeInput = {
+  where: Prisma.CVSScalarWhereInput
+  data: Prisma.XOR<Prisma.CVSUpdateManyMutationInput, Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeInput>
+}
+
+export type CVSScalarWhereInput = {
+  AND?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
+  OR?: Prisma.CVSScalarWhereInput[]
+  NOT?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
+  id?: Prisma.IntFilter<"CVS"> | number
+  idNumber?: Prisma.StringFilter<"CVS"> | string
+  lgu?: Prisma.StringFilter<"CVS"> | string
+  barangay?: Prisma.StringFilter<"CVS"> | string
+  facilityName?: Prisma.StringFilter<"CVS"> | string
+  formType?: Prisma.StringFilter<"CVS"> | string
+  period?: Prisma.StringFilter<"CVS"> | string
+  date?: Prisma.DateTimeFilter<"CVS"> | Date | string
+  remarks?: Prisma.StringFilter<"CVS"> | string
+  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
+  userId?: Prisma.IntFilter<"CVS"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"CVS"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
+}
+
 export type CVSCreateWithoutUserByIdInput = {
   idNumber: string
   lgu: string
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  issue?: string | null
   period: string
   date: Date | string
+  remarks: string
+  issue?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutCvsInput
 }
 
 export type CVSUncheckedCreateWithoutUserByIdInput = {
@@ -603,10 +753,11 @@ export type CVSUncheckedCreateWithoutUserByIdInput = {
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  issue?: string | null
   period: string
   date: Date | string
+  remarks: string
+  issue?: string | null
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -637,23 +788,67 @@ export type CVSUpdateManyWithWhereWithoutUserByIdInput = {
   data: Prisma.XOR<Prisma.CVSUpdateManyMutationInput, Prisma.CVSUncheckedUpdateManyWithoutUserByIdInput>
 }
 
-export type CVSScalarWhereInput = {
-  AND?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
-  OR?: Prisma.CVSScalarWhereInput[]
-  NOT?: Prisma.CVSScalarWhereInput | Prisma.CVSScalarWhereInput[]
-  id?: Prisma.IntFilter<"CVS"> | number
-  idNumber?: Prisma.StringFilter<"CVS"> | string
-  lgu?: Prisma.StringFilter<"CVS"> | string
-  barangay?: Prisma.StringFilter<"CVS"> | string
-  facilityName?: Prisma.StringFilter<"CVS"> | string
-  formType?: Prisma.StringFilter<"CVS"> | string
-  remarks?: Prisma.StringFilter<"CVS"> | string
-  userId?: Prisma.IntFilter<"CVS"> | number
-  issue?: Prisma.StringNullableFilter<"CVS"> | string | null
-  period?: Prisma.StringFilter<"CVS"> | string
-  date?: Prisma.DateTimeFilter<"CVS"> | Date | string
-  createdAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"CVS"> | Date | string
+export type CVSCreateManyOperationsOfficeInput = {
+  id?: number
+  idNumber: string
+  lgu: string
+  barangay: string
+  facilityName: string
+  formType: string
+  period: string
+  date: Date | string
+  remarks: string
+  issue?: string | null
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CVSUpdateWithoutOperationsOfficeInput = {
+  idNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  facilityName?: Prisma.StringFieldUpdateOperationsInput | string
+  formType?: Prisma.StringFieldUpdateOperationsInput | string
+  period?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userById?: Prisma.UserUpdateOneRequiredWithoutCvsByIDNestedInput
+}
+
+export type CVSUncheckedUpdateWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  idNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  facilityName?: Prisma.StringFieldUpdateOperationsInput | string
+  formType?: Prisma.StringFieldUpdateOperationsInput | string
+  period?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CVSUncheckedUpdateManyWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  idNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  facilityName?: Prisma.StringFieldUpdateOperationsInput | string
+  formType?: Prisma.StringFieldUpdateOperationsInput | string
+  period?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CVSCreateManyUserByIdInput = {
@@ -663,10 +858,11 @@ export type CVSCreateManyUserByIdInput = {
   barangay: string
   facilityName: string
   formType: string
-  remarks: string
-  issue?: string | null
   period: string
   date: Date | string
+  remarks: string
+  issue?: string | null
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -677,12 +873,13 @@ export type CVSUpdateWithoutUserByIdInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutCvsNestedInput
 }
 
 export type CVSUncheckedUpdateWithoutUserByIdInput = {
@@ -692,10 +889,11 @@ export type CVSUncheckedUpdateWithoutUserByIdInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -707,10 +905,11 @@ export type CVSUncheckedUpdateManyWithoutUserByIdInput = {
   barangay?: Prisma.StringFieldUpdateOperationsInput | string
   facilityName?: Prisma.StringFieldUpdateOperationsInput | string
   formType?: Prisma.StringFieldUpdateOperationsInput | string
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -724,14 +923,16 @@ export type CVSSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   barangay?: boolean
   facilityName?: boolean
   formType?: boolean
-  remarks?: boolean
-  userId?: boolean
-  issue?: boolean
   period?: boolean
   date?: boolean
+  remarks?: boolean
+  issue?: boolean
+  userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.CVS$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["cVS"]>
 
 export type CVSSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -741,14 +942,16 @@ export type CVSSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   barangay?: boolean
   facilityName?: boolean
   formType?: boolean
-  remarks?: boolean
-  userId?: boolean
-  issue?: boolean
   period?: boolean
   date?: boolean
+  remarks?: boolean
+  issue?: boolean
+  userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.CVS$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["cVS"]>
 
 export type CVSSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -758,14 +961,16 @@ export type CVSSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   barangay?: boolean
   facilityName?: boolean
   formType?: boolean
-  remarks?: boolean
-  userId?: boolean
-  issue?: boolean
   period?: boolean
   date?: boolean
+  remarks?: boolean
+  issue?: boolean
+  userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.CVS$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["cVS"]>
 
 export type CVSSelectScalar = {
@@ -775,30 +980,35 @@ export type CVSSelectScalar = {
   barangay?: boolean
   facilityName?: boolean
   formType?: boolean
-  remarks?: boolean
-  userId?: boolean
-  issue?: boolean
   period?: boolean
   date?: boolean
+  remarks?: boolean
+  issue?: boolean
+  userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CVSOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idNumber" | "lgu" | "barangay" | "facilityName" | "formType" | "remarks" | "userId" | "issue" | "period" | "date" | "createdAt" | "updatedAt", ExtArgs["result"]["cVS"]>
+export type CVSOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idNumber" | "lgu" | "barangay" | "facilityName" | "formType" | "period" | "date" | "remarks" | "issue" | "userId" | "operationsOfficeNumId" | "createdAt" | "updatedAt", ExtArgs["result"]["cVS"]>
 export type CVSInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.CVS$operationsOfficeArgs<ExtArgs>
 }
 export type CVSIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.CVS$operationsOfficeArgs<ExtArgs>
 }
 export type CVSIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.CVS$operationsOfficeArgs<ExtArgs>
 }
 
 export type $CVSPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CVS"
   objects: {
     userById: Prisma.$UserPayload<ExtArgs>
+    operationsOffice: Prisma.$OperationsOfficeNumPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -807,11 +1017,12 @@ export type $CVSPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     barangay: string
     facilityName: string
     formType: string
-    remarks: string
-    userId: number
-    issue: string | null
     period: string
     date: Date
+    remarks: string
+    issue: string | null
+    userId: number
+    operationsOfficeNumId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["cVS"]>
@@ -1209,6 +1420,7 @@ readonly fields: CVSFieldRefs;
 export interface Prisma__CVSClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   userById<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  operationsOffice<T extends Prisma.CVS$operationsOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CVS$operationsOfficeArgs<ExtArgs>>): Prisma.Prisma__OperationsOfficeNumClient<runtime.Types.Result.GetResult<Prisma.$OperationsOfficeNumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1244,11 +1456,12 @@ export interface CVSFieldRefs {
   readonly barangay: Prisma.FieldRef<"CVS", 'String'>
   readonly facilityName: Prisma.FieldRef<"CVS", 'String'>
   readonly formType: Prisma.FieldRef<"CVS", 'String'>
-  readonly remarks: Prisma.FieldRef<"CVS", 'String'>
-  readonly userId: Prisma.FieldRef<"CVS", 'Int'>
-  readonly issue: Prisma.FieldRef<"CVS", 'String'>
   readonly period: Prisma.FieldRef<"CVS", 'String'>
   readonly date: Prisma.FieldRef<"CVS", 'DateTime'>
+  readonly remarks: Prisma.FieldRef<"CVS", 'String'>
+  readonly issue: Prisma.FieldRef<"CVS", 'String'>
+  readonly userId: Prisma.FieldRef<"CVS", 'Int'>
+  readonly operationsOfficeNumId: Prisma.FieldRef<"CVS", 'Int'>
   readonly createdAt: Prisma.FieldRef<"CVS", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CVS", 'DateTime'>
 }
@@ -1644,6 +1857,25 @@ export type CVSDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Limit how many CVS to delete.
    */
   limit?: number
+}
+
+/**
+ * CVS.operationsOffice
+ */
+export type CVS$operationsOfficeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OperationsOfficeNum
+   */
+  select?: Prisma.OperationsOfficeNumSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OperationsOfficeNum
+   */
+  omit?: Prisma.OperationsOfficeNumOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OperationsOfficeNumInclude<ExtArgs> | null
+  where?: Prisma.OperationsOfficeNumWhereInput
 }
 
 /**

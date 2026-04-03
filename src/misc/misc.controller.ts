@@ -53,7 +53,7 @@ export class MiscController {
     return this.miscService.update(+id, updateMiscDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.miscService.remove(+id);
   }

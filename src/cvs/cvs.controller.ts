@@ -49,7 +49,7 @@ export class CvsController {
     return this.cvsService.update(+id, updateCvDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.cvsService.remove(+id);
   }

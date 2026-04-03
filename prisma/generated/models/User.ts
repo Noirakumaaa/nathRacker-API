@@ -36,29 +36,29 @@ export type UserSumAggregateOutputType = {
 
 export type UserMinAggregateOutputType = {
   id: number | null
-  createdAt: Date | null
   email: string | null
   password: string | null
-  role: $Enums.Role | null
   govUsername: string | null
+  role: $Enums.Role | null
+  createdAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: number | null
-  createdAt: Date | null
   email: string | null
   password: string | null
-  role: $Enums.Role | null
   govUsername: string | null
+  role: $Enums.Role | null
+  createdAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
-  createdAt: number
   email: number
   password: number
-  role: number
   govUsername: number
+  role: number
+  createdAt: number
   _all: number
 }
 
@@ -73,29 +73,29 @@ export type UserSumAggregateInputType = {
 
 export type UserMinAggregateInputType = {
   id?: true
-  createdAt?: true
   email?: true
   password?: true
-  role?: true
   govUsername?: true
+  role?: true
+  createdAt?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
-  createdAt?: true
   email?: true
   password?: true
-  role?: true
   govUsername?: true
+  role?: true
+  createdAt?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
-  createdAt?: true
   email?: true
   password?: true
-  role?: true
   govUsername?: true
+  role?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -187,11 +187,11 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: number
-  createdAt: Date
   email: string
   password: string
-  role: $Enums.Role
   govUsername: string
+  role: $Enums.Role
+  createdAt: Date
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -219,36 +219,36 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.IntFilter<"User"> | number
-  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   email?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
-  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   govUsername?: Prisma.StringFilter<"User"> | string
+  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
   busById?: Prisma.BusListRelationFilter
+  swdiByID?: Prisma.SwdiListRelationFilter
+  pcnByID?: Prisma.PcnListRelationFilter
+  cvsByID?: Prisma.CVSListRelationFilter
+  miscByID?: Prisma.MiscellaneousListRelationFilter
   encDocByID?: Prisma.EncodedDocumentListRelationFilter
   encDocByUsername?: Prisma.EncodedDocumentListRelationFilter
-  miscByID?: Prisma.MiscellaneousListRelationFilter
-  pcnByID?: Prisma.PcnListRelationFilter
-  swdiByID?: Prisma.SwdiListRelationFilter
-  cvsByID?: Prisma.CVSListRelationFilter
-  userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  userInfo?: Prisma.UserInfoOrderByWithRelationInput
   busById?: Prisma.BusOrderByRelationAggregateInput
+  swdiByID?: Prisma.SwdiOrderByRelationAggregateInput
+  pcnByID?: Prisma.PcnOrderByRelationAggregateInput
+  cvsByID?: Prisma.CVSOrderByRelationAggregateInput
+  miscByID?: Prisma.MiscellaneousOrderByRelationAggregateInput
   encDocByID?: Prisma.EncodedDocumentOrderByRelationAggregateInput
   encDocByUsername?: Prisma.EncodedDocumentOrderByRelationAggregateInput
-  miscByID?: Prisma.MiscellaneousOrderByRelationAggregateInput
-  pcnByID?: Prisma.PcnOrderByRelationAggregateInput
-  swdiByID?: Prisma.SwdiOrderByRelationAggregateInput
-  cvsByID?: Prisma.CVSOrderByRelationAggregateInput
-  userInfo?: Prisma.UserInfoOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -258,26 +258,26 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
   busById?: Prisma.BusListRelationFilter
+  swdiByID?: Prisma.SwdiListRelationFilter
+  pcnByID?: Prisma.PcnListRelationFilter
+  cvsByID?: Prisma.CVSListRelationFilter
+  miscByID?: Prisma.MiscellaneousListRelationFilter
   encDocByID?: Prisma.EncodedDocumentListRelationFilter
   encDocByUsername?: Prisma.EncodedDocumentListRelationFilter
-  miscByID?: Prisma.MiscellaneousListRelationFilter
-  pcnByID?: Prisma.PcnListRelationFilter
-  swdiByID?: Prisma.SwdiListRelationFilter
-  cvsByID?: Prisma.CVSListRelationFilter
-  userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
 }, "id" | "email" | "govUsername">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -290,112 +290,112 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"User"> | number
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
-  role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   govUsername?: Prisma.StringWithAggregatesFilter<"User"> | string
+  role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
   busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
   busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -404,20 +404,20 @@ export type UserAvgOrderByAggregateInput = {
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   govUsername?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -429,24 +429,12 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 export type UserCreateNestedOneWithoutUserInfoInput = {
@@ -562,34 +550,34 @@ export type UserUpdateOneRequiredWithoutEncDocByUsernameNestedInput = {
 }
 
 export type UserCreateWithoutUserInfoInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
   busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
 }
 
 export type UserUncheckedCreateWithoutUserInfoInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
   busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
 }
 
 export type UserCreateOrConnectWithoutUserInfoInput = {
@@ -609,65 +597,65 @@ export type UserUpdateToOneWithWhereWithoutUserInfoInput = {
 }
 
 export type UserUpdateWithoutUserInfoInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserInfoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
 }
 
 export type UserCreateWithoutBusByIdInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBusByIdInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBusByIdInput = {
@@ -687,65 +675,65 @@ export type UserUpdateToOneWithWhereWithoutBusByIdInput = {
 }
 
 export type UserUpdateWithoutBusByIdInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBusByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSwdiByIDInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
   busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
-  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
-  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
   cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
 }
 
 export type UserUncheckedCreateWithoutSwdiByIDInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
   busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
-  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
-  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
   cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
 }
 
 export type UserCreateOrConnectWithoutSwdiByIDInput = {
@@ -765,65 +753,65 @@ export type UserUpdateToOneWithWhereWithoutSwdiByIDInput = {
 }
 
 export type UserUpdateWithoutSwdiByIDInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
-  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
-  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
   cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSwdiByIDInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
-  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
-  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
   cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
 }
 
 export type UserCreateWithoutPcnByIDInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
   busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
-  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
-  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
   cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
 }
 
 export type UserUncheckedCreateWithoutPcnByIDInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
   busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
-  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
-  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
   cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
 }
 
 export type UserCreateOrConnectWithoutPcnByIDInput = {
@@ -843,65 +831,65 @@ export type UserUpdateToOneWithWhereWithoutPcnByIDInput = {
 }
 
 export type UserUpdateWithoutPcnByIDInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
-  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
-  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
   cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPcnByIDInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
-  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
-  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
   cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
 }
 
 export type UserCreateWithoutCvsByIDInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
   busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCvsByIDInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
   busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCvsByIDInput = {
@@ -921,65 +909,65 @@ export type UserUpdateToOneWithWhereWithoutCvsByIDInput = {
 }
 
 export type UserUpdateWithoutCvsByIDInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCvsByIDInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMiscByIDInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
   busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMiscByIDInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
   busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
-  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMiscByIDInput = {
@@ -999,65 +987,65 @@ export type UserUpdateToOneWithWhereWithoutMiscByIDInput = {
 }
 
 export type UserUpdateWithoutMiscByIDInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMiscByIDInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
-  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEncDocByIDInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
-  busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
-  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  role?: $Enums.Role
+  createdAt?: Date | string
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
 }
 
 export type UserUncheckedCreateWithoutEncDocByIDInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
-  busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
-  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  role?: $Enums.Role
+  createdAt?: Date | string
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
 }
 
 export type UserCreateOrConnectWithoutEncDocByIDInput = {
@@ -1066,34 +1054,34 @@ export type UserCreateOrConnectWithoutEncDocByIDInput = {
 }
 
 export type UserCreateWithoutEncDocByUsernameInput = {
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
-  busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
-  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
-  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  role?: $Enums.Role
+  createdAt?: Date | string
   userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
 }
 
 export type UserUncheckedCreateWithoutEncDocByUsernameInput = {
   id?: number
-  createdAt?: Date | string
   email: string
   password: string
-  role?: $Enums.Role
   govUsername: string
-  busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
-  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
-  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
-  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
-  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
-  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  role?: $Enums.Role
+  createdAt?: Date | string
   userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
 }
 
 export type UserCreateOrConnectWithoutEncDocByUsernameInput = {
@@ -1113,34 +1101,34 @@ export type UserUpdateToOneWithWhereWithoutEncDocByIDInput = {
 }
 
 export type UserUpdateWithoutEncDocByIDInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
-  busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
-  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEncDocByIDInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
-  busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
-  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
 }
 
 export type UserUpsertWithoutEncDocByUsernameInput = {
@@ -1155,34 +1143,34 @@ export type UserUpdateToOneWithWhereWithoutEncDocByUsernameInput = {
 }
 
 export type UserUpdateWithoutEncDocByUsernameInput = {
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
-  busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
-  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
-  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEncDocByUsernameInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
-  busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
-  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
-  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
-  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
-  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
-  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
 }
 
 
@@ -1192,22 +1180,22 @@ export type UserUncheckedUpdateWithoutEncDocByUsernameInput = {
 
 export type UserCountOutputType = {
   busById: number
+  swdiByID: number
+  pcnByID: number
+  cvsByID: number
+  miscByID: number
   encDocByID: number
   encDocByUsername: number
-  miscByID: number
-  pcnByID: number
-  swdiByID: number
-  cvsByID: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   busById?: boolean | UserCountOutputTypeCountBusByIdArgs
+  swdiByID?: boolean | UserCountOutputTypeCountSwdiByIDArgs
+  pcnByID?: boolean | UserCountOutputTypeCountPcnByIDArgs
+  cvsByID?: boolean | UserCountOutputTypeCountCvsByIDArgs
+  miscByID?: boolean | UserCountOutputTypeCountMiscByIDArgs
   encDocByID?: boolean | UserCountOutputTypeCountEncDocByIDArgs
   encDocByUsername?: boolean | UserCountOutputTypeCountEncDocByUsernameArgs
-  miscByID?: boolean | UserCountOutputTypeCountMiscByIDArgs
-  pcnByID?: boolean | UserCountOutputTypeCountPcnByIDArgs
-  swdiByID?: boolean | UserCountOutputTypeCountSwdiByIDArgs
-  cvsByID?: boolean | UserCountOutputTypeCountCvsByIDArgs
 }
 
 /**
@@ -1230,22 +1218,8 @@ export type UserCountOutputTypeCountBusByIdArgs<ExtArgs extends runtime.Types.Ex
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountEncDocByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EncodedDocumentWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountEncDocByUsernameArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EncodedDocumentWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountMiscByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MiscellaneousWhereInput
+export type UserCountOutputTypeCountSwdiByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SwdiWhereInput
 }
 
 /**
@@ -1258,73 +1232,87 @@ export type UserCountOutputTypeCountPcnByIDArgs<ExtArgs extends runtime.Types.Ex
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSwdiByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SwdiWhereInput
+export type UserCountOutputTypeCountCvsByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CVSWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountCvsByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CVSWhereInput
+export type UserCountOutputTypeCountMiscByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MiscellaneousWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEncDocByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EncodedDocumentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEncDocByUsernameArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EncodedDocumentWhereInput
 }
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  createdAt?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
   govUsername?: boolean
+  role?: boolean
+  createdAt?: boolean
+  userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
   busById?: boolean | Prisma.User$busByIdArgs<ExtArgs>
+  swdiByID?: boolean | Prisma.User$swdiByIDArgs<ExtArgs>
+  pcnByID?: boolean | Prisma.User$pcnByIDArgs<ExtArgs>
+  cvsByID?: boolean | Prisma.User$cvsByIDArgs<ExtArgs>
+  miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
   encDocByID?: boolean | Prisma.User$encDocByIDArgs<ExtArgs>
   encDocByUsername?: boolean | Prisma.User$encDocByUsernameArgs<ExtArgs>
-  miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
-  pcnByID?: boolean | Prisma.User$pcnByIDArgs<ExtArgs>
-  swdiByID?: boolean | Prisma.User$swdiByIDArgs<ExtArgs>
-  cvsByID?: boolean | Prisma.User$cvsByIDArgs<ExtArgs>
-  userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  createdAt?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
   govUsername?: boolean
+  role?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  createdAt?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
   govUsername?: boolean
+  role?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
-  createdAt?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
   govUsername?: boolean
+  role?: boolean
+  createdAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "email" | "password" | "role" | "govUsername", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "govUsername" | "role" | "createdAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
   busById?: boolean | Prisma.User$busByIdArgs<ExtArgs>
+  swdiByID?: boolean | Prisma.User$swdiByIDArgs<ExtArgs>
+  pcnByID?: boolean | Prisma.User$pcnByIDArgs<ExtArgs>
+  cvsByID?: boolean | Prisma.User$cvsByIDArgs<ExtArgs>
+  miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
   encDocByID?: boolean | Prisma.User$encDocByIDArgs<ExtArgs>
   encDocByUsername?: boolean | Prisma.User$encDocByUsernameArgs<ExtArgs>
-  miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
-  pcnByID?: boolean | Prisma.User$pcnByIDArgs<ExtArgs>
-  swdiByID?: boolean | Prisma.User$swdiByIDArgs<ExtArgs>
-  cvsByID?: boolean | Prisma.User$cvsByIDArgs<ExtArgs>
-  userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1333,22 +1321,22 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    userInfo: Prisma.$UserInfoPayload<ExtArgs> | null
     busById: Prisma.$BusPayload<ExtArgs>[]
+    swdiByID: Prisma.$SwdiPayload<ExtArgs>[]
+    pcnByID: Prisma.$PcnPayload<ExtArgs>[]
+    cvsByID: Prisma.$CVSPayload<ExtArgs>[]
+    miscByID: Prisma.$MiscellaneousPayload<ExtArgs>[]
     encDocByID: Prisma.$EncodedDocumentPayload<ExtArgs>[]
     encDocByUsername: Prisma.$EncodedDocumentPayload<ExtArgs>[]
-    miscByID: Prisma.$MiscellaneousPayload<ExtArgs>[]
-    pcnByID: Prisma.$PcnPayload<ExtArgs>[]
-    swdiByID: Prisma.$SwdiPayload<ExtArgs>[]
-    cvsByID: Prisma.$CVSPayload<ExtArgs>[]
-    userInfo: Prisma.$UserInfoPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    createdAt: Date
     email: string
     password: string
-    role: $Enums.Role
     govUsername: string
+    role: $Enums.Role
+    createdAt: Date
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1743,14 +1731,14 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  userInfo<T extends Prisma.User$userInfoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userInfoArgs<ExtArgs>>): Prisma.Prisma__UserInfoClient<runtime.Types.Result.GetResult<Prisma.$UserInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   busById<T extends Prisma.User$busByIdArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$busByIdArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  swdiByID<T extends Prisma.User$swdiByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$swdiByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SwdiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pcnByID<T extends Prisma.User$pcnByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pcnByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PcnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cvsByID<T extends Prisma.User$cvsByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$cvsByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CVSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  miscByID<T extends Prisma.User$miscByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$miscByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MiscellaneousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   encDocByID<T extends Prisma.User$encDocByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$encDocByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EncodedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   encDocByUsername<T extends Prisma.User$encDocByUsernameArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$encDocByUsernameArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EncodedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  miscByID<T extends Prisma.User$miscByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$miscByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MiscellaneousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  pcnByID<T extends Prisma.User$pcnByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pcnByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PcnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  swdiByID<T extends Prisma.User$swdiByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$swdiByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SwdiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  cvsByID<T extends Prisma.User$cvsByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$cvsByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CVSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  userInfo<T extends Prisma.User$userInfoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userInfoArgs<ExtArgs>>): Prisma.Prisma__UserInfoClient<runtime.Types.Result.GetResult<Prisma.$UserInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1781,11 +1769,11 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'Int'>
-  readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
-  readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly govUsername: Prisma.FieldRef<"User", 'String'>
+  readonly role: Prisma.FieldRef<"User", 'Role'>
+  readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 
@@ -2174,6 +2162,25 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.userInfo
+ */
+export type User$userInfoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserInfo
+   */
+  select?: Prisma.UserInfoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserInfo
+   */
+  omit?: Prisma.UserInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInfoInclude<ExtArgs> | null
+  where?: Prisma.UserInfoWhereInput
+}
+
+/**
  * User.busById
  */
 export type User$busByIdArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2195,6 +2202,102 @@ export type User$busByIdArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.BusScalarFieldEnum | Prisma.BusScalarFieldEnum[]
+}
+
+/**
+ * User.swdiByID
+ */
+export type User$swdiByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Swdi
+   */
+  select?: Prisma.SwdiSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Swdi
+   */
+  omit?: Prisma.SwdiOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SwdiInclude<ExtArgs> | null
+  where?: Prisma.SwdiWhereInput
+  orderBy?: Prisma.SwdiOrderByWithRelationInput | Prisma.SwdiOrderByWithRelationInput[]
+  cursor?: Prisma.SwdiWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SwdiScalarFieldEnum | Prisma.SwdiScalarFieldEnum[]
+}
+
+/**
+ * User.pcnByID
+ */
+export type User$pcnByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Pcn
+   */
+  select?: Prisma.PcnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Pcn
+   */
+  omit?: Prisma.PcnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PcnInclude<ExtArgs> | null
+  where?: Prisma.PcnWhereInput
+  orderBy?: Prisma.PcnOrderByWithRelationInput | Prisma.PcnOrderByWithRelationInput[]
+  cursor?: Prisma.PcnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PcnScalarFieldEnum | Prisma.PcnScalarFieldEnum[]
+}
+
+/**
+ * User.cvsByID
+ */
+export type User$cvsByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CVS
+   */
+  select?: Prisma.CVSSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CVS
+   */
+  omit?: Prisma.CVSOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CVSInclude<ExtArgs> | null
+  where?: Prisma.CVSWhereInput
+  orderBy?: Prisma.CVSOrderByWithRelationInput | Prisma.CVSOrderByWithRelationInput[]
+  cursor?: Prisma.CVSWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CVSScalarFieldEnum | Prisma.CVSScalarFieldEnum[]
+}
+
+/**
+ * User.miscByID
+ */
+export type User$miscByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Miscellaneous
+   */
+  select?: Prisma.MiscellaneousSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Miscellaneous
+   */
+  omit?: Prisma.MiscellaneousOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MiscellaneousInclude<ExtArgs> | null
+  where?: Prisma.MiscellaneousWhereInput
+  orderBy?: Prisma.MiscellaneousOrderByWithRelationInput | Prisma.MiscellaneousOrderByWithRelationInput[]
+  cursor?: Prisma.MiscellaneousWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MiscellaneousScalarFieldEnum | Prisma.MiscellaneousScalarFieldEnum[]
 }
 
 /**
@@ -2243,121 +2346,6 @@ export type User$encDocByUsernameArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.EncodedDocumentScalarFieldEnum | Prisma.EncodedDocumentScalarFieldEnum[]
-}
-
-/**
- * User.miscByID
- */
-export type User$miscByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Miscellaneous
-   */
-  select?: Prisma.MiscellaneousSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Miscellaneous
-   */
-  omit?: Prisma.MiscellaneousOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MiscellaneousInclude<ExtArgs> | null
-  where?: Prisma.MiscellaneousWhereInput
-  orderBy?: Prisma.MiscellaneousOrderByWithRelationInput | Prisma.MiscellaneousOrderByWithRelationInput[]
-  cursor?: Prisma.MiscellaneousWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.MiscellaneousScalarFieldEnum | Prisma.MiscellaneousScalarFieldEnum[]
-}
-
-/**
- * User.pcnByID
- */
-export type User$pcnByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Pcn
-   */
-  select?: Prisma.PcnSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Pcn
-   */
-  omit?: Prisma.PcnOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PcnInclude<ExtArgs> | null
-  where?: Prisma.PcnWhereInput
-  orderBy?: Prisma.PcnOrderByWithRelationInput | Prisma.PcnOrderByWithRelationInput[]
-  cursor?: Prisma.PcnWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PcnScalarFieldEnum | Prisma.PcnScalarFieldEnum[]
-}
-
-/**
- * User.swdiByID
- */
-export type User$swdiByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Swdi
-   */
-  select?: Prisma.SwdiSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Swdi
-   */
-  omit?: Prisma.SwdiOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SwdiInclude<ExtArgs> | null
-  where?: Prisma.SwdiWhereInput
-  orderBy?: Prisma.SwdiOrderByWithRelationInput | Prisma.SwdiOrderByWithRelationInput[]
-  cursor?: Prisma.SwdiWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SwdiScalarFieldEnum | Prisma.SwdiScalarFieldEnum[]
-}
-
-/**
- * User.cvsByID
- */
-export type User$cvsByIDArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CVS
-   */
-  select?: Prisma.CVSSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CVS
-   */
-  omit?: Prisma.CVSOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CVSInclude<ExtArgs> | null
-  where?: Prisma.CVSWhereInput
-  orderBy?: Prisma.CVSOrderByWithRelationInput | Prisma.CVSOrderByWithRelationInput[]
-  cursor?: Prisma.CVSWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CVSScalarFieldEnum | Prisma.CVSScalarFieldEnum[]
-}
-
-/**
- * User.userInfo
- */
-export type User$userInfoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserInfo
-   */
-  select?: Prisma.UserInfoSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the UserInfo
-   */
-  omit?: Prisma.UserInfoOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInfoInclude<ExtArgs> | null
-  where?: Prisma.UserInfoWhereInput
 }
 
 /**

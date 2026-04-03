@@ -38,6 +38,7 @@ export class PcnService {
         ...createPcnDto,
         encodedBy: user.govUsername,
         userId: user.id,
+        operationsOfficeNumId : user.assignedOperationId,
         date : new Date()
       },
     });
@@ -54,6 +55,7 @@ export class PcnService {
         drn: result.drn ?? " ",
         remarks: createPcnDto.remarks ?? '',
         govUsername: user.govUsername,
+        operationsOfficeNumId : user.assignedOperationId,
       },
     });
 
@@ -100,7 +102,16 @@ export class PcnService {
     return `This action updates a #${id} pcn`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} pcn`;
+  async remove(id: number) {
+   const lcnDelete = await this.prisma.client.pcn.delete({
+    where : { 
+      id : id 
+    }
+   })
+   await this.prisma.client.encodedDocument.delete({
+    where : {
+      documentId : lcnDelete.id
+    }
+   })
   }
 }

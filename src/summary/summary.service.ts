@@ -59,9 +59,13 @@ export class SummaryService {
   // remarks from the form are: 'ENCODED' | 'UPDATED' | 'ISSUE'
   private remarkToType(remarks: string): 'encode' | 'update' | 'issue' {
     const r = (remarks ?? '').toUpperCase();
+
     if (r === 'UPDATED') return 'update';
     if (r === 'ISSUE')   return 'issue';
-    return 'encode';
+    if (r === 'ENCODED') return 'encode';
+
+    // If it's anything else, treat it as 'UPDATED'
+    return 'update';
   }
 
   private shape(records: any[]): DocTypeSummary {

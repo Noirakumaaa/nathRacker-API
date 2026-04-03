@@ -51,6 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  OperationsOfficeNum: 'OperationsOfficeNum',
+  Lgu: 'Lgu',
+  Barangay: 'Barangay',
   User: 'User',
   UserInfo: 'UserInfo',
   Bus: 'Bus',
@@ -58,10 +61,7 @@ export const ModelName = {
   Pcn: 'Pcn',
   CVS: 'CVS',
   Miscellaneous: 'Miscellaneous',
-  EncodedDocument: 'EncodedDocument',
-  OperationsOfficeNum: 'OperationsOfficeNum',
-  Lgu: 'Lgu',
-  Barangay: 'Barangay'
+  EncodedDocument: 'EncodedDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -78,183 +78,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const UserScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  email: 'email',
-  password: 'password',
-  role: 'role',
-  govUsername: 'govUsername'
-} as const
-
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const UserInfoScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  middleName: 'middleName',
-  assignedOperationId: 'assignedOperationId',
-  assignedLGUID: 'assignedLGUID',
-  assignedBarangayId: 'assignedBarangayId',
-  phone: 'phone',
-  sessionTime: 'sessionTime',
-  language: 'language',
-  timezone: 'timezone',
-  twoFactorAuth: 'twoFactorAuth',
-  smsAlert: 'smsAlert',
-  loginAlert: 'loginAlert',
-  SecuritAlert: 'SecuritAlert',
-  emailAlert: 'emailAlert',
-  weeklyReportAlert: 'weeklyReportAlert',
-  theme: 'theme'
-} as const
-
-export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
-
-
-export const BusScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  typeOfUpdate: 'typeOfUpdate',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  updateInfo: 'updateInfo',
-  subjectOfChange: 'subjectOfChange',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  verificationIssue: 'verificationIssue',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BusScalarFieldEnum = (typeof BusScalarFieldEnum)[keyof typeof BusScalarFieldEnum]
-
-
-export const SwdiScalarFieldEnum = {
-  id: 'id',
-  hhId: 'hhId',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  grantee: 'grantee',
-  swdiScore: 'swdiScore',
-  swdiLevel: 'swdiLevel',
-  encodedBy: 'encodedBy',
-  remarks: 'remarks',
-  issue: 'issue',
-  cl: 'cl',
-  drn: 'drn',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
-
-
-export const PcnScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  subjectOfChange: 'subjectOfChange',
-  pcn: 'pcn',
-  lrn: 'lrn',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
-
-
-export const CVSScalarFieldEnum = {
-  id: 'id',
-  idNumber: 'idNumber',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  facilityName: 'facilityName',
-  formType: 'formType',
-  remarks: 'remarks',
-  userId: 'userId',
-  issue: 'issue',
-  period: 'period',
-  date: 'date',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
-
-
-export const MiscellaneousScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  documentType: 'documentType',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  subjectOfChange: 'subjectOfChange',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)[keyof typeof MiscellaneousScalarFieldEnum]
-
-
-export const EncodedDocumentScalarFieldEnum = {
-  id: 'id',
-  idNumber: 'idNumber',
-  name: 'name',
-  documentType: 'documentType',
-  documentId: 'documentId',
-  subjectOfChange: 'subjectOfChange',
-  remarks: 'remarks',
-  drn: 'drn',
-  userId: 'userId',
-  govUsername: 'govUsername',
-  date: 'date',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  createdAt: 'createdAt'
-} as const
-
-export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
 
 
 export const OperationsOfficeNumScalarFieldEnum = {
@@ -281,6 +104,189 @@ export const BarangayScalarFieldEnum = {
 } as const
 
 export type BarangayScalarFieldEnum = (typeof BarangayScalarFieldEnum)[keyof typeof BarangayScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password',
+  govUsername: 'govUsername',
+  role: 'role',
+  createdAt: 'createdAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserInfoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  middleName: 'middleName',
+  phone: 'phone',
+  sessionTime: 'sessionTime',
+  language: 'language',
+  timezone: 'timezone',
+  theme: 'theme',
+  twoFactorAuth: 'twoFactorAuth',
+  smsAlert: 'smsAlert',
+  loginAlert: 'loginAlert',
+  SecuritAlert: 'SecuritAlert',
+  emailAlert: 'emailAlert',
+  weeklyReportAlert: 'weeklyReportAlert',
+  assignedOperationId: 'assignedOperationId',
+  assignedLGUID: 'assignedLGUID',
+  assignedBarangayId: 'assignedBarangayId'
+} as const
+
+export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
+
+
+export const BusScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  typeOfUpdate: 'typeOfUpdate',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  updateInfo: 'updateInfo',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verificationIssue: 'verificationIssue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BusScalarFieldEnum = (typeof BusScalarFieldEnum)[keyof typeof BusScalarFieldEnum]
+
+
+export const SwdiScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  grantee: 'grantee',
+  swdiScore: 'swdiScore',
+  swdiLevel: 'swdiLevel',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
+
+
+export const PcnScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  subjectOfChange: 'subjectOfChange',
+  pcn: 'pcn',
+  lrn: 'lrn',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
+
+
+export const CVSScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  facilityName: 'facilityName',
+  formType: 'formType',
+  period: 'period',
+  date: 'date',
+  remarks: 'remarks',
+  issue: 'issue',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
+
+
+export const MiscellaneousScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  documentType: 'documentType',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)[keyof typeof MiscellaneousScalarFieldEnum]
+
+
+export const EncodedDocumentScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  name: 'name',
+  documentType: 'documentType',
+  documentId: 'documentId',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  date: 'date',
+  govUsername: 'govUsername',
+  remarks: 'remarks',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt'
+} as const
+
+export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
 
 
 export const SortOrder = {

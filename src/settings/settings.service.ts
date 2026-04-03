@@ -326,6 +326,7 @@ export class SettingsService {
           ...filteredRow,
           encodedBy: user.govUsername,
           userId: user.id,
+          operationsOfficeNumId : user.assignedOperationId,
         };
         if (i === 0)
           console.log('Row 2 payload:', JSON.stringify(payload, null, 2));
@@ -359,6 +360,7 @@ export class SettingsService {
             date: created.date ?? new Date(),
             drn: String(row['drn'] ?? ' '),
             userId: user.id,
+            operationsOfficeNumId : user.assignedOperationId,
             govUsername: user.govUsername,
           },
         });

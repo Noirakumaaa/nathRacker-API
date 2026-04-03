@@ -289,11 +289,6 @@ export type BarangayUncheckedUpdateManyInput = {
   lguId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type BarangayNullableScalarRelationFilter = {
-  is?: Prisma.BarangayWhereInput | null
-  isNot?: Prisma.BarangayWhereInput | null
-}
-
 export type BarangayListRelationFilter = {
   every?: Prisma.BarangayWhereInput
   some?: Prisma.BarangayWhereInput
@@ -332,20 +327,9 @@ export type BarangaySumOrderByAggregateInput = {
   lguId?: Prisma.SortOrder
 }
 
-export type BarangayCreateNestedOneWithoutUserInfoInput = {
-  create?: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
-  connectOrCreate?: Prisma.BarangayCreateOrConnectWithoutUserInfoInput
-  connect?: Prisma.BarangayWhereUniqueInput
-}
-
-export type BarangayUpdateOneWithoutUserInfoNestedInput = {
-  create?: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
-  connectOrCreate?: Prisma.BarangayCreateOrConnectWithoutUserInfoInput
-  upsert?: Prisma.BarangayUpsertWithoutUserInfoInput
-  disconnect?: Prisma.BarangayWhereInput | boolean
-  delete?: Prisma.BarangayWhereInput | boolean
-  connect?: Prisma.BarangayWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BarangayUpdateToOneWithWhereWithoutUserInfoInput, Prisma.BarangayUpdateWithoutUserInfoInput>, Prisma.BarangayUncheckedUpdateWithoutUserInfoInput>
+export type BarangayNullableScalarRelationFilter = {
+  is?: Prisma.BarangayWhereInput | null
+  isNot?: Prisma.BarangayWhereInput | null
 }
 
 export type BarangayCreateNestedManyWithoutLguInput = {
@@ -390,42 +374,20 @@ export type BarangayUncheckedUpdateManyWithoutLguNestedInput = {
   deleteMany?: Prisma.BarangayScalarWhereInput | Prisma.BarangayScalarWhereInput[]
 }
 
-export type BarangayCreateWithoutUserInfoInput = {
-  name: string
-  lgu: Prisma.LguCreateNestedOneWithoutBarangayInput
+export type BarangayCreateNestedOneWithoutUserInfoInput = {
+  create?: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
+  connectOrCreate?: Prisma.BarangayCreateOrConnectWithoutUserInfoInput
+  connect?: Prisma.BarangayWhereUniqueInput
 }
 
-export type BarangayUncheckedCreateWithoutUserInfoInput = {
-  id?: number
-  name: string
-  lguId: number
-}
-
-export type BarangayCreateOrConnectWithoutUserInfoInput = {
-  where: Prisma.BarangayWhereUniqueInput
-  create: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
-}
-
-export type BarangayUpsertWithoutUserInfoInput = {
-  update: Prisma.XOR<Prisma.BarangayUpdateWithoutUserInfoInput, Prisma.BarangayUncheckedUpdateWithoutUserInfoInput>
-  create: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
-  where?: Prisma.BarangayWhereInput
-}
-
-export type BarangayUpdateToOneWithWhereWithoutUserInfoInput = {
-  where?: Prisma.BarangayWhereInput
-  data: Prisma.XOR<Prisma.BarangayUpdateWithoutUserInfoInput, Prisma.BarangayUncheckedUpdateWithoutUserInfoInput>
-}
-
-export type BarangayUpdateWithoutUserInfoInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  lgu?: Prisma.LguUpdateOneRequiredWithoutBarangayNestedInput
-}
-
-export type BarangayUncheckedUpdateWithoutUserInfoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  lguId?: Prisma.IntFieldUpdateOperationsInput | number
+export type BarangayUpdateOneWithoutUserInfoNestedInput = {
+  create?: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
+  connectOrCreate?: Prisma.BarangayCreateOrConnectWithoutUserInfoInput
+  upsert?: Prisma.BarangayUpsertWithoutUserInfoInput
+  disconnect?: Prisma.BarangayWhereInput | boolean
+  delete?: Prisma.BarangayWhereInput | boolean
+  connect?: Prisma.BarangayWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BarangayUpdateToOneWithWhereWithoutUserInfoInput, Prisma.BarangayUpdateWithoutUserInfoInput>, Prisma.BarangayUncheckedUpdateWithoutUserInfoInput>
 }
 
 export type BarangayCreateWithoutLguInput = {
@@ -472,6 +434,44 @@ export type BarangayScalarWhereInput = {
   id?: Prisma.IntFilter<"Barangay"> | number
   name?: Prisma.StringFilter<"Barangay"> | string
   lguId?: Prisma.IntFilter<"Barangay"> | number
+}
+
+export type BarangayCreateWithoutUserInfoInput = {
+  name: string
+  lgu: Prisma.LguCreateNestedOneWithoutBarangayInput
+}
+
+export type BarangayUncheckedCreateWithoutUserInfoInput = {
+  id?: number
+  name: string
+  lguId: number
+}
+
+export type BarangayCreateOrConnectWithoutUserInfoInput = {
+  where: Prisma.BarangayWhereUniqueInput
+  create: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
+}
+
+export type BarangayUpsertWithoutUserInfoInput = {
+  update: Prisma.XOR<Prisma.BarangayUpdateWithoutUserInfoInput, Prisma.BarangayUncheckedUpdateWithoutUserInfoInput>
+  create: Prisma.XOR<Prisma.BarangayCreateWithoutUserInfoInput, Prisma.BarangayUncheckedCreateWithoutUserInfoInput>
+  where?: Prisma.BarangayWhereInput
+}
+
+export type BarangayUpdateToOneWithWhereWithoutUserInfoInput = {
+  where?: Prisma.BarangayWhereInput
+  data: Prisma.XOR<Prisma.BarangayUpdateWithoutUserInfoInput, Prisma.BarangayUncheckedUpdateWithoutUserInfoInput>
+}
+
+export type BarangayUpdateWithoutUserInfoInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateOneRequiredWithoutBarangayNestedInput
+}
+
+export type BarangayUncheckedUpdateWithoutUserInfoInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lguId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type BarangayCreateManyLguInput = {

@@ -48,7 +48,7 @@ export class PcnController {
     return this.pcnService.update(+id, updatePcnDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.pcnService.remove(+id);
   }

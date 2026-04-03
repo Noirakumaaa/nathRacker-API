@@ -384,6 +384,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  OperationsOfficeNum: 'OperationsOfficeNum',
+  Lgu: 'Lgu',
+  Barangay: 'Barangay',
   User: 'User',
   UserInfo: 'UserInfo',
   Bus: 'Bus',
@@ -391,10 +394,7 @@ export const ModelName = {
   Pcn: 'Pcn',
   CVS: 'CVS',
   Miscellaneous: 'Miscellaneous',
-  EncodedDocument: 'EncodedDocument',
-  OperationsOfficeNum: 'OperationsOfficeNum',
-  Lgu: 'Lgu',
-  Barangay: 'Barangay'
+  EncodedDocument: 'EncodedDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,10 +410,232 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userInfo" | "bus" | "swdi" | "pcn" | "cVS" | "miscellaneous" | "encodedDocument" | "operationsOfficeNum" | "lgu" | "barangay"
+    modelProps: "operationsOfficeNum" | "lgu" | "barangay" | "user" | "userInfo" | "bus" | "swdi" | "pcn" | "cVS" | "miscellaneous" | "encodedDocument"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    OperationsOfficeNum: {
+      payload: Prisma.$OperationsOfficeNumPayload<ExtArgs>
+      fields: Prisma.OperationsOfficeNumFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OperationsOfficeNumFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OperationsOfficeNumFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
+        }
+        findFirst: {
+          args: Prisma.OperationsOfficeNumFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OperationsOfficeNumFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
+        }
+        findMany: {
+          args: Prisma.OperationsOfficeNumFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>[]
+        }
+        create: {
+          args: Prisma.OperationsOfficeNumCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
+        }
+        createMany: {
+          args: Prisma.OperationsOfficeNumCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.OperationsOfficeNumCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>[]
+        }
+        delete: {
+          args: Prisma.OperationsOfficeNumDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
+        }
+        update: {
+          args: Prisma.OperationsOfficeNumUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
+        }
+        deleteMany: {
+          args: Prisma.OperationsOfficeNumDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OperationsOfficeNumUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.OperationsOfficeNumUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>[]
+        }
+        upsert: {
+          args: Prisma.OperationsOfficeNumUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
+        }
+        aggregate: {
+          args: Prisma.OperationsOfficeNumAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOperationsOfficeNum>
+        }
+        groupBy: {
+          args: Prisma.OperationsOfficeNumGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OperationsOfficeNumGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OperationsOfficeNumCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OperationsOfficeNumCountAggregateOutputType> | number
+        }
+      }
+    }
+    Lgu: {
+      payload: Prisma.$LguPayload<ExtArgs>
+      fields: Prisma.LguFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LguFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LguFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
+        }
+        findFirst: {
+          args: Prisma.LguFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LguFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
+        }
+        findMany: {
+          args: Prisma.LguFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>[]
+        }
+        create: {
+          args: Prisma.LguCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
+        }
+        createMany: {
+          args: Prisma.LguCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LguCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>[]
+        }
+        delete: {
+          args: Prisma.LguDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
+        }
+        update: {
+          args: Prisma.LguUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
+        }
+        deleteMany: {
+          args: Prisma.LguDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LguUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LguUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>[]
+        }
+        upsert: {
+          args: Prisma.LguUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
+        }
+        aggregate: {
+          args: Prisma.LguAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLgu>
+        }
+        groupBy: {
+          args: Prisma.LguGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LguGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LguCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LguCountAggregateOutputType> | number
+        }
+      }
+    }
+    Barangay: {
+      payload: Prisma.$BarangayPayload<ExtArgs>
+      fields: Prisma.BarangayFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BarangayFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BarangayFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
+        }
+        findFirst: {
+          args: Prisma.BarangayFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BarangayFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
+        }
+        findMany: {
+          args: Prisma.BarangayFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>[]
+        }
+        create: {
+          args: Prisma.BarangayCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
+        }
+        createMany: {
+          args: Prisma.BarangayCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BarangayCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>[]
+        }
+        delete: {
+          args: Prisma.BarangayDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
+        }
+        update: {
+          args: Prisma.BarangayUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
+        }
+        deleteMany: {
+          args: Prisma.BarangayDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BarangayUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BarangayUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>[]
+        }
+        upsert: {
+          args: Prisma.BarangayUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
+        }
+        aggregate: {
+          args: Prisma.BarangayAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBarangay>
+        }
+        groupBy: {
+          args: Prisma.BarangayGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BarangayGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BarangayCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BarangayCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -1006,228 +1228,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    OperationsOfficeNum: {
-      payload: Prisma.$OperationsOfficeNumPayload<ExtArgs>
-      fields: Prisma.OperationsOfficeNumFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.OperationsOfficeNumFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.OperationsOfficeNumFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
-        }
-        findFirst: {
-          args: Prisma.OperationsOfficeNumFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.OperationsOfficeNumFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
-        }
-        findMany: {
-          args: Prisma.OperationsOfficeNumFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>[]
-        }
-        create: {
-          args: Prisma.OperationsOfficeNumCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
-        }
-        createMany: {
-          args: Prisma.OperationsOfficeNumCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.OperationsOfficeNumCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>[]
-        }
-        delete: {
-          args: Prisma.OperationsOfficeNumDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
-        }
-        update: {
-          args: Prisma.OperationsOfficeNumUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
-        }
-        deleteMany: {
-          args: Prisma.OperationsOfficeNumDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.OperationsOfficeNumUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.OperationsOfficeNumUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>[]
-        }
-        upsert: {
-          args: Prisma.OperationsOfficeNumUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$OperationsOfficeNumPayload>
-        }
-        aggregate: {
-          args: Prisma.OperationsOfficeNumAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateOperationsOfficeNum>
-        }
-        groupBy: {
-          args: Prisma.OperationsOfficeNumGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.OperationsOfficeNumGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.OperationsOfficeNumCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.OperationsOfficeNumCountAggregateOutputType> | number
-        }
-      }
-    }
-    Lgu: {
-      payload: Prisma.$LguPayload<ExtArgs>
-      fields: Prisma.LguFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.LguFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.LguFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
-        }
-        findFirst: {
-          args: Prisma.LguFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.LguFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
-        }
-        findMany: {
-          args: Prisma.LguFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>[]
-        }
-        create: {
-          args: Prisma.LguCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
-        }
-        createMany: {
-          args: Prisma.LguCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.LguCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>[]
-        }
-        delete: {
-          args: Prisma.LguDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
-        }
-        update: {
-          args: Prisma.LguUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
-        }
-        deleteMany: {
-          args: Prisma.LguDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.LguUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.LguUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>[]
-        }
-        upsert: {
-          args: Prisma.LguUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LguPayload>
-        }
-        aggregate: {
-          args: Prisma.LguAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateLgu>
-        }
-        groupBy: {
-          args: Prisma.LguGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LguGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.LguCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LguCountAggregateOutputType> | number
-        }
-      }
-    }
-    Barangay: {
-      payload: Prisma.$BarangayPayload<ExtArgs>
-      fields: Prisma.BarangayFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.BarangayFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.BarangayFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
-        }
-        findFirst: {
-          args: Prisma.BarangayFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.BarangayFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
-        }
-        findMany: {
-          args: Prisma.BarangayFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>[]
-        }
-        create: {
-          args: Prisma.BarangayCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
-        }
-        createMany: {
-          args: Prisma.BarangayCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.BarangayCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>[]
-        }
-        delete: {
-          args: Prisma.BarangayDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
-        }
-        update: {
-          args: Prisma.BarangayUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
-        }
-        deleteMany: {
-          args: Prisma.BarangayDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.BarangayUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.BarangayUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>[]
-        }
-        upsert: {
-          args: Prisma.BarangayUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarangayPayload>
-        }
-        aggregate: {
-          args: Prisma.BarangayAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBarangay>
-        }
-        groupBy: {
-          args: Prisma.BarangayGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BarangayGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.BarangayCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BarangayCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -1267,183 +1267,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  email: 'email',
-  password: 'password',
-  role: 'role',
-  govUsername: 'govUsername'
-} as const
-
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const UserInfoScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  middleName: 'middleName',
-  assignedOperationId: 'assignedOperationId',
-  assignedLGUID: 'assignedLGUID',
-  assignedBarangayId: 'assignedBarangayId',
-  phone: 'phone',
-  sessionTime: 'sessionTime',
-  language: 'language',
-  timezone: 'timezone',
-  twoFactorAuth: 'twoFactorAuth',
-  smsAlert: 'smsAlert',
-  loginAlert: 'loginAlert',
-  SecuritAlert: 'SecuritAlert',
-  emailAlert: 'emailAlert',
-  weeklyReportAlert: 'weeklyReportAlert',
-  theme: 'theme'
-} as const
-
-export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
-
-
-export const BusScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  typeOfUpdate: 'typeOfUpdate',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  updateInfo: 'updateInfo',
-  subjectOfChange: 'subjectOfChange',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  verificationIssue: 'verificationIssue',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BusScalarFieldEnum = (typeof BusScalarFieldEnum)[keyof typeof BusScalarFieldEnum]
-
-
-export const SwdiScalarFieldEnum = {
-  id: 'id',
-  hhId: 'hhId',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  grantee: 'grantee',
-  swdiScore: 'swdiScore',
-  swdiLevel: 'swdiLevel',
-  encodedBy: 'encodedBy',
-  remarks: 'remarks',
-  issue: 'issue',
-  cl: 'cl',
-  drn: 'drn',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
-
-
-export const PcnScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  subjectOfChange: 'subjectOfChange',
-  pcn: 'pcn',
-  lrn: 'lrn',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
-
-
-export const CVSScalarFieldEnum = {
-  id: 'id',
-  idNumber: 'idNumber',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  facilityName: 'facilityName',
-  formType: 'formType',
-  remarks: 'remarks',
-  userId: 'userId',
-  issue: 'issue',
-  period: 'period',
-  date: 'date',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
-
-
-export const MiscellaneousScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  documentType: 'documentType',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  subjectOfChange: 'subjectOfChange',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)[keyof typeof MiscellaneousScalarFieldEnum]
-
-
-export const EncodedDocumentScalarFieldEnum = {
-  id: 'id',
-  idNumber: 'idNumber',
-  name: 'name',
-  documentType: 'documentType',
-  documentId: 'documentId',
-  subjectOfChange: 'subjectOfChange',
-  remarks: 'remarks',
-  drn: 'drn',
-  userId: 'userId',
-  govUsername: 'govUsername',
-  date: 'date',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  createdAt: 'createdAt'
-} as const
-
-export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
-
-
 export const OperationsOfficeNumScalarFieldEnum = {
   id: 'id',
   name: 'name'
@@ -1468,6 +1291,189 @@ export const BarangayScalarFieldEnum = {
 } as const
 
 export type BarangayScalarFieldEnum = (typeof BarangayScalarFieldEnum)[keyof typeof BarangayScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password',
+  govUsername: 'govUsername',
+  role: 'role',
+  createdAt: 'createdAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserInfoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  middleName: 'middleName',
+  phone: 'phone',
+  sessionTime: 'sessionTime',
+  language: 'language',
+  timezone: 'timezone',
+  theme: 'theme',
+  twoFactorAuth: 'twoFactorAuth',
+  smsAlert: 'smsAlert',
+  loginAlert: 'loginAlert',
+  SecuritAlert: 'SecuritAlert',
+  emailAlert: 'emailAlert',
+  weeklyReportAlert: 'weeklyReportAlert',
+  assignedOperationId: 'assignedOperationId',
+  assignedLGUID: 'assignedLGUID',
+  assignedBarangayId: 'assignedBarangayId'
+} as const
+
+export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
+
+
+export const BusScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  typeOfUpdate: 'typeOfUpdate',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  updateInfo: 'updateInfo',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verificationIssue: 'verificationIssue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BusScalarFieldEnum = (typeof BusScalarFieldEnum)[keyof typeof BusScalarFieldEnum]
+
+
+export const SwdiScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  grantee: 'grantee',
+  swdiScore: 'swdiScore',
+  swdiLevel: 'swdiLevel',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
+
+
+export const PcnScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  subjectOfChange: 'subjectOfChange',
+  pcn: 'pcn',
+  lrn: 'lrn',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
+
+
+export const CVSScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  facilityName: 'facilityName',
+  formType: 'formType',
+  period: 'period',
+  date: 'date',
+  remarks: 'remarks',
+  issue: 'issue',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
+
+
+export const MiscellaneousScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  documentType: 'documentType',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)[keyof typeof MiscellaneousScalarFieldEnum]
+
+
+export const EncodedDocumentScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  name: 'name',
+  documentType: 'documentType',
+  documentId: 'documentId',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  date: 'date',
+  govUsername: 'govUsername',
+  remarks: 'remarks',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt'
+} as const
+
+export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1515,20 +1521,6 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'DateTime'
- */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime[]'
- */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-/**
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -1557,9 +1549,16 @@ export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'Boolean'
+ * Reference to a field of type 'DateTime'
  */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -1574,6 +1573,13 @@ export type EnumthemeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMode
  * Reference to a field of type 'theme[]'
  */
 export type ListEnumthemeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'theme[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -1685,6 +1691,9 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
+  operationsOfficeNum?: Prisma.OperationsOfficeNumOmit
+  lgu?: Prisma.LguOmit
+  barangay?: Prisma.BarangayOmit
   user?: Prisma.UserOmit
   userInfo?: Prisma.UserInfoOmit
   bus?: Prisma.BusOmit
@@ -1693,9 +1702,6 @@ export type GlobalOmitConfig = {
   cVS?: Prisma.CVSOmit
   miscellaneous?: Prisma.MiscellaneousOmit
   encodedDocument?: Prisma.EncodedDocumentOmit
-  operationsOfficeNum?: Prisma.OperationsOfficeNumOmit
-  lgu?: Prisma.LguOmit
-  barangay?: Prisma.BarangayOmit
 }
 
 /* Types for Logging */

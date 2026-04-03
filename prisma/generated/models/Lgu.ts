@@ -296,11 +296,6 @@ export type LguUncheckedUpdateManyInput = {
   operationsOfficeNumId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type LguNullableScalarRelationFilter = {
-  is?: Prisma.LguWhereInput | null
-  isNot?: Prisma.LguWhereInput | null
-}
-
 export type LguListRelationFilter = {
   every?: Prisma.LguWhereInput
   some?: Prisma.LguWhereInput
@@ -344,20 +339,9 @@ export type LguScalarRelationFilter = {
   isNot?: Prisma.LguWhereInput
 }
 
-export type LguCreateNestedOneWithoutUserInfoInput = {
-  create?: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
-  connectOrCreate?: Prisma.LguCreateOrConnectWithoutUserInfoInput
-  connect?: Prisma.LguWhereUniqueInput
-}
-
-export type LguUpdateOneWithoutUserInfoNestedInput = {
-  create?: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
-  connectOrCreate?: Prisma.LguCreateOrConnectWithoutUserInfoInput
-  upsert?: Prisma.LguUpsertWithoutUserInfoInput
-  disconnect?: Prisma.LguWhereInput | boolean
-  delete?: Prisma.LguWhereInput | boolean
-  connect?: Prisma.LguWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.LguUpdateToOneWithWhereWithoutUserInfoInput, Prisma.LguUpdateWithoutUserInfoInput>, Prisma.LguUncheckedUpdateWithoutUserInfoInput>
+export type LguNullableScalarRelationFilter = {
+  is?: Prisma.LguWhereInput | null
+  isNot?: Prisma.LguWhereInput | null
 }
 
 export type LguCreateNestedManyWithoutOperationsOfficeNumInput = {
@@ -416,46 +400,20 @@ export type LguUpdateOneRequiredWithoutBarangayNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.LguUpdateToOneWithWhereWithoutBarangayInput, Prisma.LguUpdateWithoutBarangayInput>, Prisma.LguUncheckedUpdateWithoutBarangayInput>
 }
 
-export type LguCreateWithoutUserInfoInput = {
-  name: string
-  operationsOfficeNum: Prisma.OperationsOfficeNumCreateNestedOneWithoutLguInput
-  barangay?: Prisma.BarangayCreateNestedManyWithoutLguInput
+export type LguCreateNestedOneWithoutUserInfoInput = {
+  create?: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
+  connectOrCreate?: Prisma.LguCreateOrConnectWithoutUserInfoInput
+  connect?: Prisma.LguWhereUniqueInput
 }
 
-export type LguUncheckedCreateWithoutUserInfoInput = {
-  id?: number
-  name: string
-  operationsOfficeNumId: number
-  barangay?: Prisma.BarangayUncheckedCreateNestedManyWithoutLguInput
-}
-
-export type LguCreateOrConnectWithoutUserInfoInput = {
-  where: Prisma.LguWhereUniqueInput
-  create: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
-}
-
-export type LguUpsertWithoutUserInfoInput = {
-  update: Prisma.XOR<Prisma.LguUpdateWithoutUserInfoInput, Prisma.LguUncheckedUpdateWithoutUserInfoInput>
-  create: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
-  where?: Prisma.LguWhereInput
-}
-
-export type LguUpdateToOneWithWhereWithoutUserInfoInput = {
-  where?: Prisma.LguWhereInput
-  data: Prisma.XOR<Prisma.LguUpdateWithoutUserInfoInput, Prisma.LguUncheckedUpdateWithoutUserInfoInput>
-}
-
-export type LguUpdateWithoutUserInfoInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  operationsOfficeNum?: Prisma.OperationsOfficeNumUpdateOneRequiredWithoutLguNestedInput
-  barangay?: Prisma.BarangayUpdateManyWithoutLguNestedInput
-}
-
-export type LguUncheckedUpdateWithoutUserInfoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  operationsOfficeNumId?: Prisma.IntFieldUpdateOperationsInput | number
-  barangay?: Prisma.BarangayUncheckedUpdateManyWithoutLguNestedInput
+export type LguUpdateOneWithoutUserInfoNestedInput = {
+  create?: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
+  connectOrCreate?: Prisma.LguCreateOrConnectWithoutUserInfoInput
+  upsert?: Prisma.LguUpsertWithoutUserInfoInput
+  disconnect?: Prisma.LguWhereInput | boolean
+  delete?: Prisma.LguWhereInput | boolean
+  connect?: Prisma.LguWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LguUpdateToOneWithWhereWithoutUserInfoInput, Prisma.LguUpdateWithoutUserInfoInput>, Prisma.LguUncheckedUpdateWithoutUserInfoInput>
 }
 
 export type LguCreateWithoutOperationsOfficeNumInput = {
@@ -546,6 +504,48 @@ export type LguUncheckedUpdateWithoutBarangayInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   operationsOfficeNumId?: Prisma.IntFieldUpdateOperationsInput | number
   userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedLguNestedInput
+}
+
+export type LguCreateWithoutUserInfoInput = {
+  name: string
+  operationsOfficeNum: Prisma.OperationsOfficeNumCreateNestedOneWithoutLguInput
+  barangay?: Prisma.BarangayCreateNestedManyWithoutLguInput
+}
+
+export type LguUncheckedCreateWithoutUserInfoInput = {
+  id?: number
+  name: string
+  operationsOfficeNumId: number
+  barangay?: Prisma.BarangayUncheckedCreateNestedManyWithoutLguInput
+}
+
+export type LguCreateOrConnectWithoutUserInfoInput = {
+  where: Prisma.LguWhereUniqueInput
+  create: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
+}
+
+export type LguUpsertWithoutUserInfoInput = {
+  update: Prisma.XOR<Prisma.LguUpdateWithoutUserInfoInput, Prisma.LguUncheckedUpdateWithoutUserInfoInput>
+  create: Prisma.XOR<Prisma.LguCreateWithoutUserInfoInput, Prisma.LguUncheckedCreateWithoutUserInfoInput>
+  where?: Prisma.LguWhereInput
+}
+
+export type LguUpdateToOneWithWhereWithoutUserInfoInput = {
+  where?: Prisma.LguWhereInput
+  data: Prisma.XOR<Prisma.LguUpdateWithoutUserInfoInput, Prisma.LguUncheckedUpdateWithoutUserInfoInput>
+}
+
+export type LguUpdateWithoutUserInfoInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  operationsOfficeNum?: Prisma.OperationsOfficeNumUpdateOneRequiredWithoutLguNestedInput
+  barangay?: Prisma.BarangayUpdateManyWithoutLguNestedInput
+}
+
+export type LguUncheckedUpdateWithoutUserInfoInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  operationsOfficeNumId?: Prisma.IntFieldUpdateOperationsInput | number
+  barangay?: Prisma.BarangayUncheckedUpdateManyWithoutLguNestedInput
 }
 
 export type LguCreateManyOperationsOfficeNumInput = {

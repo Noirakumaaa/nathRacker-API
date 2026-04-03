@@ -46,6 +46,7 @@ export class BusService {
         ...createBusDto,
         encodedBy: user.govUsername,
         userId: user.id,
+        operationsOfficeNumId : user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -61,7 +62,8 @@ export class BusService {
         drn : result.drn ?? " ",
         date: new Date(),
         remarks: result.remarks,
-        govUsername: user.govUsername
+        govUsername: user.govUsername,
+        operationsOfficeNumId : user.assignedOperationId
       }
     })
 
@@ -95,7 +97,7 @@ export class BusService {
         userId: user.id,
       },
       orderBy: {
-        date: 'asc',
+        date: 'desc',
       },
       take: 5,
     });
@@ -151,12 +153,49 @@ export class BusService {
     });
   }
 
-  update(id: number, updateBusDto: UpdateBusDto) {
-    return `This action updates a #${id} bus`;
+  async update(updateBusDto: UpdateBusDto) {
+    const { id, ...data }= updateBusDto
+    const busUpdate = await this.prisma.client.bus.update({
+      where : {
+        id : updateBusDto.id
+      },
+      data : {
+        ...data
+      }
+    })
+
+    await this.prisma.client.encodedDocument.update({
+      where : {
+        documentId : busUpdate.id
+      },
+      data: {
+        idNumber: busUpdate.hhId,
+        name: busUpdate.granteeName,
+        documentType: 'BUS',
+        documentId: busUpdate.id,
+        subjectOfChange: busUpdate.subjectOfChange,
+        drn : busUpdate.drn ?? " ",
+        remarks: busUpdate.remarks,
+      }
+    })
+
+    return { message : `Updated Item ${busUpdate.hhId}`, update : true}
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bus`;
+  async remove(id: number) {
+    const deleteBus = await this.prisma.client.bus.delete({
+      where : { 
+        id : id 
+      }
+    })
+
+    await this.prisma.client.encodedDocument.delete({
+      where : {
+        documentId : id
+      }
+    })
+
+    return {message : `Deleted Item ${deleteBus.hhId}`, deleted : true}
   }
 
 

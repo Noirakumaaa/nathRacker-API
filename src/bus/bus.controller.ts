@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Put } from '@nestjs/common';
 import type { Request } from 'express';
 import { BusService } from './bus.service.js';
 import { CreateBusDto } from './dto/create-bus.dto.js';
@@ -40,7 +40,6 @@ export class BusController {
     return this.busService.busRecord();
   }
 
-  @Roles(Role.ADMIN, Role.AREA_COORDINATOR, Role.SOCIAL_WORKER_III)
   @Patch('verify/:id')
   verify(
     @Param('id') id: string,
@@ -50,9 +49,9 @@ export class BusController {
     return this.busService.verify(+id, body, req);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBusDto: UpdateBusDto) {
-    return this.busService.update(+id, updateBusDto);
+  @Patch('update')
+  update(@Body() updateBusDto: UpdateBusDto) {
+    return this.busService.update(updateBusDto);
   }
 
   @Get('records/:id',)
@@ -65,7 +64,7 @@ export class BusController {
     return this.busService.busCountbyId(req);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.busService.remove(+id);
   }

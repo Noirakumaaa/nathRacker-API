@@ -52,6 +52,38 @@ export class AlldocumentsService {
     return result;
   }
 
+  async OperationTotalCount(req: Request) {
+    const user = req.user;
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+
+    const countPerDocumentType =
+      await this.prisma.client.encodedDocument.groupBy({
+        by: ['remarks'],
+        where: {
+          userId: user.id,
+        },
+        _count: {
+          remarks: true,
+        },
+      });
+
+    // ✅ compute total
+    const total = countPerDocumentType.reduce(
+      (sum, item) => sum + item._count.remarks,
+      0,
+    );
+
+    // ✅ fix here
+    const result = countPerDocumentType.map((item) => ({
+      remarks: item.remarks,
+      count: item._count.remarks,
+    }));
+
+    return { result, total: total };
+  }
+
   async allDocumentWeeklyCount(req: Request) {
     const user = req.user;
     if (!user) throw new Error('User not authenticated');
@@ -93,8 +125,13 @@ export class AlldocumentsService {
     });
   }
 
-  globalRecords() {
+  globalRecords(req : Request) {
+        const user = req.user;
+    if (!user) throw new Error('User not authenticated');
     return this.prisma.client.encodedDocument.findMany({
+      where : {
+        operationsOfficeNumId : user.assignedOperationId
+      },
       orderBy: { date: 'desc' },
     });
   }
