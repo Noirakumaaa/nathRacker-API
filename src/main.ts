@@ -6,6 +6,14 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import compression from 'compression';
 import { AllExceptionsFilter } from './filters/all-exceptions.filter.js';
+import { config } from 'dotenv';
+import path from 'path';
+
+
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.staging';
+config({ path: path.resolve(process.cwd(), envFile), override: true });
+
+
 
 function validateEnv() {
   const required = ['JWT_SECRET_KEY', 'DATABASE_URL'];
@@ -24,9 +32,11 @@ async function bootstrap() {
 
   const allowedOrigins = [
     process.env.URL,
-    process.env.LOCAL_URL,
+    "http://staging.nathdomain.com",
     "http://nathdomain.com",
-    "https://nathdomain.com"
+    "https://staging.nathdomain.com",
+    "https://nathdomain.com",
+
   ].filter(Boolean) as string[];
 
   // ✅ CORS must be before helmet
