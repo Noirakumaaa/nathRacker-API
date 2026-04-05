@@ -112,37 +112,72 @@ export class SwdiService {
   }
 
 
-  async update(id: number, dto: UpdateSwdiDto) {
-    const swdiUpdate = await this.prisma.client.swdi.update({
-      where: { id },
-      data: { ...dto },
-    });
+    async update( body : UpdateSwdiDto) {
 
-    await this.prisma.client.encodedDocument.update({
-      where: { documentId: swdiUpdate.id },
-      data: {
-        idNumber: swdiUpdate.hhId,
-        name: swdiUpdate.grantee,
-        documentType: 'SWDI',
-        documentId: swdiUpdate.id,
-        subjectOfChange: '',
-        drn: swdiUpdate.drn ?? ' ',
-        remarks: swdiUpdate.remarks,
-      },
-    });
+      const { id, ...data } = body
+      try {
+        const swdiUpdate = await this.prisma.client.swdi.update({
+          where: { id : id },
+          data: { ...data },
+        });
 
-    return { message: `Updated Item ${swdiUpdate.hhId}`, update: true };
-  }
+        await this.prisma.client.encodedDocument.updateMany({
+          where: {
+            documentId: swdiUpdate.id,
+            documentType: 'SWDI',
+          },
+          data: {
+            idNumber: swdiUpdate.hhId,
+            name: swdiUpdate.grantee,
+            documentType: 'SWDI',
+            documentId: swdiUpdate.id,
+            subjectOfChange: '',
+            drn: swdiUpdate.drn ?? ' ',
+            remarks: swdiUpdate.remarks,
+          },
+        });
 
-  async remove(id: number) {
+        return { message: `Updated Item ${swdiUpdate.hhId}`, update: true };
+      } catch (error) {
+        console.error('Update failed:', error);
+        return { 
+          message: 'Failed to update item', 
+          update: false, 
+          error: error instanceof Error ? error.message : String(error),
+        };
+      }
+    }
+async remove(id: number) {
+  try {
     const deleteSwdi = await this.prisma.client.swdi.delete({
       where: { id },
-    });
+    })
 
-    await this.prisma.client.encodedDocument.delete({
-      where: { documentId: id },
-    });
+    const checkBefore = await this.prisma.client.encodedDocument.findMany({
+      where: {
+        documentId: id,
+        documentType: "SWDI",
+      },
+    })
 
-    return { message: `Deleted Item ${deleteSwdi.hhId}`, deleted: true };
+    const globalswdi = await this.prisma.client.encodedDocument.deleteMany({
+      where: {
+        documentId: id,
+        documentType: "SWDI",
+      },
+    })
+
+    return {
+      message: "Deleted",
+      swdi: deleteSwdi,
+      beforeDeleteMatch: checkBefore.length,
+      deletedCount: globalswdi.count,
+    }
+  } catch (error) {
+    return {
+      message: "Delete failed",
+      error: error?.message || error,
+    }
   }
+}
 }

@@ -336,13 +336,13 @@ export type EncodedDocumentOrderByWithRelationInput = {
 
 export type EncodedDocumentWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  documentId?: number
   AND?: Prisma.EncodedDocumentWhereInput | Prisma.EncodedDocumentWhereInput[]
   OR?: Prisma.EncodedDocumentWhereInput[]
   NOT?: Prisma.EncodedDocumentWhereInput | Prisma.EncodedDocumentWhereInput[]
   idNumber?: Prisma.StringFilter<"EncodedDocument"> | string
   name?: Prisma.StringFilter<"EncodedDocument"> | string
   documentType?: Prisma.StringFilter<"EncodedDocument"> | string
+  documentId?: Prisma.IntFilter<"EncodedDocument"> | number
   subjectOfChange?: Prisma.StringFilter<"EncodedDocument"> | string
   drn?: Prisma.StringFilter<"EncodedDocument"> | string
   date?: Prisma.DateTimeFilter<"EncodedDocument"> | Date | string
@@ -356,7 +356,7 @@ export type EncodedDocumentWhereUniqueInput = Prisma.AtLeast<{
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   govUserByUsername?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
-}, "id" | "documentId">
+}, "id">
 
 export type EncodedDocumentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

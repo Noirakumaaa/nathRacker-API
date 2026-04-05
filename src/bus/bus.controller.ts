@@ -70,4 +70,8 @@ export class BusController {
   remove(@Param('id') id: string) {
     return this.busService.remove(+id);
   }
+  @Get("/lgu")
+  getLgu(@Req() req : Request){
+    return this.busService.getLGU(req)
+  }
 }

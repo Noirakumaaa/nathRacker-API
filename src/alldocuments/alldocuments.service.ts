@@ -148,46 +148,67 @@ export class AlldocumentsService {
     return `This action updates a #${id} alldocument`;
   }
 
-  async remove(id: number) {
+async remove(id: number) {
+  try {
     const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
       where: { id },
-    });
+    })
 
     if (!deleteDocument) {
-      throw new NotFoundException(`Document #${id} not found`);
+      throw new NotFoundException(`Document #${id} not found`)
     }
 
-    const { documentType, documentId } = deleteDocument;
+    const { documentType, documentId } = deleteDocument
 
-    // Delete from the specific model based on documentType
-    switch (documentType) {
-      case 'BUS':
-        await this.prisma.client.bus.delete({ where: { id: documentId } });
-        break;
-      case 'PCN':
-        await this.prisma.client.pcn.delete({ where: { id: documentId } });
-        break;
-      case 'SWDI':
-        await this.prisma.client.swdi.delete({ where: { id: documentId } });
-        break;
-      case 'CVS':
-        await this.prisma.client.cVS.delete({ where: { id: documentId } });
-        break;
-      case 'MISC':
-        await this.prisma.client.miscellaneous.delete({
-          where: { id: documentId },
-        });
-        break;
-      default:
-        throw new BadRequestException(`Unknown documentType: ${documentType}`);
+    try {
+      switch (documentType) {
+        case 'BUS':
+          await this.prisma.client.bus.deleteMany({
+            where: { id: documentId },
+          })
+          break
+
+        case 'PCN':
+          await this.prisma.client.pcn.deleteMany({
+            where: { id: documentId },
+          })
+          break
+
+        case 'SWDI':
+          await this.prisma.client.swdi.deleteMany({
+            where: { id: documentId },
+          })
+          break
+
+        case 'CVS':
+          await this.prisma.client.cVS.deleteMany({
+            where: { id: documentId },
+          })
+          break
+
+        case 'MISC':
+          await this.prisma.client.miscellaneous.deleteMany({
+            where: { id: documentId },
+          })
+          break
+      }
+    } catch (err) {
     }
 
-    // Delete the global encoded document record
-    await this.prisma.client.encodedDocument.delete({ where: { id } });
+    await this.prisma.client.encodedDocument.delete({
+      where: { id },
+    })
 
     return {
       deleted: true,
-      message: `${documentType} #${documentId} deleted successfully`,
-    };
+      message: `${documentType} #${documentId} processed and encodedDocument removed`,
+    }
+  } catch (error) {
+    return {
+      deleted: false,
+      message: "Delete failed",
+      error: error?.message || error,
+    }
   }
+}
 }

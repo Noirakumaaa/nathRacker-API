@@ -45,9 +45,9 @@ export class SwdiController {
     return this.swdiService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSwdiDto: UpdateSwdiDto) {
-    return this.swdiService.update(+id, updateSwdiDto);
+  @Patch('/update')
+  update(@Body() updateSwdiDto: UpdateSwdiDto) {
+    return this.swdiService.update(updateSwdiDto);
   }
 
   @Delete('delete/:id')

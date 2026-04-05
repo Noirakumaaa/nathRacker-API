@@ -94,8 +94,11 @@ export class MiscService {
       data: { ...dto },
     });
 
-    await this.prisma.client.encodedDocument.update({
-      where: { documentId: miscUpdate.id },
+    await this.prisma.client.encodedDocument.updateMany({
+      where: { 
+        documentId: miscUpdate.id,
+        documentType : "MISC"
+      },
       data: {
         idNumber: String(miscUpdate.hhId),
         name: miscUpdate.granteeName,
@@ -115,8 +118,11 @@ export class MiscService {
       where: { id },
     });
 
-    await this.prisma.client.encodedDocument.delete({
-      where: { documentId: id },
+    await this.prisma.client.encodedDocument.deleteMany({
+      where: { 
+        documentId: id,
+        documentType : "MISC"
+      },
     });
 
     return { message: `Deleted Item ${deleteMisc.hhId}`, deleted: true };

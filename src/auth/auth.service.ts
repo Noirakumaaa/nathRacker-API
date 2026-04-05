@@ -49,8 +49,8 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private jwtService: JwtService,
   ) {}
-
-  async login(createAuthDto: CreateAuthDto, res: Response) {
+async login(createAuthDto: CreateAuthDto, res: Response) {
+  try {
     const checkUser = await this.prisma.client.user.findFirst({
       where: {
         OR: [
@@ -58,57 +58,85 @@ export class AuthService {
           { govUsername: createAuthDto.email },
         ],
       },
-    });
+    })
 
     if (!checkUser) {
-      return res.status(400).json({ message: 'Invalid email or password', upload: false });
+      return res.status(401).json({
+        message: 'Account not found',
+        step: 'CHECK_USER',
+        upload: false
+      })
     }
 
     const validPassword = await argon2.verify(
       checkUser.password,
       createAuthDto.password,
-    );
+    )
+
     if (!validPassword) {
-      return res.status(400).json({ message: 'Incorrect Password', upload: false });
+      return res.status(401).json({
+        message: 'Wrong password',
+        step: 'VERIFY_PASSWORD',
+        upload: false
+      })
     }
 
-    let sessionTimeout: Awaited<ReturnType<typeof this.prisma.client.userInfo.findFirst>>;
-    try {
-      sessionTimeout = await this.prisma.client.userInfo.findFirst({
-        where: { userId: checkUser.id },
-      });
-    } catch {
-      return res.status(400).json({ message: 'Not register upload failed', upload: false });
+    const userDataInfo = await this.prisma.client.userInfo.findFirst({
+      where: {
+        userId: checkUser.id
+      }
+    })
+
+    if (!userDataInfo) {
+      return res.status(404).json({
+        message: 'User info missing',
+        step: 'GET_USER_INFO',
+        upload: false
+      })
     }
 
     const payload = {
       email: checkUser.email,
       govUsername: checkUser.govUsername,
-      firstName: sessionTimeout?.firstName,
-      lastName: sessionTimeout?.lastName,
-      assignedOperationId : sessionTimeout?.assignedOperationId,
-      lgu : sessionTimeout?.assignedLGUID,
-      barangay : sessionTimeout?.assignedBarangayId,
+      firstName: userDataInfo.firstName,
+      lastName: userDataInfo.lastName,
+      assignedOperationId: userDataInfo.assignedOperationId,
+      lgu: userDataInfo.assignedLGUID,
+      barangay: userDataInfo.assignedBarangayId,
       role: checkUser.role,
       id: checkUser.id,
-    };
+    }
+
     const token = this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
-      expiresIn: '1h',
-    });
+      expiresIn: userDataInfo.sessionTime
+    })
 
     res.cookie('accessToken', token, {
       ...cookieOptions,
-      maxAge:
-        sessionTimeoutFormat[
-          sessionTimeout?.sessionTime as keyof typeof sessionTimeoutFormat
-        ] || sessionTimeoutFormat[15],
-    });
+      maxAge: userDataInfo.sessionTime
+    })
 
-    console.log(`Login successful: ${checkUser.govUsername} (${checkUser.email})`);
-    return res.json({ message: 'Login successful', upload : true, token });
+    return res.json({
+      message: 'Login successful',
+      upload: true,
+      sessionTime : userDataInfo.sessionTime,
+      token
+    })
+
+  } catch (error: any) {
+    console.error('LOGIN_ERROR FULL:', error)
+
+    return res.status(500).json({
+      message: 'Login failed',
+      step: 'UNKNOWN_ERROR',
+      expiredIn : Math.floor(sessionTimeoutFormat[15] / 1000),
+      error: error?.message,
+      stack: error?.stack,
+      upload: false
+    })
   }
-
+}
   checkAuth(req: Request) {
     if (!req.user) {
       throw new BadRequestException('User not authenticated');

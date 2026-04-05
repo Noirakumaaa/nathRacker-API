@@ -103,35 +103,59 @@ export class CvsService {
   }
 
 
-  async update(id: number, dto: UpdateCvDto) {
+async update(dto: UpdateCvDto) {
+  try {
+    const { id, ...data } = dto;
+
+    const numericId = Number(id);
+    if (!numericId || isNaN(numericId)) {
+      return { update: false, message: 'Invalid ID' };
+    }
+
     const cvsUpdate = await this.prisma.client.cVS.update({
-      where: { id },
-      data: { ...dto },
+      where: { id: numericId },
+      data: { ...data },
     });
 
-    await this.prisma.client.encodedDocument.update({
-      where: { documentId: cvsUpdate.id },
+    await this.prisma.client.encodedDocument.updateMany({
+      where: {
+        documentId: cvsUpdate.id,
+        documentType: 'CVS',
+      },
       data: {
-        idNumber: String(cvsUpdate.idNumber),
-        name: cvsUpdate.facilityName,
+        idNumber: String(cvsUpdate.idNumber ?? ''),
+        name: cvsUpdate.facilityName ?? '',
         documentType: 'CVS',
         documentId: cvsUpdate.id,
-        subjectOfChange: cvsUpdate.formType,
+        subjectOfChange: cvsUpdate.formType ?? '',
         drn: cvsUpdate.period ?? ' ',
-        remarks: cvsUpdate.remarks,
+        remarks: cvsUpdate.remarks ?? '',
       },
     });
 
-    return { message: `Updated Item ${cvsUpdate.idNumber}`, update: true };
+    return {
+      message: `Updated Item ${cvsUpdate.idNumber}`,
+      update: true,
+    };
+
+  } catch (error) {
+    console.error('CVS Update failed:', error);
+
+    return {
+      update: false,
+      message: 'Failed to update CVS',
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
+}
 
   async remove(id: number) {
     const deleteCvs = await this.prisma.client.cVS.delete({
       where: { id },
     });
 
-    await this.prisma.client.encodedDocument.delete({
-      where: { documentId: id },
+    await this.prisma.client.encodedDocument.deleteMany({
+      where: { documentId: id, documentType : "CVS" },
     });
 
     return { message: `Deleted Item ${deleteCvs.idNumber}`, deleted: true };

@@ -239,7 +239,7 @@ model EncodedDocument {
   idNumber              String               @default("")
   name                  String
   documentType          String
-  documentId            Int                  @unique
+  documentId            Int                  
   subjectOfChange       String
   drn                   String
   date                  DateTime

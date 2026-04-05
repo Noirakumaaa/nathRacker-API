@@ -43,9 +43,9 @@ export class PcnController {
     return this.pcnService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePcnDto: UpdatePcnDto) {
-    return this.pcnService.update(+id, updatePcnDto);
+  @Patch('/update')
+  update( @Body() updatePcnDto: UpdatePcnDto) {
+    return this.pcnService.update( updatePcnDto);
   }
 
   @Delete('delete/:id')

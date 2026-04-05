@@ -44,9 +44,9 @@ export class CvsController {
     return this.cvsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCvDto: UpdateCvDto) {
-    return this.cvsService.update(+id, updateCvDto);
+  @Patch('/update')
+  update( @Body() updateCvDto: UpdateCvDto) {
+    return this.cvsService.update( updateCvDto);
   }
 
   @Delete('delete/:id')

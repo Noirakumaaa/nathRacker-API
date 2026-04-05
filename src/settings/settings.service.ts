@@ -10,7 +10,7 @@ import { SchemaEntry } from './dto/create-setting.dto.js';
 import { ImportRowError } from './dto/create-setting.dto.js';
 import type { Request } from 'express';
 import { SecurityData } from './dto/update-security.dto.js';
-
+import { NotFoundException } from '@nestjs/common';
 const sessionTimeoutFormat = {
   15: 15 * 60 * 1000,
   30: 30 * 60 * 1000,
@@ -458,28 +458,35 @@ export class SettingsService {
       'New session time:',
       newSessionTimeUpdate.sessionTime,
     );
-    return { message: 'Session time updated successfully', updated: true };
+    return { message: 'Session time updated successfully',newData : { newSessionTimeUpdate}, updated: true };
   }
 
-  async GetSecurityData(req : Request){
-    const user = req.user
-        if (!user) {
-      throw new BadRequestException('User not authenticated');
-    }
 
-    const securityData = await this.prisma.client.userInfo.findUnique({
-      where: {
-        userId: user.id,
-      },
-      select: {
-        sessionTime: true,
-        loginAlert: true,
-        twoFactorAuth: true,
-      },
-    });
-
-    return securityData;
+async GetSecurityData(req: Request) {
+  const user = req.user;
+  if (!user) {
+    throw new BadRequestException('User not authenticated');
   }
+
+  const securityData = await this.prisma.client.userInfo.findUnique({
+    where: { userId: user.id },
+    select: {
+      sessionTime: true,
+      loginAlert: true,
+      twoFactorAuth: true,
+    },
+  });
+
+  if (!securityData) {
+    throw new NotFoundException('Security data not found for user');
+  }
+
+  // Exclude sessionTime from returned data
+  const { sessionTime, ...data } = securityData;
+
+  return securityData
+  //return {...data,sessionTime :  sessionTimeoutFormat[sessionTime]}; 
+}
 
   async UpdateTheme(themeValue: 'LIGHT' | 'DARK', req: Request) {
     const user = req.user;

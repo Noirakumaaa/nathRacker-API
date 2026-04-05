@@ -164,9 +164,10 @@ export class BusService {
       }
     })
 
-    await this.prisma.client.encodedDocument.update({
+    await this.prisma.client.encodedDocument.updateMany({
       where : {
-        documentId : busUpdate.id
+        documentId : busUpdate.id,
+        documentType : "BUS"
       },
       data: {
         idNumber: busUpdate.hhId,
@@ -189,13 +190,32 @@ export class BusService {
       }
     })
 
-    await this.prisma.client.encodedDocument.delete({
+    await this.prisma.client.encodedDocument.deleteMany({
       where : {
-        documentId : id
+        documentId : id,
+        documentType: "BUS"
       }
     })
 
     return {message : `Deleted Item ${deleteBus.hhId}`, deleted : true}
+  }
+
+
+
+  async getLGU(req : Request ){
+    const user = req?.user
+        if (!user) {
+      throw new Error('User not authenticated');
+    }
+
+    return await this.prisma.client.lgu.findMany({
+      where : {
+        operationsOfficeNumId : Number(user.assignedOperationId)
+      },
+      include : {
+        barangay : true
+      }
+    })
   }
 
 

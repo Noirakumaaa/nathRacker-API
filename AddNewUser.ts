@@ -36,17 +36,69 @@ const newOperationsOffices = [
   { name: 'Operations Office 7' },
   { name: 'Operations Office 8' },
   { name: 'Operations Office 9' },
+  { name: 'OFFICE BASED'}
 ];
 
 const newLgus = [
   { name: 'PARANAQUE', operationsOfficeNumId: 8 },
-  { name: 'MUNTINLUPA', operationsOfficeNumId: 8 },
   { name: 'LAS PINAS', operationsOfficeNumId: 8 },
-  { name: 'OFFICE BASED', operationsOfficeNumId:8  }
+  { name: 'MUNTINLUPA', operationsOfficeNumId: 8 },
+  { name : "OFFICE BASED", operationsOfficeNumId : 10}
 ];
 
 const newBarangays = [
-  { name: 'OFFICE BASED', lguId: 4 },
+  // PARANAQUE
+  { name: 'BACLARAN', lguId: 1 },
+  { name: 'BF HOMES', lguId: 1 },
+  { name: 'DON BOSCO', lguId: 1 },
+  { name: 'LA HUERTA', lguId: 1 },
+  { name: 'MARCELO GREEN', lguId: 1 },
+  { name: 'MERVILLE', lguId: 1 },
+  { name: 'MOONWALK', lguId: 1 },
+  { name: 'SAN ANTONIO', lguId: 1 },
+  { name: 'SAN DIONISIO', lguId: 1 },
+  { name: 'SAN ISIDRO', lguId: 1 },
+  { name: 'SAN MARTIN DE PORRES', lguId: 1 },
+  { name: 'SANTO NINO', lguId: 1 },
+  { name: 'SUN VALLEY', lguId: 1 },
+  { name: 'TAMBO', lguId: 1 },
+  { name: 'VITALEZ', lguId: 1 },
+
+  // LAS PINAS
+  { name: 'ALMANZA DOS', lguId: 2 },
+  { name: 'ALMANZA UNO', lguId: 2 },
+  { name: 'BF INTERNATIONAL VILLAGE', lguId: 2 },
+  { name: 'DANIEL FAJARDO', lguId: 2 },
+  { name: 'DON GALO', lguId: 2 },
+  { name: 'ELIAS ALDANA', lguId: 2 },
+  { name: 'ILAYA', lguId: 2 },
+  { name: 'MANUYO DOS', lguId: 2 },
+  { name: 'MANUYO UNO', lguId: 2 },
+  { name: 'PAMPLONA DOS', lguId: 2 },
+  { name: 'PAMPLONA TRES', lguId: 2 },
+  { name: 'PAMPLONA UNO', lguId: 2 },
+  { name: 'PILAR', lguId: 2 },
+  { name: 'PULANG LUPA DOS', lguId: 2 },
+  { name: 'PULANG LUPA UNO', lguId: 2 },
+  { name: 'TALON DOS', lguId: 2 },
+  { name: 'TALON KUATRO', lguId: 2 },
+  { name: 'TALON SINGKO', lguId: 2 },
+  { name: 'TALON TRES', lguId: 2 },
+  { name: 'TALON UNO', lguId: 2 },
+  { name: 'ZAPOTE', lguId: 2 },
+
+  // MUNTINLUPA
+  { name: 'ALABANG', lguId: 3 },
+  { name: 'AYALA ALABANG', lguId: 3 },
+  { name: 'BAYANAN', lguId: 3 },
+  { name: 'BULI', lguId: 3 },
+  { name: 'CUPANG', lguId: 3 },
+  { name: 'POBLACION', lguId: 3 },
+  { name: 'PUTATAN', lguId: 3 },
+  { name: 'SUCAT', lguId: 3 },
+  { name: 'TUNASAN', lguId: 3 },
+
+  {name : "OFFICE BASED", lguId :4}
 ];
 
 // ─── Functions ───────────────────────────────────────────────────────────────
