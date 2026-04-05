@@ -232,6 +232,7 @@ export type UserWhereInput = {
   miscByID?: Prisma.MiscellaneousListRelationFilter
   encDocByID?: Prisma.EncodedDocumentListRelationFilter
   encDocByUsername?: Prisma.EncodedDocumentListRelationFilter
+  passwordReset?: Prisma.XOR<Prisma.PasswordResetCodeNullableScalarRelationFilter, Prisma.PasswordResetCodeWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -249,6 +250,7 @@ export type UserOrderByWithRelationInput = {
   miscByID?: Prisma.MiscellaneousOrderByRelationAggregateInput
   encDocByID?: Prisma.EncodedDocumentOrderByRelationAggregateInput
   encDocByUsername?: Prisma.EncodedDocumentOrderByRelationAggregateInput
+  passwordReset?: Prisma.PasswordResetCodeOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -269,6 +271,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   miscByID?: Prisma.MiscellaneousListRelationFilter
   encDocByID?: Prisma.EncodedDocumentListRelationFilter
   encDocByUsername?: Prisma.EncodedDocumentListRelationFilter
+  passwordReset?: Prisma.XOR<Prisma.PasswordResetCodeNullableScalarRelationFilter, Prisma.PasswordResetCodeWhereInput> | null
 }, "id" | "email" | "govUsername">
 
 export type UserOrderByWithAggregationInput = {
@@ -311,6 +314,7 @@ export type UserCreateInput = {
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -328,6 +332,7 @@ export type UserUncheckedCreateInput = {
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -344,6 +349,7 @@ export type UserUpdateInput = {
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -361,6 +367,7 @@ export type UserUncheckedUpdateInput = {
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -449,6 +456,20 @@ export type UserUpdateOneRequiredWithoutUserInfoNestedInput = {
   upsert?: Prisma.UserUpsertWithoutUserInfoInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserInfoInput, Prisma.UserUpdateWithoutUserInfoInput>, Prisma.UserUncheckedUpdateWithoutUserInfoInput>
+}
+
+export type UserCreateNestedOneWithoutPasswordResetInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPasswordResetInput, Prisma.UserUncheckedCreateWithoutPasswordResetInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPasswordResetInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPasswordResetNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPasswordResetInput, Prisma.UserUncheckedCreateWithoutPasswordResetInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPasswordResetInput
+  upsert?: Prisma.UserUpsertWithoutPasswordResetInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPasswordResetInput, Prisma.UserUpdateWithoutPasswordResetInput>, Prisma.UserUncheckedUpdateWithoutPasswordResetInput>
 }
 
 export type UserCreateNestedOneWithoutBusByIdInput = {
@@ -562,6 +583,7 @@ export type UserCreateWithoutUserInfoInput = {
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserInfoInput = {
@@ -578,6 +600,7 @@ export type UserUncheckedCreateWithoutUserInfoInput = {
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserInfoInput = {
@@ -609,6 +632,7 @@ export type UserUpdateWithoutUserInfoInput = {
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserInfoInput = {
@@ -618,6 +642,89 @@ export type UserUncheckedUpdateWithoutUserInfoInput = {
   govUsername?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPasswordResetInput = {
+  email: string
+  password: string
+  govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  busById?: Prisma.BusCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+}
+
+export type UserUncheckedCreateWithoutPasswordResetInput = {
+  id?: number
+  email: string
+  password: string
+  govUsername: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  busById?: Prisma.BusUncheckedCreateNestedManyWithoutUserByIdInput
+  swdiByID?: Prisma.SwdiUncheckedCreateNestedManyWithoutUserByIdInput
+  pcnByID?: Prisma.PcnUncheckedCreateNestedManyWithoutUserByIdInput
+  cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
+  miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
+  encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+}
+
+export type UserCreateOrConnectWithoutPasswordResetInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPasswordResetInput, Prisma.UserUncheckedCreateWithoutPasswordResetInput>
+}
+
+export type UserUpsertWithoutPasswordResetInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPasswordResetInput, Prisma.UserUncheckedUpdateWithoutPasswordResetInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPasswordResetInput, Prisma.UserUncheckedCreateWithoutPasswordResetInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPasswordResetInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPasswordResetInput, Prisma.UserUncheckedUpdateWithoutPasswordResetInput>
+}
+
+export type UserUpdateWithoutPasswordResetInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  busById?: Prisma.BusUpdateManyWithoutUserByIdNestedInput
+  swdiByID?: Prisma.SwdiUpdateManyWithoutUserByIdNestedInput
+  pcnByID?: Prisma.PcnUpdateManyWithoutUserByIdNestedInput
+  cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
+  miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
+  encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
+  encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPasswordResetInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  govUsername?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
   busById?: Prisma.BusUncheckedUpdateManyWithoutUserByIdNestedInput
   swdiByID?: Prisma.SwdiUncheckedUpdateManyWithoutUserByIdNestedInput
   pcnByID?: Prisma.PcnUncheckedUpdateManyWithoutUserByIdNestedInput
@@ -640,6 +747,7 @@ export type UserCreateWithoutBusByIdInput = {
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBusByIdInput = {
@@ -656,6 +764,7 @@ export type UserUncheckedCreateWithoutBusByIdInput = {
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBusByIdInput = {
@@ -687,6 +796,7 @@ export type UserUpdateWithoutBusByIdInput = {
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBusByIdInput = {
@@ -703,6 +813,7 @@ export type UserUncheckedUpdateWithoutBusByIdInput = {
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSwdiByIDInput = {
@@ -718,6 +829,7 @@ export type UserCreateWithoutSwdiByIDInput = {
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSwdiByIDInput = {
@@ -734,6 +846,7 @@ export type UserUncheckedCreateWithoutSwdiByIDInput = {
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSwdiByIDInput = {
@@ -765,6 +878,7 @@ export type UserUpdateWithoutSwdiByIDInput = {
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSwdiByIDInput = {
@@ -781,6 +895,7 @@ export type UserUncheckedUpdateWithoutSwdiByIDInput = {
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPcnByIDInput = {
@@ -796,6 +911,7 @@ export type UserCreateWithoutPcnByIDInput = {
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPcnByIDInput = {
@@ -812,6 +928,7 @@ export type UserUncheckedCreateWithoutPcnByIDInput = {
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPcnByIDInput = {
@@ -843,6 +960,7 @@ export type UserUpdateWithoutPcnByIDInput = {
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPcnByIDInput = {
@@ -859,6 +977,7 @@ export type UserUncheckedUpdateWithoutPcnByIDInput = {
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCvsByIDInput = {
@@ -874,6 +993,7 @@ export type UserCreateWithoutCvsByIDInput = {
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCvsByIDInput = {
@@ -890,6 +1010,7 @@ export type UserUncheckedCreateWithoutCvsByIDInput = {
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCvsByIDInput = {
@@ -921,6 +1042,7 @@ export type UserUpdateWithoutCvsByIDInput = {
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCvsByIDInput = {
@@ -937,6 +1059,7 @@ export type UserUncheckedUpdateWithoutCvsByIDInput = {
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMiscByIDInput = {
@@ -952,6 +1075,7 @@ export type UserCreateWithoutMiscByIDInput = {
   cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMiscByIDInput = {
@@ -968,6 +1092,7 @@ export type UserUncheckedCreateWithoutMiscByIDInput = {
   cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMiscByIDInput = {
@@ -999,6 +1124,7 @@ export type UserUpdateWithoutMiscByIDInput = {
   cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMiscByIDInput = {
@@ -1015,6 +1141,7 @@ export type UserUncheckedUpdateWithoutMiscByIDInput = {
   cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEncDocByIDInput = {
@@ -1030,6 +1157,7 @@ export type UserCreateWithoutEncDocByIDInput = {
   cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEncDocByIDInput = {
@@ -1046,6 +1174,7 @@ export type UserUncheckedCreateWithoutEncDocByIDInput = {
   cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutGovUserByUsernameInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEncDocByIDInput = {
@@ -1066,6 +1195,7 @@ export type UserCreateWithoutEncDocByUsernameInput = {
   cvsByID?: Prisma.CVSCreateNestedManyWithoutUserByIdInput
   miscByID?: Prisma.MiscellaneousCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentCreateNestedManyWithoutUserByIdInput
+  passwordReset?: Prisma.PasswordResetCodeCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEncDocByUsernameInput = {
@@ -1082,6 +1212,7 @@ export type UserUncheckedCreateWithoutEncDocByUsernameInput = {
   cvsByID?: Prisma.CVSUncheckedCreateNestedManyWithoutUserByIdInput
   miscByID?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutUserByIdInput
   encDocByID?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutUserByIdInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEncDocByUsernameInput = {
@@ -1113,6 +1244,7 @@ export type UserUpdateWithoutEncDocByIDInput = {
   cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEncDocByIDInput = {
@@ -1129,6 +1261,7 @@ export type UserUncheckedUpdateWithoutEncDocByIDInput = {
   cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByUsername?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutGovUserByUsernameNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutEncDocByUsernameInput = {
@@ -1155,6 +1288,7 @@ export type UserUpdateWithoutEncDocByUsernameInput = {
   cvsByID?: Prisma.CVSUpdateManyWithoutUserByIdNestedInput
   miscByID?: Prisma.MiscellaneousUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUpdateManyWithoutUserByIdNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEncDocByUsernameInput = {
@@ -1171,6 +1305,7 @@ export type UserUncheckedUpdateWithoutEncDocByUsernameInput = {
   cvsByID?: Prisma.CVSUncheckedUpdateManyWithoutUserByIdNestedInput
   miscByID?: Prisma.MiscellaneousUncheckedUpdateManyWithoutUserByIdNestedInput
   encDocByID?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutUserByIdNestedInput
+  passwordReset?: Prisma.PasswordResetCodeUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -1273,6 +1408,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
   encDocByID?: boolean | Prisma.User$encDocByIDArgs<ExtArgs>
   encDocByUsername?: boolean | Prisma.User$encDocByUsernameArgs<ExtArgs>
+  passwordReset?: boolean | Prisma.User$passwordResetArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1313,6 +1449,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   miscByID?: boolean | Prisma.User$miscByIDArgs<ExtArgs>
   encDocByID?: boolean | Prisma.User$encDocByIDArgs<ExtArgs>
   encDocByUsername?: boolean | Prisma.User$encDocByUsernameArgs<ExtArgs>
+  passwordReset?: boolean | Prisma.User$passwordResetArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1329,6 +1466,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     miscByID: Prisma.$MiscellaneousPayload<ExtArgs>[]
     encDocByID: Prisma.$EncodedDocumentPayload<ExtArgs>[]
     encDocByUsername: Prisma.$EncodedDocumentPayload<ExtArgs>[]
+    passwordReset: Prisma.$PasswordResetCodePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1739,6 +1877,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   miscByID<T extends Prisma.User$miscByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$miscByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MiscellaneousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   encDocByID<T extends Prisma.User$encDocByIDArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$encDocByIDArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EncodedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   encDocByUsername<T extends Prisma.User$encDocByUsernameArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$encDocByUsernameArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EncodedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  passwordReset<T extends Prisma.User$passwordResetArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$passwordResetArgs<ExtArgs>>): Prisma.Prisma__PasswordResetCodeClient<runtime.Types.Result.GetResult<Prisma.$PasswordResetCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2346,6 +2485,25 @@ export type User$encDocByUsernameArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.EncodedDocumentScalarFieldEnum | Prisma.EncodedDocumentScalarFieldEnum[]
+}
+
+/**
+ * User.passwordReset
+ */
+export type User$passwordResetArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PasswordResetCode
+   */
+  select?: Prisma.PasswordResetCodeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PasswordResetCode
+   */
+  omit?: Prisma.PasswordResetCodeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PasswordResetCodeInclude<ExtArgs> | null
+  where?: Prisma.PasswordResetCodeWhereInput
 }
 
 /**

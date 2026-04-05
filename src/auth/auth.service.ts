@@ -4,7 +4,7 @@ import { CreateAuthDto } from './dto/create-auth.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
-import { Upload } from 'lucide-react';
+import { MailService } from '../mail/mail.service.js';
 
 declare global {
   namespace Express {
@@ -48,6 +48,7 @@ export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private jwtService: JwtService,
+    private mailService: MailService,
   ) {}
 async login(createAuthDto: CreateAuthDto, res: Response) {
   try {
@@ -137,6 +138,60 @@ async login(createAuthDto: CreateAuthDto, res: Response) {
     })
   }
 }
+  async forgotPassword(email: string, res: Response) {
+    const user = await this.prisma.client.user.findUnique({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ message: 'No account found with that email.' });
+    }
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+
+    await this.prisma.client.passwordResetCode.upsert({
+      where: { userId: user.id },
+      update: { code, expiresAt },
+      create: { userId: user.id, code, expiresAt },
+    });
+
+    await this.mailService.sendMail(
+      email,
+      'Your Password Reset Code',
+      `<p>Your password reset code is: <strong>${code}</strong></p><p>This code expires in 10 minutes.</p>`,
+    );
+
+    return res.json({ message: 'Reset code sent to your email.' });
+  }
+
+  async resetPassword(email: string, code: string, newPassword: string, res: Response) {
+    const record = await this.prisma.client.passwordResetCode.findFirst({
+      where: { user: { email } },
+    });
+
+    if (!record) {
+      return res.status(400).json({ message: 'No reset code found for this email.' });
+    }
+
+    if (record.code !== code) {
+      return res.status(400).json({ message: 'Invalid reset code.' });
+    }
+
+    if (new Date() > record.expiresAt) {
+      return res.status(400).json({ message: 'Reset code has expired. Please request a new one.' });
+    }
+
+    const hashed = await argon2.hash(newPassword);
+
+    await this.prisma.client.user.update({
+      where: { email },
+      data: { password: hashed },
+    });
+
+    await this.prisma.client.passwordResetCode.delete({ where: { id: record.id } });
+
+    return res.json({ message: 'Password reset successfully.' });
+  }
+
   checkAuth(req: Request) {
     if (!req.user) {
       throw new BadRequestException('User not authenticated');

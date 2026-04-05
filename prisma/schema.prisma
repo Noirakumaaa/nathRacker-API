@@ -72,6 +72,7 @@ model User {
   miscByID         Miscellaneous[]   @relation("UserById")
   encDocByID       EncodedDocument[] @relation("UserById")
   encDocByUsername EncodedDocument[] @relation("UserByUsername")
+  passwordReset    PasswordResetCode?
 }
 
 model UserInfo {
@@ -81,7 +82,7 @@ model UserInfo {
   lastName            String               @default("")
   middleName          String               @default("")
   phone               String               @default("")
-  sessionTime         Int                  @default(30)
+  sessionTime         Int                  @default(7200000)
   language            String               @default("ENGLISH")
   timezone            String               @default("UTC")
   theme               theme                @default(DARK)
@@ -98,6 +99,15 @@ model UserInfo {
   assignedArea        OperationsOfficeNum? @relation(fields: [assignedOperationId], references: [id])
   assignedLgu         Lgu?                 @relation(fields: [assignedLGUID], references: [id])
   assignedBarangay    Barangay?            @relation(fields: [assignedBarangayId], references: [id])
+}
+
+model PasswordResetCode {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 // ─── Data Models ──────────────────────────────────────────────────────────────

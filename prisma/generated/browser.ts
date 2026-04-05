@@ -43,6 +43,11 @@ export type User = Prisma.UserModel
  */
 export type UserInfo = Prisma.UserInfoModel
 /**
+ * Model PasswordResetCode
+ * 
+ */
+export type PasswordResetCode = Prisma.PasswordResetCodeModel
+/**
  * Model Bus
  * 
  */

@@ -56,6 +56,7 @@ export const ModelName = {
   Barangay: 'Barangay',
   User: 'User',
   UserInfo: 'UserInfo',
+  PasswordResetCode: 'PasswordResetCode',
   Bus: 'Bus',
   Swdi: 'Swdi',
   Pcn: 'Pcn',
@@ -141,6 +142,17 @@ export const UserInfoScalarFieldEnum = {
 } as const
 
 export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
+
+
+export const PasswordResetCodeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  code: 'code',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type PasswordResetCodeScalarFieldEnum = (typeof PasswordResetCodeScalarFieldEnum)[keyof typeof PasswordResetCodeScalarFieldEnum]
 
 
 export const BusScalarFieldEnum = {

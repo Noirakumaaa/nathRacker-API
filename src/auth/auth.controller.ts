@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Req, Res, UseGuards } from '@nestjs/common';
 import express from 'express';
 import { AuthService } from './auth.service.js';
 import { CreateAuthDto } from './dto/create-auth.dto.js';
@@ -14,9 +14,25 @@ export class AuthController {
 
   @Public()
   @Post('login')
-  login(@Body() createAuthDto: CreateAuthDto,
-  @Res() res : express.Response) {
-    return this.authService.login(createAuthDto,res);
+  login(@Body() createAuthDto: CreateAuthDto, @Res() res: express.Response) {
+    return this.authService.login(createAuthDto, res);
+  }
+
+  @Public()
+  @Post('forgot-password')
+  forgotPassword(@Body('email') email: string, @Res() res: express.Response) {
+    return this.authService.forgotPassword(email, res);
+  }
+
+  @Public()
+  @Post('reset-password')
+  resetPassword(
+    @Body('email') email: string,
+    @Body('code') code: string,
+    @Body('newPassword') newPassword: string,
+    @Res() res: express.Response,
+  ) {
+    return this.authService.resetPassword(email, code, newPassword, res);
   }
 
   @UseGuards(JwtAuthGuard)

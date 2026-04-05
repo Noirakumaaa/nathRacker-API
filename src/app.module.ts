@@ -18,6 +18,7 @@ import { MiscModule } from './misc/misc.module.js';
 import { SummaryModule } from './summary/summary.module.js';
 import { SettingsModule } from './settings/settings.module.js';
 import { AdminModule } from './admin/admin.module.js';
+import { MailModule } from './mail/mail.module.js';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { AdminModule } from './admin/admin.module.js';
     SummaryModule,
     SettingsModule,
     AdminModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy, { provide: APP_GUARD, useClass: ThrottlerGuard }],
