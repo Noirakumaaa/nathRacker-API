@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { AdminService } from './admin.service.js';
 import { CreateAdminDto, CreateBarangay } from './dto/create-admin.dto.js';
-import { CreateLgu } from './dto/create-admin.dto.js';
+import { CreateLguDto } from './dto/create-lgu.dto.js';
 import type { Request } from 'express';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './../../guard/jwt-guard.js';
@@ -25,7 +25,7 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto.js';
 @Roles(Role.ADMIN)
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly adminService: AdminService) {}
+  constructor(private readonly adminService: AdminService) { }
 
 
   @Post('register')
@@ -56,27 +56,27 @@ export class AdminController {
 
   @Post("/lgu")
   createLgu(
-    @Body() lgu: CreateLgu, 
+    @Body() lgu: CreateLguDto,
     @Req() req: Request) {
     return this.adminService.createLgu(lgu, req);
   }
 
   @Post("/operations-office")
   createOperationOffice(
-    @Body() OO: CreateBarangay, 
+    @Body() OO: CreateBarangay,
     @Req() req: Request) {
     return this.adminService.createOperationsOffice(OO, req);
   }
 
   @Post("/barangay")
   createBarangay(
-    @Body() barangay: CreateBarangayDto, 
+    @Body() barangay: CreateBarangayDto,
     @Req() req: Request) {
     return this.adminService.createBarangay(barangay, req);
   }
 
   @Get('/get/assignedArea')
-  getAssignedAreas(){
+  getAssignedAreas() {
     return this.adminService.getAssignedArea()
   }
 
@@ -88,6 +88,21 @@ export class AdminController {
   @Patch('/employee/:id')
   updateEmployee(@Param('id') id: string, @Body() dto: UpdateEmployeeDto) {
     return this.adminService.updateEmployee(Number(id), dto);
+  }
+
+  @Delete('/delete/table')
+  deleteTable(@Query('table') table: string) {
+    return this.adminService.deleteTable(table);
+  }
+
+  @Delete('/lgu/:id')
+  deleteLgu(@Param('id') id: string) {
+    return this.adminService.deleteLgu(Number(id));
+  }
+
+  @Delete('/barangay/:id')
+  deleteBarangay(@Param('id') id: string) {
+    return this.adminService.deleteBarangay(Number(id));
   }
 
 }

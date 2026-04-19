@@ -14,6 +14,7 @@ enum Role {
   ENCODER
   ADMIN
   AC
+  SWA
   SWOIII
   VERIFIER
 }
@@ -254,6 +255,7 @@ model EncodedDocument {
   drn                   String
   date                  DateTime
   govUsername           String
+  typeOfUpdate          String?
   remarks               String
   verifiedBy            String               @default("")
   verified              String               @default("NO")

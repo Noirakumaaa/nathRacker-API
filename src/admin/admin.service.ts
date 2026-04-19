@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import {
   CreateAdminDto,
-  CreateLgu,
   CreateBarangay,
   CreateOperations,
 } from './dto/create-admin.dto.js';
+import { CreateLguDto } from './dto/create-lgu.dto.js';
 import type { Request } from 'express';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { BadRequestException } from '@nestjs/common';
@@ -13,13 +13,13 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto.js';
 import * as argon2 from 'argon2';
 @Injectable()
 export class AdminService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   create(createAdminDto: CreateAdminDto) {
     return 'This action adds a new admin';
   }
 
-    async alldocumentCountbyId(req: Request) {
+  async alldocumentCountbyId(req: Request) {
     const user = req.user;
     if (!user) {
       throw new Error('User not authenticated');
@@ -29,7 +29,7 @@ export class AdminService {
         by: ['documentType'],
         where: {
           userId: user.id,
-          operationsOfficeNumId : user.assignedOperationId
+          operationsOfficeNumId: user.assignedOperationId
         },
         _count: {
           documentType: true,
@@ -76,25 +76,29 @@ export class AdminService {
     }));
   }
 
-  async createLgu(lgu: CreateLgu, req: Request) {
-    const user = req.user;
+  async createLgu(lgu: CreateLguDto, req: Request) {
+    try {
+      const user = req.user;
 
-    if (!user) {
-      return { message: 'Auth Failed' };
+      if (!user) {
+        return { message: 'Auth Failed' };
+      }
+
+      const existing = await this.prisma.client.lgu.findFirst({
+        where: {
+          name: lgu.name,
+          operationsOfficeNumId: lgu.operationsOfficeNumId,
+        },
+      });
+      if (existing) {
+        return { message: 'Duplicate upload', upload: false };
+      }
+
+      const res = await this.prisma.client.lgu.create({ data: lgu });
+      return res;
+    } catch (error: any) {
+      return { message: error.message || 'An error occurred', upload: false };
     }
-
-    const existing = await this.prisma.client.lgu.findFirst({
-      where: {
-        name: lgu.name,
-        operationsOfficeNumId: lgu.operationsOfficeNumId,
-      },
-    });
-    if (existing) {
-      return { message: 'Duplicate upload', upload: false };
-    }
-
-    const res = await this.prisma.client.lgu.create({ data: lgu });
-    return res;
   }
 
   async createBarangay(barangay: CreateBarangay, req: Request) {
@@ -235,18 +239,76 @@ export class AdminService {
     return { updated: true };
   }
 
-  async getAssignedArea(){
+  async getAssignedArea() {
     const lgu = await this.prisma.client.lgu.findMany()
     const barangay = await this.prisma.client.barangay.findMany()
     const operations = await this.prisma.client.operationsOfficeNum.findMany()
-  
-    return { 
-      lgu : lgu,
-      barangay : barangay,
-      operations : operations
+
+    return {
+      lgu: lgu,
+      barangay: barangay,
+      operations: operations
     }
 
   }
 
+  async deleteTable(table: string) {
+    if (table === "encodedDocument") {
+      await this.prisma.client.encodedDocument.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "bus") {
+      await this.prisma.client.bus.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "swdi") {
+      await this.prisma.client.swdi.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "pcn") {
+      await this.prisma.client.pcn.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "cvs") {
+      await this.prisma.client.cVS.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "misc") {
+      await this.prisma.client.miscellaneous.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "user") {
+      await this.prisma.client.user.deleteMany()
+      return { deleted: true };
+    }
+    if (table === "userInfo") {
+      await this.prisma.client.userInfo.deleteMany()
+      return { deleted: true };
+    }
+    return { deleted: false };
+  }
 
+  async deleteLgu(id: number) {
+    try {
+      await this.prisma.client.lgu.delete({ where: { id } });
+      return { deleted: true, message: 'LGU deleted successfully' };
+    } catch (error: any) {
+      if (error.code === 'P2003') {
+         return { deleted: false, message: 'Cannot delete LGU because it is in use' };
+      }
+      return { deleted: false, message: 'Failed to delete LGU' };
+    }
+  }
+
+  async deleteBarangay(id: number) {
+    try {
+      await this.prisma.client.barangay.delete({ where: { id } });
+      return { deleted: true, message: 'Barangay deleted successfully' };
+    } catch (error: any) {
+      if (error.code === 'P2003') {
+         return { deleted: false, message: 'Cannot delete Barangay because it is in use' };
+      }
+      return { deleted: false, message: 'Failed to delete Barangay' };
+    }
+  }
 }

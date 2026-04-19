@@ -128,7 +128,7 @@ const MODULE_SCHEMA: Record<Module, SchemaEntry> = {
 
 @Injectable()
 export class SettingsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async processImport(file: Express.Multer.File, module: Module, req: Request) {
     const schema = MODULE_SCHEMA[module];
@@ -326,7 +326,7 @@ export class SettingsService {
           ...filteredRow,
           encodedBy: user.govUsername,
           userId: user.id,
-          operationsOfficeNumId : user.assignedOperationId,
+          operationsOfficeNumId: user.assignedOperationId,
         };
         if (i === 0)
           console.log('Row 2 payload:', JSON.stringify(payload, null, 2));
@@ -351,16 +351,17 @@ export class SettingsService {
             documentId: created.id,
             subjectOfChange: String(
               row['subjectOfChange'] ??
-                row['granteeName'] ??
-                row['grantee'] ??
-                row['facilityName'] ??
-                '',
+              row['granteeName'] ??
+              row['grantee'] ??
+              row['facilityName'] ??
+              '',
             ),
+            typeOfUpdate: String(row['typeOfUpdate'] ?? ''),
             remarks: String(row['remarks'] ?? ''),
             date: created.date ?? new Date(),
             drn: String(row['drn'] ?? ' '),
             userId: user.id,
-            operationsOfficeNumId : user.assignedOperationId,
+            operationsOfficeNumId: user.assignedOperationId,
             govUsername: user.govUsername,
           },
         });
@@ -439,16 +440,16 @@ export class SettingsService {
     });
   }
 
-  async UpdateSecuritySetting(SecurityData : SecurityData , req: Request) {
+  async UpdateSecuritySetting(SecurityData: SecurityData, req: Request) {
     const user = req.user;
     if (!user) {
       throw new BadRequestException('User not authenticated');
     }
     const newSessionTimeUpdate = await this.prisma.client.userInfo.update({
       where: { userId: user.id },
-      data: { 
-        sessionTime : sessionTimeoutFormat[SecurityData.sessionTime],
-        loginAlert : SecurityData.loginAlert,
+      data: {
+        sessionTime: sessionTimeoutFormat[SecurityData.sessionTime],
+        loginAlert: SecurityData.loginAlert,
         twoFactorAuth: SecurityData.twoFactorAuth
       },
     });
@@ -458,35 +459,35 @@ export class SettingsService {
       'New session time:',
       newSessionTimeUpdate.sessionTime,
     );
-    return { message: 'Session time updated successfully',newData : { newSessionTimeUpdate}, updated: true };
+    return { message: 'Session time updated successfully', newData: { newSessionTimeUpdate }, updated: true };
   }
 
 
-async GetSecurityData(req: Request) {
-  const user = req.user;
-  if (!user) {
-    throw new BadRequestException('User not authenticated');
+  async GetSecurityData(req: Request) {
+    const user = req.user;
+    if (!user) {
+      throw new BadRequestException('User not authenticated');
+    }
+
+    const securityData = await this.prisma.client.userInfo.findUnique({
+      where: { userId: user.id },
+      select: {
+        sessionTime: true,
+        loginAlert: true,
+        twoFactorAuth: true,
+      },
+    });
+
+    if (!securityData) {
+      throw new NotFoundException('Security data not found for user');
+    }
+
+    // Exclude sessionTime from returned data
+    const { sessionTime, ...data } = securityData;
+
+    return securityData
+    //return {...data,sessionTime :  sessionTimeoutFormat[sessionTime]}; 
   }
-
-  const securityData = await this.prisma.client.userInfo.findUnique({
-    where: { userId: user.id },
-    select: {
-      sessionTime: true,
-      loginAlert: true,
-      twoFactorAuth: true,
-    },
-  });
-
-  if (!securityData) {
-    throw new NotFoundException('Security data not found for user');
-  }
-
-  // Exclude sessionTime from returned data
-  const { sessionTime, ...data } = securityData;
-
-  return securityData
-  //return {...data,sessionTime :  sessionTimeoutFormat[sessionTime]}; 
-}
 
   async UpdateTheme(themeValue: 'LIGHT' | 'DARK', req: Request) {
     const user = req.user;

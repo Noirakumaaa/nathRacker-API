@@ -7,7 +7,7 @@ import type { Request } from 'express';
 
 @Injectable()
 export class BusService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async create(createBusDto: CreateBusDto, req: Request) {
     const user = req.user;
@@ -46,12 +46,12 @@ export class BusService {
         ...createBusDto,
         encodedBy: user.govUsername,
         userId: user.id,
-        operationsOfficeNumId : user.assignedOperationId,
+        operationsOfficeNumId: user.assignedOperationId,
         date: new Date(),
       },
     });
 
-    const globalTable = await this.prisma.client.encodedDocument.create({ 
+    const globalTable = await this.prisma.client.encodedDocument.create({
       data: {
         idNumber: result.hhId,
         name: result.granteeName,
@@ -59,11 +59,12 @@ export class BusService {
         documentId: result.id,
         subjectOfChange: result.subjectOfChange,
         userId: user.id,
-        drn : result.drn ?? " ",
+        typeOfUpdate: result.typeOfUpdate,
+        drn: result.drn ?? " ",
         date: new Date(),
         remarks: result.remarks,
         govUsername: user.govUsername,
-        operationsOfficeNumId : user.assignedOperationId
+        operationsOfficeNumId: user.assignedOperationId
       }
     })
 
@@ -83,7 +84,7 @@ export class BusService {
 
     return await this.prisma.client.bus.findMany()
 
-  
+
   }
 
   recent(req: Request) {
@@ -91,7 +92,7 @@ export class BusService {
     if (!user) {
       throw new Error('User not authenticated');
     }
-  
+
     return this.prisma.client.bus.findMany({
       where: {
         userId: user.id,
@@ -136,14 +137,14 @@ export class BusService {
         userId: user.id,
       },
     });
-    return {count : count};
+    return { count: count };
   }
 
   async verify(id: number, dto: { verified: string; verificationIssue?: string }, req: Request) {
     const user = req.user;
     if (!user) throw new Error('User not authenticated');
 
-    return this.prisma.client.bus.update({
+    const verifiedBus = await this.prisma.client.bus.update({
       where: { id },
       data: {
         verified: dto.verified,
@@ -151,23 +152,36 @@ export class BusService {
         verifiedBy: user.govUsername,
       },
     });
+
+    const updateEncodedDocument = await this.prisma.client.encodedDocument.updateMany({
+      where: {
+        documentId: id,
+        documentType: "BUS"
+      },
+      data: {
+        verified: verifiedBus.verified,
+        verifiedBy: user.govUsername,
+      },
+    });
+
+    return { verifiedBus, updateEncodedDocument };
   }
 
   async update(updateBusDto: UpdateBusDto) {
-    const { id, ...data }= updateBusDto
+    const { id, ...data } = updateBusDto
     const busUpdate = await this.prisma.client.bus.update({
-      where : {
-        id : updateBusDto.id
+      where: {
+        id: updateBusDto.id
       },
-      data : {
+      data: {
         ...data
       }
     })
 
     await this.prisma.client.encodedDocument.updateMany({
-      where : {
-        documentId : busUpdate.id,
-        documentType : "BUS"
+      where: {
+        documentId: busUpdate.id,
+        documentType: "BUS"
       },
       data: {
         idNumber: busUpdate.hhId,
@@ -175,45 +189,45 @@ export class BusService {
         documentType: 'BUS',
         documentId: busUpdate.id,
         subjectOfChange: busUpdate.subjectOfChange,
-        drn : busUpdate.drn ?? " ",
+        drn: busUpdate.drn ?? " ",
         remarks: busUpdate.remarks,
       }
     })
 
-    return { message : `Updated Item ${busUpdate.hhId}`, update : true}
+    return { message: `Updated Item ${busUpdate.hhId}`, update: true }
   }
 
   async remove(id: number) {
     const deleteBus = await this.prisma.client.bus.delete({
-      where : { 
-        id : id 
+      where: {
+        id: id
       }
     })
 
     await this.prisma.client.encodedDocument.deleteMany({
-      where : {
-        documentId : id,
+      where: {
+        documentId: id,
         documentType: "BUS"
       }
     })
 
-    return {message : `Deleted Item ${deleteBus.hhId}`, deleted : true}
+    return { message: `Deleted Item ${deleteBus.hhId}`, deleted: true }
   }
 
 
 
-  async getLGU(req : Request ){
+  async getLGU(req: Request) {
     const user = req?.user
-        if (!user) {
+    if (!user) {
       throw new Error('User not authenticated');
     }
 
     return await this.prisma.client.lgu.findMany({
-      where : {
-        operationsOfficeNumId : Number(user.assignedOperationId)
+      where: {
+        operationsOfficeNumId: Number(user.assignedOperationId)
       },
-      include : {
-        barangay : true
+      include: {
+        barangay: true
       }
     })
   }

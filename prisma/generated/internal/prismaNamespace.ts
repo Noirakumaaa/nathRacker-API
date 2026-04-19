@@ -1551,6 +1551,7 @@ export const EncodedDocumentScalarFieldEnum = {
   drn: 'drn',
   date: 'date',
   govUsername: 'govUsername',
+  typeOfUpdate: 'typeOfUpdate',
   remarks: 'remarks',
   verifiedBy: 'verifiedBy',
   verified: 'verified',
