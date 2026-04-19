@@ -1,58 +1,61 @@
-import { IsOptional, IsString ,IsDate} from 'class-validator'
+import { IsOptional, IsString, IsDate } from 'class-validator';
 import { Type } from 'class-transformer';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+
 export class CreatePcnDto {
-  @IsOptional()
+  @ApiPropertyOptional({ example: 'Cagayan de Oro' })
+  @IsOptional() @IsString()
+  lgu?: string;
+
+  @ApiPropertyOptional({ example: 'Barangay 1' })
+  @IsOptional() @IsString()
+  barangay?: string;
+
+  @ApiProperty({ example: '112233-44', description: 'Household ID number' })
   @IsString()
-  lgu?: string
+  hhId: string;
 
-  @IsOptional()
+  @ApiPropertyOptional({ example: 'Juan Dela Cruz' })
+  @IsOptional() @IsString()
+  granteeName?: string;
+
+  @ApiProperty({ example: 'ENCODED', enum: ['ENCODED', 'ISSUE', 'UPDATED'] })
   @IsString()
-  barangay?: string
+  remarks: string;
 
+  @ApiPropertyOptional({ example: 'Missing PCN number' })
+  @IsOptional() @IsString()
+  issue?: string;
+
+  @ApiProperty({ example: 'jdelacruz', description: 'govUsername of the encoder' })
   @IsString()
-  hhId: string
+  encodedBy: string;
 
-  @IsOptional()
+  @ApiProperty({ example: 'Name Correction', description: 'Subject of the change' })
   @IsString()
-  granteeName?: string
+  subjectOfChange: string;
 
-  @IsString()
-  remarks: string
+  @ApiPropertyOptional({ example: 'PCN-2024-001', description: 'PCN reference number' })
+  @IsOptional() @IsString()
+  pcn?: string;
 
-  @IsOptional()
-  @IsString()
-  issue?: string
+  @ApiPropertyOptional({ example: 'LRN-00123', description: 'Learner Reference Number' })
+  @IsOptional() @IsString()
+  lrn?: string;
 
-  @IsString()
-  encodedBy: string
+  @ApiPropertyOptional({ example: 'BDM-0012', description: 'Document Reference Number' })
+  @IsOptional() @IsString()
+  drn?: string;
 
-  @IsString()
-  subjectOfChange: string
+  @ApiPropertyOptional({ example: 'Maria Santos', description: 'Assigned City Link or SWA' })
+  @IsOptional() @IsString()
+  cl?: string;
 
-  @IsOptional()
-  @IsString()
-  pcn?: string
+  @ApiProperty({ example: '2024-06-15', description: 'Date accomplished (ISO format)' })
+  @Type(() => Date) @IsDate()
+  date: Date;
 
-  @IsOptional()
-  @IsString()
-  lrn?: string
-
-  @IsOptional()
-  @IsString()
-  drn?: string
-
-  @IsOptional()
-  @IsString()
-  cl?: string
-
-  @Type(() => Date)
-  @IsDate()
-  date : Date;
-
-
-  @IsOptional()
-  @IsString()
-  note?: string
-
-
+  @ApiPropertyOptional({ example: 'Needs re-verification' })
+  @IsOptional() @IsString()
+  note?: string;
 }

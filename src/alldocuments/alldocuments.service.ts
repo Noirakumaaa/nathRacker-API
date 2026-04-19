@@ -7,7 +7,7 @@ import { NotFoundException } from '@nestjs/common';
 import { BadRequestException } from '@nestjs/common';
 @Injectable()
 export class AlldocumentsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   create(createAlldocumentDto: CreateAlldocumentDto) {
     return 'This action adds a new alldocument';
@@ -125,12 +125,23 @@ export class AlldocumentsService {
     });
   }
 
-  globalRecords(req : Request) {
-        const user = req.user;
+  globalRecords(req: Request) {
+    const user = req.user;
     if (!user) throw new Error('User not authenticated');
     return this.prisma.client.encodedDocument.findMany({
-      where : {
-        operationsOfficeNumId : user.assignedOperationId
+      where: {
+        operationsOfficeNumId: user.assignedOperationId
+      },
+      orderBy: { date: 'desc' },
+    });
+  }
+
+  myRecords(req: Request) {
+    const user = req.user;
+    if (!user) throw new Error('User not authenticated');
+    return this.prisma.client.encodedDocument.findMany({
+      where: {
+        userId: user.id
       },
       orderBy: { date: 'desc' },
     });
@@ -148,67 +159,67 @@ export class AlldocumentsService {
     return `This action updates a #${id} alldocument`;
   }
 
-async remove(id: number) {
-  try {
-    const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
-      where: { id },
-    })
-
-    if (!deleteDocument) {
-      throw new NotFoundException(`Document #${id} not found`)
-    }
-
-    const { documentType, documentId } = deleteDocument
-
+  async remove(id: number) {
     try {
-      switch (documentType) {
-        case 'BUS':
-          await this.prisma.client.bus.deleteMany({
-            where: { id: documentId },
-          })
-          break
+      const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
+        where: { id },
+      })
 
-        case 'PCN':
-          await this.prisma.client.pcn.deleteMany({
-            where: { id: documentId },
-          })
-          break
-
-        case 'SWDI':
-          await this.prisma.client.swdi.deleteMany({
-            where: { id: documentId },
-          })
-          break
-
-        case 'CVS':
-          await this.prisma.client.cVS.deleteMany({
-            where: { id: documentId },
-          })
-          break
-
-        case 'MISC':
-          await this.prisma.client.miscellaneous.deleteMany({
-            where: { id: documentId },
-          })
-          break
+      if (!deleteDocument) {
+        throw new NotFoundException(`Document #${id} not found`)
       }
-    } catch (err) {
-    }
 
-    await this.prisma.client.encodedDocument.delete({
-      where: { id },
-    })
+      const { documentType, documentId } = deleteDocument
 
-    return {
-      deleted: true,
-      message: `${documentType} #${documentId} processed and encodedDocument removed`,
-    }
-  } catch (error) {
-    return {
-      deleted: false,
-      message: "Delete failed",
-      error: error?.message || error,
+      try {
+        switch (documentType) {
+          case 'BUS':
+            await this.prisma.client.bus.deleteMany({
+              where: { id: documentId },
+            })
+            break
+
+          case 'PCN':
+            await this.prisma.client.pcn.deleteMany({
+              where: { id: documentId },
+            })
+            break
+
+          case 'SWDI':
+            await this.prisma.client.swdi.deleteMany({
+              where: { id: documentId },
+            })
+            break
+
+          case 'CVS':
+            await this.prisma.client.cVS.deleteMany({
+              where: { id: documentId },
+            })
+            break
+
+          case 'MISC':
+            await this.prisma.client.miscellaneous.deleteMany({
+              where: { id: documentId },
+            })
+            break
+        }
+      } catch (err) {
+      }
+
+      await this.prisma.client.encodedDocument.delete({
+        where: { id },
+      })
+
+      return {
+        deleted: true,
+        message: `${documentType} #${documentId} processed and encodedDocument removed`,
+      }
+    } catch (error) {
+      return {
+        deleted: false,
+        message: "Delete failed",
+        error: error?.message || error,
+      }
     }
   }
-}
 }

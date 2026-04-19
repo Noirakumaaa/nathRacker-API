@@ -9,10 +9,10 @@ import { Roles } from './../../decorator/roles.decorator.js';
 import type { Request } from 'express';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ENCODER, Role.ADMIN) 
+@Roles(Role.ENCODER, Role.ADMIN)
 @Controller('alldocuments')
 export class AlldocumentsController {
-  constructor(private readonly alldocumentsService: AlldocumentsService) {}
+  constructor(private readonly alldocumentsService: AlldocumentsService) { }
 
   @Post()
   create(@Body() createAlldocumentDto: CreateAlldocumentDto) {
@@ -27,6 +27,12 @@ export class AlldocumentsController {
   @Get('count/documents')
   alldocumentCountbyId(@Req() req: Request) {
     return this.alldocumentsService.alldocumentCountbyId(req);
+  }
+
+
+  @Get('myRecords')
+  myRecords(@Req() req: Request) {
+    return this.alldocumentsService.myRecords(req);
   }
 
   @Get('count/OperationDashboard')
@@ -47,7 +53,7 @@ export class AlldocumentsController {
 
 
   @Get('globalRecords')
-  findAll(@Req() req : Request) {
+  findAll(@Req() req: Request) {
     return this.alldocumentsService.globalRecords(req);
   }
 

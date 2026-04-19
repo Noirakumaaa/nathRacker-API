@@ -1,59 +1,60 @@
 import { IsString, IsNotEmpty, IsOptional, IsDateString, IsInt } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateBusDto {
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'Cagayan de Oro', description: 'Local Government Unit name' })
+  @IsString() @IsNotEmpty()
   lgu: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'Barangay 1', description: 'Barangay name or ID' })
+  @IsString() @IsNotEmpty()
   barangay: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: '112233-44', description: 'Household ID number' })
+  @IsString() @IsNotEmpty()
   hhId: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'Juan Dela Cruz', description: 'Name of the program grantee' })
+  @IsString() @IsNotEmpty()
   granteeName: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'A1', description: 'Type of update code' })
+  @IsString() @IsNotEmpty()
   typeOfUpdate: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'Changed middle name from Santos to Reyes' })
+  @IsString() @IsNotEmpty()
   updateInfo: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'ENCODED', enum: ['ENCODED', 'ISSUE', 'UPDATED'], description: 'Encoding status' })
+  @IsString() @IsNotEmpty()
   remarks: string;
 
-  @IsString()
-  @IsOptional()
+  @ApiPropertyOptional({ example: 'Missing supporting document' })
+  @IsString() @IsOptional()
   issue?: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'Name Correction', description: 'Subject of the change being recorded' })
+  @IsString() @IsNotEmpty()
   subjectOfChange: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ example: 'BDM-0012', description: 'Document Reference Number with BDM- prefix' })
+  @IsString() @IsNotEmpty()
   drn: string;
 
-  @IsString()
-  @IsOptional()
+  @ApiPropertyOptional({ example: 'Maria Santos', description: 'Assigned City Link or SWA name' })
+  @IsString() @IsOptional()
   cl: string;
-  @IsString()
-  @IsOptional()
+
+  @ApiPropertyOptional({ example: 'YES', enum: ['YES', 'ISSUE'], description: 'Verification status' })
+  @IsString() @IsOptional()
   verified?: 'YES' | 'ISSUE';
-  
-  @IsString()
-  @IsOptional()
+
+  @ApiPropertyOptional({ example: 'Duplicate entry found' })
+  @IsString() @IsOptional()
   verificationIssue?: string;
 
-
-  @IsString()
-  @IsOptional()
+  @ApiPropertyOptional({ example: 'For follow-up next week' })
+  @IsString() @IsOptional()
   note?: string;
 }

@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Req, Res, UseGuards } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import express from 'express';
 import { AuthService } from './auth.service.js';
 import { CreateAuthDto } from './dto/create-auth.dto.js';
@@ -8,7 +9,7 @@ import { JwtAuthGuard } from '../../guard/jwt-guard.js';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
 
 
@@ -18,6 +19,7 @@ export class AuthController {
     return this.authService.login(createAuthDto, res);
   }
 
+  @Throttle({ default: { ttl: 180000, limit: 1 } })
   @Public()
   @Post('forgot-password')
   forgotPassword(@Body('email') email: string, @Res() res: express.Response) {

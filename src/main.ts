@@ -8,9 +8,10 @@ import compression from 'compression';
 import { AllExceptionsFilter } from './filters/all-exceptions.filter.js';
 import { config } from 'dotenv';
 import path from 'path';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.staging';
+const envFile = (process.env.NODE_ENV ?? '').toLowerCase() === 'production' ? '.env.production' : '.env.staging';
 config({ path: path.resolve(process.cwd(), envFile), override: true });
 
 
@@ -30,14 +31,18 @@ async function bootstrap() {
     logger: ['error', 'warn', 'log'],
   });
 
-  const allowedOrigins = [
-    process.env.URL,
-    "http://staging.nathdomain.com",
-    "http://nathdomain.com",
-    "https://staging.nathdomain.com",
-    "https://nathdomain.com",
+  const envOrigins = (process.env.ALLOWED_ORIGINS ?? '')
+    .split(',')
+    .map((o) => o.trim())
+    .filter(Boolean);
 
-  ].filter(Boolean) as string[];
+  const allowedOrigins = [
+    ...envOrigins,
+    'http://nathracker.nathdomain.com',
+    'http://nathdomain.com',
+    'https://nathracker.nathdomain.com',
+    'https://nathdomain.com',
+  ];
 
   // ✅ CORS must be before helmet
   app.enableCors({
@@ -80,6 +85,21 @@ async function bootstrap() {
   );
   app.useGlobalFilters(new AllExceptionsFilter());
   app.setGlobalPrefix('api');
+
+  // ── Swagger (only in non-production) ─────────────────────────────────────
+  if ((process.env.NODE_ENV ?? '').toLowerCase() !== 'production') {
+    const swaggerConfig = new DocumentBuilder()
+      .setTitle('NathRacker API')
+      .setDescription('Internal document encoding and verification system')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
+    SwaggerModule.setup('docs', app, document, {
+      swaggerOptions: { persistAuthorization: true },
+    });
+    logger.log('Swagger docs available at /docs');
+  }
 
   const port = process.env.PORT || 3001;
   await app.listen(port, '0.0.0.0');

@@ -13,7 +13,21 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  mama_tracker_db:
+    image: postgres:16
+    container_name: mama_tracker_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: mama_tracker
+    ports:
+      - "5433:5432"
+    volumes:
+      - mama_tracker_data:/var/lib/postgresql/data
+
 volumes:
   postgres_data:
+  mama_tracker_data:
 
-## run using docker compose up -d
+## run using: docker compose up -d

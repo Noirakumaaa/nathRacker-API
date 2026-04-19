@@ -14,11 +14,37 @@ const newUsers = [
   {
     firstName: 'ADMIN',
     lastName: 'ADMIN',
-    middleName: '',
+    middleName: 'ADMIN',
     govUsername: 'ADMIN',
     email: 'hernandezlnathaniel9@@gmail.com',
     password: 'ADMIN',
     phone: '09000000000',
+    role: 'ADMIN' as const,
+    assignedLGUID: 4,
+    assignedOperationId: 8,
+    assignedBarangayId: 1,
+  },
+  {
+    firstName: 'NATHANIEL',
+    lastName: 'HERNANDEZ',
+    middleName: 'BARBASA',
+    govUsername: 'nbhernandez',
+    email: 'hernandezlnathaniel@gmail.com',
+    password: 'ADMIN',
+    phone: '09166575886',
+    role: 'ADMIN' as const,
+    assignedLGUID: 4,
+    assignedOperationId: 8,
+    assignedBarangayId: 1,
+  },
+  {
+    firstName: 'MARIA ANDREA GELLE',
+    lastName: 'PAREDES',
+    middleName: 'SERRANO',
+    govUsername: 'magsparedes',
+    email: 'mariaandreagellep@gmail.com',
+    password: 'ADMIN',
+    phone: '09506286951',
     role: 'ADMIN' as const,
     assignedLGUID: 4,
     assignedOperationId: 8,
@@ -36,17 +62,17 @@ const newOperationsOffices = [
   { name: 'Operations Office 7' },
   { name: 'Operations Office 8' },
   { name: 'Operations Office 9' },
-  { name: 'OFFICE BASED'}
 ];
 
 const newLgus = [
-  { name: 'PARANAQUE', operationsOfficeNumId: 8 },
-  { name: 'LAS PINAS', operationsOfficeNumId: 8 },
+  { name: 'PARAÑAQUE', operationsOfficeNumId: 8 },
+  { name: 'LAS PIÑAS', operationsOfficeNumId: 8 },
   { name: 'MUNTINLUPA', operationsOfficeNumId: 8 },
-  { name : "OFFICE BASED", operationsOfficeNumId : 10}
+  { name: "OFFICE BASED", operationsOfficeNumId: 8 }
 ];
 
 const newBarangays = [
+  { name: "OFFICE BASED", lguId: 4 },
   // PARANAQUE
   { name: 'BACLARAN', lguId: 1 },
   { name: 'BF HOMES', lguId: 1 },
@@ -69,7 +95,7 @@ const newBarangays = [
   { name: 'ALMANZA UNO', lguId: 2 },
   { name: 'BF INTERNATIONAL VILLAGE', lguId: 2 },
   { name: 'DANIEL FAJARDO', lguId: 2 },
-  { name: 'DON GALO', lguId: 2 },
+  { name: 'DON GALO', lguId: 1 },
   { name: 'ELIAS ALDANA', lguId: 2 },
   { name: 'ILAYA', lguId: 2 },
   { name: 'MANUYO DOS', lguId: 2 },
@@ -98,7 +124,7 @@ const newBarangays = [
   { name: 'SUCAT', lguId: 3 },
   { name: 'TUNASAN', lguId: 3 },
 
-  {name : "OFFICE BASED", lguId :4}
+
 ];
 
 // ─── Functions ───────────────────────────────────────────────────────────────

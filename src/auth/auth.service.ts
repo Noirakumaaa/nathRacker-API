@@ -24,14 +24,15 @@ declare global {
   }
 }
 
-const isProduction = process.env.NODE_ENV === 'PRODUCTION';
-const isStaging = process.env.NODE_ENV === 'STAGING';
-
-const cookieOptions = {
-  httpOnly: true,
-  secure: isProduction || isStaging,
-  sameSite: (isProduction || isStaging ? 'none' : 'lax') as 'none' | 'lax',
-};
+function getCookieOptions() {
+  const env = (process.env.NODE_ENV ?? '').toLowerCase();
+  const secure = env === 'production' || env === 'staging';
+  return {
+    httpOnly: true,
+    secure,
+    sameSite: (secure ? 'none' : 'lax') as 'none' | 'lax',
+  };
+}
 
 const sessionTimeoutFormat = {
   15: 15 * 60 * 1000,
@@ -49,95 +50,104 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private jwtService: JwtService,
     private mailService: MailService,
-  ) {}
-async login(createAuthDto: CreateAuthDto, res: Response) {
-  try {
-    const checkUser = await this.prisma.client.user.findFirst({
-      where: {
-        OR: [
-          { email: createAuthDto.email },
-          { govUsername: createAuthDto.email },
-        ],
-      },
-    })
+  ) { }
 
-    if (!checkUser) {
-      return res.status(401).json({
-        message: 'Account not found',
-        step: 'CHECK_USER',
-        upload: false
+
+  async login(createAuthDto: CreateAuthDto, res: Response) {
+    try {
+      const checkUser = await this.prisma.client.user.findFirst({
+        where: {
+          OR: [
+            { email: createAuthDto.email },
+            { govUsername: createAuthDto.email },
+          ],
+        },
       })
-    }
 
-    const validPassword = await argon2.verify(
-      checkUser.password,
-      createAuthDto.password,
-    )
-
-    if (!validPassword) {
-      return res.status(401).json({
-        message: 'Wrong password',
-        step: 'VERIFY_PASSWORD',
-        upload: false
-      })
-    }
-
-    const userDataInfo = await this.prisma.client.userInfo.findFirst({
-      where: {
-        userId: checkUser.id
+      if (!checkUser) {
+        return res.status(401).json({
+          message: 'Account not found',
+          step: 'CHECK_USER',
+          upload: false
+        })
       }
-    })
 
-    if (!userDataInfo) {
-      return res.status(404).json({
-        message: 'User info missing',
-        step: 'GET_USER_INFO',
+      const validPassword = await argon2.verify(
+        checkUser.password,
+        createAuthDto.password,
+      )
+
+      if (!validPassword) {
+        return res.status(401).json({
+          message: 'Wrong password',
+          step: 'VERIFY_PASSWORD',
+          upload: false
+        })
+      }
+
+      const userDataInfo = await this.prisma.client.userInfo.findFirst({
+        where: {
+          userId: checkUser.id
+        }
+      })
+
+      if (!userDataInfo) {
+        return res.status(404).json({
+          message: 'User info missing',
+          step: 'GET_USER_INFO',
+          upload: false
+        })
+      }
+
+      const payload = {
+        email: checkUser.email,
+        govUsername: checkUser.govUsername,
+        firstName: userDataInfo.firstName,
+        lastName: userDataInfo.lastName,
+        assignedOperationId: userDataInfo.assignedOperationId,
+        lgu: userDataInfo.assignedLGUID,
+        barangay: userDataInfo.assignedBarangayId,
+        role: checkUser.role,
+        id: checkUser.id,
+      }
+
+      const sessionMs = userDataInfo.sessionTime >= 1000 ? userDataInfo.sessionTime : 7200000;
+
+      const token = this.jwtService.sign(payload, {
+        secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
+        expiresIn: Math.floor(sessionMs / 1000)
+      })
+
+      const maxAge = sessionMs;
+
+      res.cookie('accessToken', token, {
+        ...getCookieOptions(),
+        maxAge,
+      })
+
+      res.setHeader('Cache-Control', 'no-store');
+
+      return res.json({
+        message: 'Login successful',
+        upload: true,
+        sessionTime: userDataInfo.sessionTime,
+        token
+      })
+
+    } catch (error: any) {
+      console.error('LOGIN_ERROR FULL:', error)
+
+      return res.status(500).json({
+        message: 'Login failed',
+        step: 'UNKNOWN_ERROR',
+        expiredIn: Math.floor(sessionTimeoutFormat[15] / 1000),
+        error: error?.message,
+        stack: error?.stack,
         upload: false
       })
     }
-
-    const payload = {
-      email: checkUser.email,
-      govUsername: checkUser.govUsername,
-      firstName: userDataInfo.firstName,
-      lastName: userDataInfo.lastName,
-      assignedOperationId: userDataInfo.assignedOperationId,
-      lgu: userDataInfo.assignedLGUID,
-      barangay: userDataInfo.assignedBarangayId,
-      role: checkUser.role,
-      id: checkUser.id,
-    }
-
-    const token = this.jwtService.sign(payload, {
-      secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
-      expiresIn: userDataInfo.sessionTime
-    })
-
-    res.cookie('accessToken', token, {
-      ...cookieOptions,
-      maxAge: userDataInfo.sessionTime
-    })
-
-    return res.json({
-      message: 'Login successful',
-      upload: true,
-      sessionTime : userDataInfo.sessionTime,
-      token
-    })
-
-  } catch (error: any) {
-    console.error('LOGIN_ERROR FULL:', error)
-
-    return res.status(500).json({
-      message: 'Login failed',
-      step: 'UNKNOWN_ERROR',
-      expiredIn : Math.floor(sessionTimeoutFormat[15] / 1000),
-      error: error?.message,
-      stack: error?.stack,
-      upload: false
-    })
   }
-}
+
   async forgotPassword(email: string, res: Response) {
     const user = await this.prisma.client.user.findUnique({ where: { email } });
 
@@ -193,6 +203,7 @@ async login(createAuthDto: CreateAuthDto, res: Response) {
   }
 
   checkAuth(req: Request) {
+
     if (!req.user) {
       throw new BadRequestException('User not authenticated');
     }
@@ -222,7 +233,8 @@ async login(createAuthDto: CreateAuthDto, res: Response) {
   }
 
   logout(res: Response) {
-    res.clearCookie('accessToken', cookieOptions);
-    return res.json({ message: 'Logout successful', logout : true });
+    res.clearCookie('accessToken', getCookieOptions());
+    res.setHeader('Cache-Control', 'no-store');
+    return res.json({ message: 'Logout successful', logout: true });
   }
 }

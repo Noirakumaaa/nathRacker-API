@@ -58,20 +58,20 @@ model Barangay {
 // ─── User Models ──────────────────────────────────────────────────────────────
 
 model User {
-  id               Int               @id @default(autoincrement())
-  email            String            @unique
+  id               Int                @id @default(autoincrement())
+  email            String             @unique
   password         String
-  govUsername      String            @unique
-  role             Role              @default(ENCODER)
-  createdAt        DateTime          @default(now())
+  govUsername      String             @unique
+  role             Role               @default(ENCODER)
+  createdAt        DateTime           @default(now())
   userInfo         UserInfo?
-  busById          Bus[]             @relation("UserById")
-  swdiByID         Swdi[]            @relation("UserById")
-  pcnByID          Pcn[]             @relation("UserById")
-  cvsByID          CVS[]             @relation("UserById")
-  miscByID         Miscellaneous[]   @relation("UserById")
-  encDocByID       EncodedDocument[] @relation("UserById")
-  encDocByUsername EncodedDocument[] @relation("UserByUsername")
+  busById          Bus[]              @relation("UserById")
+  swdiByID         Swdi[]             @relation("UserById")
+  pcnByID          Pcn[]              @relation("UserById")
+  cvsByID          CVS[]              @relation("UserById")
+  miscByID         Miscellaneous[]    @relation("UserById")
+  encDocByID       EncodedDocument[]  @relation("UserById")
+  encDocByUsername EncodedDocument[]  @relation("UserByUsername")
   passwordReset    PasswordResetCode?
 }
 
@@ -82,7 +82,7 @@ model UserInfo {
   lastName            String               @default("")
   middleName          String               @default("")
   phone               String               @default("")
-  sessionTime         Int                  @default(7200000)
+  sessionTime         Int                  @default(1800000)
   language            String               @default("ENGLISH")
   timezone            String               @default("UTC")
   theme               theme                @default(DARK)
@@ -249,7 +249,7 @@ model EncodedDocument {
   idNumber              String               @default("")
   name                  String
   documentType          String
-  documentId            Int                  
+  documentId            Int
   subjectOfChange       String
   drn                   String
   date                  DateTime

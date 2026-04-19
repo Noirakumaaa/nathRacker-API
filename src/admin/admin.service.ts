@@ -154,26 +154,37 @@ export class AdminService {
 
     const hashedPassword = await argon2.hash(createAuthDto.password);
 
-    const user = await this.prisma.client.user.create({
-      data: {
-        govUsername: createAuthDto.govUsername,
-        email: createAuthDto.email,
-        password: hashedPassword,
-        role: createAuthDto.role,
-        userInfo: {
-          create: {
-            firstName: createAuthDto.firstName,
-            middleName: createAuthDto.middleName,
-            lastName: createAuthDto.lastName,
-            phone: createAuthDto.phone,
-            assignedOperationId: createAuthDto.assignedOperationId,
-            assignedLGUID: createAuthDto.assignedLGUID,
-            assignedBarangayId: createAuthDto.assignedBarangayId,
+    try {
+      const user = await this.prisma.client.user.create({
+        data: {
+          govUsername: createAuthDto.govUsername,
+          email: createAuthDto.email,
+          password: hashedPassword,
+          role: createAuthDto.role,
+          userInfo: {
+            create: {
+              firstName: createAuthDto.firstName,
+              middleName: createAuthDto.middleName,
+              lastName: createAuthDto.lastName,
+              phone: createAuthDto.phone,
+              assignedOperationId: createAuthDto.assignedOperationId,
+              assignedLGUID: createAuthDto.assignedLGUID,
+              assignedBarangayId: createAuthDto.assignedBarangayId,
+              sessionTime: 7200000,
+            },
           },
         },
-      },
-    });
-    return { Register: true, newUser: user.govUsername };
+      });
+      return { Register: true, newUser: user.govUsername };
+    } catch (error: any) {
+      if (error?.code === 'P2002') {
+        throw new BadRequestException('Email or username already exists');
+      }
+      if (error?.code === 'P2003') {
+        throw new BadRequestException('Invalid assignedOperationId, assignedLGUID, or assignedBarangayId — referenced ID does not exist');
+      }
+      throw new BadRequestException(error?.message ?? 'Failed to create user');
+    }
   }
 
   async getEmployees() {
