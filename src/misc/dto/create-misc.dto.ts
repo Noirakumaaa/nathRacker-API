@@ -1,9 +1,14 @@
-
-import { IsString, IsNotEmpty, IsOptional, IsDateString, IsInt, IsDate } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsOptional,
+  IsDateString,
+  IsInt,
+  IsDate,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateMiscDto {
-
   @IsOptional()
   @IsString()
   lgu: string;
@@ -50,5 +55,5 @@ export class CreateMiscDto {
 
   @Type(() => Date)
   @IsDate()
-  date : Date;
+  date: Date;
 }

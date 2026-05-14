@@ -1,36 +1,36 @@
-import { IsString, IsNotEmpty, IsOptional, IsDate } from 'class-validator'
-import { Type } from 'class-transformer'
+import { IsString, IsNotEmpty, IsOptional, IsDate } from 'class-validator';
+import { Type } from 'class-transformer';
 export class CreateCvDto {
   @IsString()
-  idNumber: string
+  idNumber: string;
 
   @IsString()
   @IsNotEmpty()
-  lgu: string
+  lgu: string;
 
   @IsString()
   @IsNotEmpty()
-  barangay: string
+  barangay: string;
 
   @IsString()
   @IsNotEmpty()
-  facilityName: string
+  facilityName: string;
 
   @IsString()
   @IsNotEmpty()
-  formType: string
+  formType: string;
 
   @IsString()
-  remarks: string
+  remarks: string;
 
   @IsOptional()
   @IsString()
-  issue: string
+  issue: string;
 
   @IsString()
-  period : string
+  period: string;
 
   @Type(() => Date)
   @IsDate()
-  date : Date
+  date: Date;
 }

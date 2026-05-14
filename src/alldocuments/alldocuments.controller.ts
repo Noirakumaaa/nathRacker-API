@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { AlldocumentsService } from './alldocuments.service.js';
 import { CreateAlldocumentDto } from './dto/create-alldocument.dto.js';
 import { UpdateAlldocumentDto } from './dto/update-alldocument.dto.js';
@@ -12,7 +21,7 @@ import type { Request } from 'express';
 @Roles(Role.ENCODER, Role.ADMIN)
 @Controller('alldocuments')
 export class AlldocumentsController {
-  constructor(private readonly alldocumentsService: AlldocumentsService) { }
+  constructor(private readonly alldocumentsService: AlldocumentsService) {}
 
   @Post()
   create(@Body() createAlldocumentDto: CreateAlldocumentDto) {
@@ -29,7 +38,6 @@ export class AlldocumentsController {
     return this.alldocumentsService.alldocumentCountbyId(req);
   }
 
-
   @Get('myRecords')
   myRecords(@Req() req: Request) {
     return this.alldocumentsService.myRecords(req);
@@ -40,17 +48,15 @@ export class AlldocumentsController {
     return this.alldocumentsService.OperationTotalCount(req);
   }
 
-
   @Get('weekly-count')
   allDocumentWeeklyCount(@Req() req: Request) {
     return this.alldocumentsService.allDocumentWeeklyCount(req);
   }
 
-  @Get("user/encoded")
+  @Get('user/encoded')
   UserEncoded(@Req() req: Request) {
     return this.alldocumentsService.UserEncoded(req);
   }
-
 
   @Get('globalRecords')
   findAll(@Req() req: Request) {
@@ -63,7 +69,10 @@ export class AlldocumentsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAlldocumentDto: UpdateAlldocumentDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateAlldocumentDto: UpdateAlldocumentDto,
+  ) {
     return this.alldocumentsService.update(+id, updateAlldocumentDto);
   }
 

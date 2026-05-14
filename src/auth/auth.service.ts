@@ -7,6 +7,7 @@ import * as argon2 from 'argon2';
 import { MailService } from '../mail/mail.service.js';
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface User {
       id: number;
@@ -27,10 +28,11 @@ declare global {
 function getCookieOptions() {
   const env = (process.env.NODE_ENV ?? '').toLowerCase();
   const secure = env === 'production' || env === 'staging';
+  const sameSite: 'none' | 'lax' = secure ? 'none' : 'lax';
   return {
     httpOnly: true,
     secure,
-    sameSite: (secure ? 'none' : 'lax') as 'none' | 'lax',
+    sameSite,
   };
 }
 
@@ -44,86 +46,122 @@ const sessionTimeoutFormat = {
   never: 365 * 24 * 60 * 60 * 1000,
 } as const;
 
+type SessionTimeoutKey = keyof typeof sessionTimeoutFormat;
+
+type LoginUserRecord = {
+  id: number;
+  email: string;
+  govUsername: string;
+  role: string;
+  password: string;
+  userInfo: {
+    firstName: string;
+    lastName: string;
+    sessionTime: number;
+    assignedOperationId: number | null;
+    assignedLGUID: number | null;
+    assignedBarangayId: number | null;
+  } | null;
+};
+
+const buildAuthUser = (user: LoginUserRecord): Express.User => ({
+  id: user.id,
+  email: user.email,
+  govUsername: user.govUsername,
+  role: user.role,
+  firstName: user.userInfo?.firstName ?? '',
+  lastName: user.userInfo?.lastName ?? '',
+  assignedOperationId: user.userInfo?.assignedOperationId ?? null,
+});
+
 @Injectable()
 export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private jwtService: JwtService,
     private mailService: MailService,
-  ) { }
-
+  ) {}
 
   async login(createAuthDto: CreateAuthDto, res: Response) {
     try {
-      const checkUser = await this.prisma.client.user.findFirst({
+      const checkUser = (await this.prisma.client.user.findFirst({
         where: {
           OR: [
             { email: createAuthDto.email },
             { govUsername: createAuthDto.email },
           ],
         },
-      })
+        select: {
+          id: true,
+          email: true,
+          govUsername: true,
+          role: true,
+          password: true,
+          userInfo: {
+            select: {
+              firstName: true,
+              lastName: true,
+              sessionTime: true,
+              assignedOperationId: true,
+              assignedLGUID: true,
+              assignedBarangayId: true,
+            },
+          },
+        },
+      })) as LoginUserRecord | null;
 
       if (!checkUser) {
         return res.status(401).json({
           message: 'Account not found',
           step: 'CHECK_USER',
-          upload: false
-        })
+          upload: false,
+        });
       }
 
       const validPassword = await argon2.verify(
         checkUser.password,
         createAuthDto.password,
-      )
+      );
 
       if (!validPassword) {
         return res.status(401).json({
           message: 'Wrong password',
           step: 'VERIFY_PASSWORD',
-          upload: false
-        })
+          upload: false,
+        });
       }
 
-      const userDataInfo = await this.prisma.client.userInfo.findFirst({
-        where: {
-          userId: checkUser.id
-        }
-      })
+      const userDataInfo = checkUser.userInfo;
 
       if (!userDataInfo) {
         return res.status(404).json({
           message: 'User info missing',
           step: 'GET_USER_INFO',
-          upload: false
-        })
+          upload: false,
+        });
       }
 
+      const user = buildAuthUser(checkUser);
       const payload = {
-        email: checkUser.email,
-        govUsername: checkUser.govUsername,
-        firstName: userDataInfo.firstName,
-        lastName: userDataInfo.lastName,
-        assignedOperationId: userDataInfo.assignedOperationId,
+        ...user,
         lgu: userDataInfo.assignedLGUID,
         barangay: userDataInfo.assignedBarangayId,
-        role: checkUser.role,
-        id: checkUser.id,
-      }
+      };
 
-      const sessionMs = userDataInfo.sessionTime >= 1000 ? userDataInfo.sessionTime : 7200000;
+      const sessionMs =
+        userDataInfo.sessionTime >= 1000 ? userDataInfo.sessionTime : 7200000;
 
       const token = this.jwtService.sign(payload, {
         secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
-        expiresIn: Math.floor(sessionMs / 1000)
-      })
+        expiresIn: Math.floor(sessionMs / 1000),
+      });
 
       const maxAge = sessionMs;
 
       res.cookie('accessToken', token, {
         ...getCookieOptions(),
         maxAge,
-      })
+      });
 
       res.setHeader('Cache-Control', 'no-store');
 
@@ -131,20 +169,21 @@ export class AuthService {
         message: 'Login successful',
         upload: true,
         sessionTime: userDataInfo.sessionTime,
-        token
-      })
-
-    } catch (error: any) {
-      console.error('LOGIN_ERROR FULL:', error)
+        user,
+      });
+    } catch (error: unknown) {
+      console.error('LOGIN_ERROR FULL:', error);
+      const normalizedError =
+        error instanceof Error ? error : new Error('Unknown error');
 
       return res.status(500).json({
         message: 'Login failed',
         step: 'UNKNOWN_ERROR',
         expiredIn: Math.floor(sessionTimeoutFormat[15] / 1000),
-        error: error?.message,
-        stack: error?.stack,
-        upload: false
-      })
+        error: normalizedError.message,
+        stack: normalizedError.stack,
+        upload: false,
+      });
     }
   }
 
@@ -152,7 +191,9 @@ export class AuthService {
     const user = await this.prisma.client.user.findUnique({ where: { email } });
 
     if (!user) {
-      return res.status(404).json({ message: 'No account found with that email.' });
+      return res
+        .status(404)
+        .json({ message: 'No account found with that email.' });
     }
 
     const code = Math.floor(100000 + Math.random() * 900000).toString();
@@ -173,13 +214,20 @@ export class AuthService {
     return res.json({ message: 'Reset code sent to your email.' });
   }
 
-  async resetPassword(email: string, code: string, newPassword: string, res: Response) {
+  async resetPassword(
+    email: string,
+    code: string,
+    newPassword: string,
+    res: Response,
+  ) {
     const record = await this.prisma.client.passwordResetCode.findFirst({
       where: { user: { email } },
     });
 
     if (!record) {
-      return res.status(400).json({ message: 'No reset code found for this email.' });
+      return res
+        .status(400)
+        .json({ message: 'No reset code found for this email.' });
     }
 
     if (record.code !== code) {
@@ -187,7 +235,9 @@ export class AuthService {
     }
 
     if (new Date() > record.expiresAt) {
-      return res.status(400).json({ message: 'Reset code has expired. Please request a new one.' });
+      return res
+        .status(400)
+        .json({ message: 'Reset code has expired. Please request a new one.' });
     }
 
     const hashed = await argon2.hash(newPassword);
@@ -197,17 +247,26 @@ export class AuthService {
       data: { password: hashed },
     });
 
-    await this.prisma.client.passwordResetCode.delete({ where: { id: record.id } });
+    await this.prisma.client.passwordResetCode.delete({
+      where: { id: record.id },
+    });
 
     return res.json({ message: 'Password reset successfully.' });
   }
 
   checkAuth(req: Request) {
-
     if (!req.user) {
       throw new BadRequestException('User not authenticated');
     }
-    return { email: req.user.email, role: req.user.role, id: req.user.id, govUsername: req.user.govUsername, firstName: req.user.firstName, lastName: req.user.lastName };
+    return {
+      id: req.user.id,
+      email: req.user.email,
+      role: req.user.role,
+      govUsername: req.user.govUsername,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      assignedOperationId: req.user.assignedOperationId,
+    };
   }
 
   findAll() {
@@ -219,9 +278,13 @@ export class AuthService {
     if (!user) {
       throw new BadRequestException('User not authenticated');
     }
+    if (!(sessionTime in sessionTimeoutFormat)) {
+      throw new BadRequestException('Invalid session timeout option');
+    }
+    const sessionKey = sessionTime as SessionTimeoutKey;
     const newSessionTimeUpdate = await this.prisma.client.userInfo.update({
       where: { userId: user.id },
-      data: { sessionTime: sessionTimeoutFormat[sessionTime] },
+      data: { sessionTime: sessionTimeoutFormat[sessionKey] },
     });
     console.log(
       'Session time updated for user:',

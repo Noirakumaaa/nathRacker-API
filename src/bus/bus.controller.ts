@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+  Put,
+} from '@nestjs/common';
 import type { Request } from 'express';
 import { BusService } from './bus.service.js';
 import { CreateBusDto } from './dto/create-bus.dto.js';
@@ -9,27 +19,21 @@ import { Role } from './../../enums/roles.enum.js';
 import { Roles } from './../../decorator/roles.decorator.js';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ENCODER, Role.ADMIN) 
+@Roles(Role.ENCODER, Role.ADMIN)
 @Controller('bus')
 export class BusController {
   constructor(private readonly busService: BusService) {}
 
   @Post('upload')
-  create(
-    @Body() createBusDto: CreateBusDto,
-    @Req() req: Request
-  ) {
+  create(@Body() createBusDto: CreateBusDto, @Req() req: Request) {
     return this.busService.create(createBusDto, req);
   }
 
-  @Get("/verification")
-  findAll(
-    @Req() req : Request
-  ) {
+  @Get('/verification')
+  findAll(@Req() req: Request) {
     return this.busService.findAll(req);
   }
 
-  
   @Get('recent')
   recent(@Req() req: Request) {
     return this.busService.recent(req);
@@ -49,8 +53,7 @@ export class BusController {
     return this.busService.verify(+id, body, req);
   }
 
-
-  @Get('records/:id',)
+  @Get('records/:id')
   busRecordsById(@Param('id') id: string) {
     return this.busService.busRecordsById(+id);
   }
@@ -59,7 +62,6 @@ export class BusController {
   busCountbyId(@Req() req: Request) {
     return this.busService.busCountbyId(req);
   }
-
 
   @Patch('update')
   update(@Body() updateBusDto: UpdateBusDto) {
@@ -70,8 +72,8 @@ export class BusController {
   remove(@Param('id') id: string) {
     return this.busService.remove(+id);
   }
-  @Get("/lgu")
-  getLgu(@Req() req : Request){
-    return this.busService.getLGU(req)
+  @Get('/lgu')
+  getLgu(@Req() req: Request) {
+    return this.busService.getLGU(req);
   }
 }

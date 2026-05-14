@@ -122,46 +122,45 @@ export class PcnService {
   findOne(id: number) {
     return `This action returns a #${id} pcn`;
   }
-async update(body: UpdatePcnDto) {
-  try {
-    const { id, ...data } = body;
+  async update(body: UpdatePcnDto) {
+    try {
+      const { id, ...data } = body;
 
-    const numericId = Number(id);
-    if (!numericId || isNaN(numericId)) {
-      return { update: false, message: 'Invalid ID' };
+      const numericId = Number(id);
+      if (!numericId || isNaN(numericId)) {
+        return { update: false, message: 'Invalid ID' };
+      }
+
+      const pcnUpdate = await this.prisma.client.pcn.update({
+        where: { id: numericId },
+        data: { ...data },
+      });
+
+      await this.prisma.client.encodedDocument.updateMany({
+        where: {
+          documentType: 'PCN',
+          documentId: numericId,
+        },
+        data: {
+          idNumber: pcnUpdate.hhId ?? '',
+          name: pcnUpdate.granteeName ?? '',
+          subjectOfChange: pcnUpdate.subjectOfChange ?? '',
+          drn: pcnUpdate.drn ?? ' ',
+          remarks: pcnUpdate.remarks ?? '',
+        },
+      });
+
+      return { message: `Updated Item ${pcnUpdate.hhId}`, update: true };
+    } catch (error) {
+      console.error('PCN Update failed:', error);
+
+      return {
+        update: false,
+        message: 'Failed to update PCN',
+        error: error instanceof Error ? error.message : String(error),
+      };
     }
-
-    const pcnUpdate = await this.prisma.client.pcn.update({
-      where: { id: numericId },
-      data: { ...data },
-    });
-
-    await this.prisma.client.encodedDocument.updateMany({
-      where: {
-        documentType: 'PCN',
-        documentId: numericId,
-      },
-      data: {
-        idNumber: pcnUpdate.hhId ?? '',
-        name: pcnUpdate.granteeName ?? '',
-        subjectOfChange: pcnUpdate.subjectOfChange ?? '',
-        drn: pcnUpdate.drn ?? ' ',
-        remarks: pcnUpdate.remarks ?? '',
-      },
-    });
-
-    return { message: `Updated Item ${pcnUpdate.hhId}`, update: true };
-
-  } catch (error) {
-    console.error('PCN Update failed:', error);
-
-    return {
-      update: false,
-      message: 'Failed to update PCN',
-      error: error instanceof Error ? error.message : String(error),
-    };
   }
-}
   async remove(id: number) {
     const deletePcn = await this.prisma.client.pcn.delete({
       where: { id },

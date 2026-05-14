@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import type { Request } from 'express';
 import { CreateSwdiDto } from './dto/create-swdi.dto.js';
 import { UpdateSwdiDto } from './dto/update-swdi.dto.js';
@@ -12,6 +12,19 @@ export class SwdiService {
     const user = req.user;
     if (!user) throw new Error('User not authenticated');
 
+    // Validate DRN against AA tracking if provided
+    if (createSwdiDto.drn && createSwdiDto.drn.trim()) {
+      const aaDoc = await this.prisma.client.aaDocument.findFirst({
+        where: { trackingNo: createSwdiDto.drn.toUpperCase() },
+        select: { id: true },
+      });
+      if (!aaDoc) {
+        throw new BadRequestException(
+          `DRN "${createSwdiDto.drn}" was not found in the AA tracking system. Please check the number and try again.`,
+        );
+      }
+    }
+
     const checkDuplicate = await this.prisma.client.swdi.findFirst({
       where: {
         hhId: createSwdiDto.hhId,
@@ -20,11 +33,11 @@ export class SwdiService {
         grantee: createSwdiDto.grantee,
         swdiScore: createSwdiDto.swdiScore,
         swdiLevel: createSwdiDto.swdiLevel,
-      }
+      },
     });
 
     if (checkDuplicate !== null) {
-     return {
+      return {
         upload: false,
         message: 'Duplicate record found. SWDI record not created.',
       };
@@ -35,7 +48,7 @@ export class SwdiService {
         ...createSwdiDto,
         userId: user.id,
         encodedBy: user.govUsername,
-        operationsOfficeNumId : user.assignedOperationId,
+        operationsOfficeNumId: user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -48,15 +61,20 @@ export class SwdiService {
         documentId: uploadSwdi.id,
         userId: user.id,
         date: uploadSwdi.date,
-        drn : uploadSwdi.drn ?? " ",
+        drn: uploadSwdi.drn ?? ' ',
         remarks: uploadSwdi.remarks,
-        subjectOfChange: "",
-        operationsOfficeNumId : user.assignedOperationId,
-        govUsername: user.govUsername
+        subjectOfChange: '',
+        operationsOfficeNumId: user.assignedOperationId,
+        govUsername: user.govUsername,
       },
     });
 
-    return { upload: true, data: uploadSwdi, message : 'SWDI record created successfully', encodedDocument : encodedDocument };
+    return {
+      upload: true,
+      data: uploadSwdi,
+      message: 'SWDI record created successfully',
+      encodedDocument: encodedDocument,
+    };
   }
 
   recent(req: Request) {
@@ -64,7 +82,7 @@ export class SwdiService {
     if (!user) {
       throw new Error('User not authenticated');
     }
-    
+
     return this.prisma.client.swdi.findMany({
       where: {
         userId: user.id,
@@ -111,73 +129,71 @@ export class SwdiService {
     return `This action returns a #${id} swdi`;
   }
 
+  async update(body: UpdateSwdiDto) {
+    const { id, ...data } = body;
+    try {
+      const swdiUpdate = await this.prisma.client.swdi.update({
+        where: { id: id },
+        data: { ...data },
+      });
 
-    async update( body : UpdateSwdiDto) {
+      await this.prisma.client.encodedDocument.updateMany({
+        where: {
+          documentId: swdiUpdate.id,
+          documentType: 'SWDI',
+        },
+        data: {
+          idNumber: swdiUpdate.hhId,
+          name: swdiUpdate.grantee,
+          documentType: 'SWDI',
+          documentId: swdiUpdate.id,
+          subjectOfChange: '',
+          drn: swdiUpdate.drn ?? ' ',
+          remarks: swdiUpdate.remarks,
+        },
+      });
 
-      const { id, ...data } = body
-      try {
-        const swdiUpdate = await this.prisma.client.swdi.update({
-          where: { id : id },
-          data: { ...data },
-        });
-
-        await this.prisma.client.encodedDocument.updateMany({
-          where: {
-            documentId: swdiUpdate.id,
-            documentType: 'SWDI',
-          },
-          data: {
-            idNumber: swdiUpdate.hhId,
-            name: swdiUpdate.grantee,
-            documentType: 'SWDI',
-            documentId: swdiUpdate.id,
-            subjectOfChange: '',
-            drn: swdiUpdate.drn ?? ' ',
-            remarks: swdiUpdate.remarks,
-          },
-        });
-
-        return { message: `Updated Item ${swdiUpdate.hhId}`, update: true };
-      } catch (error) {
-        console.error('Update failed:', error);
-        return { 
-          message: 'Failed to update item', 
-          update: false, 
-          error: error instanceof Error ? error.message : String(error),
-        };
-      }
-    }
-async remove(id: number) {
-  try {
-    const deleteSwdi = await this.prisma.client.swdi.delete({
-      where: { id },
-    })
-
-    const checkBefore = await this.prisma.client.encodedDocument.findMany({
-      where: {
-        documentId: id,
-        documentType: "SWDI",
-      },
-    })
-
-    const globalswdi = await this.prisma.client.encodedDocument.deleteMany({
-      where: {
-        documentId: id,
-        documentType: "SWDI",
-      },
-    })
-
-    return {
-      message: "Deleted",
-      swdi: deleteSwdi,
-      beforeDeleteMatch: checkBefore.length,
-      deletedCount: globalswdi.count,
-    }
-  } catch (error) {
-    return {
-      message: "Delete failed",
-      error: error?.message || error,
+      return { message: `Updated Item ${swdiUpdate.hhId}`, update: true };
+    } catch (error) {
+      console.error('Update failed:', error);
+      return {
+        message: 'Failed to update item',
+        update: false,
+        error: error instanceof Error ? error.message : String(error),
+      };
     }
   }
-}
+  async remove(id: number) {
+    try {
+      const deleteSwdi = await this.prisma.client.swdi.delete({
+        where: { id },
+      });
+
+      const checkBefore = await this.prisma.client.encodedDocument.findMany({
+        where: {
+          documentId: id,
+          documentType: 'SWDI',
+        },
+      });
+
+      const globalswdi = await this.prisma.client.encodedDocument.deleteMany({
+        where: {
+          documentId: id,
+          documentType: 'SWDI',
+        },
+      });
+
+      return {
+        message: 'Deleted',
+        swdi: deleteSwdi,
+        beforeDeleteMatch: checkBefore.length,
+        deletedCount: globalswdi.count,
+      };
+    } catch (error) {
+      return {
+        message: 'Delete failed',
+        error: error?.message || error,
+      };
+    }
+  }
 }

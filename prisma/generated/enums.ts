@@ -13,6 +13,7 @@ export const Role = {
   ENCODER: 'ENCODER',
   ADMIN: 'ADMIN',
   AC: 'AC',
+  SWA: 'SWA',
   SWOIII: 'SWOIII',
   VERIFIER: 'VERIFIER'
 } as const

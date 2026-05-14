@@ -7,7 +7,7 @@ import { NotFoundException } from '@nestjs/common';
 import { BadRequestException } from '@nestjs/common';
 @Injectable()
 export class AlldocumentsService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createAlldocumentDto: CreateAlldocumentDto) {
     return 'This action adds a new alldocument';
@@ -130,7 +130,7 @@ export class AlldocumentsService {
     if (!user) throw new Error('User not authenticated');
     return this.prisma.client.encodedDocument.findMany({
       where: {
-        operationsOfficeNumId: user.assignedOperationId
+        operationsOfficeNumId: user.assignedOperationId,
       },
       orderBy: { date: 'desc' },
     });
@@ -141,7 +141,7 @@ export class AlldocumentsService {
     if (!user) throw new Error('User not authenticated');
     return this.prisma.client.encodedDocument.findMany({
       where: {
-        userId: user.id
+        userId: user.id,
       },
       orderBy: { date: 'desc' },
     });
@@ -161,65 +161,65 @@ export class AlldocumentsService {
 
   async remove(id: number) {
     try {
-      const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
-        where: { id },
-      })
+      const deleteDocument =
+        await this.prisma.client.encodedDocument.findUnique({
+          where: { id },
+        });
 
       if (!deleteDocument) {
-        throw new NotFoundException(`Document #${id} not found`)
+        throw new NotFoundException(`Document #${id} not found`);
       }
 
-      const { documentType, documentId } = deleteDocument
+      const { documentType, documentId } = deleteDocument;
 
       try {
         switch (documentType) {
           case 'BUS':
             await this.prisma.client.bus.deleteMany({
               where: { id: documentId },
-            })
-            break
+            });
+            break;
 
           case 'PCN':
             await this.prisma.client.pcn.deleteMany({
               where: { id: documentId },
-            })
-            break
+            });
+            break;
 
           case 'SWDI':
             await this.prisma.client.swdi.deleteMany({
               where: { id: documentId },
-            })
-            break
+            });
+            break;
 
           case 'CVS':
             await this.prisma.client.cVS.deleteMany({
               where: { id: documentId },
-            })
-            break
+            });
+            break;
 
           case 'MISC':
             await this.prisma.client.miscellaneous.deleteMany({
               where: { id: documentId },
-            })
-            break
+            });
+            break;
         }
-      } catch (err) {
-      }
+      } catch (err) {}
 
       await this.prisma.client.encodedDocument.delete({
         where: { id },
-      })
+      });
 
       return {
         deleted: true,
         message: `${documentType} #${documentId} processed and encodedDocument removed`,
-      }
+      };
     } catch (error) {
       return {
         deleted: false,
-        message: "Delete failed",
+        message: 'Delete failed',
         error: error?.message || error,
-      }
+      };
     }
   }
 }

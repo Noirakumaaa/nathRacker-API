@@ -13,7 +13,7 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto.js';
 import * as argon2 from 'argon2';
 @Injectable()
 export class AdminService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createAdminDto: CreateAdminDto) {
     return 'This action adds a new admin';
@@ -29,7 +29,7 @@ export class AdminService {
         by: ['documentType'],
         where: {
           userId: user.id,
-          operationsOfficeNumId: user.assignedOperationId
+          operationsOfficeNumId: user.assignedOperationId,
         },
         _count: {
           documentType: true,
@@ -185,7 +185,9 @@ export class AdminService {
         throw new BadRequestException('Email or username already exists');
       }
       if (error?.code === 'P2003') {
-        throw new BadRequestException('Invalid assignedOperationId, assignedLGUID, or assignedBarangayId — referenced ID does not exist');
+        throw new BadRequestException(
+          'Invalid assignedOperationId, assignedLGUID, or assignedBarangayId — referenced ID does not exist',
+        );
       }
       throw new BadRequestException(error?.message ?? 'Failed to create user');
     }
@@ -240,49 +242,48 @@ export class AdminService {
   }
 
   async getAssignedArea() {
-    const lgu = await this.prisma.client.lgu.findMany()
-    const barangay = await this.prisma.client.barangay.findMany()
-    const operations = await this.prisma.client.operationsOfficeNum.findMany()
+    const lgu = await this.prisma.client.lgu.findMany();
+    const barangay = await this.prisma.client.barangay.findMany();
+    const operations = await this.prisma.client.operationsOfficeNum.findMany();
 
     return {
       lgu: lgu,
       barangay: barangay,
-      operations: operations
-    }
-
+      operations: operations,
+    };
   }
 
   async deleteTable(table: string) {
-    if (table === "encodedDocument") {
-      await this.prisma.client.encodedDocument.deleteMany()
+    if (table === 'encodedDocument') {
+      await this.prisma.client.encodedDocument.deleteMany();
       return { deleted: true };
     }
-    if (table === "bus") {
-      await this.prisma.client.bus.deleteMany()
+    if (table === 'bus') {
+      await this.prisma.client.bus.deleteMany();
       return { deleted: true };
     }
-    if (table === "swdi") {
-      await this.prisma.client.swdi.deleteMany()
+    if (table === 'swdi') {
+      await this.prisma.client.swdi.deleteMany();
       return { deleted: true };
     }
-    if (table === "pcn") {
-      await this.prisma.client.pcn.deleteMany()
+    if (table === 'pcn') {
+      await this.prisma.client.pcn.deleteMany();
       return { deleted: true };
     }
-    if (table === "cvs") {
-      await this.prisma.client.cVS.deleteMany()
+    if (table === 'cvs') {
+      await this.prisma.client.cVS.deleteMany();
       return { deleted: true };
     }
-    if (table === "misc") {
-      await this.prisma.client.miscellaneous.deleteMany()
+    if (table === 'misc') {
+      await this.prisma.client.miscellaneous.deleteMany();
       return { deleted: true };
     }
-    if (table === "user") {
-      await this.prisma.client.user.deleteMany()
+    if (table === 'user') {
+      await this.prisma.client.user.deleteMany();
       return { deleted: true };
     }
-    if (table === "userInfo") {
-      await this.prisma.client.userInfo.deleteMany()
+    if (table === 'userInfo') {
+      await this.prisma.client.userInfo.deleteMany();
       return { deleted: true };
     }
     return { deleted: false };
@@ -294,7 +295,10 @@ export class AdminService {
       return { deleted: true, message: 'LGU deleted successfully' };
     } catch (error: any) {
       if (error.code === 'P2003') {
-         return { deleted: false, message: 'Cannot delete LGU because it is in use' };
+        return {
+          deleted: false,
+          message: 'Cannot delete LGU because it is in use',
+        };
       }
       return { deleted: false, message: 'Failed to delete LGU' };
     }
@@ -306,7 +310,10 @@ export class AdminService {
       return { deleted: true, message: 'Barangay deleted successfully' };
     } catch (error: any) {
       if (error.code === 'P2003') {
-         return { deleted: false, message: 'Cannot delete Barangay because it is in use' };
+        return {
+          deleted: false,
+          message: 'Cannot delete Barangay because it is in use',
+        };
       }
       return { deleted: false, message: 'Failed to delete Barangay' };
     }

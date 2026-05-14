@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete , Req} from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { CvsService } from './cvs.service.js';
 import { CreateCvDto } from './dto/create-cv.dto.js';
 import { UpdateCvDto } from './dto/update-cv.dto.js';
@@ -10,28 +19,25 @@ import { Role } from './../../enums/roles.enum.js';
 import { Roles } from './../../decorator/roles.decorator.js';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ADMIN) 
+@Roles(Role.ADMIN)
 @Controller('cvs')
 export class CvsController {
   constructor(private readonly cvsService: CvsService) {}
 
   @Post('upload')
-  create(
-    @Body() createCvDto: CreateCvDto,
-    @Req() req : Request
-  ) {
-    return this.cvsService.create(createCvDto,req);
+  create(@Body() createCvDto: CreateCvDto, @Req() req: Request) {
+    return this.cvsService.create(createCvDto, req);
   }
 
-  @Get("/record/:id")
-  GetSelectedCVS(@Req() req : Request, @Param("id") id :string){
-    return this.cvsService.getSelectedCVS(req, id)
+  @Get('/record/:id')
+  GetSelectedCVS(@Req() req: Request, @Param('id') id: string) {
+    return this.cvsService.getSelectedCVS(req, id);
   }
 
-  @Get("recent")
-  RecentCVS(@Req() req : Request){
-    console.log("FETCHING RECENT CVS")
-    return this.cvsService.RecentCVS(req)
+  @Get('recent')
+  RecentCVS(@Req() req: Request) {
+    console.log('FETCHING RECENT CVS');
+    return this.cvsService.RecentCVS(req);
   }
 
   @Get()
@@ -45,8 +51,8 @@ export class CvsController {
   }
 
   @Patch('/update')
-  update( @Body() updateCvDto: UpdateCvDto) {
-    return this.cvsService.update( updateCvDto);
+  update(@Body() updateCvDto: UpdateCvDto) {
+    return this.cvsService.update(updateCvDto);
   }
 
   @Delete('delete/:id')

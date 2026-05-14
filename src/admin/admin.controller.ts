@@ -25,14 +25,12 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto.js';
 @Roles(Role.ADMIN)
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly adminService: AdminService) { }
-
+  constructor(private readonly adminService: AdminService) {}
 
   @Post('register')
   registerAccount(@Body() createAuthDto: CreateRegisterAccount) {
     return this.adminService.Register(createAuthDto);
   }
-
 
   @Get('count/documents')
   alldocumentCountbyId(@Req() req: Request) {
@@ -54,30 +52,24 @@ export class AdminController {
     return this.adminService.create(createAdminDto);
   }
 
-  @Post("/lgu")
-  createLgu(
-    @Body() lgu: CreateLguDto,
-    @Req() req: Request) {
+  @Post('/lgu')
+  createLgu(@Body() lgu: CreateLguDto, @Req() req: Request) {
     return this.adminService.createLgu(lgu, req);
   }
 
-  @Post("/operations-office")
-  createOperationOffice(
-    @Body() OO: CreateBarangay,
-    @Req() req: Request) {
+  @Post('/operations-office')
+  createOperationOffice(@Body() OO: CreateBarangay, @Req() req: Request) {
     return this.adminService.createOperationsOffice(OO, req);
   }
 
-  @Post("/barangay")
-  createBarangay(
-    @Body() barangay: CreateBarangayDto,
-    @Req() req: Request) {
+  @Post('/barangay')
+  createBarangay(@Body() barangay: CreateBarangayDto, @Req() req: Request) {
     return this.adminService.createBarangay(barangay, req);
   }
 
   @Get('/get/assignedArea')
   getAssignedAreas() {
-    return this.adminService.getAssignedArea()
+    return this.adminService.getAssignedArea();
   }
 
   @Get('/employees')
@@ -104,5 +96,4 @@ export class AdminController {
   deleteBarangay(@Param('id') id: string) {
     return this.adminService.deleteBarangay(Number(id));
   }
-
 }

@@ -25,7 +25,10 @@ export class CvsService {
     });
 
     if (duplicate) {
-      return { upload: false, message: 'Duplicate record found. CVS record not created.' };
+      return {
+        upload: false,
+        message: 'Duplicate record found. CVS record not created.',
+      };
     }
 
     const uploadCvs = await this.prisma.client.cVS.create({
@@ -33,7 +36,7 @@ export class CvsService {
         ...createCvDto,
         date: new Date(),
         userId: user.id,
-        operationsOfficeNumId : user.assignedOperationId,
+        operationsOfficeNumId: user.assignedOperationId,
       },
     });
 
@@ -45,10 +48,10 @@ export class CvsService {
         documentId: uploadCvs.id,
         subjectOfChange: uploadCvs.formType,
         remarks: uploadCvs.remarks,
-        drn : uploadCvs.period ?? " ",
+        drn: uploadCvs.period ?? ' ',
         userId: user.id,
         govUsername: user.govUsername,
-        operationsOfficeNumId : user.assignedOperationId,
+        operationsOfficeNumId: user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -60,9 +63,6 @@ export class CvsService {
     };
   }
 
-
-
-  
   async getSelectedCVS(req: Request, id: string) {
     const user = req.user;
     if (!user) {
@@ -102,52 +102,50 @@ export class CvsService {
     return `This action returns a #${id} cv`;
   }
 
+  async update(dto: UpdateCvDto) {
+    try {
+      const { id, ...data } = dto;
 
-async update(dto: UpdateCvDto) {
-  try {
-    const { id, ...data } = dto;
+      const numericId = Number(id);
+      if (!numericId || isNaN(numericId)) {
+        return { update: false, message: 'Invalid ID' };
+      }
 
-    const numericId = Number(id);
-    if (!numericId || isNaN(numericId)) {
-      return { update: false, message: 'Invalid ID' };
+      const cvsUpdate = await this.prisma.client.cVS.update({
+        where: { id: numericId },
+        data: { ...data },
+      });
+
+      await this.prisma.client.encodedDocument.updateMany({
+        where: {
+          documentId: cvsUpdate.id,
+          documentType: 'CVS',
+        },
+        data: {
+          idNumber: String(cvsUpdate.idNumber ?? ''),
+          name: cvsUpdate.facilityName ?? '',
+          documentType: 'CVS',
+          documentId: cvsUpdate.id,
+          subjectOfChange: cvsUpdate.formType ?? '',
+          drn: cvsUpdate.period ?? ' ',
+          remarks: cvsUpdate.remarks ?? '',
+        },
+      });
+
+      return {
+        message: `Updated Item ${cvsUpdate.idNumber}`,
+        update: true,
+      };
+    } catch (error) {
+      console.error('CVS Update failed:', error);
+
+      return {
+        update: false,
+        message: 'Failed to update CVS',
+        error: error instanceof Error ? error.message : String(error),
+      };
     }
-
-    const cvsUpdate = await this.prisma.client.cVS.update({
-      where: { id: numericId },
-      data: { ...data },
-    });
-
-    await this.prisma.client.encodedDocument.updateMany({
-      where: {
-        documentId: cvsUpdate.id,
-        documentType: 'CVS',
-      },
-      data: {
-        idNumber: String(cvsUpdate.idNumber ?? ''),
-        name: cvsUpdate.facilityName ?? '',
-        documentType: 'CVS',
-        documentId: cvsUpdate.id,
-        subjectOfChange: cvsUpdate.formType ?? '',
-        drn: cvsUpdate.period ?? ' ',
-        remarks: cvsUpdate.remarks ?? '',
-      },
-    });
-
-    return {
-      message: `Updated Item ${cvsUpdate.idNumber}`,
-      update: true,
-    };
-
-  } catch (error) {
-    console.error('CVS Update failed:', error);
-
-    return {
-      update: false,
-      message: 'Failed to update CVS',
-      error: error instanceof Error ? error.message : String(error),
-    };
   }
-}
 
   async remove(id: number) {
     const deleteCvs = await this.prisma.client.cVS.delete({
@@ -155,7 +153,7 @@ async update(dto: UpdateCvDto) {
     });
 
     await this.prisma.client.encodedDocument.deleteMany({
-      where: { documentId: id, documentType : "CVS" },
+      where: { documentId: id, documentType: 'CVS' },
     });
 
     return { message: `Deleted Item ${deleteCvs.idNumber}`, deleted: true };

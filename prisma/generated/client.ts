@@ -99,3 +99,143 @@ export type Miscellaneous = Prisma.MiscellaneousModel
  * 
  */
 export type EncodedDocument = Prisma.EncodedDocumentModel
+/**
+ * Model AaDocumentModule
+ * 
+ */
+export type AaDocumentModule = Prisma.AaDocumentModuleModel
+/**
+ * Model AaDocument
+ * 
+ */
+export type AaDocument = Prisma.AaDocumentModel
+/**
+ * Model AaLoad26Monthly
+ * 
+ */
+export type AaLoad26Monthly = Prisma.AaLoad26MonthlyModel
+/**
+ * Model AaRemark
+ * 
+ */
+export type AaRemark = Prisma.AaRemarkModel
+/**
+ * Model EdtmsTrackingRequest
+ * 
+ */
+export type EdtmsTrackingRequest = Prisma.EdtmsTrackingRequestModel
+/**
+ * Model CvsTracking
+ * 
+ */
+export type CvsTracking = Prisma.CvsTrackingModel
+/**
+ * Model BdmTracking
+ * 
+ */
+export type BdmTracking = Prisma.BdmTrackingModel
+/**
+ * Model GrsTracking
+ * 
+ */
+export type GrsTracking = Prisma.GrsTrackingModel
+/**
+ * Model MneTracking
+ * 
+ */
+export type MneTracking = Prisma.MneTrackingModel
+/**
+ * Model OoLevel
+ * 
+ */
+export type OoLevel = Prisma.OoLevelModel
+/**
+ * Model Oo8IncomingFiles
+ * 
+ */
+export type Oo8IncomingFiles = Prisma.Oo8IncomingFilesModel
+/**
+ * Model TrainingFeedbacks
+ * 
+ */
+export type TrainingFeedbacks = Prisma.TrainingFeedbacksModel
+/**
+ * Model TravelRequest
+ * 
+ */
+export type TravelRequest = Prisma.TravelRequestModel
+/**
+ * Model MrbTofMonitoring
+ * 
+ */
+export type MrbTofMonitoring = Prisma.MrbTofMonitoringModel
+/**
+ * Model CoaWTr2026
+ * 
+ */
+export type CoaWTr2026 = Prisma.CoaWTr2026Model
+/**
+ * Model FiledForCocot
+ * 
+ */
+export type FiledForCocot = Prisma.FiledForCocotModel
+/**
+ * Model SuccessStories
+ * 
+ */
+export type SuccessStories = Prisma.SuccessStoriesModel
+/**
+ * Model Dtr2026
+ * 
+ */
+export type Dtr2026 = Prisma.Dtr2026Model
+/**
+ * Model Hazard2026
+ * 
+ */
+export type Hazard2026 = Prisma.Hazard2026Model
+/**
+ * Model Tev2026
+ * 
+ */
+export type Tev2026 = Prisma.Tev2026Model
+/**
+ * Model LoadAllowance2026
+ * 
+ */
+export type LoadAllowance2026 = Prisma.LoadAllowance2026Model
+/**
+ * Model MagnaCarta2026
+ * 
+ */
+export type MagnaCarta2026 = Prisma.MagnaCarta2026Model
+/**
+ * Model LeaveForms
+ * 
+ */
+export type LeaveForms = Prisma.LeaveFormsModel
+/**
+ * Model CvsDropdown
+ * 
+ */
+export type CvsDropdown = Prisma.CvsDropdownModel
+/**
+ * Model Ipcrf2ndSem2025
+ * 
+ */
+export type Ipcrf2ndSem2025 = Prisma.Ipcrf2ndSem2025Model
+/**
+ * Model Saln2026
+ * 
+ */
+export type Saln2026 = Prisma.Saln2026Model
+/**
+ * Model AcOnly
+ * 
+ */
+export type AcOnly = Prisma.AcOnlyModel
+/**
+ * Model SwoiiiOnly
+ * 
+ */
+export type SwoiiiOnly = Prisma.SwoiiiOnlyModel

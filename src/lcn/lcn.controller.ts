@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { PcnService } from './lcn.service.js';
 import { CreatePcnDto } from './dto/create-pcn.dto.js';
 import { UpdatePcnDto } from './dto/update-pcn.dto.js';
@@ -10,16 +19,13 @@ import { Role } from './../../enums/roles.enum.js';
 import { Roles } from './../../decorator/roles.decorator.js';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ADMIN) 
+@Roles(Role.ADMIN)
 @Controller('lcn')
 export class PcnController {
   constructor(private readonly pcnService: PcnService) {}
 
   @Post('upload')
-  create(
-    @Body() createPcnDto: CreatePcnDto,
-    @Req() req: Request,
-  ) {
+  create(@Body() createPcnDto: CreatePcnDto, @Req() req: Request) {
     return this.pcnService.create(createPcnDto, req);
   }
 
@@ -44,8 +50,8 @@ export class PcnController {
   }
 
   @Patch('/update')
-  update( @Body() updatePcnDto: UpdatePcnDto) {
-    return this.pcnService.update( updatePcnDto);
+  update(@Body() updatePcnDto: UpdatePcnDto) {
+    return this.pcnService.update(updatePcnDto);
   }
 
   @Delete('delete/:id')

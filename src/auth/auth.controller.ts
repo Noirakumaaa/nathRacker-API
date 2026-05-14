@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
 import express from 'express';
 import { AuthService } from './auth.service.js';
@@ -9,9 +17,7 @@ import { JwtAuthGuard } from '../../guard/jwt-guard.js';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
-
-
+  constructor(private readonly authService: AuthService) {}
 
   @Public()
   @Post('login')
@@ -49,7 +55,10 @@ export class AuthController {
   }
 
   @Post('sessionTimeout')
-  newSessionTime(@Body('sessionTime') sessionTime: string, @Req() req: express.Request) {
+  newSessionTime(
+    @Body('sessionTime') sessionTime: string,
+    @Req() req: express.Request,
+  ) {
     return this.authService.newSessionTime(sessionTime, req);
   }
 

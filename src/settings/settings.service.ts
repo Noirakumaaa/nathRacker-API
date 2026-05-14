@@ -8,9 +8,10 @@ import * as XLSX from 'xlsx';
 import { Module } from './dto/create-setting.dto.js';
 import { SchemaEntry } from './dto/create-setting.dto.js';
 import { ImportRowError } from './dto/create-setting.dto.js';
-import type { Request } from 'express';
+import type { Request, Response } from 'express';
 import { SecurityData } from './dto/update-security.dto.js';
 import { NotFoundException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 const sessionTimeoutFormat = {
   15: 15 * 60 * 1000,
   30: 30 * 60 * 1000,
@@ -20,6 +21,17 @@ const sessionTimeoutFormat = {
   4: 4 * 60 * 60 * 1000,
   never: 365 * 24 * 60 * 60 * 1000,
 } as const;
+
+function getCookieOptions() {
+  const env = (process.env.NODE_ENV ?? '').toLowerCase();
+  const secure = env === 'production' || env === 'staging';
+  const sameSite: 'none' | 'lax' = secure ? 'none' : 'lax';
+  return {
+    httpOnly: true,
+    secure,
+    sameSite,
+  };
+}
 
 const COLUMN_MAP: Record<Module, Record<string, string>> = {
   BUS: {
@@ -38,10 +50,64 @@ const COLUMN_MAP: Record<Module, Record<string, string>> = {
     ISSUES: 'issue',
     NOTE: 'note',
   },
-  PCN: {},
-  SWDI: {},
-  CVS: {},
-  MISC: {},
+  PCN: {
+    HHID: 'hhId',
+    GRANTEE: 'granteeName',
+    LGU: 'lgu',
+    BARANGAY: 'barangay',
+    REMARKS: 'remarks',
+    'SUBJECT OF CHANGE': 'subjectOfChange',
+    PCN: 'PCN',
+    LRN: 'LRN',
+    'BDM - NUMBER': 'drn',
+    'BDM - CITY LINK or SWA': 'cl',
+    DATE: 'date',
+    ISSUE: 'issue',
+    ISSUES: 'issue',
+    NOTE: 'note',
+  },
+  SWDI: {
+    HHID: 'hhId',
+    LGU: 'lgu',
+    BARANGAY: 'barangay',
+    GRANTEE: 'grantee',
+    'SWDI SCORE': 'swdiScore',
+    'SWDI LEVEL': 'swdiLevel',
+    REMARKS: 'remarks',
+    DATE: 'date',
+    'BDM - CITY LINK or SWA': 'cl',
+    'BDM - NUMBER': 'drn',
+    ISSUE: 'issue',
+    ISSUES: 'issue',
+    NOTE: 'note',
+  },
+  CVS: {
+    'ID NUMBER': 'idNumber',
+    LGU: 'lgu',
+    BARANGAY: 'barangay',
+    'FACILITY NAME': 'facilityName',
+    'FORM TYPE': 'formType',
+    REMARKS: 'remarks',
+    PERIOD: 'Period',
+    ISSUE: 'Issue',
+    ISSUES: 'Issue',
+    DATE: 'date',
+  },
+  MISC: {
+    LGU: 'lgu',
+    BARANGAY: 'barangay',
+    HHID: 'hhId',
+    GRANTEE: 'granteeName',
+    'DOCUMENT TYPE': 'documentType',
+    REMARKS: 'remarks',
+    DATE: 'date',
+    'SUBJECT OF CHANGE': 'subjectOfChange',
+    'BDM - NUMBER': 'drn',
+    'BDM - CITY LINK or SWA': 'cl',
+    ISSUE: 'issue',
+    ISSUES: 'issue',
+    NOTE: 'note',
+  },
 };
 
 const MODULE_SCHEMA: Record<Module, SchemaEntry> = {
@@ -128,34 +194,52 @@ const MODULE_SCHEMA: Record<Module, SchemaEntry> = {
 
 @Injectable()
 export class SettingsService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly jwtService: JwtService,
+  ) {}
 
   async processImport(file: Express.Multer.File, module: Module, req: Request) {
     const schema = MODULE_SCHEMA[module];
 
     const rows = this.parseFile(file, module);
-    if (rows.length === 0) throw new BadRequestException('File is empty');
-
-    const dateRow = rows.find(
-      (r) => r['date'] !== undefined && !(r['date'] instanceof Date),
-    );
-    if (dateRow)
-      console.log(
-        'Non-Date date value found:',
-        dateRow['date'],
-        typeof dateRow['date'],
+    if (rows.length === 0)
+      throw new BadRequestException(
+        'The file is empty — please upload a file with data rows.',
       );
 
-    const errors = this.validateRows(rows, schema);
-    if (errors.length > 0) {
+    const validationErrors = this.validateRows(rows, schema);
+    if (validationErrors.length > 0) {
       throw new UnprocessableEntityException({
-        message: 'Import validation failed',
-        errors: errors.map((e) => `Row ${e.row}: ${e.message}`),
+        message: `Validation failed — ${validationErrors.length} row(s) have issues. Fix them before importing.`,
+        errors: validationErrors.map((e) => `Row ${e.row}: ${e.message}`),
       });
     }
 
-    const inserted = await this.persistRows(rows, module, req);
-    return { success: true, inserted };
+    const { inserted, errors } = await this.persistRows(rows, module, req);
+
+    if (errors.length > 0 && inserted === 0) {
+      throw new UnprocessableEntityException({
+        message: `Import failed — all ${rows.length} row(s) could not be saved.`,
+        errors,
+      });
+    }
+
+    if (errors.length > 0) {
+      return {
+        success: false,
+        message: `Partial import — ${inserted} row(s) saved, ${errors.length} row(s) failed.`,
+        inserted,
+        failed: errors.length,
+        errors,
+      };
+    }
+
+    return {
+      success: true,
+      message: `Successfully imported ${inserted} row(s).`,
+      inserted,
+    };
   }
 
   private parseFile(
@@ -251,14 +335,8 @@ export class SettingsService {
     rows: Record<string, unknown>[],
     module: Module,
     req: Request,
-  ): Promise<number> {
+  ): Promise<{ inserted: number; errors: string[] }> {
     const user = (req as any).user;
-    console.log(
-      'Import user id:',
-      user?.id,
-      '| govUsername:',
-      user?.govUsername,
-    );
 
     const modelMap: Record<Module, string> = {
       BUS: 'bus',
@@ -328,8 +406,6 @@ export class SettingsService {
           userId: user.id,
           operationsOfficeNumId: user.assignedOperationId,
         };
-        if (i === 0)
-          console.log('Row 2 payload:', JSON.stringify(payload, null, 2));
 
         const duplicateWhere = duplicateKeyMap[module](filteredRow);
         const existing = await (this.prisma.client as any)[model].findFirst({
@@ -351,10 +427,10 @@ export class SettingsService {
             documentId: created.id,
             subjectOfChange: String(
               row['subjectOfChange'] ??
-              row['granteeName'] ??
-              row['grantee'] ??
-              row['facilityName'] ??
-              '',
+                row['granteeName'] ??
+                row['grantee'] ??
+                row['facilityName'] ??
+                '',
             ),
             typeOfUpdate: String(row['typeOfUpdate'] ?? ''),
             remarks: String(row['remarks'] ?? ''),
@@ -368,19 +444,11 @@ export class SettingsService {
 
         inserted++;
       } catch (err: any) {
-        if (i === 0) console.error('Row 2 error detail:', err?.message);
         persistErrors.push(`Row ${rowNum}: ${this.friendlyError(err)}`);
       }
     }
 
-    if (persistErrors.length > 0) {
-      throw new UnprocessableEntityException({
-        message: 'Some rows failed to import',
-        errors: persistErrors,
-      });
-    }
-
-    return inserted;
+    return { inserted, errors: persistErrors };
   }
 
   private friendlyError(err: any): string {
@@ -440,28 +508,54 @@ export class SettingsService {
     });
   }
 
-  async UpdateSecuritySetting(SecurityData: SecurityData, req: Request) {
+  async UpdateSecuritySetting(
+    SecurityData: SecurityData,
+    req: Request,
+    res: Response,
+  ) {
     const user = req.user;
     if (!user) {
       throw new BadRequestException('User not authenticated');
     }
+    const sessionMs = sessionTimeoutFormat[SecurityData.sessionTime];
     const newSessionTimeUpdate = await this.prisma.client.userInfo.update({
       where: { userId: user.id },
       data: {
-        sessionTime: sessionTimeoutFormat[SecurityData.sessionTime],
+        sessionTime: sessionMs,
         loginAlert: SecurityData.loginAlert,
-        twoFactorAuth: SecurityData.twoFactorAuth
+        twoFactorAuth: SecurityData.twoFactorAuth,
       },
     });
-    console.log(
-      'Session time updated for user:',
-      user.id,
-      'New session time:',
-      newSessionTimeUpdate.sessionTime,
-    );
-    return { message: 'Session time updated successfully', newData: { newSessionTimeUpdate }, updated: true };
-  }
 
+    const token = this.jwtService.sign(
+      {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        govUsername: user.govUsername,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        assignedOperationId: user.assignedOperationId,
+      },
+      {
+        secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
+        expiresIn: Math.floor(sessionMs / 1000),
+      },
+    );
+
+    res.cookie('accessToken', token, {
+      ...getCookieOptions(),
+      maxAge: sessionMs,
+    });
+    res.setHeader('Cache-Control', 'no-store');
+
+    return {
+      message:
+        'Session time updated successfully and applied to the current session.',
+      newData: { newSessionTimeUpdate },
+      updated: true,
+    };
+  }
 
   async GetSecurityData(req: Request) {
     const user = req.user;
@@ -482,11 +576,7 @@ export class SettingsService {
       throw new NotFoundException('Security data not found for user');
     }
 
-    // Exclude sessionTime from returned data
-    const { sessionTime, ...data } = securityData;
-
-    return securityData
-    //return {...data,sessionTime :  sessionTimeoutFormat[sessionTime]}; 
+    return securityData;
   }
 
   async UpdateTheme(themeValue: 'LIGHT' | 'DARK', req: Request) {

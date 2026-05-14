@@ -1,8 +1,14 @@
-import { IsString, IsNotEmpty, IsOptional, IsDateString, IsInt } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsOptional,
+  IsDateString,
+  IsInt,
+} from 'class-validator';
 
 export class UpdateBusDto {
   @IsInt()
-  id : number
+  id: number;
 
   @IsString()
   @IsNotEmpty()
@@ -50,11 +56,10 @@ export class UpdateBusDto {
   @IsString()
   @IsOptional()
   verified?: 'YES' | 'ISSUE';
-  
+
   @IsString()
   @IsOptional()
   verificationIssue?: string;
-
 
   @IsString()
   @IsOptional()

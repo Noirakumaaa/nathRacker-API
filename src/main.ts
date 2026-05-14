@@ -10,17 +10,19 @@ import { config } from 'dotenv';
 import path from 'path';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
-
-const envFile = (process.env.NODE_ENV ?? '').toLowerCase() === 'production' ? '.env.production' : '.env.staging';
+const envFile =
+  (process.env.NODE_ENV ?? '').toLowerCase() === 'production'
+    ? '.env.production'
+    : '.env.staging';
 config({ path: path.resolve(process.cwd(), envFile), override: true });
-
-
 
 function validateEnv() {
   const required = ['JWT_SECRET_KEY', 'DATABASE_URL'];
   const missing = required.filter((key) => !process.env[key]);
   if (missing.length > 0) {
-    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    throw new Error(
+      `Missing required environment variables: ${missing.join(', ')}`,
+    );
   }
 }
 
@@ -31,23 +33,57 @@ async function bootstrap() {
     logger: ['error', 'warn', 'log'],
   });
 
+  const normalizeOrigin = (origin: string) => origin.trim().replace(/\/+$/, '');
+  const isDevLikeOrigin = (origin: string) => {
+    try {
+      const { hostname, protocol } = new URL(origin);
+      if (!['http:', 'https:'].includes(protocol)) return false;
+      if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
+      if (/^192\.168\.\d{1,3}\.\d{1,3}$/.test(hostname)) return true;
+      if (/^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(hostname)) return true;
+      if (/^172\.(1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3}$/.test(hostname))
+        return true;
+      return false;
+    } catch {
+      return false;
+    }
+  };
   const envOrigins = (process.env.ALLOWED_ORIGINS ?? '')
     .split(',')
-    .map((o) => o.trim())
+    .map(normalizeOrigin)
     .filter(Boolean);
 
-  const allowedOrigins = [
+  const defaultOrigins = [
+    'http://localhost:3000',
+    'http://localhost:5000',
+    'http://localhost:5173',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:5000',
+    'http://127.0.0.1:5173',
+    'http://staging.nathdomain.com',
+    'https://staging.nathdomain.com',
     ...envOrigins,
     'http://nathracker.nathdomain.com',
     'http://nathdomain.com',
     'https://nathracker.nathdomain.com',
     'https://nathdomain.com',
   ];
+  const allowedOrigins = Array.from(
+    new Set(defaultOrigins.map(normalizeOrigin)),
+  );
 
   // ✅ CORS must be before helmet
-  app.enableCors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+  const corsOptions = {
+    origin: (
+      origin: string | undefined,
+      callback: (err: Error | null, allow?: boolean) => void,
+    ) => {
+      const normalizedOrigin = origin ? normalizeOrigin(origin) : origin;
+      if (
+        !normalizedOrigin ||
+        allowedOrigins.includes(normalizedOrigin) ||
+        isDevLikeOrigin(normalizedOrigin)
+      ) {
         callback(null, true);
       } else {
         logger.warn(`Blocked CORS request from origin: ${origin}`);
@@ -62,14 +98,17 @@ async function bootstrap() {
       'credentials',
       'X-CSRF-Token',
     ],
-    preflightContinue: false,       // ✅ added
-    optionsSuccessStatus: 204,      // ✅ added
-  });
+    preflightContinue: false, // ✅ added
+    optionsSuccessStatus: 204, // ✅ added
+  };
+  app.enableCors(corsOptions);
 
   // ✅ helmet after CORS, with crossOriginResourcePolicy disabled
-  app.use(helmet({
-    crossOriginResourcePolicy: false,
-  }));
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: false,
+    }),
+  );
 
   app.use(compression());
   app.use(cookieParser());

@@ -22,7 +22,10 @@ export class CreateRegisterAccount {
   @IsString()
   middleName: string;
 
-  @ApiProperty({ example: 'jdelacruz', description: 'Government-issued username' })
+  @ApiProperty({
+    example: 'jdelacruz',
+    description: 'Government-issued username',
+  })
   @IsString()
   govUsername: string;
 
@@ -38,19 +41,34 @@ export class CreateRegisterAccount {
   @IsString()
   phone: string;
 
-  @ApiProperty({ enum: Role, example: Role.ENCODER, description: 'User role in the system' })
-  @IsEnum(Role, { message: 'role must be one of: ENCODER, ADMIN, AC, SWOIII, VERIFIER' })
+  @ApiProperty({
+    enum: Role,
+    example: Role.ENCODER,
+    description: 'User role in the system',
+  })
+  @IsEnum(Role, {
+    message: 'role must be one of: ENCODER, ADMIN, AC, SWOIII, VERIFIER',
+  })
   role: Role;
 
-  @ApiPropertyOptional({ example: 1, description: 'ID of the assigned Operations Office' })
-  @IsOptional() @IsNumber()
+  @ApiPropertyOptional({
+    example: 1,
+    description: 'ID of the assigned Operations Office',
+  })
+  @IsOptional()
+  @IsNumber()
   assignedOperationId?: number;
 
   @ApiPropertyOptional({ example: 2, description: 'ID of the assigned LGU' })
-  @IsOptional() @IsNumber()
+  @IsOptional()
+  @IsNumber()
   assignedLGUID?: number;
 
-  @ApiPropertyOptional({ example: 3, description: 'ID of the assigned Barangay' })
-  @IsOptional() @IsNumber()
+  @ApiPropertyOptional({
+    example: 3,
+    description: 'ID of the assigned Barangay',
+  })
+  @IsOptional()
+  @IsNumber()
   assignedBarangayId?: number;
 }

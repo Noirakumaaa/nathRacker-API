@@ -4,11 +4,13 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreatePcnDto {
   @ApiPropertyOptional({ example: 'Cagayan de Oro' })
-  @IsOptional() @IsString()
+  @IsOptional()
+  @IsString()
   lgu?: string;
 
   @ApiPropertyOptional({ example: 'Barangay 1' })
-  @IsOptional() @IsString()
+  @IsOptional()
+  @IsString()
   barangay?: string;
 
   @ApiProperty({ example: '112233-44', description: 'Household ID number' })
@@ -16,7 +18,8 @@ export class CreatePcnDto {
   hhId: string;
 
   @ApiPropertyOptional({ example: 'Juan Dela Cruz' })
-  @IsOptional() @IsString()
+  @IsOptional()
+  @IsString()
   granteeName?: string;
 
   @ApiProperty({ example: 'ENCODED', enum: ['ENCODED', 'ISSUE', 'UPDATED'] })
@@ -24,38 +27,66 @@ export class CreatePcnDto {
   remarks: string;
 
   @ApiPropertyOptional({ example: 'Missing PCN number' })
-  @IsOptional() @IsString()
+  @IsOptional()
+  @IsString()
   issue?: string;
 
-  @ApiProperty({ example: 'jdelacruz', description: 'govUsername of the encoder' })
+  @ApiProperty({
+    example: 'jdelacruz',
+    description: 'govUsername of the encoder',
+  })
   @IsString()
   encodedBy: string;
 
-  @ApiProperty({ example: 'Name Correction', description: 'Subject of the change' })
+  @ApiProperty({
+    example: 'Name Correction',
+    description: 'Subject of the change',
+  })
   @IsString()
   subjectOfChange: string;
 
-  @ApiPropertyOptional({ example: 'PCN-2024-001', description: 'PCN reference number' })
-  @IsOptional() @IsString()
+  @ApiPropertyOptional({
+    example: 'PCN-2024-001',
+    description: 'PCN reference number',
+  })
+  @IsOptional()
+  @IsString()
   pcn?: string;
 
-  @ApiPropertyOptional({ example: 'LRN-00123', description: 'Learner Reference Number' })
-  @IsOptional() @IsString()
+  @ApiPropertyOptional({
+    example: 'LRN-00123',
+    description: 'Learner Reference Number',
+  })
+  @IsOptional()
+  @IsString()
   lrn?: string;
 
-  @ApiPropertyOptional({ example: 'BDM-0012', description: 'Document Reference Number' })
-  @IsOptional() @IsString()
+  @ApiPropertyOptional({
+    example: 'BDM-0012',
+    description: 'Document Reference Number',
+  })
+  @IsOptional()
+  @IsString()
   drn?: string;
 
-  @ApiPropertyOptional({ example: 'Maria Santos', description: 'Assigned City Link or SWA' })
-  @IsOptional() @IsString()
+  @ApiPropertyOptional({
+    example: 'Maria Santos',
+    description: 'Assigned City Link or SWA',
+  })
+  @IsOptional()
+  @IsString()
   cl?: string;
 
-  @ApiProperty({ example: '2024-06-15', description: 'Date accomplished (ISO format)' })
-  @Type(() => Date) @IsDate()
+  @ApiProperty({
+    example: '2024-06-15',
+    description: 'Date accomplished (ISO format)',
+  })
+  @Type(() => Date)
+  @IsDate()
   date: Date;
 
   @ApiPropertyOptional({ example: 'Needs re-verification' })
-  @IsOptional() @IsString()
+  @IsOptional()
+  @IsString()
   note?: string;
 }

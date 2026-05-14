@@ -1,13 +1,12 @@
-import { IsBoolean, IsIn } from "class-validator";
+import { IsBoolean, IsIn } from 'class-validator';
 
 export class SecurityData {
+  @IsIn([15, 30, 1, 2, 3, 4, 'never'])
+  sessionTime: number | 'never';
 
-    @IsIn([15, 30, 1, 2, 3, 4, "never"])
-    sessionTime : number | "never"
+  @IsBoolean()
+  loginAlert: boolean;
 
-    @IsBoolean()
-    loginAlert : boolean
-
-    @IsBoolean()
-    twoFactorAuth : boolean
+  @IsBoolean()
+  twoFactorAuth: boolean;
 }

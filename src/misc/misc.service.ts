@@ -18,10 +18,11 @@ export class MiscService {
     const uploadCvs = await this.prisma.client.miscellaneous.create({
       data: {
         ...createMiscDto,
-        subjectOfChange: createMiscDto.subjectOfChange || createMiscDto.granteeName,
-        encodedBy : user.govUsername,
+        subjectOfChange:
+          createMiscDto.subjectOfChange || createMiscDto.granteeName,
+        encodedBy: user.govUsername,
         date: new Date(),
-        operationsOfficeNumId : user.assignedOperationId,
+        operationsOfficeNumId: user.assignedOperationId,
         userId: user.id,
       },
     });
@@ -35,9 +36,9 @@ export class MiscService {
         subjectOfChange: uploadCvs.documentType,
         remarks: uploadCvs.remarks,
         userId: user.id,
-        drn: uploadCvs.drn ?? " ",
+        drn: uploadCvs.drn ?? ' ',
         govUsername: user.govUsername,
-        operationsOfficeNumId : user.assignedOperationId,
+        operationsOfficeNumId: user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -87,7 +88,6 @@ export class MiscService {
     return `This action returns a #${id} misc`;
   }
 
-
   async update(id: number, dto: UpdateMiscDto) {
     const miscUpdate = await this.prisma.client.miscellaneous.update({
       where: { id },
@@ -95,9 +95,9 @@ export class MiscService {
     });
 
     await this.prisma.client.encodedDocument.updateMany({
-      where: { 
+      where: {
         documentId: miscUpdate.id,
-        documentType : "MISC"
+        documentType: 'MISC',
       },
       data: {
         idNumber: String(miscUpdate.hhId),
@@ -119,9 +119,9 @@ export class MiscService {
     });
 
     await this.prisma.client.encodedDocument.deleteMany({
-      where: { 
+      where: {
         documentId: id,
-        documentType : "MISC"
+        documentType: 'MISC',
       },
     });
 

@@ -1,6 +1,5 @@
 export class CreateAdminDto {}
 
-
 export class CreateLgu {
   name: string;
   operationsOfficeNumId: number;
@@ -14,4 +13,3 @@ export class CreateBarangay {
 export class CreateOperations {
   name: string;
 }
-
