@@ -17,15 +17,44 @@ const newUsers = [
   {
     firstName: 'ADMIN',
     lastName: 'ADMIN',
-    middleName: '',
+    middleName: 'ADMIN',
     govUsername: 'ADMIN',
     email: 'hernandezlnathaniel9@@gmail.com',
-    password: 'ADMIN',
+    password: 'ADMINADMIN#01',
     phone: '09000000000',
     role: 'ADMIN' as const,
     assignedLGUID: 4,
     assignedOperationId: 8,
     assignedBarangayId: 1,
+<<<<<<< HEAD
+=======
+  },
+  {
+    firstName: 'NATHANIEL',
+    lastName: 'HERNANDEZ',
+    middleName: 'BARBASA',
+    govUsername: 'nbhernandez',
+    email: 'hernandezlnathaniel@gmail.com',
+    password: 'ADMINADMIN#01',
+    phone: '09166575886',
+    role: 'ADMIN' as const,
+    assignedLGUID: 4,
+    assignedOperationId: 8,
+    assignedBarangayId: 1,
+  },
+  {
+    firstName: 'MARIA ANDREA GELLE',
+    lastName: 'PAREDES',
+    middleName: 'SERRANO',
+    govUsername: 'magsparedes',
+    email: 'mariaandreagellep@gmail.com',
+    password: 'ADMINADMIN#01',
+    phone: '09506286951',
+    role: 'ADMIN' as const,
+    assignedLGUID: 4,
+    assignedOperationId: 8,
+    assignedBarangayId: 1,
+>>>>>>> e038e52bb1f6ada54b7b925b73c3dfd96bd07c3b
   },
 ];
 
@@ -42,14 +71,66 @@ const newOperationsOffices = [
 ];
 
 const newLgus = [
-  { name: 'PARANAQUE', operationsOfficeNumId: 8 },
+  { name: 'PARAÑAQUE', operationsOfficeNumId: 8 },
+  { name: 'LAS PIÑAS', operationsOfficeNumId: 8 },
   { name: 'MUNTINLUPA', operationsOfficeNumId: 8 },
-  { name: 'LAS PINAS', operationsOfficeNumId: 8 },
-  { name: 'OFFICE BASED', operationsOfficeNumId:8  }
+  { name: "OFFICE BASED", operationsOfficeNumId: 8 }
 ];
 
 const newBarangays = [
-  { name: 'OFFICE BASED', lguId: 4 },
+  { name: "OFFICE BASED", lguId: 4 },
+  // PARANAQUE
+  { name: 'BACLARAN', lguId: 1 },
+  { name: 'BF HOMES', lguId: 1 },
+  { name: 'DON BOSCO', lguId: 1 },
+  { name: 'LA HUERTA', lguId: 1 },
+  { name: 'MARCELO GREEN', lguId: 1 },
+  { name: 'MERVILLE', lguId: 1 },
+  { name: 'MOONWALK', lguId: 1 },
+  { name: 'SAN ANTONIO', lguId: 1 },
+  { name: 'SAN DIONISIO', lguId: 1 },
+  { name: 'SAN ISIDRO', lguId: 1 },
+  { name: 'SAN MARTIN DE PORRES', lguId: 1 },
+  { name: 'SANTO NINO', lguId: 1 },
+  { name: 'SUN VALLEY', lguId: 1 },
+  { name: 'TAMBO', lguId: 1 },
+  { name: 'VITALEZ', lguId: 1 },
+
+  // LAS PINAS
+  { name: 'ALMANZA DOS', lguId: 2 },
+  { name: 'ALMANZA UNO', lguId: 2 },
+  { name: 'BF INTERNATIONAL VILLAGE', lguId: 2 },
+  { name: 'DANIEL FAJARDO', lguId: 2 },
+  { name: 'DON GALO', lguId: 1 },
+  { name: 'ELIAS ALDANA', lguId: 2 },
+  { name: 'ILAYA', lguId: 2 },
+  { name: 'MANUYO DOS', lguId: 2 },
+  { name: 'MANUYO UNO', lguId: 2 },
+  { name: 'PAMPLONA DOS', lguId: 2 },
+  { name: 'PAMPLONA TRES', lguId: 2 },
+  { name: 'PAMPLONA UNO', lguId: 2 },
+  { name: 'PILAR', lguId: 2 },
+  { name: 'PULANG LUPA DOS', lguId: 2 },
+  { name: 'PULANG LUPA UNO', lguId: 2 },
+  { name: 'TALON DOS', lguId: 2 },
+  { name: 'TALON KUATRO', lguId: 2 },
+  { name: 'TALON SINGKO', lguId: 2 },
+  { name: 'TALON TRES', lguId: 2 },
+  { name: 'TALON UNO', lguId: 2 },
+  { name: 'ZAPOTE', lguId: 2 },
+
+  // MUNTINLUPA
+  { name: 'ALABANG', lguId: 3 },
+  { name: 'AYALA ALABANG', lguId: 3 },
+  { name: 'BAYANAN', lguId: 3 },
+  { name: 'BULI', lguId: 3 },
+  { name: 'CUPANG', lguId: 3 },
+  { name: 'POBLACION', lguId: 3 },
+  { name: 'PUTATAN', lguId: 3 },
+  { name: 'SUCAT', lguId: 3 },
+  { name: 'TUNASAN', lguId: 3 },
+
+
 ];
 
 // ─── Functions ───────────────────────────────────────────────────────────────

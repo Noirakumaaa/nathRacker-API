@@ -51,17 +51,46 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  OperationsOfficeNum: 'OperationsOfficeNum',
+  Lgu: 'Lgu',
+  Barangay: 'Barangay',
   User: 'User',
   UserInfo: 'UserInfo',
+  PasswordResetCode: 'PasswordResetCode',
   Bus: 'Bus',
   Swdi: 'Swdi',
   Pcn: 'Pcn',
   CVS: 'CVS',
   Miscellaneous: 'Miscellaneous',
   EncodedDocument: 'EncodedDocument',
-  OperationsOfficeNum: 'OperationsOfficeNum',
-  Lgu: 'Lgu',
-  Barangay: 'Barangay'
+  AaDocumentModule: 'AaDocumentModule',
+  AaDocument: 'AaDocument',
+  AaLoad26Monthly: 'AaLoad26Monthly',
+  AaRemark: 'AaRemark',
+  EdtmsTrackingRequest: 'EdtmsTrackingRequest',
+  CvsTracking: 'CvsTracking',
+  BdmTracking: 'BdmTracking',
+  GrsTracking: 'GrsTracking',
+  MneTracking: 'MneTracking',
+  OoLevel: 'OoLevel',
+  Oo8IncomingFiles: 'Oo8IncomingFiles',
+  TrainingFeedbacks: 'TrainingFeedbacks',
+  TravelRequest: 'TravelRequest',
+  MrbTofMonitoring: 'MrbTofMonitoring',
+  CoaWTr2026: 'CoaWTr2026',
+  FiledForCocot: 'FiledForCocot',
+  SuccessStories: 'SuccessStories',
+  Dtr2026: 'Dtr2026',
+  Hazard2026: 'Hazard2026',
+  Tev2026: 'Tev2026',
+  LoadAllowance2026: 'LoadAllowance2026',
+  MagnaCarta2026: 'MagnaCarta2026',
+  LeaveForms: 'LeaveForms',
+  CvsDropdown: 'CvsDropdown',
+  Ipcrf2ndSem2025: 'Ipcrf2ndSem2025',
+  Saln2026: 'Saln2026',
+  AcOnly: 'AcOnly',
+  SwoiiiOnly: 'SwoiiiOnly'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -78,183 +107,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const UserScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  email: 'email',
-  password: 'password',
-  role: 'role',
-  govUsername: 'govUsername'
-} as const
-
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const UserInfoScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  middleName: 'middleName',
-  assignedOperationId: 'assignedOperationId',
-  assignedLGUID: 'assignedLGUID',
-  assignedBarangayId: 'assignedBarangayId',
-  phone: 'phone',
-  sessionTime: 'sessionTime',
-  language: 'language',
-  timezone: 'timezone',
-  twoFactorAuth: 'twoFactorAuth',
-  smsAlert: 'smsAlert',
-  loginAlert: 'loginAlert',
-  SecuritAlert: 'SecuritAlert',
-  emailAlert: 'emailAlert',
-  weeklyReportAlert: 'weeklyReportAlert',
-  theme: 'theme'
-} as const
-
-export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
-
-
-export const BusScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  typeOfUpdate: 'typeOfUpdate',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  updateInfo: 'updateInfo',
-  subjectOfChange: 'subjectOfChange',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  verificationIssue: 'verificationIssue',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BusScalarFieldEnum = (typeof BusScalarFieldEnum)[keyof typeof BusScalarFieldEnum]
-
-
-export const SwdiScalarFieldEnum = {
-  id: 'id',
-  hhId: 'hhId',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  grantee: 'grantee',
-  swdiScore: 'swdiScore',
-  swdiLevel: 'swdiLevel',
-  encodedBy: 'encodedBy',
-  remarks: 'remarks',
-  issue: 'issue',
-  cl: 'cl',
-  drn: 'drn',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
-
-
-export const PcnScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  subjectOfChange: 'subjectOfChange',
-  pcn: 'pcn',
-  lrn: 'lrn',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
-
-
-export const CVSScalarFieldEnum = {
-  id: 'id',
-  idNumber: 'idNumber',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  facilityName: 'facilityName',
-  formType: 'formType',
-  remarks: 'remarks',
-  userId: 'userId',
-  issue: 'issue',
-  period: 'period',
-  date: 'date',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
-
-
-export const MiscellaneousScalarFieldEnum = {
-  id: 'id',
-  lgu: 'lgu',
-  barangay: 'barangay',
-  hhId: 'hhId',
-  granteeName: 'granteeName',
-  documentType: 'documentType',
-  remarks: 'remarks',
-  issue: 'issue',
-  encodedBy: 'encodedBy',
-  subjectOfChange: 'subjectOfChange',
-  drn: 'drn',
-  cl: 'cl',
-  date: 'date',
-  note: 'note',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)[keyof typeof MiscellaneousScalarFieldEnum]
-
-
-export const EncodedDocumentScalarFieldEnum = {
-  id: 'id',
-  idNumber: 'idNumber',
-  name: 'name',
-  documentType: 'documentType',
-  documentId: 'documentId',
-  subjectOfChange: 'subjectOfChange',
-  remarks: 'remarks',
-  drn: 'drn',
-  userId: 'userId',
-  govUsername: 'govUsername',
-  date: 'date',
-  verifiedBy: 'verifiedBy',
-  verified: 'verified',
-  createdAt: 'createdAt'
-} as const
-
-export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
 
 
 export const OperationsOfficeNumScalarFieldEnum = {
@@ -281,6 +133,1017 @@ export const BarangayScalarFieldEnum = {
 } as const
 
 export type BarangayScalarFieldEnum = (typeof BarangayScalarFieldEnum)[keyof typeof BarangayScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password',
+  govUsername: 'govUsername',
+  role: 'role',
+  createdAt: 'createdAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserInfoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  middleName: 'middleName',
+  phone: 'phone',
+  sessionTime: 'sessionTime',
+  language: 'language',
+  timezone: 'timezone',
+  theme: 'theme',
+  twoFactorAuth: 'twoFactorAuth',
+  smsAlert: 'smsAlert',
+  loginAlert: 'loginAlert',
+  SecuritAlert: 'SecuritAlert',
+  emailAlert: 'emailAlert',
+  weeklyReportAlert: 'weeklyReportAlert',
+  assignedOperationId: 'assignedOperationId',
+  assignedLGUID: 'assignedLGUID',
+  assignedBarangayId: 'assignedBarangayId'
+} as const
+
+export type UserInfoScalarFieldEnum = (typeof UserInfoScalarFieldEnum)[keyof typeof UserInfoScalarFieldEnum]
+
+
+export const PasswordResetCodeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  code: 'code',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type PasswordResetCodeScalarFieldEnum = (typeof PasswordResetCodeScalarFieldEnum)[keyof typeof PasswordResetCodeScalarFieldEnum]
+
+
+export const BusScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  typeOfUpdate: 'typeOfUpdate',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  updateInfo: 'updateInfo',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verificationIssue: 'verificationIssue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BusScalarFieldEnum = (typeof BusScalarFieldEnum)[keyof typeof BusScalarFieldEnum]
+
+
+export const SwdiScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  grantee: 'grantee',
+  swdiScore: 'swdiScore',
+  swdiLevel: 'swdiLevel',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SwdiScalarFieldEnum = (typeof SwdiScalarFieldEnum)[keyof typeof SwdiScalarFieldEnum]
+
+
+export const PcnScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  subjectOfChange: 'subjectOfChange',
+  pcn: 'pcn',
+  lrn: 'lrn',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PcnScalarFieldEnum = (typeof PcnScalarFieldEnum)[keyof typeof PcnScalarFieldEnum]
+
+
+export const CVSScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  facilityName: 'facilityName',
+  formType: 'formType',
+  period: 'period',
+  date: 'date',
+  remarks: 'remarks',
+  issue: 'issue',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CVSScalarFieldEnum = (typeof CVSScalarFieldEnum)[keyof typeof CVSScalarFieldEnum]
+
+
+export const MiscellaneousScalarFieldEnum = {
+  id: 'id',
+  hhId: 'hhId',
+  lgu: 'lgu',
+  barangay: 'barangay',
+  granteeName: 'granteeName',
+  documentType: 'documentType',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  cl: 'cl',
+  date: 'date',
+  encodedBy: 'encodedBy',
+  remarks: 'remarks',
+  note: 'note',
+  issue: 'issue',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MiscellaneousScalarFieldEnum = (typeof MiscellaneousScalarFieldEnum)[keyof typeof MiscellaneousScalarFieldEnum]
+
+
+export const EncodedDocumentScalarFieldEnum = {
+  id: 'id',
+  idNumber: 'idNumber',
+  name: 'name',
+  documentType: 'documentType',
+  documentId: 'documentId',
+  subjectOfChange: 'subjectOfChange',
+  drn: 'drn',
+  date: 'date',
+  govUsername: 'govUsername',
+  typeOfUpdate: 'typeOfUpdate',
+  remarks: 'remarks',
+  verifiedBy: 'verifiedBy',
+  verified: 'verified',
+  userId: 'userId',
+  operationsOfficeNumId: 'operationsOfficeNumId',
+  createdAt: 'createdAt'
+} as const
+
+export type EncodedDocumentScalarFieldEnum = (typeof EncodedDocumentScalarFieldEnum)[keyof typeof EncodedDocumentScalarFieldEnum]
+
+
+export const AaDocumentModuleScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  prefix: 'prefix',
+  description: 'description',
+  isActive: 'isActive',
+  colStaff: 'colStaff',
+  colSubject: 'colSubject',
+  colActivity: 'colActivity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AaDocumentModuleScalarFieldEnum = (typeof AaDocumentModuleScalarFieldEnum)[keyof typeof AaDocumentModuleScalarFieldEnum]
+
+
+export const AaDocumentScalarFieldEnum = {
+  id: 'id',
+  trackingNo: 'trackingNo',
+  sequence: 'sequence',
+  staffName: 'staffName',
+  subject: 'subject',
+  operationNum: 'operationNum',
+  year: 'year',
+  dateCreated: 'dateCreated',
+  moduleId: 'moduleId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AaDocumentScalarFieldEnum = (typeof AaDocumentScalarFieldEnum)[keyof typeof AaDocumentScalarFieldEnum]
+
+
+export const AaLoad26MonthlyScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  january: 'january',
+  janRemark1: 'janRemark1',
+  janRemark2: 'janRemark2',
+  janRemark3: 'janRemark3',
+  janRemark4: 'janRemark4',
+  janRemark5: 'janRemark5',
+  february: 'february',
+  febRemark1: 'febRemark1',
+  febRemark2: 'febRemark2',
+  febRemark3: 'febRemark3',
+  febRemark4: 'febRemark4',
+  febRemark5: 'febRemark5',
+  march: 'march',
+  marRemark1: 'marRemark1',
+  marRemark2: 'marRemark2',
+  marRemark3: 'marRemark3',
+  marRemark4: 'marRemark4',
+  marRemark5: 'marRemark5',
+  april: 'april',
+  aprRemark1: 'aprRemark1',
+  aprRemark2: 'aprRemark2',
+  aprRemark3: 'aprRemark3',
+  aprRemark4: 'aprRemark4',
+  aprRemark5: 'aprRemark5',
+  may: 'may',
+  mayRemark1: 'mayRemark1',
+  mayRemark2: 'mayRemark2',
+  mayRemark3: 'mayRemark3',
+  mayRemark4: 'mayRemark4',
+  mayRemark5: 'mayRemark5',
+  june: 'june',
+  junRemark1: 'junRemark1',
+  junRemark2: 'junRemark2',
+  junRemark3: 'junRemark3',
+  junRemark4: 'junRemark4',
+  junRemark5: 'junRemark5',
+  july: 'july',
+  julRemarks1: 'julRemarks1',
+  julRemarks2: 'julRemarks2',
+  julRemarks3: 'julRemarks3',
+  julRemarks4: 'julRemarks4',
+  julRemarks5: 'julRemarks5',
+  august: 'august',
+  augRemarks1: 'augRemarks1',
+  augRemarks2: 'augRemarks2',
+  augRemarks3: 'augRemarks3',
+  augRemarks4: 'augRemarks4',
+  augRemarks5: 'augRemarks5',
+  september: 'september',
+  sepRemarks1: 'sepRemarks1',
+  sepRemarks2: 'sepRemarks2',
+  sepRemarks3: 'sepRemarks3',
+  sepRemarks4: 'sepRemarks4',
+  sepRemarks5: 'sepRemarks5',
+  october: 'october',
+  octRemarks1: 'octRemarks1',
+  octRemarks2: 'octRemarks2',
+  octRemarks3: 'octRemarks3',
+  octRemarks4: 'octRemarks4',
+  octRemarks5: 'octRemarks5',
+  november: 'november',
+  novRemarks1: 'novRemarks1',
+  novRemarks2: 'novRemarks2',
+  novRemarks3: 'novRemarks3',
+  novRemarks4: 'novRemarks4',
+  novRemarks5: 'novRemarks5',
+  december: 'december',
+  decRemarks1: 'decRemarks1',
+  decRemarks2: 'decRemarks2',
+  decRemarks3: 'decRemarks3',
+  decRemarks4: 'decRemarks4',
+  decRemarks5: 'decRemarks5',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AaLoad26MonthlyScalarFieldEnum = (typeof AaLoad26MonthlyScalarFieldEnum)[keyof typeof AaLoad26MonthlyScalarFieldEnum]
+
+
+export const AaRemarkScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  content: 'content',
+  remarkDate: 'remarkDate',
+  order: 'order',
+  createdAt: 'createdAt'
+} as const
+
+export type AaRemarkScalarFieldEnum = (typeof AaRemarkScalarFieldEnum)[keyof typeof AaRemarkScalarFieldEnum]
+
+
+export const EdtmsTrackingRequestScalarFieldEnum = {
+  id: 'id',
+  edtmsNumber: 'edtmsNumber',
+  staffRequesting: 'staffRequesting',
+  dateCreated: 'dateCreated',
+  subject: 'subject',
+  uploadedBy: 'uploadedBy',
+  uploadDate: 'uploadDate',
+  remarks: 'remarks',
+  dateForwarded: 'dateForwarded',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EdtmsTrackingRequestScalarFieldEnum = (typeof EdtmsTrackingRequestScalarFieldEnum)[keyof typeof EdtmsTrackingRequestScalarFieldEnum]
+
+
+export const CvsTrackingScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  documentTitle: 'documentTitle',
+  dateSubmitted: 'dateSubmitted',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CvsTrackingScalarFieldEnum = (typeof CvsTrackingScalarFieldEnum)[keyof typeof CvsTrackingScalarFieldEnum]
+
+
+export const BdmTrackingScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  subject: 'subject',
+  dateCreated: 'dateCreated',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  remarks7: 'remarks7',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BdmTrackingScalarFieldEnum = (typeof BdmTrackingScalarFieldEnum)[keyof typeof BdmTrackingScalarFieldEnum]
+
+
+export const GrsTrackingScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  referredToGrsRpmo: 'referredToGrsRpmo',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  dateSubmittedJnt: 'dateSubmittedJnt',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  remarks7: 'remarks7',
+  remarks8: 'remarks8',
+  remarks9: 'remarks9',
+  remarks10: 'remarks10',
+  remarks11: 'remarks11',
+  remarks12: 'remarks12',
+  remarks13: 'remarks13',
+  remarks14: 'remarks14',
+  remarks15: 'remarks15',
+  remarks16: 'remarks16',
+  remarks17: 'remarks17',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GrsTrackingScalarFieldEnum = (typeof GrsTrackingScalarFieldEnum)[keyof typeof GrsTrackingScalarFieldEnum]
+
+
+export const MneTrackingScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  activityDocumentation: 'activityDocumentation',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  remarks7: 'remarks7',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MneTrackingScalarFieldEnum = (typeof MneTrackingScalarFieldEnum)[keyof typeof MneTrackingScalarFieldEnum]
+
+
+export const OoLevelScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  remarks7: 'remarks7',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OoLevelScalarFieldEnum = (typeof OoLevelScalarFieldEnum)[keyof typeof OoLevelScalarFieldEnum]
+
+
+export const Oo8IncomingFilesScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  edtms: 'edtms',
+  fromParty: 'fromParty',
+  addressedTo: 'addressedTo',
+  documentTitle: 'documentTitle',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Oo8IncomingFilesScalarFieldEnum = (typeof Oo8IncomingFilesScalarFieldEnum)[keyof typeof Oo8IncomingFilesScalarFieldEnum]
+
+
+export const TrainingFeedbacksScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  dateSubmittedJnt: 'dateSubmittedJnt',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TrainingFeedbacksScalarFieldEnum = (typeof TrainingFeedbacksScalarFieldEnum)[keyof typeof TrainingFeedbacksScalarFieldEnum]
+
+
+export const TravelRequestScalarFieldEnum = {
+  id: 'id',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  coveredDates01: 'coveredDates01',
+  coveredDates02: 'coveredDates02',
+  coveredDates03: 'coveredDates03',
+  coveredDates04: 'coveredDates04',
+  coveredDates05: 'coveredDates05',
+  coveredDates06: 'coveredDates06',
+  coveredDates07: 'coveredDates07',
+  coveredDates08: 'coveredDates08',
+  coveredDates09: 'coveredDates09',
+  coveredDates10: 'coveredDates10',
+  coveredDates11: 'coveredDates11',
+  coveredDates12: 'coveredDates12',
+  coveredDates13: 'coveredDates13',
+  coveredDates14: 'coveredDates14',
+  coveredDates15: 'coveredDates15',
+  coveredDates16: 'coveredDates16',
+  coveredDates17: 'coveredDates17',
+  coveredDates18: 'coveredDates18',
+  coveredDates19: 'coveredDates19',
+  coveredDates20: 'coveredDates20',
+  coveredDates21: 'coveredDates21',
+  coveredDates22: 'coveredDates22',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TravelRequestScalarFieldEnum = (typeof TravelRequestScalarFieldEnum)[keyof typeof TravelRequestScalarFieldEnum]
+
+
+export const MrbTofMonitoringScalarFieldEnum = {
+  id: 'id',
+  ooLevelDrnNumber: 'ooLevelDrnNumber',
+  dateForwardedToMrb: 'dateForwardedToMrb',
+  assignedCitylink: 'assignedCitylink',
+  mrbInCharge: 'mrbInCharge',
+  tofNumber: 'tofNumber',
+  requestTitle: 'requestTitle',
+  dateForwardedToCgu: 'dateForwardedToCgu',
+  remarks: 'remarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MrbTofMonitoringScalarFieldEnum = (typeof MrbTofMonitoringScalarFieldEnum)[keyof typeof MrbTofMonitoringScalarFieldEnum]
+
+
+export const CoaWTr2026ScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  january: 'january',
+  janRemarksMe1: 'janRemarksMe1',
+  janRemarksMe2: 'janRemarksMe2',
+  february: 'february',
+  febRemarksMe: 'febRemarksMe',
+  march: 'march',
+  marRemarksMe: 'marRemarksMe',
+  april: 'april',
+  aprRemarksMe: 'aprRemarksMe',
+  may: 'may',
+  mayRemarksMe: 'mayRemarksMe',
+  june: 'june',
+  junRemarksMe: 'junRemarksMe',
+  july: 'july',
+  julRemarksMe: 'julRemarksMe',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CoaWTr2026ScalarFieldEnum = (typeof CoaWTr2026ScalarFieldEnum)[keyof typeof CoaWTr2026ScalarFieldEnum]
+
+
+export const FiledForCocotScalarFieldEnum = {
+  id: 'id',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  janRemarks1: 'janRemarks1',
+  janRemarks2: 'janRemarks2',
+  janRemarks3: 'janRemarks3',
+  february: 'february',
+  febRemarks1: 'febRemarks1',
+  febRemarks2: 'febRemarks2',
+  febRemarks3: 'febRemarks3',
+  febRemarks4: 'febRemarks4',
+  febRemarks5: 'febRemarks5',
+  febRemarks6: 'febRemarks6',
+  febRemarks7: 'febRemarks7',
+  febRemarks8: 'febRemarks8',
+  april: 'april',
+  may: 'may',
+  mayRemarks1: 'mayRemarks1',
+  mayRemarks2: 'mayRemarks2',
+  june: 'june',
+  junRemarks1: 'junRemarks1',
+  junRemarks2: 'junRemarks2',
+  july: 'july',
+  julRemarks1: 'julRemarks1',
+  julRemarks2: 'julRemarks2',
+  julRemarks3: 'julRemarks3',
+  august: 'august',
+  augRemarks: 'augRemarks',
+  september: 'september',
+  sepRemarks1: 'sepRemarks1',
+  sepRemarks2: 'sepRemarks2',
+  sepRemarks3: 'sepRemarks3',
+  october: 'october',
+  octRemarks1: 'octRemarks1',
+  octRemarks2: 'octRemarks2',
+  octRemarks3: 'octRemarks3',
+  november: 'november',
+  novRemarks1: 'novRemarks1',
+  novRemarks2: 'novRemarks2',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FiledForCocotScalarFieldEnum = (typeof FiledForCocotScalarFieldEnum)[keyof typeof FiledForCocotScalarFieldEnum]
+
+
+export const SuccessStoriesScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  dateUploadedDrive: 'dateUploadedDrive',
+  storyType: 'storyType',
+  kwentoPangarap: 'kwentoPangarap',
+  kwentoPagtataya: 'kwentoPagtataya',
+  kwentoPagtataguyod: 'kwentoPagtataguyod',
+  kwentoPagbabago: 'kwentoPagbabago',
+  googleLinkFolder: 'googleLinkFolder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SuccessStoriesScalarFieldEnum = (typeof SuccessStoriesScalarFieldEnum)[keyof typeof SuccessStoriesScalarFieldEnum]
+
+
+export const Dtr2026ScalarFieldEnum = {
+  id: 'id',
+  number: 'number',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  december2025: 'december2025',
+  decRemarks1: 'decRemarks1',
+  decRemarks2: 'decRemarks2',
+  january: 'january',
+  janRemarks1: 'janRemarks1',
+  janRemarks2: 'janRemarks2',
+  february: 'february',
+  febRemarks: 'febRemarks',
+  march: 'march',
+  marRemarks: 'marRemarks',
+  april: 'april',
+  aprRemarks: 'aprRemarks',
+  may: 'may',
+  mayRemarks1: 'mayRemarks1',
+  mayRemarks2: 'mayRemarks2',
+  june: 'june',
+  junRemarks1: 'junRemarks1',
+  junRemarks2: 'junRemarks2',
+  july: 'july',
+  julRemarks1: 'julRemarks1',
+  julRemarks2: 'julRemarks2',
+  julRemarks3: 'julRemarks3',
+  august: 'august',
+  augRemarks: 'augRemarks',
+  september: 'september',
+  sepRemarks1: 'sepRemarks1',
+  sepRemarks2: 'sepRemarks2',
+  sepRemarks3: 'sepRemarks3',
+  october: 'october',
+  octRemarks1: 'octRemarks1',
+  octRemarks2: 'octRemarks2',
+  octRemarks3: 'octRemarks3',
+  november: 'november',
+  novRemarks1: 'novRemarks1',
+  novRemarks2: 'novRemarks2',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Dtr2026ScalarFieldEnum = (typeof Dtr2026ScalarFieldEnum)[keyof typeof Dtr2026ScalarFieldEnum]
+
+
+export const Hazard2026ScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  january: 'january',
+  janRemarks1: 'janRemarks1',
+  janRemarks2: 'janRemarks2',
+  february: 'february',
+  febRemarks1: 'febRemarks1',
+  febRemarks2: 'febRemarks2',
+  march: 'march',
+  marRemarks1: 'marRemarks1',
+  marRemarks2: 'marRemarks2',
+  april: 'april',
+  aprRemarks1: 'aprRemarks1',
+  aprRemarks2: 'aprRemarks2',
+  may: 'may',
+  mayRemarks1: 'mayRemarks1',
+  mayRemarks2: 'mayRemarks2',
+  june: 'june',
+  junRemarks1: 'junRemarks1',
+  junRemarks2: 'junRemarks2',
+  july: 'july',
+  julRemarks1: 'julRemarks1',
+  julRemarks2: 'julRemarks2',
+  august: 'august',
+  augRemarks1: 'augRemarks1',
+  augRemarks2: 'augRemarks2',
+  september: 'september',
+  sepRemarks1: 'sepRemarks1',
+  sepRemarks2: 'sepRemarks2',
+  october: 'october',
+  octRemarks1: 'octRemarks1',
+  octRemarks2: 'octRemarks2',
+  november: 'november',
+  novRemarks1: 'novRemarks1',
+  novRemarks2: 'novRemarks2',
+  december: 'december',
+  decRemarks1: 'decRemarks1',
+  decRemarks2: 'decRemarks2',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Hazard2026ScalarFieldEnum = (typeof Hazard2026ScalarFieldEnum)[keyof typeof Hazard2026ScalarFieldEnum]
+
+
+export const Tev2026ScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  january: 'january',
+  janRemarks1: 'janRemarks1',
+  janRemarks2: 'janRemarks2',
+  janRemarks3: 'janRemarks3',
+  february: 'february',
+  febRemarks1: 'febRemarks1',
+  febRemarks2: 'febRemarks2',
+  march: 'march',
+  marRemarks1: 'marRemarks1',
+  marRemarks2: 'marRemarks2',
+  april: 'april',
+  aprRemarks1: 'aprRemarks1',
+  aprRemarks2: 'aprRemarks2',
+  aprilDup: 'aprilDup',
+  aprDupRemarks1: 'aprDupRemarks1',
+  aprDupRemarks2: 'aprDupRemarks2',
+  may: 'may',
+  mayRemarks1: 'mayRemarks1',
+  mayRemarks2: 'mayRemarks2',
+  june: 'june',
+  junRemarks1: 'junRemarks1',
+  junRemarks2: 'junRemarks2',
+  july: 'july',
+  julRemarks1: 'julRemarks1',
+  julRemarks2: 'julRemarks2',
+  august: 'august',
+  augRemarks1: 'augRemarks1',
+  augRemarks2: 'augRemarks2',
+  september: 'september',
+  sepRemarks1: 'sepRemarks1',
+  sepRemarks2: 'sepRemarks2',
+  october: 'october',
+  octRemarks1: 'octRemarks1',
+  octRemarks2: 'octRemarks2',
+  november: 'november',
+  novRemarks1: 'novRemarks1',
+  novRemarks2: 'novRemarks2',
+  december: 'december',
+  decRemarks1: 'decRemarks1',
+  decRemarks2: 'decRemarks2',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Tev2026ScalarFieldEnum = (typeof Tev2026ScalarFieldEnum)[keyof typeof Tev2026ScalarFieldEnum]
+
+
+export const LoadAllowance2026ScalarFieldEnum = {
+  id: 'id',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  january: 'january',
+  janRemark1: 'janRemark1',
+  janRemark2: 'janRemark2',
+  janRemark3: 'janRemark3',
+  janRemark4: 'janRemark4',
+  janRemark5: 'janRemark5',
+  february: 'february',
+  febRemark1: 'febRemark1',
+  febRemark2: 'febRemark2',
+  febRemark3: 'febRemark3',
+  febRemark4: 'febRemark4',
+  febRemark5: 'febRemark5',
+  march: 'march',
+  marRemark1: 'marRemark1',
+  marRemark2: 'marRemark2',
+  marRemark3: 'marRemark3',
+  marRemark4: 'marRemark4',
+  marRemark5: 'marRemark5',
+  april: 'april',
+  aprRemark1: 'aprRemark1',
+  aprRemark2: 'aprRemark2',
+  aprRemark3: 'aprRemark3',
+  aprRemark4: 'aprRemark4',
+  aprRemark5: 'aprRemark5',
+  may: 'may',
+  mayRemark1: 'mayRemark1',
+  mayRemark2: 'mayRemark2',
+  mayRemark3: 'mayRemark3',
+  mayRemark4: 'mayRemark4',
+  mayRemark5: 'mayRemark5',
+  june: 'june',
+  junRemark1: 'junRemark1',
+  junRemark2: 'junRemark2',
+  junRemark3: 'junRemark3',
+  junRemark4: 'junRemark4',
+  junRemark5: 'junRemark5',
+  july: 'july',
+  julRemarks1: 'julRemarks1',
+  julRemarks2: 'julRemarks2',
+  julRemarks3: 'julRemarks3',
+  julRemarks4: 'julRemarks4',
+  julRemarks5: 'julRemarks5',
+  august: 'august',
+  augRemarks1: 'augRemarks1',
+  augRemarks2: 'augRemarks2',
+  augRemarks3: 'augRemarks3',
+  augRemarks4: 'augRemarks4',
+  augRemarks5: 'augRemarks5',
+  september: 'september',
+  sepRemarks1: 'sepRemarks1',
+  sepRemarks2: 'sepRemarks2',
+  sepRemarks3: 'sepRemarks3',
+  sepRemarks4: 'sepRemarks4',
+  sepRemarks5: 'sepRemarks5',
+  october: 'october',
+  octRemarks1: 'octRemarks1',
+  octRemarks2: 'octRemarks2',
+  octRemarks3: 'octRemarks3',
+  octRemarks4: 'octRemarks4',
+  octRemarks5: 'octRemarks5',
+  november: 'november',
+  novRemarks1: 'novRemarks1',
+  novRemarks2: 'novRemarks2',
+  novRemarks3: 'novRemarks3',
+  novRemarks4: 'novRemarks4',
+  novRemarks5: 'novRemarks5',
+  december: 'december',
+  decRemarks1: 'decRemarks1',
+  decRemarks2: 'decRemarks2',
+  decRemarks3: 'decRemarks3',
+  decRemarks4: 'decRemarks4',
+  decRemarks5: 'decRemarks5',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LoadAllowance2026ScalarFieldEnum = (typeof LoadAllowance2026ScalarFieldEnum)[keyof typeof LoadAllowance2026ScalarFieldEnum]
+
+
+export const MagnaCarta2026ScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  january: 'january',
+  janRemarks1: 'janRemarks1',
+  janRemarks2: 'janRemarks2',
+  february: 'february',
+  febRemarks1: 'febRemarks1',
+  febRemarks2: 'febRemarks2',
+  march: 'march',
+  marRemarks1: 'marRemarks1',
+  marRemarks2: 'marRemarks2',
+  april: 'april',
+  aprRemarks: 'aprRemarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MagnaCarta2026ScalarFieldEnum = (typeof MagnaCarta2026ScalarFieldEnum)[keyof typeof MagnaCarta2026ScalarFieldEnum]
+
+
+export const LeaveFormsScalarFieldEnum = {
+  id: 'id',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  remarks01: 'remarks01',
+  remarks02: 'remarks02',
+  remarks03: 'remarks03',
+  remarks04: 'remarks04',
+  remarks05: 'remarks05',
+  remarks06: 'remarks06',
+  remarks07: 'remarks07',
+  remarks08: 'remarks08',
+  remarks09: 'remarks09',
+  remarks10: 'remarks10',
+  remarks11: 'remarks11',
+  remarks12: 'remarks12',
+  remarks13: 'remarks13',
+  remarks14: 'remarks14',
+  remarks15: 'remarks15',
+  remarks16: 'remarks16',
+  remarks17: 'remarks17',
+  remarks18: 'remarks18',
+  remarks19: 'remarks19',
+  remarks20: 'remarks20',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveFormsScalarFieldEnum = (typeof LeaveFormsScalarFieldEnum)[keyof typeof LeaveFormsScalarFieldEnum]
+
+
+export const CvsDropdownScalarFieldEnum = {
+  id: 'id',
+  documentType: 'documentType',
+  yesNoValue: 'yesNoValue',
+  createdAt: 'createdAt'
+} as const
+
+export type CvsDropdownScalarFieldEnum = (typeof CvsDropdownScalarFieldEnum)[keyof typeof CvsDropdownScalarFieldEnum]
+
+
+export const Ipcrf2ndSem2025ScalarFieldEnum = {
+  id: 'id',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Ipcrf2ndSem2025ScalarFieldEnum = (typeof Ipcrf2ndSem2025ScalarFieldEnum)[keyof typeof Ipcrf2ndSem2025ScalarFieldEnum]
+
+
+export const Saln2026ScalarFieldEnum = {
+  id: 'id',
+  employeeName: 'employeeName',
+  employmentStatus: 'employmentStatus',
+  areaOfAssignment: 'areaOfAssignment',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Saln2026ScalarFieldEnum = (typeof Saln2026ScalarFieldEnum)[keyof typeof Saln2026ScalarFieldEnum]
+
+
+export const AcOnlyScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  staffName: 'staffName',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  dateSubmittedJnt: 'dateSubmittedJnt',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  remarks7: 'remarks7',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AcOnlyScalarFieldEnum = (typeof AcOnlyScalarFieldEnum)[keyof typeof AcOnlyScalarFieldEnum]
+
+
+export const SwoiiiOnlyScalarFieldEnum = {
+  id: 'id',
+  drnTrackingNo: 'drnTrackingNo',
+  edtms: 'edtms',
+  staffName: 'staffName',
+  documentTitle: 'documentTitle',
+  dateCreated: 'dateCreated',
+  dateSubmittedJnt: 'dateSubmittedJnt',
+  remarks1: 'remarks1',
+  remarks2: 'remarks2',
+  remarks3: 'remarks3',
+  remarks4: 'remarks4',
+  remarks5: 'remarks5',
+  remarks6: 'remarks6',
+  remarks7: 'remarks7',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SwoiiiOnlyScalarFieldEnum = (typeof SwoiiiOnlyScalarFieldEnum)[keyof typeof SwoiiiOnlyScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -22,6 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       govUsername: payload.govUsername,
       firstName: payload.firstName,
       lastName: payload.lastName,
+      assignedOperationId: payload.assignedOperationId ?? null,
     };
   }
 }

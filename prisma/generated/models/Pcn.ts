@@ -29,78 +29,83 @@ export type AggregatePcn = {
 export type PcnAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type PcnSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type PcnMinAggregateOutputType = {
   id: number | null
+  hhId: string | null
   lgu: string | null
   barangay: string | null
-  hhId: string | null
   granteeName: string | null
-  remarks: string | null
-  issue: string | null
-  encodedBy: string | null
   subjectOfChange: string | null
   pcn: string | null
   lrn: string | null
   drn: string | null
   cl: string | null
   date: Date | null
+  encodedBy: string | null
+  remarks: string | null
   note: string | null
+  issue: string | null
   verifiedBy: string | null
   verified: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type PcnMaxAggregateOutputType = {
   id: number | null
+  hhId: string | null
   lgu: string | null
   barangay: string | null
-  hhId: string | null
   granteeName: string | null
-  remarks: string | null
-  issue: string | null
-  encodedBy: string | null
   subjectOfChange: string | null
   pcn: string | null
   lrn: string | null
   drn: string | null
   cl: string | null
   date: Date | null
+  encodedBy: string | null
+  remarks: string | null
   note: string | null
+  issue: string | null
   verifiedBy: string | null
   verified: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type PcnCountAggregateOutputType = {
   id: number
+  hhId: number
   lgu: number
   barangay: number
-  hhId: number
   granteeName: number
-  remarks: number
-  issue: number
-  encodedBy: number
   subjectOfChange: number
   pcn: number
   lrn: number
   drn: number
   cl: number
   date: number
+  encodedBy: number
+  remarks: number
   note: number
+  issue: number
   verifiedBy: number
   verified: number
   userId: number
+  operationsOfficeNumId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -110,78 +115,83 @@ export type PcnCountAggregateOutputType = {
 export type PcnAvgAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type PcnSumAggregateInputType = {
   id?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type PcnMinAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
   subjectOfChange?: true
   pcn?: true
   lrn?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  remarks?: true
   note?: true
+  issue?: true
   verifiedBy?: true
   verified?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type PcnMaxAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
   subjectOfChange?: true
   pcn?: true
   lrn?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  remarks?: true
   note?: true
+  issue?: true
   verifiedBy?: true
   verified?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type PcnCountAggregateInputType = {
   id?: true
+  hhId?: true
   lgu?: true
   barangay?: true
-  hhId?: true
   granteeName?: true
-  remarks?: true
-  issue?: true
-  encodedBy?: true
   subjectOfChange?: true
   pcn?: true
   lrn?: true
   drn?: true
   cl?: true
   date?: true
+  encodedBy?: true
+  remarks?: true
   note?: true
+  issue?: true
   verifiedBy?: true
   verified?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -275,23 +285,24 @@ export type PcnGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type PcnGroupByOutputType = {
   id: number
+  hhId: string
   lgu: string | null
   barangay: string | null
-  hhId: string
   granteeName: string | null
-  remarks: string
-  issue: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn: string | null
   lrn: string | null
   drn: string | null
   cl: string | null
   date: Date
+  encodedBy: string
+  remarks: string
   note: string | null
+  issue: string | null
   verifiedBy: string
   verified: string
   userId: number
+  operationsOfficeNumId: number | null
   createdAt: Date
   updatedAt: Date
   _count: PcnCountAggregateOutputType | null
@@ -321,50 +332,54 @@ export type PcnWhereInput = {
   OR?: Prisma.PcnWhereInput[]
   NOT?: Prisma.PcnWhereInput | Prisma.PcnWhereInput[]
   id?: Prisma.IntFilter<"Pcn"> | number
+  hhId?: Prisma.StringFilter<"Pcn"> | string
   lgu?: Prisma.StringNullableFilter<"Pcn"> | string | null
   barangay?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  hhId?: Prisma.StringFilter<"Pcn"> | string
   granteeName?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  remarks?: Prisma.StringFilter<"Pcn"> | string
-  issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  encodedBy?: Prisma.StringFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
   pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Pcn"> | string
+  remarks?: Prisma.StringFilter<"Pcn"> | string
   note?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
   verifiedBy?: Prisma.StringFilter<"Pcn"> | string
   verified?: Prisma.StringFilter<"Pcn"> | string
   userId?: Prisma.IntFilter<"Pcn"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Pcn"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }
 
 export type PcnOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrderInput | Prisma.SortOrder
   barangay?: Prisma.SortOrderInput | Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrderInput | Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrderInput | Prisma.SortOrder
   lrn?: Prisma.SortOrderInput | Prisma.SortOrder
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   cl?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userById?: Prisma.UserOrderByWithRelationInput
+  operationsOffice?: Prisma.OperationsOfficeNumOrderByWithRelationInput
 }
 
 export type PcnWhereUniqueInput = Prisma.AtLeast<{
@@ -372,47 +387,50 @@ export type PcnWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PcnWhereInput | Prisma.PcnWhereInput[]
   OR?: Prisma.PcnWhereInput[]
   NOT?: Prisma.PcnWhereInput | Prisma.PcnWhereInput[]
+  hhId?: Prisma.StringFilter<"Pcn"> | string
   lgu?: Prisma.StringNullableFilter<"Pcn"> | string | null
   barangay?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  hhId?: Prisma.StringFilter<"Pcn"> | string
   granteeName?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  remarks?: Prisma.StringFilter<"Pcn"> | string
-  issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  encodedBy?: Prisma.StringFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
   pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Pcn"> | string
+  remarks?: Prisma.StringFilter<"Pcn"> | string
   note?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
   verifiedBy?: Prisma.StringFilter<"Pcn"> | string
   verified?: Prisma.StringFilter<"Pcn"> | string
   userId?: Prisma.IntFilter<"Pcn"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Pcn"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }, "id">
 
 export type PcnOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrderInput | Prisma.SortOrder
   barangay?: Prisma.SortOrderInput | Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrderInput | Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrderInput | Prisma.SortOrder
   lrn?: Prisma.SortOrderInput | Prisma.SortOrder
   drn?: Prisma.SortOrderInput | Prisma.SortOrder
   cl?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PcnCountOrderByAggregateInput
@@ -427,155 +445,161 @@ export type PcnScalarWhereWithAggregatesInput = {
   OR?: Prisma.PcnScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PcnScalarWhereWithAggregatesInput | Prisma.PcnScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Pcn"> | number
+  hhId?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   lgu?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   barangay?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
-  hhId?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   granteeName?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
-  remarks?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
-  issue?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
-  encodedBy?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   subjectOfChange?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   pcn?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   lrn?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   drn?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   cl?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   date?: Prisma.DateTimeWithAggregatesFilter<"Pcn"> | Date | string
+  encodedBy?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
+  remarks?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   note?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
+  issue?: Prisma.StringNullableWithAggregatesFilter<"Pcn"> | string | null
   verifiedBy?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   verified?: Prisma.StringWithAggregatesFilter<"Pcn"> | string
   userId?: Prisma.IntWithAggregatesFilter<"Pcn"> | number
+  operationsOfficeNumId?: Prisma.IntNullableWithAggregatesFilter<"Pcn"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Pcn"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Pcn"> | Date | string
 }
 
 export type PcnCreateInput = {
+  hhId: string
   lgu?: string | null
   barangay?: string | null
-  hhId: string
   granteeName?: string | null
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn?: string | null
   lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   userById: Prisma.UserCreateNestedOneWithoutPcnByIDInput
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutPcnInput
 }
 
 export type PcnUncheckedCreateInput = {
   id?: number
+  hhId: string
   lgu?: string | null
   barangay?: string | null
-  hhId: string
   granteeName?: string | null
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn?: string | null
   lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type PcnUpdateInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userById?: Prisma.UserUpdateOneRequiredWithoutPcnByIDNestedInput
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutPcnNestedInput
 }
 
 export type PcnUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PcnCreateManyInput = {
   id?: number
+  hhId: string
   lgu?: string | null
   barangay?: string | null
-  hhId: string
   granteeName?: string | null
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn?: string | null
   lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type PcnUpdateManyMutationInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -584,23 +608,24 @@ export type PcnUpdateManyMutationInput = {
 
 export type PcnUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -617,23 +642,24 @@ export type PcnOrderByRelationAggregateInput = {
 
 export type PcnCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrder
   lrn?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -641,50 +667,53 @@ export type PcnCountOrderByAggregateInput = {
 export type PcnAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
 }
 
 export type PcnMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrder
   lrn?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type PcnMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  hhId?: Prisma.SortOrder
   lgu?: Prisma.SortOrder
   barangay?: Prisma.SortOrder
-  hhId?: Prisma.SortOrder
   granteeName?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  encodedBy?: Prisma.SortOrder
   subjectOfChange?: Prisma.SortOrder
   pcn?: Prisma.SortOrder
   lrn?: Prisma.SortOrder
   drn?: Prisma.SortOrder
   cl?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  encodedBy?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -692,6 +721,49 @@ export type PcnMinOrderByAggregateInput = {
 export type PcnSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
+}
+
+export type PcnCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.PcnCreateWithoutOperationsOfficeInput, Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput> | Prisma.PcnCreateWithoutOperationsOfficeInput[] | Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput | Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.PcnCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+}
+
+export type PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.PcnCreateWithoutOperationsOfficeInput, Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput> | Prisma.PcnCreateWithoutOperationsOfficeInput[] | Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput | Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.PcnCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+}
+
+export type PcnUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.PcnCreateWithoutOperationsOfficeInput, Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput> | Prisma.PcnCreateWithoutOperationsOfficeInput[] | Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput | Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.PcnUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.PcnUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.PcnCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  disconnect?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  delete?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  connect?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  update?: Prisma.PcnUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.PcnUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.PcnUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.PcnUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
+}
+
+export type PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.PcnCreateWithoutOperationsOfficeInput, Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput> | Prisma.PcnCreateWithoutOperationsOfficeInput[] | Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput | Prisma.PcnCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.PcnUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.PcnUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.PcnCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  disconnect?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  delete?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  connect?: Prisma.PcnWhereUniqueInput | Prisma.PcnWhereUniqueInput[]
+  update?: Prisma.PcnUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.PcnUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.PcnUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.PcnUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
 }
 
 export type PcnCreateNestedManyWithoutUserByIdInput = {
@@ -736,45 +808,145 @@ export type PcnUncheckedUpdateManyWithoutUserByIdNestedInput = {
   deleteMany?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
 }
 
-export type PcnCreateWithoutUserByIdInput = {
+export type PcnCreateWithoutOperationsOfficeInput = {
+  hhId: string
   lgu?: string | null
   barangay?: string | null
-  hhId: string
   granteeName?: string | null
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn?: string | null
   lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  userById: Prisma.UserCreateNestedOneWithoutPcnByIDInput
 }
 
-export type PcnUncheckedCreateWithoutUserByIdInput = {
+export type PcnUncheckedCreateWithoutOperationsOfficeInput = {
   id?: number
+  hhId: string
   lgu?: string | null
   barangay?: string | null
-  hhId: string
   granteeName?: string | null
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn?: string | null
   lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PcnCreateOrConnectWithoutOperationsOfficeInput = {
+  where: Prisma.PcnWhereUniqueInput
+  create: Prisma.XOR<Prisma.PcnCreateWithoutOperationsOfficeInput, Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type PcnCreateManyOperationsOfficeInputEnvelope = {
+  data: Prisma.PcnCreateManyOperationsOfficeInput | Prisma.PcnCreateManyOperationsOfficeInput[]
+  skipDuplicates?: boolean
+}
+
+export type PcnUpsertWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.PcnWhereUniqueInput
+  update: Prisma.XOR<Prisma.PcnUpdateWithoutOperationsOfficeInput, Prisma.PcnUncheckedUpdateWithoutOperationsOfficeInput>
+  create: Prisma.XOR<Prisma.PcnCreateWithoutOperationsOfficeInput, Prisma.PcnUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type PcnUpdateWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.PcnWhereUniqueInput
+  data: Prisma.XOR<Prisma.PcnUpdateWithoutOperationsOfficeInput, Prisma.PcnUncheckedUpdateWithoutOperationsOfficeInput>
+}
+
+export type PcnUpdateManyWithWhereWithoutOperationsOfficeInput = {
+  where: Prisma.PcnScalarWhereInput
+  data: Prisma.XOR<Prisma.PcnUpdateManyMutationInput, Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeInput>
+}
+
+export type PcnScalarWhereInput = {
+  AND?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
+  OR?: Prisma.PcnScalarWhereInput[]
+  NOT?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
+  id?: Prisma.IntFilter<"Pcn"> | number
+  hhId?: Prisma.StringFilter<"Pcn"> | string
+  lgu?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  barangay?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  granteeName?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
+  pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Pcn"> | string
+  remarks?: Prisma.StringFilter<"Pcn"> | string
+  note?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
+  verifiedBy?: Prisma.StringFilter<"Pcn"> | string
+  verified?: Prisma.StringFilter<"Pcn"> | string
+  userId?: Prisma.IntFilter<"Pcn"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Pcn"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
+}
+
+export type PcnCreateWithoutUserByIdInput = {
+  hhId: string
+  lgu?: string | null
+  barangay?: string | null
+  granteeName?: string | null
+  subjectOfChange: string
+  pcn?: string | null
+  lrn?: string | null
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  verifiedBy?: string
+  verified?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutPcnInput
+}
+
+export type PcnUncheckedCreateWithoutUserByIdInput = {
+  id?: number
+  hhId: string
+  lgu?: string | null
+  barangay?: string | null
+  granteeName?: string | null
+  subjectOfChange: string
+  pcn?: string | null
+  lrn?: string | null
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  verifiedBy?: string
+  verified?: string
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -805,115 +977,184 @@ export type PcnUpdateManyWithWhereWithoutUserByIdInput = {
   data: Prisma.XOR<Prisma.PcnUpdateManyMutationInput, Prisma.PcnUncheckedUpdateManyWithoutUserByIdInput>
 }
 
-export type PcnScalarWhereInput = {
-  AND?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
-  OR?: Prisma.PcnScalarWhereInput[]
-  NOT?: Prisma.PcnScalarWhereInput | Prisma.PcnScalarWhereInput[]
-  id?: Prisma.IntFilter<"Pcn"> | number
-  lgu?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  barangay?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  hhId?: Prisma.StringFilter<"Pcn"> | string
-  granteeName?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  remarks?: Prisma.StringFilter<"Pcn"> | string
-  issue?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  encodedBy?: Prisma.StringFilter<"Pcn"> | string
-  subjectOfChange?: Prisma.StringFilter<"Pcn"> | string
-  pcn?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  lrn?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  drn?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  cl?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  date?: Prisma.DateTimeFilter<"Pcn"> | Date | string
-  note?: Prisma.StringNullableFilter<"Pcn"> | string | null
-  verifiedBy?: Prisma.StringFilter<"Pcn"> | string
-  verified?: Prisma.StringFilter<"Pcn"> | string
-  userId?: Prisma.IntFilter<"Pcn"> | number
-  createdAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Pcn"> | Date | string
-}
-
-export type PcnCreateManyUserByIdInput = {
+export type PcnCreateManyOperationsOfficeInput = {
   id?: number
+  hhId: string
   lgu?: string | null
   barangay?: string | null
-  hhId: string
   granteeName?: string | null
-  remarks: string
-  issue?: string | null
-  encodedBy: string
   subjectOfChange: string
   pcn?: string | null
   lrn?: string | null
   drn?: string | null
   cl?: string | null
   date: Date | string
+  encodedBy: string
+  remarks: string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PcnUpdateWithoutOperationsOfficeInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
+  pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userById?: Prisma.UserUpdateOneRequiredWithoutPcnByIDNestedInput
+}
+
+export type PcnUncheckedUpdateWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
+  pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PcnUncheckedUpdateManyWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
+  pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PcnCreateManyUserByIdInput = {
+  id?: number
+  hhId: string
+  lgu?: string | null
+  barangay?: string | null
+  granteeName?: string | null
+  subjectOfChange: string
+  pcn?: string | null
+  lrn?: string | null
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  verifiedBy?: string
+  verified?: string
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type PcnUpdateWithoutUserByIdInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutPcnNestedInput
 }
 
 export type PcnUncheckedUpdateWithoutUserByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PcnUncheckedUpdateManyWithoutUserByIdInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barangay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hhId?: Prisma.StringFieldUpdateOperationsInput | string
   granteeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   subjectOfChange?: Prisma.StringFieldUpdateOperationsInput | string
   pcn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lrn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -922,134 +1163,146 @@ export type PcnUncheckedUpdateManyWithoutUserByIdInput = {
 
 export type PcnSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
   lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Pcn$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["pcn"]>
 
 export type PcnSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
   lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Pcn$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["pcn"]>
 
 export type PcnSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
   lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Pcn$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["pcn"]>
 
 export type PcnSelectScalar = {
   id?: boolean
+  hhId?: boolean
   lgu?: boolean
   barangay?: boolean
-  hhId?: boolean
   granteeName?: boolean
-  remarks?: boolean
-  issue?: boolean
-  encodedBy?: boolean
   subjectOfChange?: boolean
   pcn?: boolean
   lrn?: boolean
   drn?: boolean
   cl?: boolean
   date?: boolean
+  encodedBy?: boolean
+  remarks?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PcnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lgu" | "barangay" | "hhId" | "granteeName" | "remarks" | "issue" | "encodedBy" | "subjectOfChange" | "pcn" | "lrn" | "drn" | "cl" | "date" | "note" | "verifiedBy" | "verified" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["pcn"]>
+export type PcnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "granteeName" | "subjectOfChange" | "pcn" | "lrn" | "drn" | "cl" | "date" | "encodedBy" | "remarks" | "note" | "issue" | "verifiedBy" | "verified" | "userId" | "operationsOfficeNumId" | "createdAt" | "updatedAt", ExtArgs["result"]["pcn"]>
 export type PcnInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Pcn$operationsOfficeArgs<ExtArgs>
 }
 export type PcnIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Pcn$operationsOfficeArgs<ExtArgs>
 }
 export type PcnIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Pcn$operationsOfficeArgs<ExtArgs>
 }
 
 export type $PcnPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Pcn"
   objects: {
     userById: Prisma.$UserPayload<ExtArgs>
+    operationsOffice: Prisma.$OperationsOfficeNumPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    hhId: string
     lgu: string | null
     barangay: string | null
-    hhId: string
     granteeName: string | null
-    remarks: string
-    issue: string | null
-    encodedBy: string
     subjectOfChange: string
     pcn: string | null
     lrn: string | null
     drn: string | null
     cl: string | null
     date: Date
+    encodedBy: string
+    remarks: string
     note: string | null
+    issue: string | null
     verifiedBy: string
     verified: string
     userId: number
+    operationsOfficeNumId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["pcn"]>
@@ -1447,6 +1700,7 @@ readonly fields: PcnFieldRefs;
 export interface Prisma__PcnClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   userById<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  operationsOffice<T extends Prisma.Pcn$operationsOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Pcn$operationsOfficeArgs<ExtArgs>>): Prisma.Prisma__OperationsOfficeNumClient<runtime.Types.Result.GetResult<Prisma.$OperationsOfficeNumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1477,23 +1731,24 @@ export interface Prisma__PcnClient<T, Null = never, ExtArgs extends runtime.Type
  */
 export interface PcnFieldRefs {
   readonly id: Prisma.FieldRef<"Pcn", 'Int'>
+  readonly hhId: Prisma.FieldRef<"Pcn", 'String'>
   readonly lgu: Prisma.FieldRef<"Pcn", 'String'>
   readonly barangay: Prisma.FieldRef<"Pcn", 'String'>
-  readonly hhId: Prisma.FieldRef<"Pcn", 'String'>
   readonly granteeName: Prisma.FieldRef<"Pcn", 'String'>
-  readonly remarks: Prisma.FieldRef<"Pcn", 'String'>
-  readonly issue: Prisma.FieldRef<"Pcn", 'String'>
-  readonly encodedBy: Prisma.FieldRef<"Pcn", 'String'>
   readonly subjectOfChange: Prisma.FieldRef<"Pcn", 'String'>
   readonly pcn: Prisma.FieldRef<"Pcn", 'String'>
   readonly lrn: Prisma.FieldRef<"Pcn", 'String'>
   readonly drn: Prisma.FieldRef<"Pcn", 'String'>
   readonly cl: Prisma.FieldRef<"Pcn", 'String'>
   readonly date: Prisma.FieldRef<"Pcn", 'DateTime'>
+  readonly encodedBy: Prisma.FieldRef<"Pcn", 'String'>
+  readonly remarks: Prisma.FieldRef<"Pcn", 'String'>
   readonly note: Prisma.FieldRef<"Pcn", 'String'>
+  readonly issue: Prisma.FieldRef<"Pcn", 'String'>
   readonly verifiedBy: Prisma.FieldRef<"Pcn", 'String'>
   readonly verified: Prisma.FieldRef<"Pcn", 'String'>
   readonly userId: Prisma.FieldRef<"Pcn", 'Int'>
+  readonly operationsOfficeNumId: Prisma.FieldRef<"Pcn", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Pcn", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Pcn", 'DateTime'>
 }
@@ -1889,6 +2144,25 @@ export type PcnDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Limit how many Pcns to delete.
    */
   limit?: number
+}
+
+/**
+ * Pcn.operationsOffice
+ */
+export type Pcn$operationsOfficeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OperationsOfficeNum
+   */
+  select?: Prisma.OperationsOfficeNumSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OperationsOfficeNum
+   */
+  omit?: Prisma.OperationsOfficeNumOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OperationsOfficeNumInclude<ExtArgs> | null
+  where?: Prisma.OperationsOfficeNumWhereInput
 }
 
 /**

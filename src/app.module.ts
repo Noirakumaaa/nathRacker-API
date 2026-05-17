@@ -18,6 +18,10 @@ import { MiscModule } from './misc/misc.module.js';
 import { SummaryModule } from './summary/summary.module.js';
 import { SettingsModule } from './settings/settings.module.js';
 import { AdminModule } from './admin/admin.module.js';
+import { MailModule } from './mail/mail.module.js';
+import { AaModulesModule } from './aa-modules/aa-modules.module.js';
+import { AaDocumentsModule } from './aa-documents/aa-documents.module.js';
+import { AaRemarksModule } from './aa-remarks/aa-remarks.module.js';
 
 @Module({
   imports: [
@@ -45,11 +49,18 @@ import { AdminModule } from './admin/admin.module.js';
     SummaryModule,
     SettingsModule,
     AdminModule,
+    MailModule,
+    AaModulesModule,
+    AaDocumentsModule,
+    AaRemarksModule,
   ],
   controllers: [AppController],
-  providers: [AppService, JwtStrategy, { provide: APP_GUARD, useClass: ThrottlerGuard }],
+  providers: [
+    AppService,
+    JwtStrategy,
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
+  ],
 })
-
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');

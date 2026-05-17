@@ -2,24 +2,27 @@ import {
   Controller,
   Post,
   Get,
+  Put,
   Body,
   UploadedFile,
   UseInterceptors,
   BadRequestException,
   Query,
   Req,
+  Res,
   UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { SettingsService } from './settings.service.js';
 import type { Module } from './dto/create-setting.dto.js';
-import type { Request } from 'express';
+import { SecurityData } from './dto/update-security.dto.js';
+import type { Request, Response } from 'express';
 import { JwtAuthGuard } from './../../guard/jwt-guard.js';
 import { Role } from './../../enums/roles.enum.js';
 import { Roles } from './../../decorator/roles.decorator.js';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ADMIN) 
+@Roles(Role.ADMIN)
 @Controller('settings')
 export class SettingsController {
   constructor(private readonly settingsService: SettingsService) {}
@@ -37,11 +40,27 @@ export class SettingsController {
     return this.settingsService.processImport(file, module, req);
   }
 
-
-  @Get("UserInfo")
-  GetUserInfo(
-    @Req() req : Request
-  ){
+  @Get('UserInfo')
+  GetUserInfo(@Req() req: Request) {
     return this.settingsService.GetUserInfo(req);
+  }
+
+  @Put('security')
+  UpdateSecuritySetting(
+    @Body() securityData: SecurityData,
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return this.settingsService.UpdateSecuritySetting(securityData, req, res);
+  }
+
+  @Get('security')
+  GetSecurityData(@Req() req: Request) {
+    return this.settingsService.GetSecurityData(req);
+  }
+
+  @Put('theme')
+  UpdateTheme(@Body('theme') theme: 'LIGHT' | 'DARK', @Req() req: Request) {
+    return this.settingsService.UpdateTheme(theme, req);
   }
 }

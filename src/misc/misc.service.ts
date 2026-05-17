@@ -18,8 +18,11 @@ export class MiscService {
     const uploadCvs = await this.prisma.client.miscellaneous.create({
       data: {
         ...createMiscDto,
-        subjectOfChange: createMiscDto.subjectOfChange || createMiscDto.granteeName,
+        subjectOfChange:
+          createMiscDto.subjectOfChange || createMiscDto.granteeName,
+        encodedBy: user.govUsername,
         date: new Date(),
+        operationsOfficeNumId: user.assignedOperationId,
         userId: user.id,
       },
     });
@@ -33,8 +36,9 @@ export class MiscService {
         subjectOfChange: uploadCvs.documentType,
         remarks: uploadCvs.remarks,
         userId: user.id,
-        drn: uploadCvs.drn ?? " ",
+        drn: uploadCvs.drn ?? ' ',
         govUsername: user.govUsername,
+        operationsOfficeNumId: user.assignedOperationId,
         date: new Date(),
       },
     });
@@ -84,11 +88,43 @@ export class MiscService {
     return `This action returns a #${id} misc`;
   }
 
-  update(id: number, updateMiscDto: UpdateMiscDto) {
-    return `This action updates a #${id} misc`;
+  async update(id: number, dto: UpdateMiscDto) {
+    const miscUpdate = await this.prisma.client.miscellaneous.update({
+      where: { id },
+      data: { ...dto },
+    });
+
+    await this.prisma.client.encodedDocument.updateMany({
+      where: {
+        documentId: miscUpdate.id,
+        documentType: 'MISC',
+      },
+      data: {
+        idNumber: String(miscUpdate.hhId),
+        name: miscUpdate.granteeName,
+        documentType: 'MISC',
+        documentId: miscUpdate.id,
+        subjectOfChange: miscUpdate.documentType,
+        drn: miscUpdate.drn ?? ' ',
+        remarks: miscUpdate.remarks,
+      },
+    });
+
+    return { message: `Updated Item ${miscUpdate.hhId}`, update: true };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} misc`;
+  async remove(id: number) {
+    const deleteMisc = await this.prisma.client.miscellaneous.delete({
+      where: { id },
+    });
+
+    await this.prisma.client.encodedDocument.deleteMany({
+      where: {
+        documentId: id,
+        documentType: 'MISC',
+      },
+    });
+
+    return { message: `Deleted Item ${deleteMisc.hhId}`, deleted: true };
   }
 }

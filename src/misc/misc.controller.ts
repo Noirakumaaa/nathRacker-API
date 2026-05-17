@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { MiscService } from './misc.service.js';
 import { CreateMiscDto } from './dto/create-misc.dto.js';
 import { UpdateMiscDto } from './dto/update-misc.dto.js';
@@ -10,32 +19,24 @@ import { Role } from './../../enums/roles.enum.js';
 import { Roles } from './../../decorator/roles.decorator.js';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ADMIN) 
+@Roles(Role.ADMIN)
 @Controller('miscellaneous')
 export class MiscController {
   constructor(private readonly miscService: MiscService) {}
 
-  @Post("upload")
-  create(
-    @Body() createMiscDto: CreateMiscDto,
-    @Req() req : Request
-  ) {
-    return this.miscService.create(createMiscDto,req);
+  @Post('upload')
+  create(@Body() createMiscDto: CreateMiscDto, @Req() req: Request) {
+    return this.miscService.create(createMiscDto, req);
   }
 
-  @Get("/record/:id")
-  getSelectedMisc(
-    @Req() req : Request,
-    @Param("id") id : string
-  ){
-    return this.miscService.getSelectedMISC(req, id)
+  @Get('/record/:id')
+  getSelectedMisc(@Req() req: Request, @Param('id') id: string) {
+    return this.miscService.getSelectedMISC(req, id);
   }
 
-  @Get("recent")
-  getRecentMisc(
-    @Req() req : Request
-  ){
-    return this.miscService.GetRecentMisc(req)
+  @Get('recent')
+  getRecentMisc(@Req() req: Request) {
+    return this.miscService.GetRecentMisc(req);
   }
 
   @Get()
@@ -53,7 +54,7 @@ export class MiscController {
     return this.miscService.update(+id, updateMiscDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.miscService.remove(+id);
   }

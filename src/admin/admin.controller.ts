@@ -7,10 +7,11 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AdminService } from './admin.service.js';
 import { CreateAdminDto, CreateBarangay } from './dto/create-admin.dto.js';
-import { CreateLgu } from './dto/create-admin.dto.js';
+import { CreateLguDto } from './dto/create-lgu.dto.js';
 import type { Request } from 'express';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './../../guard/jwt-guard.js';
@@ -26,10 +27,24 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto.js';
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
-
   @Post('register')
   registerAccount(@Body() createAuthDto: CreateRegisterAccount) {
     return this.adminService.Register(createAuthDto);
+  }
+
+  @Get('count/documents')
+  alldocumentCountbyId(@Req() req: Request) {
+    return this.adminService.alldocumentCountbyId(req);
+  }
+
+  @Get('count/documents/by-office')
+  documentCountByOffice(@Query('officeId') officeId: string) {
+    return this.adminService.documentCountByOffice(Number(officeId));
+  }
+
+  @Get('count/documents/all')
+  documentCountAll() {
+    return this.adminService.documentCountAll();
   }
 
   @Post()
@@ -37,30 +52,24 @@ export class AdminController {
     return this.adminService.create(createAdminDto);
   }
 
-  @Post("/lgu")
-  createLgu(
-    @Body() lgu: CreateLgu, 
-    @Req() req: Request) {
+  @Post('/lgu')
+  createLgu(@Body() lgu: CreateLguDto, @Req() req: Request) {
     return this.adminService.createLgu(lgu, req);
   }
 
-  @Post("/operations-office")
-  createOperationOffice(
-    @Body() OO: CreateBarangay, 
-    @Req() req: Request) {
+  @Post('/operations-office')
+  createOperationOffice(@Body() OO: CreateBarangay, @Req() req: Request) {
     return this.adminService.createOperationsOffice(OO, req);
   }
 
-  @Post("/barangay")
-  createBarangay(
-    @Body() barangay: CreateBarangayDto, 
-    @Req() req: Request) {
+  @Post('/barangay')
+  createBarangay(@Body() barangay: CreateBarangayDto, @Req() req: Request) {
     return this.adminService.createBarangay(barangay, req);
   }
 
   @Get('/get/assignedArea')
-  getAssignedAreas(){
-    return this.adminService.getAssignedArea()
+  getAssignedAreas() {
+    return this.adminService.getAssignedArea();
   }
 
   @Get('/employees')
@@ -73,4 +82,18 @@ export class AdminController {
     return this.adminService.updateEmployee(Number(id), dto);
   }
 
+  @Delete('/delete/table')
+  deleteTable(@Query('table') table: string) {
+    return this.adminService.deleteTable(table);
+  }
+
+  @Delete('/lgu/:id')
+  deleteLgu(@Param('id') id: string) {
+    return this.adminService.deleteLgu(Number(id));
+  }
+
+  @Delete('/barangay/:id')
+  deleteBarangay(@Param('id') id: string) {
+    return this.adminService.deleteBarangay(Number(id));
+  }
 }

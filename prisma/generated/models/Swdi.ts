@@ -30,12 +30,14 @@ export type SwdiAvgAggregateOutputType = {
   id: number | null
   swdiScore: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type SwdiSumAggregateOutputType = {
   id: number | null
   swdiScore: number | null
   userId: number | null
+  operationsOfficeNumId: number | null
 }
 
 export type SwdiMinAggregateOutputType = {
@@ -46,16 +48,17 @@ export type SwdiMinAggregateOutputType = {
   grantee: string | null
   swdiScore: number | null
   swdiLevel: string | null
+  drn: string | null
+  cl: string | null
+  date: Date | null
   encodedBy: string | null
   remarks: string | null
-  issue: string | null
-  cl: string | null
-  drn: string | null
-  date: Date | null
   note: string | null
+  issue: string | null
   verifiedBy: string | null
   verified: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,16 +71,17 @@ export type SwdiMaxAggregateOutputType = {
   grantee: string | null
   swdiScore: number | null
   swdiLevel: string | null
+  drn: string | null
+  cl: string | null
+  date: Date | null
   encodedBy: string | null
   remarks: string | null
-  issue: string | null
-  cl: string | null
-  drn: string | null
-  date: Date | null
   note: string | null
+  issue: string | null
   verifiedBy: string | null
   verified: string | null
   userId: number | null
+  operationsOfficeNumId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -90,16 +94,17 @@ export type SwdiCountAggregateOutputType = {
   grantee: number
   swdiScore: number
   swdiLevel: number
+  drn: number
+  cl: number
+  date: number
   encodedBy: number
   remarks: number
-  issue: number
-  cl: number
-  drn: number
-  date: number
   note: number
+  issue: number
   verifiedBy: number
   verified: number
   userId: number
+  operationsOfficeNumId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -110,12 +115,14 @@ export type SwdiAvgAggregateInputType = {
   id?: true
   swdiScore?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type SwdiSumAggregateInputType = {
   id?: true
   swdiScore?: true
   userId?: true
+  operationsOfficeNumId?: true
 }
 
 export type SwdiMinAggregateInputType = {
@@ -126,16 +133,17 @@ export type SwdiMinAggregateInputType = {
   grantee?: true
   swdiScore?: true
   swdiLevel?: true
+  drn?: true
+  cl?: true
+  date?: true
   encodedBy?: true
   remarks?: true
-  issue?: true
-  cl?: true
-  drn?: true
-  date?: true
   note?: true
+  issue?: true
   verifiedBy?: true
   verified?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -148,16 +156,17 @@ export type SwdiMaxAggregateInputType = {
   grantee?: true
   swdiScore?: true
   swdiLevel?: true
+  drn?: true
+  cl?: true
+  date?: true
   encodedBy?: true
   remarks?: true
-  issue?: true
-  cl?: true
-  drn?: true
-  date?: true
   note?: true
+  issue?: true
   verifiedBy?: true
   verified?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -170,16 +179,17 @@ export type SwdiCountAggregateInputType = {
   grantee?: true
   swdiScore?: true
   swdiLevel?: true
+  drn?: true
+  cl?: true
+  date?: true
   encodedBy?: true
   remarks?: true
-  issue?: true
-  cl?: true
-  drn?: true
-  date?: true
   note?: true
+  issue?: true
   verifiedBy?: true
   verified?: true
   userId?: true
+  operationsOfficeNumId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -279,16 +289,17 @@ export type SwdiGroupByOutputType = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn: string | null
+  cl: string | null
+  date: Date
   encodedBy: string
   remarks: string
-  issue: string | null
-  cl: string | null
-  drn: string | null
-  date: Date
   note: string | null
+  issue: string | null
   verifiedBy: string
   verified: string
   userId: number
+  operationsOfficeNumId: number | null
   createdAt: Date
   updatedAt: Date
   _count: SwdiCountAggregateOutputType | null
@@ -324,19 +335,21 @@ export type SwdiWhereInput = {
   grantee?: Prisma.StringFilter<"Swdi"> | string
   swdiScore?: Prisma.FloatFilter<"Swdi"> | number
   swdiLevel?: Prisma.StringFilter<"Swdi"> | string
+  drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  cl?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   encodedBy?: Prisma.StringFilter<"Swdi"> | string
   remarks?: Prisma.StringFilter<"Swdi"> | string
-  issue?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  cl?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  issue?: Prisma.StringNullableFilter<"Swdi"> | string | null
   verifiedBy?: Prisma.StringFilter<"Swdi"> | string
   verified?: Prisma.StringFilter<"Swdi"> | string
   userId?: Prisma.IntFilter<"Swdi"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Swdi"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }
 
 export type SwdiOrderByWithRelationInput = {
@@ -347,19 +360,21 @@ export type SwdiOrderByWithRelationInput = {
   grantee?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   swdiLevel?: Prisma.SortOrder
+  drn?: Prisma.SortOrderInput | Prisma.SortOrder
+  cl?: Prisma.SortOrderInput | Prisma.SortOrder
+  date?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  cl?: Prisma.SortOrderInput | Prisma.SortOrder
-  drn?: Prisma.SortOrderInput | Prisma.SortOrder
-  date?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userById?: Prisma.UserOrderByWithRelationInput
+  operationsOffice?: Prisma.OperationsOfficeNumOrderByWithRelationInput
 }
 
 export type SwdiWhereUniqueInput = Prisma.AtLeast<{
@@ -373,19 +388,21 @@ export type SwdiWhereUniqueInput = Prisma.AtLeast<{
   grantee?: Prisma.StringFilter<"Swdi"> | string
   swdiScore?: Prisma.FloatFilter<"Swdi"> | number
   swdiLevel?: Prisma.StringFilter<"Swdi"> | string
+  drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  cl?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   encodedBy?: Prisma.StringFilter<"Swdi"> | string
   remarks?: Prisma.StringFilter<"Swdi"> | string
-  issue?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  cl?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  issue?: Prisma.StringNullableFilter<"Swdi"> | string | null
   verifiedBy?: Prisma.StringFilter<"Swdi"> | string
   verified?: Prisma.StringFilter<"Swdi"> | string
   userId?: Prisma.IntFilter<"Swdi"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Swdi"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
   userById?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  operationsOffice?: Prisma.XOR<Prisma.OperationsOfficeNumNullableScalarRelationFilter, Prisma.OperationsOfficeNumWhereInput> | null
 }, "id">
 
 export type SwdiOrderByWithAggregationInput = {
@@ -396,16 +413,17 @@ export type SwdiOrderByWithAggregationInput = {
   grantee?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   swdiLevel?: Prisma.SortOrder
+  drn?: Prisma.SortOrderInput | Prisma.SortOrder
+  cl?: Prisma.SortOrderInput | Prisma.SortOrder
+  date?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrderInput | Prisma.SortOrder
-  cl?: Prisma.SortOrderInput | Prisma.SortOrder
-  drn?: Prisma.SortOrderInput | Prisma.SortOrder
-  date?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  issue?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.SwdiCountOrderByAggregateInput
@@ -426,16 +444,17 @@ export type SwdiScalarWhereWithAggregatesInput = {
   grantee?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
   swdiScore?: Prisma.FloatWithAggregatesFilter<"Swdi"> | number
   swdiLevel?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
+  drn?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
+  cl?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
+  date?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
   encodedBy?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
   remarks?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
-  issue?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
-  cl?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
-  drn?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
-  date?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
   note?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
+  issue?: Prisma.StringNullableWithAggregatesFilter<"Swdi"> | string | null
   verifiedBy?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
   verified?: Prisma.StringWithAggregatesFilter<"Swdi"> | string
   userId?: Prisma.IntWithAggregatesFilter<"Swdi"> | number
+  operationsOfficeNumId?: Prisma.IntNullableWithAggregatesFilter<"Swdi"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Swdi"> | Date | string
 }
@@ -447,18 +466,19 @@ export type SwdiCreateInput = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
   encodedBy: string
   remarks: string
-  issue?: string | null
-  cl?: string | null
-  drn?: string | null
-  date: Date | string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   userById: Prisma.UserCreateNestedOneWithoutSwdiByIDInput
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutSwdiInput
 }
 
 export type SwdiUncheckedCreateInput = {
@@ -469,16 +489,17 @@ export type SwdiUncheckedCreateInput = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
   encodedBy: string
   remarks: string
-  issue?: string | null
-  cl?: string | null
-  drn?: string | null
-  date: Date | string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -490,18 +511,19 @@ export type SwdiUpdateInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userById?: Prisma.UserUpdateOneRequiredWithoutSwdiByIDNestedInput
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutSwdiNestedInput
 }
 
 export type SwdiUncheckedUpdateInput = {
@@ -512,16 +534,17 @@ export type SwdiUncheckedUpdateInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -534,16 +557,17 @@ export type SwdiCreateManyInput = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
   encodedBy: string
   remarks: string
-  issue?: string | null
-  cl?: string | null
-  drn?: string | null
-  date: Date | string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   userId: number
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -555,13 +579,13 @@ export type SwdiUpdateManyMutationInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -576,16 +600,17 @@ export type SwdiUncheckedUpdateManyInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -608,16 +633,17 @@ export type SwdiCountOrderByAggregateInput = {
   grantee?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   swdiLevel?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
+  cl?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  cl?: Prisma.SortOrder
-  drn?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -626,6 +652,7 @@ export type SwdiAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
 }
 
 export type SwdiMaxOrderByAggregateInput = {
@@ -636,16 +663,17 @@ export type SwdiMaxOrderByAggregateInput = {
   grantee?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   swdiLevel?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
+  cl?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  cl?: Prisma.SortOrder
-  drn?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -658,16 +686,17 @@ export type SwdiMinOrderByAggregateInput = {
   grantee?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   swdiLevel?: Prisma.SortOrder
+  drn?: Prisma.SortOrder
+  cl?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   encodedBy?: Prisma.SortOrder
   remarks?: Prisma.SortOrder
-  issue?: Prisma.SortOrder
-  cl?: Prisma.SortOrder
-  drn?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  issue?: Prisma.SortOrder
   verifiedBy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -676,6 +705,49 @@ export type SwdiSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   swdiScore?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  operationsOfficeNumId?: Prisma.SortOrder
+}
+
+export type SwdiCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.SwdiCreateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput> | Prisma.SwdiCreateWithoutOperationsOfficeInput[] | Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput | Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.SwdiCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+}
+
+export type SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput = {
+  create?: Prisma.XOR<Prisma.SwdiCreateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput> | Prisma.SwdiCreateWithoutOperationsOfficeInput[] | Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput | Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput[]
+  createMany?: Prisma.SwdiCreateManyOperationsOfficeInputEnvelope
+  connect?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+}
+
+export type SwdiUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.SwdiCreateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput> | Prisma.SwdiCreateWithoutOperationsOfficeInput[] | Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput | Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.SwdiUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.SwdiUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.SwdiCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  disconnect?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  delete?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  connect?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  update?: Prisma.SwdiUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.SwdiUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.SwdiUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.SwdiUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.SwdiScalarWhereInput | Prisma.SwdiScalarWhereInput[]
+}
+
+export type SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.SwdiCreateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput> | Prisma.SwdiCreateWithoutOperationsOfficeInput[] | Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput[]
+  connectOrCreate?: Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput | Prisma.SwdiCreateOrConnectWithoutOperationsOfficeInput[]
+  upsert?: Prisma.SwdiUpsertWithWhereUniqueWithoutOperationsOfficeInput | Prisma.SwdiUpsertWithWhereUniqueWithoutOperationsOfficeInput[]
+  createMany?: Prisma.SwdiCreateManyOperationsOfficeInputEnvelope
+  set?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  disconnect?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  delete?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  connect?: Prisma.SwdiWhereUniqueInput | Prisma.SwdiWhereUniqueInput[]
+  update?: Prisma.SwdiUpdateWithWhereUniqueWithoutOperationsOfficeInput | Prisma.SwdiUpdateWithWhereUniqueWithoutOperationsOfficeInput[]
+  updateMany?: Prisma.SwdiUpdateManyWithWhereWithoutOperationsOfficeInput | Prisma.SwdiUpdateManyWithWhereWithoutOperationsOfficeInput[]
+  deleteMany?: Prisma.SwdiScalarWhereInput | Prisma.SwdiScalarWhereInput[]
 }
 
 export type SwdiCreateNestedManyWithoutUserByIdInput = {
@@ -728,6 +800,101 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type SwdiCreateWithoutOperationsOfficeInput = {
+  hhId: string
+  lgu: string
+  barangay: string
+  grantee: string
+  swdiScore: number
+  swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  verifiedBy?: string
+  verified?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userById: Prisma.UserCreateNestedOneWithoutSwdiByIDInput
+}
+
+export type SwdiUncheckedCreateWithoutOperationsOfficeInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  grantee: string
+  swdiScore: number
+  swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  verifiedBy?: string
+  verified?: string
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SwdiCreateOrConnectWithoutOperationsOfficeInput = {
+  where: Prisma.SwdiWhereUniqueInput
+  create: Prisma.XOR<Prisma.SwdiCreateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type SwdiCreateManyOperationsOfficeInputEnvelope = {
+  data: Prisma.SwdiCreateManyOperationsOfficeInput | Prisma.SwdiCreateManyOperationsOfficeInput[]
+  skipDuplicates?: boolean
+}
+
+export type SwdiUpsertWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.SwdiWhereUniqueInput
+  update: Prisma.XOR<Prisma.SwdiUpdateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedUpdateWithoutOperationsOfficeInput>
+  create: Prisma.XOR<Prisma.SwdiCreateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedCreateWithoutOperationsOfficeInput>
+}
+
+export type SwdiUpdateWithWhereUniqueWithoutOperationsOfficeInput = {
+  where: Prisma.SwdiWhereUniqueInput
+  data: Prisma.XOR<Prisma.SwdiUpdateWithoutOperationsOfficeInput, Prisma.SwdiUncheckedUpdateWithoutOperationsOfficeInput>
+}
+
+export type SwdiUpdateManyWithWhereWithoutOperationsOfficeInput = {
+  where: Prisma.SwdiScalarWhereInput
+  data: Prisma.XOR<Prisma.SwdiUpdateManyMutationInput, Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeInput>
+}
+
+export type SwdiScalarWhereInput = {
+  AND?: Prisma.SwdiScalarWhereInput | Prisma.SwdiScalarWhereInput[]
+  OR?: Prisma.SwdiScalarWhereInput[]
+  NOT?: Prisma.SwdiScalarWhereInput | Prisma.SwdiScalarWhereInput[]
+  id?: Prisma.IntFilter<"Swdi"> | number
+  hhId?: Prisma.StringFilter<"Swdi"> | string
+  lgu?: Prisma.StringFilter<"Swdi"> | string
+  barangay?: Prisma.StringFilter<"Swdi"> | string
+  grantee?: Prisma.StringFilter<"Swdi"> | string
+  swdiScore?: Prisma.FloatFilter<"Swdi"> | number
+  swdiLevel?: Prisma.StringFilter<"Swdi"> | string
+  drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  cl?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
+  encodedBy?: Prisma.StringFilter<"Swdi"> | string
+  remarks?: Prisma.StringFilter<"Swdi"> | string
+  note?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  issue?: Prisma.StringNullableFilter<"Swdi"> | string | null
+  verifiedBy?: Prisma.StringFilter<"Swdi"> | string
+  verified?: Prisma.StringFilter<"Swdi"> | string
+  userId?: Prisma.IntFilter<"Swdi"> | number
+  operationsOfficeNumId?: Prisma.IntNullableFilter<"Swdi"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
+}
+
 export type SwdiCreateWithoutUserByIdInput = {
   hhId: string
   lgu: string
@@ -735,17 +902,18 @@ export type SwdiCreateWithoutUserByIdInput = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
   encodedBy: string
   remarks: string
-  issue?: string | null
-  cl?: string | null
-  drn?: string | null
-  date: Date | string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumCreateNestedOneWithoutSwdiInput
 }
 
 export type SwdiUncheckedCreateWithoutUserByIdInput = {
@@ -756,15 +924,16 @@ export type SwdiUncheckedCreateWithoutUserByIdInput = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
   encodedBy: string
   remarks: string
-  issue?: string | null
-  cl?: string | null
-  drn?: string | null
-  date: Date | string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -795,29 +964,91 @@ export type SwdiUpdateManyWithWhereWithoutUserByIdInput = {
   data: Prisma.XOR<Prisma.SwdiUpdateManyMutationInput, Prisma.SwdiUncheckedUpdateManyWithoutUserByIdInput>
 }
 
-export type SwdiScalarWhereInput = {
-  AND?: Prisma.SwdiScalarWhereInput | Prisma.SwdiScalarWhereInput[]
-  OR?: Prisma.SwdiScalarWhereInput[]
-  NOT?: Prisma.SwdiScalarWhereInput | Prisma.SwdiScalarWhereInput[]
-  id?: Prisma.IntFilter<"Swdi"> | number
-  hhId?: Prisma.StringFilter<"Swdi"> | string
-  lgu?: Prisma.StringFilter<"Swdi"> | string
-  barangay?: Prisma.StringFilter<"Swdi"> | string
-  grantee?: Prisma.StringFilter<"Swdi"> | string
-  swdiScore?: Prisma.FloatFilter<"Swdi"> | number
-  swdiLevel?: Prisma.StringFilter<"Swdi"> | string
-  encodedBy?: Prisma.StringFilter<"Swdi"> | string
-  remarks?: Prisma.StringFilter<"Swdi"> | string
-  issue?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  cl?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  drn?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  date?: Prisma.DateTimeFilter<"Swdi"> | Date | string
-  note?: Prisma.StringNullableFilter<"Swdi"> | string | null
-  verifiedBy?: Prisma.StringFilter<"Swdi"> | string
-  verified?: Prisma.StringFilter<"Swdi"> | string
-  userId?: Prisma.IntFilter<"Swdi"> | number
-  createdAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Swdi"> | Date | string
+export type SwdiCreateManyOperationsOfficeInput = {
+  id?: number
+  hhId: string
+  lgu: string
+  barangay: string
+  grantee: string
+  swdiScore: number
+  swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
+  encodedBy: string
+  remarks: string
+  note?: string | null
+  issue?: string | null
+  verifiedBy?: string
+  verified?: string
+  userId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SwdiUpdateWithoutOperationsOfficeInput = {
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  grantee?: Prisma.StringFieldUpdateOperationsInput | string
+  swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userById?: Prisma.UserUpdateOneRequiredWithoutSwdiByIDNestedInput
+}
+
+export type SwdiUncheckedUpdateWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  grantee?: Prisma.StringFieldUpdateOperationsInput | string
+  swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type SwdiUncheckedUpdateManyWithoutOperationsOfficeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  hhId?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.StringFieldUpdateOperationsInput | string
+  barangay?: Prisma.StringFieldUpdateOperationsInput | string
+  grantee?: Prisma.StringFieldUpdateOperationsInput | string
+  swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  remarks?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SwdiCreateManyUserByIdInput = {
@@ -828,15 +1059,16 @@ export type SwdiCreateManyUserByIdInput = {
   grantee: string
   swdiScore: number
   swdiLevel: string
+  drn?: string | null
+  cl?: string | null
+  date: Date | string
   encodedBy: string
   remarks: string
-  issue?: string | null
-  cl?: string | null
-  drn?: string | null
-  date: Date | string
   note?: string | null
+  issue?: string | null
   verifiedBy?: string
   verified?: string
+  operationsOfficeNumId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -848,17 +1080,18 @@ export type SwdiUpdateWithoutUserByIdInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operationsOffice?: Prisma.OperationsOfficeNumUpdateOneWithoutSwdiNestedInput
 }
 
 export type SwdiUncheckedUpdateWithoutUserByIdInput = {
@@ -869,15 +1102,16 @@ export type SwdiUncheckedUpdateWithoutUserByIdInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -890,15 +1124,16 @@ export type SwdiUncheckedUpdateManyWithoutUserByIdInput = {
   grantee?: Prisma.StringFieldUpdateOperationsInput | string
   swdiScore?: Prisma.FloatFieldUpdateOperationsInput | number
   swdiLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   encodedBy?: Prisma.StringFieldUpdateOperationsInput | string
   remarks?: Prisma.StringFieldUpdateOperationsInput | string
-  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  drn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verifiedBy?: Prisma.StringFieldUpdateOperationsInput | string
   verified?: Prisma.StringFieldUpdateOperationsInput | string
+  operationsOfficeNumId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -913,19 +1148,21 @@ export type SwdiSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   grantee?: boolean
   swdiScore?: boolean
   swdiLevel?: boolean
+  drn?: boolean
+  cl?: boolean
+  date?: boolean
   encodedBy?: boolean
   remarks?: boolean
-  issue?: boolean
-  cl?: boolean
-  drn?: boolean
-  date?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Swdi$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["swdi"]>
 
 export type SwdiSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -936,19 +1173,21 @@ export type SwdiSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   grantee?: boolean
   swdiScore?: boolean
   swdiLevel?: boolean
+  drn?: boolean
+  cl?: boolean
+  date?: boolean
   encodedBy?: boolean
   remarks?: boolean
-  issue?: boolean
-  cl?: boolean
-  drn?: boolean
-  date?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Swdi$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["swdi"]>
 
 export type SwdiSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -959,19 +1198,21 @@ export type SwdiSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   grantee?: boolean
   swdiScore?: boolean
   swdiLevel?: boolean
+  drn?: boolean
+  cl?: boolean
+  date?: boolean
   encodedBy?: boolean
   remarks?: boolean
-  issue?: boolean
-  cl?: boolean
-  drn?: boolean
-  date?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Swdi$operationsOfficeArgs<ExtArgs>
 }, ExtArgs["result"]["swdi"]>
 
 export type SwdiSelectScalar = {
@@ -982,35 +1223,40 @@ export type SwdiSelectScalar = {
   grantee?: boolean
   swdiScore?: boolean
   swdiLevel?: boolean
+  drn?: boolean
+  cl?: boolean
+  date?: boolean
   encodedBy?: boolean
   remarks?: boolean
-  issue?: boolean
-  cl?: boolean
-  drn?: boolean
-  date?: boolean
   note?: boolean
+  issue?: boolean
   verifiedBy?: boolean
   verified?: boolean
   userId?: boolean
+  operationsOfficeNumId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SwdiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "grantee" | "swdiScore" | "swdiLevel" | "encodedBy" | "remarks" | "issue" | "cl" | "drn" | "date" | "note" | "verifiedBy" | "verified" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["swdi"]>
+export type SwdiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hhId" | "lgu" | "barangay" | "grantee" | "swdiScore" | "swdiLevel" | "drn" | "cl" | "date" | "encodedBy" | "remarks" | "note" | "issue" | "verifiedBy" | "verified" | "userId" | "operationsOfficeNumId" | "createdAt" | "updatedAt", ExtArgs["result"]["swdi"]>
 export type SwdiInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Swdi$operationsOfficeArgs<ExtArgs>
 }
 export type SwdiIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Swdi$operationsOfficeArgs<ExtArgs>
 }
 export type SwdiIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userById?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  operationsOffice?: boolean | Prisma.Swdi$operationsOfficeArgs<ExtArgs>
 }
 
 export type $SwdiPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Swdi"
   objects: {
     userById: Prisma.$UserPayload<ExtArgs>
+    operationsOffice: Prisma.$OperationsOfficeNumPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1020,16 +1266,17 @@ export type $SwdiPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     grantee: string
     swdiScore: number
     swdiLevel: string
+    drn: string | null
+    cl: string | null
+    date: Date
     encodedBy: string
     remarks: string
-    issue: string | null
-    cl: string | null
-    drn: string | null
-    date: Date
     note: string | null
+    issue: string | null
     verifiedBy: string
     verified: string
     userId: number
+    operationsOfficeNumId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["swdi"]>
@@ -1427,6 +1674,7 @@ readonly fields: SwdiFieldRefs;
 export interface Prisma__SwdiClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   userById<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  operationsOffice<T extends Prisma.Swdi$operationsOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Swdi$operationsOfficeArgs<ExtArgs>>): Prisma.Prisma__OperationsOfficeNumClient<runtime.Types.Result.GetResult<Prisma.$OperationsOfficeNumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1463,16 +1711,17 @@ export interface SwdiFieldRefs {
   readonly grantee: Prisma.FieldRef<"Swdi", 'String'>
   readonly swdiScore: Prisma.FieldRef<"Swdi", 'Float'>
   readonly swdiLevel: Prisma.FieldRef<"Swdi", 'String'>
+  readonly drn: Prisma.FieldRef<"Swdi", 'String'>
+  readonly cl: Prisma.FieldRef<"Swdi", 'String'>
+  readonly date: Prisma.FieldRef<"Swdi", 'DateTime'>
   readonly encodedBy: Prisma.FieldRef<"Swdi", 'String'>
   readonly remarks: Prisma.FieldRef<"Swdi", 'String'>
-  readonly issue: Prisma.FieldRef<"Swdi", 'String'>
-  readonly cl: Prisma.FieldRef<"Swdi", 'String'>
-  readonly drn: Prisma.FieldRef<"Swdi", 'String'>
-  readonly date: Prisma.FieldRef<"Swdi", 'DateTime'>
   readonly note: Prisma.FieldRef<"Swdi", 'String'>
+  readonly issue: Prisma.FieldRef<"Swdi", 'String'>
   readonly verifiedBy: Prisma.FieldRef<"Swdi", 'String'>
   readonly verified: Prisma.FieldRef<"Swdi", 'String'>
   readonly userId: Prisma.FieldRef<"Swdi", 'Int'>
+  readonly operationsOfficeNumId: Prisma.FieldRef<"Swdi", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Swdi", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Swdi", 'DateTime'>
 }
@@ -1868,6 +2117,25 @@ export type SwdiDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Swdis to delete.
    */
   limit?: number
+}
+
+/**
+ * Swdi.operationsOffice
+ */
+export type Swdi$operationsOfficeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OperationsOfficeNum
+   */
+  select?: Prisma.OperationsOfficeNumSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OperationsOfficeNum
+   */
+  omit?: Prisma.OperationsOfficeNumOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OperationsOfficeNumInclude<ExtArgs> | null
+  where?: Prisma.OperationsOfficeNumWhereInput
 }
 
 /**

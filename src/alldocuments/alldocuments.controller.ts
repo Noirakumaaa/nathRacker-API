@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { AlldocumentsService } from './alldocuments.service.js';
 import { CreateAlldocumentDto } from './dto/create-alldocument.dto.js';
 import { UpdateAlldocumentDto } from './dto/update-alldocument.dto.js';
@@ -9,7 +18,7 @@ import { Roles } from './../../decorator/roles.decorator.js';
 import type { Request } from 'express';
 
 @UseGuards(JwtAuthGuard)
-@Roles(Role.ENCODER, Role.ADMIN) 
+@Roles(Role.ENCODER, Role.ADMIN)
 @Controller('alldocuments')
 export class AlldocumentsController {
   constructor(private readonly alldocumentsService: AlldocumentsService) {}
@@ -29,21 +38,29 @@ export class AlldocumentsController {
     return this.alldocumentsService.alldocumentCountbyId(req);
   }
 
+  @Get('myRecords')
+  myRecords(@Req() req: Request) {
+    return this.alldocumentsService.myRecords(req);
+  }
+
+  @Get('count/OperationDashboard')
+  OperationTotalCount(@Req() req: Request) {
+    return this.alldocumentsService.OperationTotalCount(req);
+  }
+
   @Get('weekly-count')
   allDocumentWeeklyCount(@Req() req: Request) {
     return this.alldocumentsService.allDocumentWeeklyCount(req);
   }
 
-  @Get("user/encoded")
+  @Get('user/encoded')
   UserEncoded(@Req() req: Request) {
     return this.alldocumentsService.UserEncoded(req);
   }
 
-
   @Get('globalRecords')
-  @Get()
-  findAll() {
-    return this.alldocumentsService.globalRecords();
+  findAll(@Req() req: Request) {
+    return this.alldocumentsService.globalRecords(req);
   }
 
   @Get(':id')
@@ -52,7 +69,10 @@ export class AlldocumentsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAlldocumentDto: UpdateAlldocumentDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateAlldocumentDto: UpdateAlldocumentDto,
+  ) {
     return this.alldocumentsService.update(+id, updateAlldocumentDto);
   }
 

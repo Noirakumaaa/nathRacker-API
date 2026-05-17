@@ -194,6 +194,12 @@ export type OperationsOfficeNumWhereInput = {
   name?: Prisma.StringFilter<"OperationsOfficeNum"> | string
   lgu?: Prisma.LguListRelationFilter
   userInfo?: Prisma.UserInfoListRelationFilter
+  bus?: Prisma.BusListRelationFilter
+  swdi?: Prisma.SwdiListRelationFilter
+  pcn?: Prisma.PcnListRelationFilter
+  cvs?: Prisma.CVSListRelationFilter
+  miscellaneous?: Prisma.MiscellaneousListRelationFilter
+  encodedDocuments?: Prisma.EncodedDocumentListRelationFilter
 }
 
 export type OperationsOfficeNumOrderByWithRelationInput = {
@@ -201,6 +207,12 @@ export type OperationsOfficeNumOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   lgu?: Prisma.LguOrderByRelationAggregateInput
   userInfo?: Prisma.UserInfoOrderByRelationAggregateInput
+  bus?: Prisma.BusOrderByRelationAggregateInput
+  swdi?: Prisma.SwdiOrderByRelationAggregateInput
+  pcn?: Prisma.PcnOrderByRelationAggregateInput
+  cvs?: Prisma.CVSOrderByRelationAggregateInput
+  miscellaneous?: Prisma.MiscellaneousOrderByRelationAggregateInput
+  encodedDocuments?: Prisma.EncodedDocumentOrderByRelationAggregateInput
 }
 
 export type OperationsOfficeNumWhereUniqueInput = Prisma.AtLeast<{
@@ -211,6 +223,12 @@ export type OperationsOfficeNumWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"OperationsOfficeNum"> | string
   lgu?: Prisma.LguListRelationFilter
   userInfo?: Prisma.UserInfoListRelationFilter
+  bus?: Prisma.BusListRelationFilter
+  swdi?: Prisma.SwdiListRelationFilter
+  pcn?: Prisma.PcnListRelationFilter
+  cvs?: Prisma.CVSListRelationFilter
+  miscellaneous?: Prisma.MiscellaneousListRelationFilter
+  encodedDocuments?: Prisma.EncodedDocumentListRelationFilter
 }, "id">
 
 export type OperationsOfficeNumOrderByWithAggregationInput = {
@@ -235,6 +253,12 @@ export type OperationsOfficeNumCreateInput = {
   name: string
   lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
   userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
 }
 
 export type OperationsOfficeNumUncheckedCreateInput = {
@@ -242,12 +266,24 @@ export type OperationsOfficeNumUncheckedCreateInput = {
   name: string
   lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
   userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
 }
 
 export type OperationsOfficeNumUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
   userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
 }
 
 export type OperationsOfficeNumUncheckedUpdateInput = {
@@ -255,6 +291,12 @@ export type OperationsOfficeNumUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
   userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
 }
 
 export type OperationsOfficeNumCreateManyInput = {
@@ -269,11 +311,6 @@ export type OperationsOfficeNumUpdateManyMutationInput = {
 export type OperationsOfficeNumUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type OperationsOfficeNumNullableScalarRelationFilter = {
-  is?: Prisma.OperationsOfficeNumWhereInput | null
-  isNot?: Prisma.OperationsOfficeNumWhereInput | null
 }
 
 export type OperationsOfficeNumCountOrderByAggregateInput = {
@@ -304,20 +341,21 @@ export type OperationsOfficeNumScalarRelationFilter = {
   isNot?: Prisma.OperationsOfficeNumWhereInput
 }
 
-export type OperationsOfficeNumCreateNestedOneWithoutUserInfoInput = {
-  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
-  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutUserInfoInput
-  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+export type OperationsOfficeNumNullableScalarRelationFilter = {
+  is?: Prisma.OperationsOfficeNumWhereInput | null
+  isNot?: Prisma.OperationsOfficeNumWhereInput | null
 }
 
-export type OperationsOfficeNumUpdateOneWithoutUserInfoNestedInput = {
-  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
-  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutUserInfoInput
-  upsert?: Prisma.OperationsOfficeNumUpsertWithoutUserInfoInput
-  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
-  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
-  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutUserInfoInput, Prisma.OperationsOfficeNumUpdateWithoutUserInfoInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput>
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type OperationsOfficeNumCreateNestedOneWithoutLguInput = {
@@ -334,53 +372,139 @@ export type OperationsOfficeNumUpdateOneRequiredWithoutLguNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutLguInput, Prisma.OperationsOfficeNumUpdateWithoutLguInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutLguInput>
 }
 
-export type OperationsOfficeNumCreateWithoutUserInfoInput = {
-  name: string
-  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+export type OperationsOfficeNumCreateNestedOneWithoutUserInfoInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutUserInfoInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
 }
 
-export type OperationsOfficeNumUncheckedCreateWithoutUserInfoInput = {
-  id?: number
-  name: string
-  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+export type OperationsOfficeNumUpdateOneWithoutUserInfoNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutUserInfoInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutUserInfoInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutUserInfoInput, Prisma.OperationsOfficeNumUpdateWithoutUserInfoInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput>
 }
 
-export type OperationsOfficeNumCreateOrConnectWithoutUserInfoInput = {
-  where: Prisma.OperationsOfficeNumWhereUniqueInput
-  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
+export type OperationsOfficeNumCreateNestedOneWithoutBusInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutBusInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutBusInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutBusInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
 }
 
-export type OperationsOfficeNumUpsertWithoutUserInfoInput = {
-  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput>
-  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
-  where?: Prisma.OperationsOfficeNumWhereInput
+export type OperationsOfficeNumUpdateOneWithoutBusNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutBusInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutBusInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutBusInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutBusInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutBusInput, Prisma.OperationsOfficeNumUpdateWithoutBusInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutBusInput>
 }
 
-export type OperationsOfficeNumUpdateToOneWithWhereWithoutUserInfoInput = {
-  where?: Prisma.OperationsOfficeNumWhereInput
-  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput>
+export type OperationsOfficeNumCreateNestedOneWithoutSwdiInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutSwdiInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutSwdiInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutSwdiInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
 }
 
-export type OperationsOfficeNumUpdateWithoutUserInfoInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+export type OperationsOfficeNumUpdateOneWithoutSwdiNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutSwdiInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutSwdiInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutSwdiInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutSwdiInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutSwdiInput, Prisma.OperationsOfficeNumUpdateWithoutSwdiInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutSwdiInput>
 }
 
-export type OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+export type OperationsOfficeNumCreateNestedOneWithoutPcnInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutPcnInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutPcnInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutPcnInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+}
+
+export type OperationsOfficeNumUpdateOneWithoutPcnNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutPcnInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutPcnInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutPcnInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutPcnInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutPcnInput, Prisma.OperationsOfficeNumUpdateWithoutPcnInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutPcnInput>
+}
+
+export type OperationsOfficeNumCreateNestedOneWithoutCvsInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutCvsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutCvsInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutCvsInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+}
+
+export type OperationsOfficeNumUpdateOneWithoutCvsNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutCvsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutCvsInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutCvsInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutCvsInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutCvsInput, Prisma.OperationsOfficeNumUpdateWithoutCvsInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutCvsInput>
+}
+
+export type OperationsOfficeNumCreateNestedOneWithoutMiscellaneousInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutMiscellaneousInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutMiscellaneousInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+}
+
+export type OperationsOfficeNumUpdateOneWithoutMiscellaneousNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutMiscellaneousInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutMiscellaneousInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutMiscellaneousInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUpdateWithoutMiscellaneousInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutMiscellaneousInput>
+}
+
+export type OperationsOfficeNumCreateNestedOneWithoutEncodedDocumentsInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutEncodedDocumentsInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutEncodedDocumentsInput
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+}
+
+export type OperationsOfficeNumUpdateOneWithoutEncodedDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutEncodedDocumentsInput>
+  connectOrCreate?: Prisma.OperationsOfficeNumCreateOrConnectWithoutEncodedDocumentsInput
+  upsert?: Prisma.OperationsOfficeNumUpsertWithoutEncodedDocumentsInput
+  disconnect?: Prisma.OperationsOfficeNumWhereInput | boolean
+  delete?: Prisma.OperationsOfficeNumWhereInput | boolean
+  connect?: Prisma.OperationsOfficeNumWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OperationsOfficeNumUpdateToOneWithWhereWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUpdateWithoutEncodedDocumentsInput>, Prisma.OperationsOfficeNumUncheckedUpdateWithoutEncodedDocumentsInput>
 }
 
 export type OperationsOfficeNumCreateWithoutLguInput = {
   name: string
   userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
 }
 
 export type OperationsOfficeNumUncheckedCreateWithoutLguInput = {
   id?: number
   name: string
   userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
 }
 
 export type OperationsOfficeNumCreateOrConnectWithoutLguInput = {
@@ -402,12 +526,458 @@ export type OperationsOfficeNumUpdateToOneWithWhereWithoutLguInput = {
 export type OperationsOfficeNumUpdateWithoutLguInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
 }
 
 export type OperationsOfficeNumUncheckedUpdateWithoutLguInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutUserInfoInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutUserInfoInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutUserInfoInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutUserInfoInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutUserInfoInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutUserInfoInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutUserInfoInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutUserInfoInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutUserInfoInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutBusInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutBusInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutBusInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutBusInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutBusInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutBusInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutBusInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutBusInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutBusInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutBusInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutBusInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutBusInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutBusInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutBusInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutBusInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutSwdiInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutSwdiInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutSwdiInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutSwdiInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutSwdiInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutSwdiInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutSwdiInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutSwdiInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutSwdiInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutSwdiInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutSwdiInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutSwdiInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutSwdiInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutSwdiInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutSwdiInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutPcnInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutPcnInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutPcnInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutPcnInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutPcnInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutPcnInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutPcnInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutPcnInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutPcnInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutPcnInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutPcnInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutPcnInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutPcnInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutPcnInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutPcnInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutCvsInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutCvsInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutCvsInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutCvsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutCvsInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutCvsInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutCvsInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutCvsInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutCvsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutCvsInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutCvsInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutCvsInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutCvsInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutCvsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutCvsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutMiscellaneousInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutMiscellaneousInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutMiscellaneousInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutMiscellaneousInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutMiscellaneousInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutMiscellaneousInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutMiscellaneousInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutMiscellaneousInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutMiscellaneousInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutMiscellaneousInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutMiscellaneousInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutMiscellaneousInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  encodedDocuments?: Prisma.EncodedDocumentUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumCreateWithoutEncodedDocumentsInput = {
+  name: string
+  lgu?: Prisma.LguCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumUncheckedCreateWithoutEncodedDocumentsInput = {
+  id?: number
+  name: string
+  lgu?: Prisma.LguUncheckedCreateNestedManyWithoutOperationsOfficeNumInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedManyWithoutAssignedAreaInput
+  bus?: Prisma.BusUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  swdi?: Prisma.SwdiUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  pcn?: Prisma.PcnUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  cvs?: Prisma.CVSUncheckedCreateNestedManyWithoutOperationsOfficeInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedCreateNestedManyWithoutOperationsOfficeInput
+}
+
+export type OperationsOfficeNumCreateOrConnectWithoutEncodedDocumentsInput = {
+  where: Prisma.OperationsOfficeNumWhereUniqueInput
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutEncodedDocumentsInput>
+}
+
+export type OperationsOfficeNumUpsertWithoutEncodedDocumentsInput = {
+  update: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutEncodedDocumentsInput>
+  create: Prisma.XOR<Prisma.OperationsOfficeNumCreateWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUncheckedCreateWithoutEncodedDocumentsInput>
+  where?: Prisma.OperationsOfficeNumWhereInput
+}
+
+export type OperationsOfficeNumUpdateToOneWithWhereWithoutEncodedDocumentsInput = {
+  where?: Prisma.OperationsOfficeNumWhereInput
+  data: Prisma.XOR<Prisma.OperationsOfficeNumUpdateWithoutEncodedDocumentsInput, Prisma.OperationsOfficeNumUncheckedUpdateWithoutEncodedDocumentsInput>
+}
+
+export type OperationsOfficeNumUpdateWithoutEncodedDocumentsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUpdateManyWithoutOperationsOfficeNestedInput
+}
+
+export type OperationsOfficeNumUncheckedUpdateWithoutEncodedDocumentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lgu?: Prisma.LguUncheckedUpdateManyWithoutOperationsOfficeNumNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateManyWithoutAssignedAreaNestedInput
+  bus?: Prisma.BusUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  swdi?: Prisma.SwdiUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  pcn?: Prisma.PcnUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  cvs?: Prisma.CVSUncheckedUpdateManyWithoutOperationsOfficeNestedInput
+  miscellaneous?: Prisma.MiscellaneousUncheckedUpdateManyWithoutOperationsOfficeNestedInput
 }
 
 
@@ -418,11 +988,23 @@ export type OperationsOfficeNumUncheckedUpdateWithoutLguInput = {
 export type OperationsOfficeNumCountOutputType = {
   lgu: number
   userInfo: number
+  bus: number
+  swdi: number
+  pcn: number
+  cvs: number
+  miscellaneous: number
+  encodedDocuments: number
 }
 
 export type OperationsOfficeNumCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   lgu?: boolean | OperationsOfficeNumCountOutputTypeCountLguArgs
   userInfo?: boolean | OperationsOfficeNumCountOutputTypeCountUserInfoArgs
+  bus?: boolean | OperationsOfficeNumCountOutputTypeCountBusArgs
+  swdi?: boolean | OperationsOfficeNumCountOutputTypeCountSwdiArgs
+  pcn?: boolean | OperationsOfficeNumCountOutputTypeCountPcnArgs
+  cvs?: boolean | OperationsOfficeNumCountOutputTypeCountCvsArgs
+  miscellaneous?: boolean | OperationsOfficeNumCountOutputTypeCountMiscellaneousArgs
+  encodedDocuments?: boolean | OperationsOfficeNumCountOutputTypeCountEncodedDocumentsArgs
 }
 
 /**
@@ -449,12 +1031,60 @@ export type OperationsOfficeNumCountOutputTypeCountUserInfoArgs<ExtArgs extends 
   where?: Prisma.UserInfoWhereInput
 }
 
+/**
+ * OperationsOfficeNumCountOutputType without action
+ */
+export type OperationsOfficeNumCountOutputTypeCountBusArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BusWhereInput
+}
+
+/**
+ * OperationsOfficeNumCountOutputType without action
+ */
+export type OperationsOfficeNumCountOutputTypeCountSwdiArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SwdiWhereInput
+}
+
+/**
+ * OperationsOfficeNumCountOutputType without action
+ */
+export type OperationsOfficeNumCountOutputTypeCountPcnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PcnWhereInput
+}
+
+/**
+ * OperationsOfficeNumCountOutputType without action
+ */
+export type OperationsOfficeNumCountOutputTypeCountCvsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CVSWhereInput
+}
+
+/**
+ * OperationsOfficeNumCountOutputType without action
+ */
+export type OperationsOfficeNumCountOutputTypeCountMiscellaneousArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MiscellaneousWhereInput
+}
+
+/**
+ * OperationsOfficeNumCountOutputType without action
+ */
+export type OperationsOfficeNumCountOutputTypeCountEncodedDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EncodedDocumentWhereInput
+}
+
 
 export type OperationsOfficeNumSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   lgu?: boolean | Prisma.OperationsOfficeNum$lguArgs<ExtArgs>
   userInfo?: boolean | Prisma.OperationsOfficeNum$userInfoArgs<ExtArgs>
+  bus?: boolean | Prisma.OperationsOfficeNum$busArgs<ExtArgs>
+  swdi?: boolean | Prisma.OperationsOfficeNum$swdiArgs<ExtArgs>
+  pcn?: boolean | Prisma.OperationsOfficeNum$pcnArgs<ExtArgs>
+  cvs?: boolean | Prisma.OperationsOfficeNum$cvsArgs<ExtArgs>
+  miscellaneous?: boolean | Prisma.OperationsOfficeNum$miscellaneousArgs<ExtArgs>
+  encodedDocuments?: boolean | Prisma.OperationsOfficeNum$encodedDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.OperationsOfficeNumCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["operationsOfficeNum"]>
 
@@ -477,6 +1107,12 @@ export type OperationsOfficeNumOmit<ExtArgs extends runtime.Types.Extensions.Int
 export type OperationsOfficeNumInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   lgu?: boolean | Prisma.OperationsOfficeNum$lguArgs<ExtArgs>
   userInfo?: boolean | Prisma.OperationsOfficeNum$userInfoArgs<ExtArgs>
+  bus?: boolean | Prisma.OperationsOfficeNum$busArgs<ExtArgs>
+  swdi?: boolean | Prisma.OperationsOfficeNum$swdiArgs<ExtArgs>
+  pcn?: boolean | Prisma.OperationsOfficeNum$pcnArgs<ExtArgs>
+  cvs?: boolean | Prisma.OperationsOfficeNum$cvsArgs<ExtArgs>
+  miscellaneous?: boolean | Prisma.OperationsOfficeNum$miscellaneousArgs<ExtArgs>
+  encodedDocuments?: boolean | Prisma.OperationsOfficeNum$encodedDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.OperationsOfficeNumCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OperationsOfficeNumIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -487,6 +1123,12 @@ export type $OperationsOfficeNumPayload<ExtArgs extends runtime.Types.Extensions
   objects: {
     lgu: Prisma.$LguPayload<ExtArgs>[]
     userInfo: Prisma.$UserInfoPayload<ExtArgs>[]
+    bus: Prisma.$BusPayload<ExtArgs>[]
+    swdi: Prisma.$SwdiPayload<ExtArgs>[]
+    pcn: Prisma.$PcnPayload<ExtArgs>[]
+    cvs: Prisma.$CVSPayload<ExtArgs>[]
+    miscellaneous: Prisma.$MiscellaneousPayload<ExtArgs>[]
+    encodedDocuments: Prisma.$EncodedDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -887,6 +1529,12 @@ export interface Prisma__OperationsOfficeNumClient<T, Null = never, ExtArgs exte
   readonly [Symbol.toStringTag]: "PrismaPromise"
   lgu<T extends Prisma.OperationsOfficeNum$lguArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$lguArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LguPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userInfo<T extends Prisma.OperationsOfficeNum$userInfoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$userInfoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserInfoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bus<T extends Prisma.OperationsOfficeNum$busArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$busArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  swdi<T extends Prisma.OperationsOfficeNum$swdiArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$swdiArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SwdiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pcn<T extends Prisma.OperationsOfficeNum$pcnArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$pcnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PcnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cvs<T extends Prisma.OperationsOfficeNum$cvsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$cvsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CVSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  miscellaneous<T extends Prisma.OperationsOfficeNum$miscellaneousArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$miscellaneousArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MiscellaneousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  encodedDocuments<T extends Prisma.OperationsOfficeNum$encodedDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OperationsOfficeNum$encodedDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EncodedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1351,6 +1999,150 @@ export type OperationsOfficeNum$userInfoArgs<ExtArgs extends runtime.Types.Exten
   take?: number
   skip?: number
   distinct?: Prisma.UserInfoScalarFieldEnum | Prisma.UserInfoScalarFieldEnum[]
+}
+
+/**
+ * OperationsOfficeNum.bus
+ */
+export type OperationsOfficeNum$busArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bus
+   */
+  select?: Prisma.BusSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bus
+   */
+  omit?: Prisma.BusOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BusInclude<ExtArgs> | null
+  where?: Prisma.BusWhereInput
+  orderBy?: Prisma.BusOrderByWithRelationInput | Prisma.BusOrderByWithRelationInput[]
+  cursor?: Prisma.BusWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BusScalarFieldEnum | Prisma.BusScalarFieldEnum[]
+}
+
+/**
+ * OperationsOfficeNum.swdi
+ */
+export type OperationsOfficeNum$swdiArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Swdi
+   */
+  select?: Prisma.SwdiSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Swdi
+   */
+  omit?: Prisma.SwdiOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SwdiInclude<ExtArgs> | null
+  where?: Prisma.SwdiWhereInput
+  orderBy?: Prisma.SwdiOrderByWithRelationInput | Prisma.SwdiOrderByWithRelationInput[]
+  cursor?: Prisma.SwdiWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SwdiScalarFieldEnum | Prisma.SwdiScalarFieldEnum[]
+}
+
+/**
+ * OperationsOfficeNum.pcn
+ */
+export type OperationsOfficeNum$pcnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Pcn
+   */
+  select?: Prisma.PcnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Pcn
+   */
+  omit?: Prisma.PcnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PcnInclude<ExtArgs> | null
+  where?: Prisma.PcnWhereInput
+  orderBy?: Prisma.PcnOrderByWithRelationInput | Prisma.PcnOrderByWithRelationInput[]
+  cursor?: Prisma.PcnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PcnScalarFieldEnum | Prisma.PcnScalarFieldEnum[]
+}
+
+/**
+ * OperationsOfficeNum.cvs
+ */
+export type OperationsOfficeNum$cvsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CVS
+   */
+  select?: Prisma.CVSSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CVS
+   */
+  omit?: Prisma.CVSOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CVSInclude<ExtArgs> | null
+  where?: Prisma.CVSWhereInput
+  orderBy?: Prisma.CVSOrderByWithRelationInput | Prisma.CVSOrderByWithRelationInput[]
+  cursor?: Prisma.CVSWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CVSScalarFieldEnum | Prisma.CVSScalarFieldEnum[]
+}
+
+/**
+ * OperationsOfficeNum.miscellaneous
+ */
+export type OperationsOfficeNum$miscellaneousArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Miscellaneous
+   */
+  select?: Prisma.MiscellaneousSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Miscellaneous
+   */
+  omit?: Prisma.MiscellaneousOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MiscellaneousInclude<ExtArgs> | null
+  where?: Prisma.MiscellaneousWhereInput
+  orderBy?: Prisma.MiscellaneousOrderByWithRelationInput | Prisma.MiscellaneousOrderByWithRelationInput[]
+  cursor?: Prisma.MiscellaneousWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MiscellaneousScalarFieldEnum | Prisma.MiscellaneousScalarFieldEnum[]
+}
+
+/**
+ * OperationsOfficeNum.encodedDocuments
+ */
+export type OperationsOfficeNum$encodedDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EncodedDocument
+   */
+  select?: Prisma.EncodedDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EncodedDocument
+   */
+  omit?: Prisma.EncodedDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EncodedDocumentInclude<ExtArgs> | null
+  where?: Prisma.EncodedDocumentWhereInput
+  orderBy?: Prisma.EncodedDocumentOrderByWithRelationInput | Prisma.EncodedDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.EncodedDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EncodedDocumentScalarFieldEnum | Prisma.EncodedDocumentScalarFieldEnum[]
 }
 
 /**

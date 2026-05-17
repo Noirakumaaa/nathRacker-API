@@ -9,17 +9,21 @@
 * 🟢 You can import this file directly.
 */
 
+export const Role = {
+  ENCODER: 'ENCODER',
+  ADMIN: 'ADMIN',
+  AC: 'AC',
+  SWA: 'SWA',
+  SWOIII: 'SWOIII',
+  VERIFIER: 'VERIFIER'
+} as const
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+
 export const theme = {
   LIGHT: 'LIGHT',
   DARK: 'DARK'
 } as const
 
 export type theme = (typeof theme)[keyof typeof theme]
-
-
-export const Role = {
-  ENCODER: 'ENCODER',
-  ADMIN: 'ADMIN'
-} as const
-
-export type Role = (typeof Role)[keyof typeof Role]

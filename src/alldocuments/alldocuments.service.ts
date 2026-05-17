@@ -52,6 +52,38 @@ export class AlldocumentsService {
     return result;
   }
 
+  async OperationTotalCount(req: Request) {
+    const user = req.user;
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
+
+    const countPerDocumentType =
+      await this.prisma.client.encodedDocument.groupBy({
+        by: ['remarks'],
+        where: {
+          userId: user.id,
+        },
+        _count: {
+          remarks: true,
+        },
+      });
+
+    // ✅ compute total
+    const total = countPerDocumentType.reduce(
+      (sum, item) => sum + item._count.remarks,
+      0,
+    );
+
+    // ✅ fix here
+    const result = countPerDocumentType.map((item) => ({
+      remarks: item.remarks,
+      count: item._count.remarks,
+    }));
+
+    return { result, total: total };
+  }
+
   async allDocumentWeeklyCount(req: Request) {
     const user = req.user;
     if (!user) throw new Error('User not authenticated');
@@ -93,8 +125,24 @@ export class AlldocumentsService {
     });
   }
 
-  globalRecords() {
+  globalRecords(req: Request) {
+    const user = req.user;
+    if (!user) throw new Error('User not authenticated');
     return this.prisma.client.encodedDocument.findMany({
+      where: {
+        operationsOfficeNumId: user.assignedOperationId,
+      },
+      orderBy: { date: 'desc' },
+    });
+  }
+
+  myRecords(req: Request) {
+    const user = req.user;
+    if (!user) throw new Error('User not authenticated');
+    return this.prisma.client.encodedDocument.findMany({
+      where: {
+        userId: user.id,
+      },
       orderBy: { date: 'desc' },
     });
   }
@@ -112,45 +160,66 @@ export class AlldocumentsService {
   }
 
   async remove(id: number) {
-    const deleteDocument = await this.prisma.client.encodedDocument.findUnique({
-      where: { id },
-    });
-
-    if (!deleteDocument) {
-      throw new NotFoundException(`Document #${id} not found`);
-    }
-
-    const { documentType, documentId } = deleteDocument;
-
-    // Delete from the specific model based on documentType
-    switch (documentType) {
-      case 'BUS':
-        await this.prisma.client.bus.delete({ where: { id: documentId } });
-        break;
-      case 'PCN':
-        await this.prisma.client.pcn.delete({ where: { id: documentId } });
-        break;
-      case 'SWDI':
-        await this.prisma.client.swdi.delete({ where: { id: documentId } });
-        break;
-      case 'CVS':
-        await this.prisma.client.cVS.delete({ where: { id: documentId } });
-        break;
-      case 'MISC':
-        await this.prisma.client.miscellaneous.delete({
-          where: { id: documentId },
+    try {
+      const deleteDocument =
+        await this.prisma.client.encodedDocument.findUnique({
+          where: { id },
         });
-        break;
-      default:
-        throw new BadRequestException(`Unknown documentType: ${documentType}`);
+
+      if (!deleteDocument) {
+        throw new NotFoundException(`Document #${id} not found`);
+      }
+
+      const { documentType, documentId } = deleteDocument;
+
+      try {
+        switch (documentType) {
+          case 'BUS':
+            await this.prisma.client.bus.deleteMany({
+              where: { id: documentId },
+            });
+            break;
+
+          case 'PCN':
+            await this.prisma.client.pcn.deleteMany({
+              where: { id: documentId },
+            });
+            break;
+
+          case 'SWDI':
+            await this.prisma.client.swdi.deleteMany({
+              where: { id: documentId },
+            });
+            break;
+
+          case 'CVS':
+            await this.prisma.client.cVS.deleteMany({
+              where: { id: documentId },
+            });
+            break;
+
+          case 'MISC':
+            await this.prisma.client.miscellaneous.deleteMany({
+              where: { id: documentId },
+            });
+            break;
+        }
+      } catch (err) {}
+
+      await this.prisma.client.encodedDocument.delete({
+        where: { id },
+      });
+
+      return {
+        deleted: true,
+        message: `${documentType} #${documentId} processed and encodedDocument removed`,
+      };
+    } catch (error) {
+      return {
+        deleted: false,
+        message: 'Delete failed',
+        error: error?.message || error,
+      };
     }
-
-    // Delete the global encoded document record
-    await this.prisma.client.encodedDocument.delete({ where: { id } });
-
-    return {
-      deleted: true,
-      message: `${documentType} #${documentId} deleted successfully`,
-    };
   }
 }
