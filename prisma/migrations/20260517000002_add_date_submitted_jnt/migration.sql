@@ -1,0 +1,1 @@
+ALTER TABLE "AaDocument" ADD COLUMN IF NOT EXISTS "dateSubmittedJnt" TIMESTAMP(3);

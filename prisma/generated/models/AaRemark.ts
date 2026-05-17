@@ -425,10 +425,6 @@ export type AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput = {
   deleteMany?: Prisma.AaRemarkScalarWhereInput | Prisma.AaRemarkScalarWhereInput[]
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type AaRemarkCreateWithoutDocumentInput = {
   id?: string
   content: string

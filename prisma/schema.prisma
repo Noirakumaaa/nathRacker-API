@@ -279,6 +279,7 @@ model AaDocumentModule {
   prefix      String // Used in trackingNo generation
   description String?
   isActive    Boolean      @default(true)
+  isMonthly   Boolean      @default(false)
   // Column name mappings for Excel import (null = auto-detect by keyword)
   colStaff    String? // e.g. "Name of Staff", "Recipient"
   colSubject  String? // e.g. "Title of Documents", "Particulars"
@@ -294,17 +295,15 @@ model AaDocument {
   sequence      Int // Per-module counter (never reused)
   staffName     String
   subject       String            @db.Text
-  operationNum  String? // OO number this document belongs to
-  year          Int     @default(2026)
-  dateCreated   DateTime
-  moduleId      String
+  operationNum      String? // OO number this document belongs to
+  year              Int
+  dateCreated       DateTime
+  dateSubmittedJnt  DateTime?
+  oo8Level          String?   // GRS-specific: OO8 level classification
+  moduleId          String
   module        AaDocumentModule  @relation(fields: [moduleId], references: [id])
   remarks       AaRemark[]
-  load26Monthly  AaLoad26Monthly?
-  coaWtr26       CoaWTr2026?      @relation("CoaWTr2026Document")
-  hazard26       Hazard2026?      @relation("Hazard2026Document")
-  tev26          Tev2026?         @relation("Tev2026Document")
-  magna26        MagnaCarta2026?  @relation("MagnaCarta2026Document")
+  monthlyData   AaMonthlyData?
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
 
@@ -314,97 +313,13 @@ model AaDocument {
   @@index([staffName])
 }
 
-model AaLoad26Monthly {
-  id           String     @id @default(uuid())
-  documentId   String     @unique
-  document     AaDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
-
-  january      String?
-  janRemark1   String?
-  janRemark2   String?
-  janRemark3   String?
-  janRemark4   String?
-  janRemark5   String?
-
-  february     String?
-  febRemark1   String?
-  febRemark2   String?
-  febRemark3   String?
-  febRemark4   String?
-  febRemark5   String?
-
-  march        String?
-  marRemark1   String?
-  marRemark2   String?
-  marRemark3   String?
-  marRemark4   String?
-  marRemark5   String?
-
-  april        String?
-  aprRemark1   String?
-  aprRemark2   String?
-  aprRemark3   String?
-  aprRemark4   String?
-  aprRemark5   String?
-
-  may          String?
-  mayRemark1   String?
-  mayRemark2   String?
-  mayRemark3   String?
-  mayRemark4   String?
-  mayRemark5   String?
-
-  june         String?
-  junRemark1   String?
-  junRemark2   String?
-  junRemark3   String?
-  junRemark4   String?
-  junRemark5   String?
-
-  july         String?
-  julRemarks1  String?
-  julRemarks2  String?
-  julRemarks3  String?
-  julRemarks4  String?
-  julRemarks5  String?
-
-  august       String?
-  augRemarks1  String?
-  augRemarks2  String?
-  augRemarks3  String?
-  augRemarks4  String?
-  augRemarks5  String?
-
-  september    String?
-  sepRemarks1  String?
-  sepRemarks2  String?
-  sepRemarks3  String?
-  sepRemarks4  String?
-  sepRemarks5  String?
-
-  october      String?
-  octRemarks1  String?
-  octRemarks2  String?
-  octRemarks3  String?
-  octRemarks4  String?
-  octRemarks5  String?
-
-  november     String?
-  novRemarks1  String?
-  novRemarks2  String?
-  novRemarks3  String?
-  novRemarks4  String?
-  novRemarks5  String?
-
-  december     String?
-  decRemarks1  String?
-  decRemarks2  String?
-  decRemarks3  String?
-  decRemarks4  String?
-  decRemarks5  String?
-
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
+model AaMonthlyData {
+  id         String     @id @default(uuid())
+  documentId String     @unique
+  document   AaDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  data       Json
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
 
 model AaRemark {
@@ -610,32 +525,6 @@ model MrbTofMonitoring {
   updatedAt          DateTime @updatedAt
 }
 
-model CoaWTr2026 {
-  id               Int         @id @default(autoincrement())
-  documentId       String?     @unique
-  document         AaDocument? @relation("CoaWTr2026Document", fields: [documentId], references: [id], onDelete: SetNull, map: "CoaWTr2026_documentId_fkey")
-  employeeName     String?
-  employmentStatus String?
-  areaOfAssignment String?
-  january          String?
-  janRemarksMe1    String?
-  janRemarksMe2    String?
-  february         String?
-  febRemarksMe     String?
-  march            String?
-  marRemarksMe     String?
-  april            String?
-  aprRemarksMe     String?
-  may              String?
-  mayRemarksMe     String?
-  june             String?
-  junRemarksMe     String?
-  july             String?
-  julRemarksMe     String?
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
-}
-
 model FiledForCocot {
   id               Int      @id @default(autoincrement())
   employeeName     String?
@@ -696,252 +585,6 @@ model SuccessStories {
   googleLinkFolder   String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-}
-
-model Dtr2026 {
-  id               Int      @id @default(autoincrement())
-  number           String?
-  employeeName     String?
-  employmentStatus String?
-  areaOfAssignment String?
-  december2025     String?
-  decRemarks1      String?
-  decRemarks2      String?
-  january          String?
-  janRemarks1      String?
-  janRemarks2      String?
-  february         String?
-  febRemarks       String?
-  march            String?
-  marRemarks       String?
-  april            String?
-  aprRemarks       String?
-  may              String?
-  mayRemarks1      String?
-  mayRemarks2      String?
-  june             String?
-  junRemarks1      String?
-  junRemarks2      String?
-  july             String?
-  julRemarks1      String?
-  julRemarks2      String?
-  julRemarks3      String?
-  august           String?
-  augRemarks       String?
-  september        String?
-  sepRemarks1      String?
-  sepRemarks2      String?
-  sepRemarks3      String?
-  october          String?
-  octRemarks1      String?
-  octRemarks2      String?
-  octRemarks3      String?
-  november         String?
-  novRemarks1      String?
-  novRemarks2      String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-}
-
-model Hazard2026 {
-  id               Int         @id @default(autoincrement())
-  documentId       String?     @unique
-  document         AaDocument? @relation("Hazard2026Document", fields: [documentId], references: [id], onDelete: SetNull, map: "Hazard2026_documentId_fkey")
-  employeeName     String?
-  employmentStatus String?
-  areaOfAssignment String?
-  january          String?
-  janRemarks1      String?
-  janRemarks2      String?
-  february         String?
-  febRemarks1      String?
-  febRemarks2      String?
-  march            String?
-  marRemarks1      String?
-  marRemarks2      String?
-  april            String?
-  aprRemarks1      String?
-  aprRemarks2      String?
-  may              String?
-  mayRemarks1      String?
-  mayRemarks2      String?
-  june             String?
-  junRemarks1      String?
-  junRemarks2      String?
-  july             String?
-  julRemarks1      String?
-  julRemarks2      String?
-  august           String?
-  augRemarks1      String?
-  augRemarks2      String?
-  september        String?
-  sepRemarks1      String?
-  sepRemarks2      String?
-  october          String?
-  octRemarks1      String?
-  octRemarks2      String?
-  november         String?
-  novRemarks1      String?
-  novRemarks2      String?
-  december         String?
-  decRemarks1      String?
-  decRemarks2      String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-}
-
-model Tev2026 {
-  id               Int         @id @default(autoincrement())
-  documentId       String?     @unique
-  document         AaDocument? @relation("Tev2026Document", fields: [documentId], references: [id], onDelete: SetNull, map: "Tev2026_documentId_fkey")
-  employeeName     String?
-  employmentStatus String?
-  areaOfAssignment String?
-  january          String?
-  janRemarks1      String?
-  janRemarks2      String?
-  janRemarks3      String?
-  february         String?
-  febRemarks1      String?
-  febRemarks2      String?
-  march            String?
-  marRemarks1      String?
-  marRemarks2      String?
-  april            String?
-  aprRemarks1      String?
-  aprRemarks2      String?
-  aprilDup         String?
-  aprDupRemarks1   String?
-  aprDupRemarks2   String?
-  may              String?
-  mayRemarks1      String?
-  mayRemarks2      String?
-  june             String?
-  junRemarks1      String?
-  junRemarks2      String?
-  july             String?
-  julRemarks1      String?
-  julRemarks2      String?
-  august           String?
-  augRemarks1      String?
-  augRemarks2      String?
-  september        String?
-  sepRemarks1      String?
-  sepRemarks2      String?
-  october          String?
-  octRemarks1      String?
-  octRemarks2      String?
-  november         String?
-  novRemarks1      String?
-  novRemarks2      String?
-  december         String?
-  decRemarks1      String?
-  decRemarks2      String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-}
-
-model LoadAllowance2026 {
-  id               Int      @id @default(autoincrement())
-  employeeName     String?
-  employmentStatus String?
-  areaOfAssignment String?
-  january          String?
-  janRemark1       String?
-  janRemark2       String?
-  janRemark3       String?
-  janRemark4       String?
-  janRemark5       String?
-  february         String?
-  febRemark1       String?
-  febRemark2       String?
-  febRemark3       String?
-  febRemark4       String?
-  febRemark5       String?
-  march            String?
-  marRemark1       String?
-  marRemark2       String?
-  marRemark3       String?
-  marRemark4       String?
-  marRemark5       String?
-  april            String?
-  aprRemark1       String?
-  aprRemark2       String?
-  aprRemark3       String?
-  aprRemark4       String?
-  aprRemark5       String?
-  may              String?
-  mayRemark1       String?
-  mayRemark2       String?
-  mayRemark3       String?
-  mayRemark4       String?
-  mayRemark5       String?
-  june             String?
-  junRemark1       String?
-  junRemark2       String?
-  junRemark3       String?
-  junRemark4       String?
-  junRemark5       String?
-  july             String?
-  julRemarks1      String?
-  julRemarks2      String?
-  julRemarks3      String?
-  julRemarks4      String?
-  julRemarks5      String?
-  august           String?
-  augRemarks1      String?
-  augRemarks2      String?
-  augRemarks3      String?
-  augRemarks4      String?
-  augRemarks5      String?
-  september        String?
-  sepRemarks1      String?
-  sepRemarks2      String?
-  sepRemarks3      String?
-  sepRemarks4      String?
-  sepRemarks5      String?
-  october          String?
-  octRemarks1      String?
-  octRemarks2      String?
-  octRemarks3      String?
-  octRemarks4      String?
-  octRemarks5      String?
-  november         String?
-  novRemarks1      String?
-  novRemarks2      String?
-  novRemarks3      String?
-  novRemarks4      String?
-  novRemarks5      String?
-  december         String?
-  decRemarks1      String?
-  decRemarks2      String?
-  decRemarks3      String?
-  decRemarks4      String?
-  decRemarks5      String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-}
-
-model MagnaCarta2026 {
-  id               Int         @id @default(autoincrement())
-  documentId       String?     @unique
-  document         AaDocument? @relation("MagnaCarta2026Document", fields: [documentId], references: [id], onDelete: SetNull, map: "MagnaCarta2026_documentId_fkey")
-  employeeName     String?
-  employmentStatus String?
-  areaOfAssignment String?
-  january          String?
-  janRemarks1      String?
-  janRemarks2      String?
-  february         String?
-  febRemarks1      String?
-  febRemarks2      String?
-  march            String?
-  marRemarks1      String?
-  marRemarks2      String?
-  april            String?
-  aprRemarks       String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
 }
 
 model LeaveForms {

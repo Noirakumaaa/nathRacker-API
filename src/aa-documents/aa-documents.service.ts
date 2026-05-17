@@ -8,7 +8,6 @@ import { PrismaService } from '../prisma/prisma.service.js';
 import { CreateAaDocumentDto } from './dto/create-aa-document.dto.js';
 import { UpdateAaDocumentDto } from './dto/update-aa-document.dto.js';
 import { QueryAaDocumentsDto } from './dto/query-aa-documents.dto.js';
-import { UpsertAaLoad26MonthlyDto } from './dto/upsert-aa-load26-monthly.dto.js';
 import { UpsertAaMonthlyDto } from './dto/upsert-aa-monthly.dto.js';
 import { AA_MODULE_CATALOG } from '../aa-modules/aa-module-catalog.js';
 import {
@@ -102,6 +101,8 @@ export class AaDocumentsService {
             operationNum: dto.operationNum ?? null,
             year: docYear,
             dateCreated: new Date(dto.dateCreated),
+            dateSubmittedJnt: dto.dateSubmittedJnt ? new Date(dto.dateSubmittedJnt) : null,
+            oo8Level: dto.oo8Level ?? null,
             moduleId: mod.id,
           },
           include: {
@@ -187,14 +188,14 @@ export class AaDocumentsService {
     return { exists: doc !== null };
   }
 
-  /** Single document with all remarks (and load26Monthly if present) */
+  /** Single document with all remarks (and monthlyData if present) */
   async findOne(id: string) {
     const doc = await this.prisma.client.aaDocument.findUnique({
       where: { id },
       include: {
         module: true,
         remarks: { orderBy: { order: 'asc' } },
-        load26Monthly: true,
+        monthlyData: true,
       },
     });
 
@@ -215,6 +216,10 @@ export class AaDocumentsService {
         ...(dto.dateCreated !== undefined && {
           dateCreated: new Date(dto.dateCreated),
         }),
+        ...(dto.dateSubmittedJnt !== undefined && {
+          dateSubmittedJnt: dto.dateSubmittedJnt ? new Date(dto.dateSubmittedJnt) : null,
+        }),
+        ...(dto.oo8Level !== undefined && { oo8Level: dto.oo8Level || null }),
       },
       include: {
         module: true,
@@ -320,7 +325,7 @@ export class AaDocumentsService {
    * Each module uses its own raw schema model so imports can preserve the
    * original worksheet headers, while also projecting into the AA tracking list.
    */
-  async importFromXlsx(moduleCode: string, buffer: Buffer, sheetName?: string) {
+  async importFromXlsx(moduleCode: string, buffer: Buffer, sheetName?: string, year?: number) {
     const definition = AA_IMPORT_DEFINITIONS_BY_CODE.get(
       moduleCode.toUpperCase(),
     );
@@ -330,7 +335,15 @@ export class AaDocumentsService {
       );
     }
 
-    const workbook = XLSX.read(buffer, { type: 'buffer', cellDates: true });
+    let workbook: XLSX.WorkBook;
+    try {
+      workbook = XLSX.read(buffer, { type: 'buffer', cellDates: true });
+    } catch (err) {
+      throw new BadRequestException(
+        `Workbook import failed for ${moduleCode.toUpperCase()}. Please upload a valid AA workbook and try again.`,
+      );
+    }
+
     const targetSheet = this.resolveTargetSheetName(
       workbook,
       definition,
@@ -346,9 +359,8 @@ export class AaDocumentsService {
     try {
       parsed = this.parseSheetRows(definition, workbook.Sheets[targetSheet]);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
       throw new BadRequestException(
-        `Failed to read sheet "${targetSheet}": ${msg}. Please check that the file format matches the expected layout.`,
+        `Workbook import failed for ${moduleCode.toUpperCase()}. Please check that the selected sheet matches the expected AA module layout and try again.`,
       );
     }
     const mod = await this.findModuleOrThrow(moduleCode);
@@ -358,20 +370,38 @@ export class AaDocumentsService {
       );
     }
 
-    const imported = await this.persistParsedRows(
-      moduleCode,
-      definition,
-      parsed,
-    );
+    let result: { imported: number; skipped: number };
+    try {
+      result = await this.persistParsedRows(
+        moduleCode,
+        definition,
+        parsed,
+        year,
+      );
+    } catch (err) {
+      throw new BadRequestException(
+        `Workbook import failed for ${moduleCode.toUpperCase()}. Please verify the workbook content and try again.`,
+      );
+    }
+
     return {
-      imported,
+      imported: result.imported,
+      skipped: result.skipped,
       sheet: targetSheet,
       moduleCode: moduleCode.toUpperCase(),
     };
   }
 
-  async importWorkbook(buffer: Buffer) {
-    const workbook = XLSX.read(buffer, { type: 'buffer', cellDates: true });
+  async importWorkbook(buffer: Buffer, year?: number) {
+    let workbook: XLSX.WorkBook;
+    try {
+      workbook = XLSX.read(buffer, { type: 'buffer', cellDates: true });
+    } catch (err) {
+      throw new BadRequestException(
+        'Workbook import failed. Please upload a valid AA workbook and try again.',
+      );
+    }
+
     if (workbook.SheetNames.length === 0) {
       throw new BadRequestException(
         'This file appears to have no sheets. Please check that it is a valid Excel file.',
@@ -382,6 +412,7 @@ export class AaDocumentsService {
       moduleCode: string;
       sheet: string;
       imported: number;
+      skipped: number;
     }> = [];
     const skippedSheets: Array<{
       moduleCode: string;
@@ -401,55 +432,68 @@ export class AaDocumentsService {
       try {
         parsed = this.parseSheetRows(definition, workbook.Sheets[sheetName]);
       } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err);
         skippedSheets.push({
           moduleCode: definition.code,
           sheet: sheetName,
-          reason: `Failed to read sheet data: ${msg}`,
+          reason:
+            'Workbook import failed for this sheet. Please verify the worksheet format and try again.',
         });
         continue;
       }
 
       if (parsed.length === 0) {
-        skippedSheets.push({
-          moduleCode: definition.code,
-          sheet: sheetName,
-          reason: 'No importable rows found.',
+        const allRows = XLSX.utils.sheet_to_json<unknown[]>(workbook.Sheets[sheetName], {
+          header: 1,
+          defval: '',
+          raw: false,
         });
+        const totalRaw = Math.max(0, allRows.length - definition.dataStartRow);
+        const requiredDesc = definition.requiredAll
+          ? `all of: ${definition.requiredAll.join(', ')}`
+          : `at least ${definition.requiredAnyCount ?? 1} of: ${(definition.requiredAny ?? []).join(', ')}`;
+        const reason = totalRaw === 0
+          ? `Sheet appears to be empty (no rows after header).`
+          : `${totalRaw} row(s) scanned but none passed validation. Required fields: ${requiredDesc}.`;
+        console.warn(`[AA Import] Zero rows for sheet "${sheetName}" (${definition.code}): ${reason}`);
+        skippedSheets.push({ moduleCode: definition.code, sheet: sheetName, reason });
         continue;
       }
 
       try {
-        const imported = await this.persistParsedRows(
+        const result = await this.persistParsedRows(
           definition.code,
           definition,
           parsed,
+          year,
         );
         importedModules.push({
           moduleCode: definition.code,
           sheet: sheetName,
-          imported,
+          imported: result.imported,
+          skipped: result.skipped,
         });
       } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err);
-        skippedSheets.push({
-          moduleCode: definition.code,
-          sheet: sheetName,
-          reason: `Failed to save rows: ${msg}`,
-        });
+        const errMsg = err instanceof Error ? err.message : String(err);
+        const isTimeout = errMsg.includes('expired transaction') || errMsg.includes('timeout');
+        const reason = isTimeout
+          ? `Transaction timed out — too many rows to insert at once (${parsed.length} rows). Try splitting the sheet into smaller imports.`
+          : `Failed while saving rows: ${errMsg.slice(0, 200)}`;
+        console.error(`[AA Import] Failed to persist sheet "${sheetName}" (${definition.code}):`, err);
+        skippedSheets.push({ moduleCode: definition.code, sheet: sheetName, reason });
       }
     }
 
     if (importedModules.length === 0) {
       throw new BadRequestException(
         unmatchedSheets.length > 0
-          ? `No matching AA sheets were imported. Unmatched sheets: ${unmatchedSheets.join(', ')}`
-          : 'No matching AA sheets contained importable rows.',
+          ? 'No supported AA sheets were found in the workbook. Please upload a workbook containing valid AA module sheets.'
+          : 'No supported AA sheets contained importable data. Please verify that your workbook contains valid AA module rows.',
       );
     }
 
     return {
       imported: importedModules.reduce((sum, item) => sum + item.imported, 0),
+      skipped: importedModules.reduce((sum, item) => sum + item.skipped, 0),
       importedModules,
       skippedSheets,
       unmatchedSheets,
@@ -535,7 +579,15 @@ export class AaDocumentsService {
           .map((field) => rawData[field] ?? '')
           .filter(Boolean);
 
-        return { rawData, staffName, subject, dateCreated, remarks };
+        const dateSubmittedJntIndexes =
+          definition.columns.find((col) => col.field === 'dateSubmittedJnt')
+            ?.indexes ?? [];
+        const dateSubmittedJnt =
+          dateSubmittedJntIndexes.length > 0
+            ? this.parseOptionalDate(row, dateSubmittedJntIndexes)
+            : null;
+
+        return { rawData, staffName, subject, dateCreated, dateSubmittedJnt, remarks };
       })
       .filter(
         (
@@ -545,6 +597,7 @@ export class AaDocumentsService {
           staffName: string;
           subject: string;
           dateCreated: Date;
+          dateSubmittedJnt: Date | null;
           remarks: string[];
         } => row !== null,
       );
@@ -554,7 +607,7 @@ export class AaDocumentsService {
     definition: AaImportDefinition,
     allRows: unknown[][],
   ) {
-    if (definition.code !== 'LOAD26') return false;
+    if (definition.code !== 'LOAD') return false;
 
     const headerRow = allRows[0] ?? [];
     return headerRow.length > 0 && headerRow.length <= 45;
@@ -630,17 +683,43 @@ export class AaDocumentsService {
       staffName: string;
       subject: string;
       dateCreated: Date;
+      dateSubmittedJnt: Date | null;
       remarks: string[];
     }>,
-  ) {
-    return this.prisma.client.$transaction(
-      async (tx) => {
-        const mod = await tx.aaDocumentModule.findUnique({
-          where: { code: moduleCode.toUpperCase() },
-        });
-        if (!mod)
-          throw new NotFoundException(`Module "${moduleCode}" not found.`);
+    overrideYear?: number,
+  ): Promise<{ imported: number; skipped: number }> {
+    const mod = await this.prisma.client.aaDocumentModule.findUnique({
+      where: { code: moduleCode.toUpperCase() },
+    });
+    if (!mod) throw new NotFoundException(`Module "${moduleCode}" not found.`);
 
+    // Resolve year for every row upfront
+    const rowsWithYear = parsed.map((row) => ({
+      ...row,
+      year: overrideYear ?? row.dateCreated.getFullYear(),
+      staffName: row.staffName || 'N/A',
+      subject: row.subject || 'Imported record',
+    }));
+
+    // Single batch query — fetch all existing staffName+subject+year combos for this module
+    const uniqueYears = [...new Set(rowsWithYear.map((r) => r.year))];
+    const existing = await this.prisma.client.aaDocument.findMany({
+      where: { moduleId: mod.id, year: { in: uniqueYears } },
+      select: { staffName: true, subject: true, year: true },
+    });
+    const existingSet = new Set(
+      existing.map((d) => `${d.year}|${d.staffName}|${d.subject}`),
+    );
+
+    const toInsert = rowsWithYear.filter(
+      (row) => !existingSet.has(`${row.year}|${row.staffName}|${row.subject}`),
+    );
+    const skipped = parsed.length - toInsert.length;
+
+    if (toInsert.length === 0) return { imported: 0, skipped };
+
+    await this.prisma.client.$transaction(
+      async (tx) => {
         // Build a per-year sequence map from existing data
         const seqByYear = new Map<number, number>();
         const yearNextSeq = async (year: number): Promise<number> => {
@@ -666,24 +745,18 @@ export class AaDocumentsService {
           }
         >;
 
-        for (const row of parsed) {
-          await this.createRawModuleRecord(
-            rawModuleClient,
-            definition.delegate,
-            row.rawData,
-          );
-
-          const rowYear = row.dateCreated.getFullYear();
-          const seq = await yearNextSeq(rowYear);
+        for (const row of toInsert) {
+          const seq = await yearNextSeq(row.year);
           const trackingNo = `${mod.prefix}-${String(seq).padStart(4, '0')}`;
           const doc = await tx.aaDocument.create({
             data: {
               trackingNo,
               sequence: seq,
-              staffName: row.staffName || 'N/A',
-              subject: row.subject || 'Imported record',
-              year: rowYear,
+              staffName: row.staffName,
+              subject: row.subject,
+              year: row.year,
               dateCreated: row.dateCreated,
+              dateSubmittedJnt: row.dateSubmittedJnt ?? null,
               moduleId: mod.id,
             },
           });
@@ -699,113 +772,35 @@ export class AaDocumentsService {
             });
           }
 
-          // For monthly-grid modules, link the raw record to the document
-          const upperCode = moduleCode.toUpperCase();
-          const monthlyDelegate = AaDocumentsService.MODULE_TO_DELEGATE[upperCode];
-          if (monthlyDelegate) {
-            const allowed = new Set(AaDocumentsService.MONTHLY_FIELDS[monthlyDelegate] ?? []);
+          if (definition.delegate === 'aaMonthlyData') {
             const monthlyData = Object.fromEntries(
-              Object.entries(row.rawData).filter(([k]) => allowed.has(k)),
+              Object.entries(row.rawData).filter(([, value]) => value !== undefined),
             );
-            const mc = tx as unknown as Record<
-              string,
-              { create: (args: { data: Record<string, unknown> }) => Promise<unknown> }
-            >;
-            await mc[monthlyDelegate].create({
-              data: { documentId: doc.id, ...monthlyData },
+            await tx.aaMonthlyData.create({
+              data: { documentId: doc.id, data: monthlyData },
             });
+          } else {
+            await this.createRawModuleRecord(
+              rawModuleClient,
+              definition.delegate,
+              row.rawData,
+            );
           }
-
-          if (upperCode === 'LOAD26') {
-            await tx.aaLoad26Monthly.create({
-              data: {
-                documentId: doc.id,
-                january:    row.rawData['january'],
-                janRemark1: row.rawData['janRemark1'],
-                janRemark2: row.rawData['janRemark2'],
-                janRemark3: row.rawData['janRemark3'],
-                janRemark4: row.rawData['janRemark4'],
-                janRemark5: row.rawData['janRemark5'],
-                february:   row.rawData['february'],
-                febRemark1: row.rawData['febRemark1'],
-                febRemark2: row.rawData['febRemark2'],
-                febRemark3: row.rawData['febRemark3'],
-                febRemark4: row.rawData['febRemark4'],
-                febRemark5: row.rawData['febRemark5'],
-                march:      row.rawData['march'],
-                marRemark1: row.rawData['marRemark1'],
-                marRemark2: row.rawData['marRemark2'],
-                marRemark3: row.rawData['marRemark3'],
-                marRemark4: row.rawData['marRemark4'],
-                marRemark5: row.rawData['marRemark5'],
-                april:      row.rawData['april'],
-                aprRemark1: row.rawData['aprRemark1'],
-                aprRemark2: row.rawData['aprRemark2'],
-                aprRemark3: row.rawData['aprRemark3'],
-                aprRemark4: row.rawData['aprRemark4'],
-                aprRemark5: row.rawData['aprRemark5'],
-                may:        row.rawData['may'],
-                mayRemark1: row.rawData['mayRemark1'],
-                mayRemark2: row.rawData['mayRemark2'],
-                mayRemark3: row.rawData['mayRemark3'],
-                mayRemark4: row.rawData['mayRemark4'],
-                mayRemark5: row.rawData['mayRemark5'],
-                june:       row.rawData['june'],
-                junRemark1: row.rawData['junRemark1'],
-                junRemark2: row.rawData['junRemark2'],
-                junRemark3: row.rawData['junRemark3'],
-                junRemark4: row.rawData['junRemark4'],
-                junRemark5: row.rawData['junRemark5'],
-                july:        row.rawData['july'],
-                julRemarks1: row.rawData['julRemarks1'],
-                julRemarks2: row.rawData['julRemarks2'],
-                julRemarks3: row.rawData['julRemarks3'],
-                julRemarks4: row.rawData['julRemarks4'],
-                julRemarks5: row.rawData['julRemarks5'],
-                august:      row.rawData['august'],
-                augRemarks1: row.rawData['augRemarks1'],
-                augRemarks2: row.rawData['augRemarks2'],
-                augRemarks3: row.rawData['augRemarks3'],
-                augRemarks4: row.rawData['augRemarks4'],
-                augRemarks5: row.rawData['augRemarks5'],
-                september:   row.rawData['september'],
-                sepRemarks1: row.rawData['sepRemarks1'],
-                sepRemarks2: row.rawData['sepRemarks2'],
-                sepRemarks3: row.rawData['sepRemarks3'],
-                sepRemarks4: row.rawData['sepRemarks4'],
-                sepRemarks5: row.rawData['sepRemarks5'],
-                october:     row.rawData['october'],
-                octRemarks1: row.rawData['octRemarks1'],
-                octRemarks2: row.rawData['octRemarks2'],
-                octRemarks3: row.rawData['octRemarks3'],
-                octRemarks4: row.rawData['octRemarks4'],
-                octRemarks5: row.rawData['octRemarks5'],
-                november:    row.rawData['november'],
-                novRemarks1: row.rawData['novRemarks1'],
-                novRemarks2: row.rawData['novRemarks2'],
-                novRemarks3: row.rawData['novRemarks3'],
-                novRemarks4: row.rawData['novRemarks4'],
-                novRemarks5: row.rawData['novRemarks5'],
-                december:    row.rawData['december'],
-                decRemarks1: row.rawData['decRemarks1'],
-                decRemarks2: row.rawData['decRemarks2'],
-                decRemarks3: row.rawData['decRemarks3'],
-                decRemarks4: row.rawData['decRemarks4'],
-                decRemarks5: row.rawData['decRemarks5'],
-              },
-            });
-          }
-
         }
-
-        return parsed.length;
       },
-      { isolationLevel: 'Serializable' },
+      { isolationLevel: 'Serializable', timeout: 120_000 },
     );
+
+    return { imported: toInsert.length, skipped };
   }
 
   private normalizeSheetName(sheetName: string) {
-    return sheetName.trim().replace(/\s+/g, ' ').toUpperCase();
+    return sheetName
+      .trim()
+      .replace(/\s+/g, ' ')
+      .toUpperCase()
+      .replace(/\s*(19|20)\d{2}\b/g, '')
+      .trim();
   }
 
   private findDefinitionBySheetName(sheetName: string) {
@@ -843,7 +838,21 @@ export class AaDocumentsService {
     const delegate = rawClient[definition.delegate];
     if (!delegate?.findMany) return [];
 
-    return delegate.findMany({ orderBy: { id: 'asc' } });
+    const rows = await delegate.findMany({ orderBy: { id: 'asc' } });
+    return rows.map((row) => {
+      if (
+        row &&
+        typeof row === 'object' &&
+        !Array.isArray(row) &&
+        'data' in row &&
+        row.data &&
+        typeof row.data === 'object' &&
+        !Array.isArray(row.data)
+      ) {
+        return { ...row, ...(row.data as Record<string, unknown>) };
+      }
+      return row;
+    });
   }
 
   private buildExportHeaderRow(definition: AaImportDefinition) {
@@ -930,9 +939,9 @@ export class AaDocumentsService {
     }
 
     if (/remarks/i.test(field) || /remark/i.test(field)) {
-      if (moduleCode === 'COAWTR26') return 'Remarks/Date(M&E)';
-      if (moduleCode === 'LOAD26') return 'Remark';
-      if (['MAGNA26', 'IPCRF25', 'SALN26'].includes(moduleCode)) {
+      if (moduleCode === 'COAWTR') return 'Remarks/Date(M&E)';
+      if (moduleCode === 'LOAD') return 'Remark';
+      if (['MAGNA', 'IPCRF', 'SALN'].includes(moduleCode)) {
         return 'REMARKS';
       }
       if (moduleCode === 'MRBTOF' && field === 'remarks') return 'REMARKS';
@@ -986,7 +995,7 @@ export class AaDocumentsService {
     };
 
     if (field === 'employmentStatus') {
-      return ['COCOT', 'DTR26', 'LOAD26'].includes(moduleCode)
+      return ['COCOT', 'DTR', 'LOAD'].includes(moduleCode)
         ? 'EMPLOYEE STATUS'
         : 'STATUS OF EMPLOYMENT';
     }
@@ -1016,6 +1025,35 @@ export class AaDocumentsService {
     }
 
     return true;
+  }
+
+  private parseOptionalDate(row: unknown[], indexes: number[]): Date | null {
+    const rawValue = indexes
+      .map((index) => row[index])
+      .find(
+        (value) =>
+          value !== undefined &&
+          value !== null &&
+          this.stringifyCellValue(value).trim() !== '',
+      );
+
+    if (!rawValue) return null;
+
+    if (rawValue instanceof Date) return rawValue;
+
+    if (typeof rawValue === 'number' && rawValue > 0) {
+      const excelEpoch = new Date(1899, 11, 30);
+      const candidate = new Date(excelEpoch.getTime() + rawValue * 86400000);
+      if (!Number.isNaN(candidate.getTime())) return candidate;
+    }
+
+    const normalizedDate = this.stringifyCellValue(rawValue)
+      .replace(/jnuary/gi, 'January')
+      .replace(/febuary/gi, 'February')
+      .replace(/arpril/gi, 'April');
+
+    const parsed = new Date(normalizedDate);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
   }
 
   private parseModuleDate(row: unknown[], indexes: number[]) {
@@ -1136,11 +1174,11 @@ export class AaDocumentsService {
     return rawModuleClient[delegate].create({ data: rawData });
   }
 
-  // ─── Generic Monthly Grid (COAWTR26 / HAZARD26 / TEV26 / MAGNA26 / LOAD26) ─
+  // ─── Generic Monthly Grid (COAWTR / HAZARD / TEV / MAGNA / LOAD) ─
 
   /** Fields allowed per raw-model delegate (keeps Prisma from rejecting unknown keys) */
   private static readonly MONTHLY_FIELDS: Record<string, string[]> = {
-    coaWTr2026: [
+    COAWTR: [
       'january','janRemarksMe1','janRemarksMe2',
       'february','febRemarksMe',
       'march','marRemarksMe',
@@ -1149,7 +1187,7 @@ export class AaDocumentsService {
       'june','junRemarksMe',
       'july','julRemarksMe',
     ],
-    hazard2026: [
+    HAZARD: [
       'january','janRemarks1','janRemarks2',
       'february','febRemarks1','febRemarks2',
       'march','marRemarks1','marRemarks2',
@@ -1163,7 +1201,7 @@ export class AaDocumentsService {
       'november','novRemarks1','novRemarks2',
       'december','decRemarks1','decRemarks2',
     ],
-    tev2026: [
+    TEV: [
       'january','janRemarks1','janRemarks2','janRemarks3',
       'february','febRemarks1','febRemarks2',
       'march','marRemarks1','marRemarks2',
@@ -1178,79 +1216,61 @@ export class AaDocumentsService {
       'november','novRemarks1','novRemarks2',
       'december','decRemarks1','decRemarks2',
     ],
-    magnaCarta2026: [
+    MAGNA: [
       'january','janRemarks1','janRemarks2',
       'february','febRemarks1','febRemarks2',
       'march','marRemarks1','marRemarks2',
       'april','aprRemarks',
     ],
-  };
-
-  private static readonly MODULE_TO_DELEGATE: Record<string, string> = {
-    COAWTR26: 'coaWTr2026',
-    HAZARD26: 'hazard2026',
-    TEV26:    'tev2026',
-    MAGNA26:  'magnaCarta2026',
+    LOAD: [
+      'january','janRemark1','janRemark2','janRemark3','janRemark4','janRemark5',
+      'february','febRemark1','febRemark2','febRemark3','febRemark4','febRemark5',
+      'march','marRemark1','marRemark2','marRemark3','marRemark4','marRemark5',
+      'april','aprRemark1','aprRemark2','aprRemark3','aprRemark4','aprRemark5',
+      'may','mayRemark1','mayRemark2','mayRemark3','mayRemark4','mayRemark5',
+      'june','junRemark1','junRemark2','junRemark3','junRemark4','junRemark5',
+      'july','julRemarks1','julRemarks2','julRemarks3','julRemarks4','julRemarks5',
+      'august','augRemarks1','augRemarks2','augRemarks3','augRemarks4','augRemarks5',
+      'september','sepRemarks1','sepRemarks2','sepRemarks3','sepRemarks4','sepRemarks5',
+      'october','octRemarks1','octRemarks2','octRemarks3','octRemarks4','octRemarks5',
+      'november','novRemarks1','novRemarks2','novRemarks3','novRemarks4','novRemarks5',
+      'december','decRemarks1','decRemarks2','decRemarks3','decRemarks4','decRemarks5',
+    ],
   };
 
   async getMonthly(documentId: string) {
     const doc = await this.findOne(documentId);
-    const delegate = AaDocumentsService.MODULE_TO_DELEGATE[doc.module?.code ?? ''];
-    if (!delegate) return null;
+    if (!doc.module?.isMonthly) return null;
 
-    const rawClient = this.prisma.client as unknown as Record<
-      string,
-      { findUnique: (args: { where: Record<string, string> }) => Promise<unknown> }
-    >;
-    return rawClient[delegate]?.findUnique({ where: { documentId } }) ?? null;
+    return this.prisma.client.aaMonthlyData.findUnique({
+      where: { documentId },
+    });
   }
 
-  async upsertMonthly(documentId: string, dto: UpsertAaMonthlyDto) {
+  async upsertMonthly(documentId: string, body: Record<string, unknown>) {
     const doc = await this.findOne(documentId);
-    const delegate = AaDocumentsService.MODULE_TO_DELEGATE[doc.module?.code ?? ''];
-    if (!delegate) {
+    if (!doc.module?.isMonthly) {
       throw new BadRequestException(
         `Module "${doc.module?.code}" does not have a monthly grid.`,
       );
     }
 
-    const allowed = new Set(AaDocumentsService.MONTHLY_FIELDS[delegate] ?? []);
-    const data = Object.fromEntries(
-      Object.entries(dto).filter(([k, v]) => allowed.has(k) && v !== undefined),
-    );
-
-    const rawClient = this.prisma.client as unknown as Record<
-      string,
-      {
-        upsert: (args: {
-          where: Record<string, string>;
-          create: Record<string, unknown>;
-          update: Record<string, unknown>;
-        }) => Promise<unknown>;
+    // Accept only string values and string arrays (sanitize unknown types)
+    const data: Record<string, string | string[]> = {};
+    for (const [k, v] of Object.entries(body)) {
+      if (typeof v === 'string') {
+        data[k] = v;
+      } else if (Array.isArray(v) && v.every((item) => typeof item === 'string')) {
+        data[k] = v as string[];
       }
-    >;
-    return rawClient[delegate].upsert({
-      where: { documentId },
-      create: { documentId, ...data },
-      update: data,
-    });
-  }
+    }
 
-  // ─── LOAD26 Monthly ────────────────────────────────────────────────────────
-
-  async getLoad26Monthly(documentId: string) {
-    await this.findOne(documentId); // throws 404 if doc doesn't exist
-    return this.prisma.client.aaLoad26Monthly.findUnique({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const jsonData = data as any;
+    return this.prisma.client.aaMonthlyData.upsert({
       where: { documentId },
-    });
-  }
-
-  async upsertLoad26Monthly(documentId: string, dto: UpsertAaLoad26MonthlyDto) {
-    await this.findOne(documentId); // throws 404 if doc doesn't exist
-    return this.prisma.client.aaLoad26Monthly.upsert({
-      where: { documentId },
-      create: { documentId, ...dto },
-      update: { ...dto },
+      create: { documentId, data: jsonData },
+      update: { data: jsonData },
     });
   }
 }

@@ -19,15 +19,13 @@ const newUsers = [
     lastName: 'ADMIN',
     middleName: 'ADMIN',
     govUsername: 'ADMIN',
-    email: 'hernandezlnathaniel9@@gmail.com',
+    email: 'hernandezlnathaniel9@gmail.com',
     password: 'ADMINADMIN#01',
     phone: '09000000000',
     role: 'ADMIN' as const,
     assignedLGUID: 4,
     assignedOperationId: 8,
     assignedBarangayId: 1,
-<<<<<<< HEAD
-=======
   },
   {
     firstName: 'NATHANIEL',
@@ -54,7 +52,6 @@ const newUsers = [
     assignedLGUID: 4,
     assignedOperationId: 8,
     assignedBarangayId: 1,
->>>>>>> e038e52bb1f6ada54b7b925b73c3dfd96bd07c3b
   },
 ];
 

@@ -45,6 +45,8 @@ export type AaDocumentMinAggregateOutputType = {
   operationNum: string | null
   year: number | null
   dateCreated: Date | null
+  dateSubmittedJnt: Date | null
+  oo8Level: string | null
   moduleId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -59,6 +61,8 @@ export type AaDocumentMaxAggregateOutputType = {
   operationNum: string | null
   year: number | null
   dateCreated: Date | null
+  dateSubmittedJnt: Date | null
+  oo8Level: string | null
   moduleId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -73,6 +77,8 @@ export type AaDocumentCountAggregateOutputType = {
   operationNum: number
   year: number
   dateCreated: number
+  dateSubmittedJnt: number
+  oo8Level: number
   moduleId: number
   createdAt: number
   updatedAt: number
@@ -99,6 +105,8 @@ export type AaDocumentMinAggregateInputType = {
   operationNum?: true
   year?: true
   dateCreated?: true
+  dateSubmittedJnt?: true
+  oo8Level?: true
   moduleId?: true
   createdAt?: true
   updatedAt?: true
@@ -113,6 +121,8 @@ export type AaDocumentMaxAggregateInputType = {
   operationNum?: true
   year?: true
   dateCreated?: true
+  dateSubmittedJnt?: true
+  oo8Level?: true
   moduleId?: true
   createdAt?: true
   updatedAt?: true
@@ -127,6 +137,8 @@ export type AaDocumentCountAggregateInputType = {
   operationNum?: true
   year?: true
   dateCreated?: true
+  dateSubmittedJnt?: true
+  oo8Level?: true
   moduleId?: true
   createdAt?: true
   updatedAt?: true
@@ -228,6 +240,8 @@ export type AaDocumentGroupByOutputType = {
   operationNum: string | null
   year: number
   dateCreated: Date
+  dateSubmittedJnt: Date | null
+  oo8Level: string | null
   moduleId: string
   createdAt: Date
   updatedAt: Date
@@ -265,16 +279,14 @@ export type AaDocumentWhereInput = {
   operationNum?: Prisma.StringNullableFilter<"AaDocument"> | string | null
   year?: Prisma.IntFilter<"AaDocument"> | number
   dateCreated?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
+  dateSubmittedJnt?: Prisma.DateTimeNullableFilter<"AaDocument"> | Date | string | null
+  oo8Level?: Prisma.StringNullableFilter<"AaDocument"> | string | null
   moduleId?: Prisma.StringFilter<"AaDocument"> | string
   createdAt?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
   module?: Prisma.XOR<Prisma.AaDocumentModuleScalarRelationFilter, Prisma.AaDocumentModuleWhereInput>
   remarks?: Prisma.AaRemarkListRelationFilter
-  load26Monthly?: Prisma.XOR<Prisma.AaLoad26MonthlyNullableScalarRelationFilter, Prisma.AaLoad26MonthlyWhereInput> | null
-  coaWtr26?: Prisma.XOR<Prisma.CoaWTr2026NullableScalarRelationFilter, Prisma.CoaWTr2026WhereInput> | null
-  hazard26?: Prisma.XOR<Prisma.Hazard2026NullableScalarRelationFilter, Prisma.Hazard2026WhereInput> | null
-  tev26?: Prisma.XOR<Prisma.Tev2026NullableScalarRelationFilter, Prisma.Tev2026WhereInput> | null
-  magna26?: Prisma.XOR<Prisma.MagnaCarta2026NullableScalarRelationFilter, Prisma.MagnaCarta2026WhereInput> | null
+  monthlyData?: Prisma.XOR<Prisma.AaMonthlyDataNullableScalarRelationFilter, Prisma.AaMonthlyDataWhereInput> | null
 }
 
 export type AaDocumentOrderByWithRelationInput = {
@@ -286,16 +298,14 @@ export type AaDocumentOrderByWithRelationInput = {
   operationNum?: Prisma.SortOrderInput | Prisma.SortOrder
   year?: Prisma.SortOrder
   dateCreated?: Prisma.SortOrder
+  dateSubmittedJnt?: Prisma.SortOrderInput | Prisma.SortOrder
+  oo8Level?: Prisma.SortOrderInput | Prisma.SortOrder
   moduleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   module?: Prisma.AaDocumentModuleOrderByWithRelationInput
   remarks?: Prisma.AaRemarkOrderByRelationAggregateInput
-  load26Monthly?: Prisma.AaLoad26MonthlyOrderByWithRelationInput
-  coaWtr26?: Prisma.CoaWTr2026OrderByWithRelationInput
-  hazard26?: Prisma.Hazard2026OrderByWithRelationInput
-  tev26?: Prisma.Tev2026OrderByWithRelationInput
-  magna26?: Prisma.MagnaCarta2026OrderByWithRelationInput
+  monthlyData?: Prisma.AaMonthlyDataOrderByWithRelationInput
 }
 
 export type AaDocumentWhereUniqueInput = Prisma.AtLeast<{
@@ -312,16 +322,14 @@ export type AaDocumentWhereUniqueInput = Prisma.AtLeast<{
   operationNum?: Prisma.StringNullableFilter<"AaDocument"> | string | null
   year?: Prisma.IntFilter<"AaDocument"> | number
   dateCreated?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
+  dateSubmittedJnt?: Prisma.DateTimeNullableFilter<"AaDocument"> | Date | string | null
+  oo8Level?: Prisma.StringNullableFilter<"AaDocument"> | string | null
   moduleId?: Prisma.StringFilter<"AaDocument"> | string
   createdAt?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
   module?: Prisma.XOR<Prisma.AaDocumentModuleScalarRelationFilter, Prisma.AaDocumentModuleWhereInput>
   remarks?: Prisma.AaRemarkListRelationFilter
-  load26Monthly?: Prisma.XOR<Prisma.AaLoad26MonthlyNullableScalarRelationFilter, Prisma.AaLoad26MonthlyWhereInput> | null
-  coaWtr26?: Prisma.XOR<Prisma.CoaWTr2026NullableScalarRelationFilter, Prisma.CoaWTr2026WhereInput> | null
-  hazard26?: Prisma.XOR<Prisma.Hazard2026NullableScalarRelationFilter, Prisma.Hazard2026WhereInput> | null
-  tev26?: Prisma.XOR<Prisma.Tev2026NullableScalarRelationFilter, Prisma.Tev2026WhereInput> | null
-  magna26?: Prisma.XOR<Prisma.MagnaCarta2026NullableScalarRelationFilter, Prisma.MagnaCarta2026WhereInput> | null
+  monthlyData?: Prisma.XOR<Prisma.AaMonthlyDataNullableScalarRelationFilter, Prisma.AaMonthlyDataWhereInput> | null
 }, "id" | "moduleId_year_sequence" | "moduleId_year_trackingNo">
 
 export type AaDocumentOrderByWithAggregationInput = {
@@ -333,6 +341,8 @@ export type AaDocumentOrderByWithAggregationInput = {
   operationNum?: Prisma.SortOrderInput | Prisma.SortOrder
   year?: Prisma.SortOrder
   dateCreated?: Prisma.SortOrder
+  dateSubmittedJnt?: Prisma.SortOrderInput | Prisma.SortOrder
+  oo8Level?: Prisma.SortOrderInput | Prisma.SortOrder
   moduleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -355,6 +365,8 @@ export type AaDocumentScalarWhereWithAggregatesInput = {
   operationNum?: Prisma.StringNullableWithAggregatesFilter<"AaDocument"> | string | null
   year?: Prisma.IntWithAggregatesFilter<"AaDocument"> | number
   dateCreated?: Prisma.DateTimeWithAggregatesFilter<"AaDocument"> | Date | string
+  dateSubmittedJnt?: Prisma.DateTimeNullableWithAggregatesFilter<"AaDocument"> | Date | string | null
+  oo8Level?: Prisma.StringNullableWithAggregatesFilter<"AaDocument"> | string | null
   moduleId?: Prisma.StringWithAggregatesFilter<"AaDocument"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AaDocument"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AaDocument"> | Date | string
@@ -367,17 +379,15 @@ export type AaDocumentCreateInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
   remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
+  monthlyData?: Prisma.AaMonthlyDataCreateNestedOneWithoutDocumentInput
 }
 
 export type AaDocumentUncheckedCreateInput = {
@@ -387,17 +397,15 @@ export type AaDocumentUncheckedCreateInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   moduleId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
+  monthlyData?: Prisma.AaMonthlyDataUncheckedCreateNestedOneWithoutDocumentInput
 }
 
 export type AaDocumentUpdateInput = {
@@ -409,15 +417,13 @@ export type AaDocumentUpdateInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
   remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
+  monthlyData?: Prisma.AaMonthlyDataUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentUncheckedUpdateInput = {
@@ -429,15 +435,13 @@ export type AaDocumentUncheckedUpdateInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moduleId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
+  monthlyData?: Prisma.AaMonthlyDataUncheckedUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentCreateManyInput = {
@@ -447,8 +451,10 @@ export type AaDocumentCreateManyInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   moduleId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -463,6 +469,8 @@ export type AaDocumentUpdateManyMutationInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -476,6 +484,8 @@ export type AaDocumentUncheckedUpdateManyInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moduleId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -512,6 +522,8 @@ export type AaDocumentCountOrderByAggregateInput = {
   operationNum?: Prisma.SortOrder
   year?: Prisma.SortOrder
   dateCreated?: Prisma.SortOrder
+  dateSubmittedJnt?: Prisma.SortOrder
+  oo8Level?: Prisma.SortOrder
   moduleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -531,6 +543,8 @@ export type AaDocumentMaxOrderByAggregateInput = {
   operationNum?: Prisma.SortOrder
   year?: Prisma.SortOrder
   dateCreated?: Prisma.SortOrder
+  dateSubmittedJnt?: Prisma.SortOrder
+  oo8Level?: Prisma.SortOrder
   moduleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -545,6 +559,8 @@ export type AaDocumentMinOrderByAggregateInput = {
   operationNum?: Prisma.SortOrder
   year?: Prisma.SortOrder
   dateCreated?: Prisma.SortOrder
+  dateSubmittedJnt?: Prisma.SortOrder
+  oo8Level?: Prisma.SortOrder
   moduleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -558,11 +574,6 @@ export type AaDocumentSumOrderByAggregateInput = {
 export type AaDocumentScalarRelationFilter = {
   is?: Prisma.AaDocumentWhereInput
   isNot?: Prisma.AaDocumentWhereInput
-}
-
-export type AaDocumentNullableScalarRelationFilter = {
-  is?: Prisma.AaDocumentWhereInput | null
-  isNot?: Prisma.AaDocumentWhereInput | null
 }
 
 export type AaDocumentCreateNestedManyWithoutModuleInput = {
@@ -607,18 +618,22 @@ export type AaDocumentUncheckedUpdateManyWithoutModuleNestedInput = {
   deleteMany?: Prisma.AaDocumentScalarWhereInput | Prisma.AaDocumentScalarWhereInput[]
 }
 
-export type AaDocumentCreateNestedOneWithoutLoad26MonthlyInput = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutLoad26MonthlyInput, Prisma.AaDocumentUncheckedCreateWithoutLoad26MonthlyInput>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutLoad26MonthlyInput
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
+export type AaDocumentCreateNestedOneWithoutMonthlyDataInput = {
+  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutMonthlyDataInput, Prisma.AaDocumentUncheckedCreateWithoutMonthlyDataInput>
+  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutMonthlyDataInput
   connect?: Prisma.AaDocumentWhereUniqueInput
 }
 
-export type AaDocumentUpdateOneRequiredWithoutLoad26MonthlyNestedInput = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutLoad26MonthlyInput, Prisma.AaDocumentUncheckedCreateWithoutLoad26MonthlyInput>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutLoad26MonthlyInput
-  upsert?: Prisma.AaDocumentUpsertWithoutLoad26MonthlyInput
+export type AaDocumentUpdateOneRequiredWithoutMonthlyDataNestedInput = {
+  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutMonthlyDataInput, Prisma.AaDocumentUncheckedCreateWithoutMonthlyDataInput>
+  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutMonthlyDataInput
+  upsert?: Prisma.AaDocumentUpsertWithoutMonthlyDataInput
   connect?: Prisma.AaDocumentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutLoad26MonthlyInput, Prisma.AaDocumentUpdateWithoutLoad26MonthlyInput>, Prisma.AaDocumentUncheckedUpdateWithoutLoad26MonthlyInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutMonthlyDataInput, Prisma.AaDocumentUpdateWithoutMonthlyDataInput>, Prisma.AaDocumentUncheckedUpdateWithoutMonthlyDataInput>
 }
 
 export type AaDocumentCreateNestedOneWithoutRemarksInput = {
@@ -635,70 +650,6 @@ export type AaDocumentUpdateOneRequiredWithoutRemarksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutRemarksInput, Prisma.AaDocumentUpdateWithoutRemarksInput>, Prisma.AaDocumentUncheckedUpdateWithoutRemarksInput>
 }
 
-export type AaDocumentCreateNestedOneWithoutCoaWtr26Input = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutCoaWtr26Input, Prisma.AaDocumentUncheckedCreateWithoutCoaWtr26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutCoaWtr26Input
-  connect?: Prisma.AaDocumentWhereUniqueInput
-}
-
-export type AaDocumentUpdateOneWithoutCoaWtr26NestedInput = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutCoaWtr26Input, Prisma.AaDocumentUncheckedCreateWithoutCoaWtr26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutCoaWtr26Input
-  upsert?: Prisma.AaDocumentUpsertWithoutCoaWtr26Input
-  disconnect?: Prisma.AaDocumentWhereInput | boolean
-  delete?: Prisma.AaDocumentWhereInput | boolean
-  connect?: Prisma.AaDocumentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutCoaWtr26Input, Prisma.AaDocumentUpdateWithoutCoaWtr26Input>, Prisma.AaDocumentUncheckedUpdateWithoutCoaWtr26Input>
-}
-
-export type AaDocumentCreateNestedOneWithoutHazard26Input = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutHazard26Input, Prisma.AaDocumentUncheckedCreateWithoutHazard26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutHazard26Input
-  connect?: Prisma.AaDocumentWhereUniqueInput
-}
-
-export type AaDocumentUpdateOneWithoutHazard26NestedInput = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutHazard26Input, Prisma.AaDocumentUncheckedCreateWithoutHazard26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutHazard26Input
-  upsert?: Prisma.AaDocumentUpsertWithoutHazard26Input
-  disconnect?: Prisma.AaDocumentWhereInput | boolean
-  delete?: Prisma.AaDocumentWhereInput | boolean
-  connect?: Prisma.AaDocumentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutHazard26Input, Prisma.AaDocumentUpdateWithoutHazard26Input>, Prisma.AaDocumentUncheckedUpdateWithoutHazard26Input>
-}
-
-export type AaDocumentCreateNestedOneWithoutTev26Input = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutTev26Input, Prisma.AaDocumentUncheckedCreateWithoutTev26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutTev26Input
-  connect?: Prisma.AaDocumentWhereUniqueInput
-}
-
-export type AaDocumentUpdateOneWithoutTev26NestedInput = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutTev26Input, Prisma.AaDocumentUncheckedCreateWithoutTev26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutTev26Input
-  upsert?: Prisma.AaDocumentUpsertWithoutTev26Input
-  disconnect?: Prisma.AaDocumentWhereInput | boolean
-  delete?: Prisma.AaDocumentWhereInput | boolean
-  connect?: Prisma.AaDocumentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutTev26Input, Prisma.AaDocumentUpdateWithoutTev26Input>, Prisma.AaDocumentUncheckedUpdateWithoutTev26Input>
-}
-
-export type AaDocumentCreateNestedOneWithoutMagna26Input = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutMagna26Input, Prisma.AaDocumentUncheckedCreateWithoutMagna26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutMagna26Input
-  connect?: Prisma.AaDocumentWhereUniqueInput
-}
-
-export type AaDocumentUpdateOneWithoutMagna26NestedInput = {
-  create?: Prisma.XOR<Prisma.AaDocumentCreateWithoutMagna26Input, Prisma.AaDocumentUncheckedCreateWithoutMagna26Input>
-  connectOrCreate?: Prisma.AaDocumentCreateOrConnectWithoutMagna26Input
-  upsert?: Prisma.AaDocumentUpsertWithoutMagna26Input
-  disconnect?: Prisma.AaDocumentWhereInput | boolean
-  delete?: Prisma.AaDocumentWhereInput | boolean
-  connect?: Prisma.AaDocumentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AaDocumentUpdateToOneWithWhereWithoutMagna26Input, Prisma.AaDocumentUpdateWithoutMagna26Input>, Prisma.AaDocumentUncheckedUpdateWithoutMagna26Input>
-}
-
 export type AaDocumentCreateWithoutModuleInput = {
   id?: string
   trackingNo: string
@@ -706,16 +657,14 @@ export type AaDocumentCreateWithoutModuleInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
+  monthlyData?: Prisma.AaMonthlyDataCreateNestedOneWithoutDocumentInput
 }
 
 export type AaDocumentUncheckedCreateWithoutModuleInput = {
@@ -725,16 +674,14 @@ export type AaDocumentUncheckedCreateWithoutModuleInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
+  monthlyData?: Prisma.AaMonthlyDataUncheckedCreateNestedOneWithoutDocumentInput
 }
 
 export type AaDocumentCreateOrConnectWithoutModuleInput = {
@@ -775,66 +722,64 @@ export type AaDocumentScalarWhereInput = {
   operationNum?: Prisma.StringNullableFilter<"AaDocument"> | string | null
   year?: Prisma.IntFilter<"AaDocument"> | number
   dateCreated?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
+  dateSubmittedJnt?: Prisma.DateTimeNullableFilter<"AaDocument"> | Date | string | null
+  oo8Level?: Prisma.StringNullableFilter<"AaDocument"> | string | null
   moduleId?: Prisma.StringFilter<"AaDocument"> | string
   createdAt?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AaDocument"> | Date | string
 }
 
-export type AaDocumentCreateWithoutLoad26MonthlyInput = {
+export type AaDocumentCreateWithoutMonthlyDataInput = {
   id?: string
   trackingNo: string
   sequence: number
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
   remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
 }
 
-export type AaDocumentUncheckedCreateWithoutLoad26MonthlyInput = {
+export type AaDocumentUncheckedCreateWithoutMonthlyDataInput = {
   id?: string
   trackingNo: string
   sequence: number
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   moduleId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
 }
 
-export type AaDocumentCreateOrConnectWithoutLoad26MonthlyInput = {
+export type AaDocumentCreateOrConnectWithoutMonthlyDataInput = {
   where: Prisma.AaDocumentWhereUniqueInput
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutLoad26MonthlyInput, Prisma.AaDocumentUncheckedCreateWithoutLoad26MonthlyInput>
+  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutMonthlyDataInput, Prisma.AaDocumentUncheckedCreateWithoutMonthlyDataInput>
 }
 
-export type AaDocumentUpsertWithoutLoad26MonthlyInput = {
-  update: Prisma.XOR<Prisma.AaDocumentUpdateWithoutLoad26MonthlyInput, Prisma.AaDocumentUncheckedUpdateWithoutLoad26MonthlyInput>
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutLoad26MonthlyInput, Prisma.AaDocumentUncheckedCreateWithoutLoad26MonthlyInput>
+export type AaDocumentUpsertWithoutMonthlyDataInput = {
+  update: Prisma.XOR<Prisma.AaDocumentUpdateWithoutMonthlyDataInput, Prisma.AaDocumentUncheckedUpdateWithoutMonthlyDataInput>
+  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutMonthlyDataInput, Prisma.AaDocumentUncheckedCreateWithoutMonthlyDataInput>
   where?: Prisma.AaDocumentWhereInput
 }
 
-export type AaDocumentUpdateToOneWithWhereWithoutLoad26MonthlyInput = {
+export type AaDocumentUpdateToOneWithWhereWithoutMonthlyDataInput = {
   where?: Prisma.AaDocumentWhereInput
-  data: Prisma.XOR<Prisma.AaDocumentUpdateWithoutLoad26MonthlyInput, Prisma.AaDocumentUncheckedUpdateWithoutLoad26MonthlyInput>
+  data: Prisma.XOR<Prisma.AaDocumentUpdateWithoutMonthlyDataInput, Prisma.AaDocumentUncheckedUpdateWithoutMonthlyDataInput>
 }
 
-export type AaDocumentUpdateWithoutLoad26MonthlyInput = {
+export type AaDocumentUpdateWithoutMonthlyDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
   sequence?: Prisma.IntFieldUpdateOperationsInput | number
@@ -843,17 +788,15 @@ export type AaDocumentUpdateWithoutLoad26MonthlyInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
   remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
 }
 
-export type AaDocumentUncheckedUpdateWithoutLoad26MonthlyInput = {
+export type AaDocumentUncheckedUpdateWithoutMonthlyDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
   sequence?: Prisma.IntFieldUpdateOperationsInput | number
@@ -862,14 +805,12 @@ export type AaDocumentUncheckedUpdateWithoutLoad26MonthlyInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moduleId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentCreateWithoutRemarksInput = {
@@ -879,16 +820,14 @@ export type AaDocumentCreateWithoutRemarksInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
+  monthlyData?: Prisma.AaMonthlyDataCreateNestedOneWithoutDocumentInput
 }
 
 export type AaDocumentUncheckedCreateWithoutRemarksInput = {
@@ -898,16 +837,14 @@ export type AaDocumentUncheckedCreateWithoutRemarksInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   moduleId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
+  monthlyData?: Prisma.AaMonthlyDataUncheckedCreateNestedOneWithoutDocumentInput
 }
 
 export type AaDocumentCreateOrConnectWithoutRemarksInput = {
@@ -935,14 +872,12 @@ export type AaDocumentUpdateWithoutRemarksInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
+  monthlyData?: Prisma.AaMonthlyDataUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentUncheckedUpdateWithoutRemarksInput = {
@@ -954,382 +889,12 @@ export type AaDocumentUncheckedUpdateWithoutRemarksInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moduleId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentCreateWithoutCoaWtr26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
-  remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentUncheckedCreateWithoutCoaWtr26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  moduleId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentCreateOrConnectWithoutCoaWtr26Input = {
-  where: Prisma.AaDocumentWhereUniqueInput
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutCoaWtr26Input, Prisma.AaDocumentUncheckedCreateWithoutCoaWtr26Input>
-}
-
-export type AaDocumentUpsertWithoutCoaWtr26Input = {
-  update: Prisma.XOR<Prisma.AaDocumentUpdateWithoutCoaWtr26Input, Prisma.AaDocumentUncheckedUpdateWithoutCoaWtr26Input>
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutCoaWtr26Input, Prisma.AaDocumentUncheckedCreateWithoutCoaWtr26Input>
-  where?: Prisma.AaDocumentWhereInput
-}
-
-export type AaDocumentUpdateToOneWithWhereWithoutCoaWtr26Input = {
-  where?: Prisma.AaDocumentWhereInput
-  data: Prisma.XOR<Prisma.AaDocumentUpdateWithoutCoaWtr26Input, Prisma.AaDocumentUncheckedUpdateWithoutCoaWtr26Input>
-}
-
-export type AaDocumentUpdateWithoutCoaWtr26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
-  remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentUncheckedUpdateWithoutCoaWtr26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  moduleId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentCreateWithoutHazard26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
-  remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentUncheckedCreateWithoutHazard26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  moduleId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentCreateOrConnectWithoutHazard26Input = {
-  where: Prisma.AaDocumentWhereUniqueInput
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutHazard26Input, Prisma.AaDocumentUncheckedCreateWithoutHazard26Input>
-}
-
-export type AaDocumentUpsertWithoutHazard26Input = {
-  update: Prisma.XOR<Prisma.AaDocumentUpdateWithoutHazard26Input, Prisma.AaDocumentUncheckedUpdateWithoutHazard26Input>
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutHazard26Input, Prisma.AaDocumentUncheckedCreateWithoutHazard26Input>
-  where?: Prisma.AaDocumentWhereInput
-}
-
-export type AaDocumentUpdateToOneWithWhereWithoutHazard26Input = {
-  where?: Prisma.AaDocumentWhereInput
-  data: Prisma.XOR<Prisma.AaDocumentUpdateWithoutHazard26Input, Prisma.AaDocumentUncheckedUpdateWithoutHazard26Input>
-}
-
-export type AaDocumentUpdateWithoutHazard26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
-  remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentUncheckedUpdateWithoutHazard26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  moduleId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentCreateWithoutTev26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
-  remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026CreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentUncheckedCreateWithoutTev26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  moduleId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  magna26?: Prisma.MagnaCarta2026UncheckedCreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentCreateOrConnectWithoutTev26Input = {
-  where: Prisma.AaDocumentWhereUniqueInput
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutTev26Input, Prisma.AaDocumentUncheckedCreateWithoutTev26Input>
-}
-
-export type AaDocumentUpsertWithoutTev26Input = {
-  update: Prisma.XOR<Prisma.AaDocumentUpdateWithoutTev26Input, Prisma.AaDocumentUncheckedUpdateWithoutTev26Input>
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutTev26Input, Prisma.AaDocumentUncheckedCreateWithoutTev26Input>
-  where?: Prisma.AaDocumentWhereInput
-}
-
-export type AaDocumentUpdateToOneWithWhereWithoutTev26Input = {
-  where?: Prisma.AaDocumentWhereInput
-  data: Prisma.XOR<Prisma.AaDocumentUpdateWithoutTev26Input, Prisma.AaDocumentUncheckedUpdateWithoutTev26Input>
-}
-
-export type AaDocumentUpdateWithoutTev26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
-  remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentUncheckedUpdateWithoutTev26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  moduleId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentCreateWithoutMagna26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  module: Prisma.AaDocumentModuleCreateNestedOneWithoutDocumentsInput
-  remarks?: Prisma.AaRemarkCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026CreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026CreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026CreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentUncheckedCreateWithoutMagna26Input = {
-  id?: string
-  trackingNo: string
-  sequence: number
-  staffName: string
-  subject: string
-  operationNum?: string | null
-  year?: number
-  dateCreated: Date | string
-  moduleId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  remarks?: Prisma.AaRemarkUncheckedCreateNestedManyWithoutDocumentInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedCreateNestedOneWithoutDocumentInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedCreateNestedOneWithoutDocumentInput
-  hazard26?: Prisma.Hazard2026UncheckedCreateNestedOneWithoutDocumentInput
-  tev26?: Prisma.Tev2026UncheckedCreateNestedOneWithoutDocumentInput
-}
-
-export type AaDocumentCreateOrConnectWithoutMagna26Input = {
-  where: Prisma.AaDocumentWhereUniqueInput
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutMagna26Input, Prisma.AaDocumentUncheckedCreateWithoutMagna26Input>
-}
-
-export type AaDocumentUpsertWithoutMagna26Input = {
-  update: Prisma.XOR<Prisma.AaDocumentUpdateWithoutMagna26Input, Prisma.AaDocumentUncheckedUpdateWithoutMagna26Input>
-  create: Prisma.XOR<Prisma.AaDocumentCreateWithoutMagna26Input, Prisma.AaDocumentUncheckedCreateWithoutMagna26Input>
-  where?: Prisma.AaDocumentWhereInput
-}
-
-export type AaDocumentUpdateToOneWithWhereWithoutMagna26Input = {
-  where?: Prisma.AaDocumentWhereInput
-  data: Prisma.XOR<Prisma.AaDocumentUpdateWithoutMagna26Input, Prisma.AaDocumentUncheckedUpdateWithoutMagna26Input>
-}
-
-export type AaDocumentUpdateWithoutMagna26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  module?: Prisma.AaDocumentModuleUpdateOneRequiredWithoutDocumentsNestedInput
-  remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-}
-
-export type AaDocumentUncheckedUpdateWithoutMagna26Input = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNo?: Prisma.StringFieldUpdateOperationsInput | string
-  sequence?: Prisma.IntFieldUpdateOperationsInput | number
-  staffName?: Prisma.StringFieldUpdateOperationsInput | string
-  subject?: Prisma.StringFieldUpdateOperationsInput | string
-  operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  moduleId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
+  monthlyData?: Prisma.AaMonthlyDataUncheckedUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentCreateManyModuleInput = {
@@ -1339,8 +904,10 @@ export type AaDocumentCreateManyModuleInput = {
   staffName: string
   subject: string
   operationNum?: string | null
-  year?: number
+  year: number
   dateCreated: Date | string
+  dateSubmittedJnt?: Date | string | null
+  oo8Level?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1354,14 +921,12 @@ export type AaDocumentUpdateWithoutModuleInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   remarks?: Prisma.AaRemarkUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UpdateOneWithoutDocumentNestedInput
+  monthlyData?: Prisma.AaMonthlyDataUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentUncheckedUpdateWithoutModuleInput = {
@@ -1373,14 +938,12 @@ export type AaDocumentUncheckedUpdateWithoutModuleInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   remarks?: Prisma.AaRemarkUncheckedUpdateManyWithoutDocumentNestedInput
-  load26Monthly?: Prisma.AaLoad26MonthlyUncheckedUpdateOneWithoutDocumentNestedInput
-  coaWtr26?: Prisma.CoaWTr2026UncheckedUpdateOneWithoutDocumentNestedInput
-  hazard26?: Prisma.Hazard2026UncheckedUpdateOneWithoutDocumentNestedInput
-  tev26?: Prisma.Tev2026UncheckedUpdateOneWithoutDocumentNestedInput
-  magna26?: Prisma.MagnaCarta2026UncheckedUpdateOneWithoutDocumentNestedInput
+  monthlyData?: Prisma.AaMonthlyDataUncheckedUpdateOneWithoutDocumentNestedInput
 }
 
 export type AaDocumentUncheckedUpdateManyWithoutModuleInput = {
@@ -1392,6 +955,8 @@ export type AaDocumentUncheckedUpdateManyWithoutModuleInput = {
   operationNum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   year?: Prisma.IntFieldUpdateOperationsInput | number
   dateCreated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateSubmittedJnt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  oo8Level?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1436,16 +1001,14 @@ export type AaDocumentSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   operationNum?: boolean
   year?: boolean
   dateCreated?: boolean
+  dateSubmittedJnt?: boolean
+  oo8Level?: boolean
   moduleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   module?: boolean | Prisma.AaDocumentModuleDefaultArgs<ExtArgs>
   remarks?: boolean | Prisma.AaDocument$remarksArgs<ExtArgs>
-  load26Monthly?: boolean | Prisma.AaDocument$load26MonthlyArgs<ExtArgs>
-  coaWtr26?: boolean | Prisma.AaDocument$coaWtr26Args<ExtArgs>
-  hazard26?: boolean | Prisma.AaDocument$hazard26Args<ExtArgs>
-  tev26?: boolean | Prisma.AaDocument$tev26Args<ExtArgs>
-  magna26?: boolean | Prisma.AaDocument$magna26Args<ExtArgs>
+  monthlyData?: boolean | Prisma.AaDocument$monthlyDataArgs<ExtArgs>
   _count?: boolean | Prisma.AaDocumentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aaDocument"]>
 
@@ -1458,6 +1021,8 @@ export type AaDocumentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   operationNum?: boolean
   year?: boolean
   dateCreated?: boolean
+  dateSubmittedJnt?: boolean
+  oo8Level?: boolean
   moduleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1473,6 +1038,8 @@ export type AaDocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   operationNum?: boolean
   year?: boolean
   dateCreated?: boolean
+  dateSubmittedJnt?: boolean
+  oo8Level?: boolean
   moduleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1488,20 +1055,18 @@ export type AaDocumentSelectScalar = {
   operationNum?: boolean
   year?: boolean
   dateCreated?: boolean
+  dateSubmittedJnt?: boolean
+  oo8Level?: boolean
   moduleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AaDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "trackingNo" | "sequence" | "staffName" | "subject" | "operationNum" | "year" | "dateCreated" | "moduleId" | "createdAt" | "updatedAt", ExtArgs["result"]["aaDocument"]>
+export type AaDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "trackingNo" | "sequence" | "staffName" | "subject" | "operationNum" | "year" | "dateCreated" | "dateSubmittedJnt" | "oo8Level" | "moduleId" | "createdAt" | "updatedAt", ExtArgs["result"]["aaDocument"]>
 export type AaDocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   module?: boolean | Prisma.AaDocumentModuleDefaultArgs<ExtArgs>
   remarks?: boolean | Prisma.AaDocument$remarksArgs<ExtArgs>
-  load26Monthly?: boolean | Prisma.AaDocument$load26MonthlyArgs<ExtArgs>
-  coaWtr26?: boolean | Prisma.AaDocument$coaWtr26Args<ExtArgs>
-  hazard26?: boolean | Prisma.AaDocument$hazard26Args<ExtArgs>
-  tev26?: boolean | Prisma.AaDocument$tev26Args<ExtArgs>
-  magna26?: boolean | Prisma.AaDocument$magna26Args<ExtArgs>
+  monthlyData?: boolean | Prisma.AaDocument$monthlyDataArgs<ExtArgs>
   _count?: boolean | Prisma.AaDocumentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AaDocumentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1516,11 +1081,7 @@ export type $AaDocumentPayload<ExtArgs extends runtime.Types.Extensions.Internal
   objects: {
     module: Prisma.$AaDocumentModulePayload<ExtArgs>
     remarks: Prisma.$AaRemarkPayload<ExtArgs>[]
-    load26Monthly: Prisma.$AaLoad26MonthlyPayload<ExtArgs> | null
-    coaWtr26: Prisma.$CoaWTr2026Payload<ExtArgs> | null
-    hazard26: Prisma.$Hazard2026Payload<ExtArgs> | null
-    tev26: Prisma.$Tev2026Payload<ExtArgs> | null
-    magna26: Prisma.$MagnaCarta2026Payload<ExtArgs> | null
+    monthlyData: Prisma.$AaMonthlyDataPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1531,6 +1092,8 @@ export type $AaDocumentPayload<ExtArgs extends runtime.Types.Extensions.Internal
     operationNum: string | null
     year: number
     dateCreated: Date
+    dateSubmittedJnt: Date | null
+    oo8Level: string | null
     moduleId: string
     createdAt: Date
     updatedAt: Date
@@ -1930,11 +1493,7 @@ export interface Prisma__AaDocumentClient<T, Null = never, ExtArgs extends runti
   readonly [Symbol.toStringTag]: "PrismaPromise"
   module<T extends Prisma.AaDocumentModuleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocumentModuleDefaultArgs<ExtArgs>>): Prisma.Prisma__AaDocumentModuleClient<runtime.Types.Result.GetResult<Prisma.$AaDocumentModulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   remarks<T extends Prisma.AaDocument$remarksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$remarksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AaRemarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  load26Monthly<T extends Prisma.AaDocument$load26MonthlyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$load26MonthlyArgs<ExtArgs>>): Prisma.Prisma__AaLoad26MonthlyClient<runtime.Types.Result.GetResult<Prisma.$AaLoad26MonthlyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  coaWtr26<T extends Prisma.AaDocument$coaWtr26Args<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$coaWtr26Args<ExtArgs>>): Prisma.Prisma__CoaWTr2026Client<runtime.Types.Result.GetResult<Prisma.$CoaWTr2026Payload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  hazard26<T extends Prisma.AaDocument$hazard26Args<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$hazard26Args<ExtArgs>>): Prisma.Prisma__Hazard2026Client<runtime.Types.Result.GetResult<Prisma.$Hazard2026Payload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  tev26<T extends Prisma.AaDocument$tev26Args<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$tev26Args<ExtArgs>>): Prisma.Prisma__Tev2026Client<runtime.Types.Result.GetResult<Prisma.$Tev2026Payload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  magna26<T extends Prisma.AaDocument$magna26Args<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$magna26Args<ExtArgs>>): Prisma.Prisma__MagnaCarta2026Client<runtime.Types.Result.GetResult<Prisma.$MagnaCarta2026Payload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  monthlyData<T extends Prisma.AaDocument$monthlyDataArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AaDocument$monthlyDataArgs<ExtArgs>>): Prisma.Prisma__AaMonthlyDataClient<runtime.Types.Result.GetResult<Prisma.$AaMonthlyDataPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1972,6 +1531,8 @@ export interface AaDocumentFieldRefs {
   readonly operationNum: Prisma.FieldRef<"AaDocument", 'String'>
   readonly year: Prisma.FieldRef<"AaDocument", 'Int'>
   readonly dateCreated: Prisma.FieldRef<"AaDocument", 'DateTime'>
+  readonly dateSubmittedJnt: Prisma.FieldRef<"AaDocument", 'DateTime'>
+  readonly oo8Level: Prisma.FieldRef<"AaDocument", 'String'>
   readonly moduleId: Prisma.FieldRef<"AaDocument", 'String'>
   readonly createdAt: Prisma.FieldRef<"AaDocument", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AaDocument", 'DateTime'>
@@ -2395,98 +1956,22 @@ export type AaDocument$remarksArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * AaDocument.load26Monthly
+ * AaDocument.monthlyData
  */
-export type AaDocument$load26MonthlyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AaDocument$monthlyDataArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the AaLoad26Monthly
+   * Select specific fields to fetch from the AaMonthlyData
    */
-  select?: Prisma.AaLoad26MonthlySelect<ExtArgs> | null
+  select?: Prisma.AaMonthlyDataSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the AaLoad26Monthly
+   * Omit specific fields from the AaMonthlyData
    */
-  omit?: Prisma.AaLoad26MonthlyOmit<ExtArgs> | null
+  omit?: Prisma.AaMonthlyDataOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.AaLoad26MonthlyInclude<ExtArgs> | null
-  where?: Prisma.AaLoad26MonthlyWhereInput
-}
-
-/**
- * AaDocument.coaWtr26
- */
-export type AaDocument$coaWtr26Args<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CoaWTr2026
-   */
-  select?: Prisma.CoaWTr2026Select<ExtArgs> | null
-  /**
-   * Omit specific fields from the CoaWTr2026
-   */
-  omit?: Prisma.CoaWTr2026Omit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CoaWTr2026Include<ExtArgs> | null
-  where?: Prisma.CoaWTr2026WhereInput
-}
-
-/**
- * AaDocument.hazard26
- */
-export type AaDocument$hazard26Args<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Hazard2026
-   */
-  select?: Prisma.Hazard2026Select<ExtArgs> | null
-  /**
-   * Omit specific fields from the Hazard2026
-   */
-  omit?: Prisma.Hazard2026Omit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.Hazard2026Include<ExtArgs> | null
-  where?: Prisma.Hazard2026WhereInput
-}
-
-/**
- * AaDocument.tev26
- */
-export type AaDocument$tev26Args<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Tev2026
-   */
-  select?: Prisma.Tev2026Select<ExtArgs> | null
-  /**
-   * Omit specific fields from the Tev2026
-   */
-  omit?: Prisma.Tev2026Omit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.Tev2026Include<ExtArgs> | null
-  where?: Prisma.Tev2026WhereInput
-}
-
-/**
- * AaDocument.magna26
- */
-export type AaDocument$magna26Args<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the MagnaCarta2026
-   */
-  select?: Prisma.MagnaCarta2026Select<ExtArgs> | null
-  /**
-   * Omit specific fields from the MagnaCarta2026
-   */
-  omit?: Prisma.MagnaCarta2026Omit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MagnaCarta2026Include<ExtArgs> | null
-  where?: Prisma.MagnaCarta2026WhereInput
+  include?: Prisma.AaMonthlyDataInclude<ExtArgs> | null
+  where?: Prisma.AaMonthlyDataWhereInput
 }
 
 /**

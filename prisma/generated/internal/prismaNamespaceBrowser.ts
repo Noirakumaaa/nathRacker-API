@@ -65,7 +65,7 @@ export const ModelName = {
   EncodedDocument: 'EncodedDocument',
   AaDocumentModule: 'AaDocumentModule',
   AaDocument: 'AaDocument',
-  AaLoad26Monthly: 'AaLoad26Monthly',
+  AaMonthlyData: 'AaMonthlyData',
   AaRemark: 'AaRemark',
   EdtmsTrackingRequest: 'EdtmsTrackingRequest',
   CvsTracking: 'CvsTracking',
@@ -77,14 +77,8 @@ export const ModelName = {
   TrainingFeedbacks: 'TrainingFeedbacks',
   TravelRequest: 'TravelRequest',
   MrbTofMonitoring: 'MrbTofMonitoring',
-  CoaWTr2026: 'CoaWTr2026',
   FiledForCocot: 'FiledForCocot',
   SuccessStories: 'SuccessStories',
-  Dtr2026: 'Dtr2026',
-  Hazard2026: 'Hazard2026',
-  Tev2026: 'Tev2026',
-  LoadAllowance2026: 'LoadAllowance2026',
-  MagnaCarta2026: 'MagnaCarta2026',
   LeaveForms: 'LeaveForms',
   CvsDropdown: 'CvsDropdown',
   Ipcrf2ndSem2025: 'Ipcrf2ndSem2025',
@@ -337,6 +331,7 @@ export const AaDocumentModuleScalarFieldEnum = {
   prefix: 'prefix',
   description: 'description',
   isActive: 'isActive',
+  isMonthly: 'isMonthly',
   colStaff: 'colStaff',
   colSubject: 'colSubject',
   colActivity: 'colActivity',
@@ -356,6 +351,8 @@ export const AaDocumentScalarFieldEnum = {
   operationNum: 'operationNum',
   year: 'year',
   dateCreated: 'dateCreated',
+  dateSubmittedJnt: 'dateSubmittedJnt',
+  oo8Level: 'oo8Level',
   moduleId: 'moduleId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -364,86 +361,15 @@ export const AaDocumentScalarFieldEnum = {
 export type AaDocumentScalarFieldEnum = (typeof AaDocumentScalarFieldEnum)[keyof typeof AaDocumentScalarFieldEnum]
 
 
-export const AaLoad26MonthlyScalarFieldEnum = {
+export const AaMonthlyDataScalarFieldEnum = {
   id: 'id',
   documentId: 'documentId',
-  january: 'january',
-  janRemark1: 'janRemark1',
-  janRemark2: 'janRemark2',
-  janRemark3: 'janRemark3',
-  janRemark4: 'janRemark4',
-  janRemark5: 'janRemark5',
-  february: 'february',
-  febRemark1: 'febRemark1',
-  febRemark2: 'febRemark2',
-  febRemark3: 'febRemark3',
-  febRemark4: 'febRemark4',
-  febRemark5: 'febRemark5',
-  march: 'march',
-  marRemark1: 'marRemark1',
-  marRemark2: 'marRemark2',
-  marRemark3: 'marRemark3',
-  marRemark4: 'marRemark4',
-  marRemark5: 'marRemark5',
-  april: 'april',
-  aprRemark1: 'aprRemark1',
-  aprRemark2: 'aprRemark2',
-  aprRemark3: 'aprRemark3',
-  aprRemark4: 'aprRemark4',
-  aprRemark5: 'aprRemark5',
-  may: 'may',
-  mayRemark1: 'mayRemark1',
-  mayRemark2: 'mayRemark2',
-  mayRemark3: 'mayRemark3',
-  mayRemark4: 'mayRemark4',
-  mayRemark5: 'mayRemark5',
-  june: 'june',
-  junRemark1: 'junRemark1',
-  junRemark2: 'junRemark2',
-  junRemark3: 'junRemark3',
-  junRemark4: 'junRemark4',
-  junRemark5: 'junRemark5',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  julRemarks3: 'julRemarks3',
-  julRemarks4: 'julRemarks4',
-  julRemarks5: 'julRemarks5',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  augRemarks3: 'augRemarks3',
-  augRemarks4: 'augRemarks4',
-  augRemarks5: 'augRemarks5',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  sepRemarks3: 'sepRemarks3',
-  sepRemarks4: 'sepRemarks4',
-  sepRemarks5: 'sepRemarks5',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  octRemarks3: 'octRemarks3',
-  octRemarks4: 'octRemarks4',
-  octRemarks5: 'octRemarks5',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  novRemarks3: 'novRemarks3',
-  novRemarks4: 'novRemarks4',
-  novRemarks5: 'novRemarks5',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  decRemarks3: 'decRemarks3',
-  decRemarks4: 'decRemarks4',
-  decRemarks5: 'decRemarks5',
+  data: 'data',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type AaLoad26MonthlyScalarFieldEnum = (typeof AaLoad26MonthlyScalarFieldEnum)[keyof typeof AaLoad26MonthlyScalarFieldEnum]
+export type AaMonthlyDataScalarFieldEnum = (typeof AaMonthlyDataScalarFieldEnum)[keyof typeof AaMonthlyDataScalarFieldEnum]
 
 
 export const AaRemarkScalarFieldEnum = {
@@ -677,34 +603,6 @@ export const MrbTofMonitoringScalarFieldEnum = {
 export type MrbTofMonitoringScalarFieldEnum = (typeof MrbTofMonitoringScalarFieldEnum)[keyof typeof MrbTofMonitoringScalarFieldEnum]
 
 
-export const CoaWTr2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarksMe1: 'janRemarksMe1',
-  janRemarksMe2: 'janRemarksMe2',
-  february: 'february',
-  febRemarksMe: 'febRemarksMe',
-  march: 'march',
-  marRemarksMe: 'marRemarksMe',
-  april: 'april',
-  aprRemarksMe: 'aprRemarksMe',
-  may: 'may',
-  mayRemarksMe: 'mayRemarksMe',
-  june: 'june',
-  junRemarksMe: 'junRemarksMe',
-  july: 'july',
-  julRemarksMe: 'julRemarksMe',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CoaWTr2026ScalarFieldEnum = (typeof CoaWTr2026ScalarFieldEnum)[keyof typeof CoaWTr2026ScalarFieldEnum]
-
-
 export const FiledForCocotScalarFieldEnum = {
   id: 'id',
   employeeName: 'employeeName',
@@ -771,264 +669,6 @@ export const SuccessStoriesScalarFieldEnum = {
 } as const
 
 export type SuccessStoriesScalarFieldEnum = (typeof SuccessStoriesScalarFieldEnum)[keyof typeof SuccessStoriesScalarFieldEnum]
-
-
-export const Dtr2026ScalarFieldEnum = {
-  id: 'id',
-  number: 'number',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  december2025: 'december2025',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  february: 'february',
-  febRemarks: 'febRemarks',
-  march: 'march',
-  marRemarks: 'marRemarks',
-  april: 'april',
-  aprRemarks: 'aprRemarks',
-  may: 'may',
-  mayRemarks1: 'mayRemarks1',
-  mayRemarks2: 'mayRemarks2',
-  june: 'june',
-  junRemarks1: 'junRemarks1',
-  junRemarks2: 'junRemarks2',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  julRemarks3: 'julRemarks3',
-  august: 'august',
-  augRemarks: 'augRemarks',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  sepRemarks3: 'sepRemarks3',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  octRemarks3: 'octRemarks3',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type Dtr2026ScalarFieldEnum = (typeof Dtr2026ScalarFieldEnum)[keyof typeof Dtr2026ScalarFieldEnum]
-
-
-export const Hazard2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  february: 'february',
-  febRemarks1: 'febRemarks1',
-  febRemarks2: 'febRemarks2',
-  march: 'march',
-  marRemarks1: 'marRemarks1',
-  marRemarks2: 'marRemarks2',
-  april: 'april',
-  aprRemarks1: 'aprRemarks1',
-  aprRemarks2: 'aprRemarks2',
-  may: 'may',
-  mayRemarks1: 'mayRemarks1',
-  mayRemarks2: 'mayRemarks2',
-  june: 'june',
-  junRemarks1: 'junRemarks1',
-  junRemarks2: 'junRemarks2',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type Hazard2026ScalarFieldEnum = (typeof Hazard2026ScalarFieldEnum)[keyof typeof Hazard2026ScalarFieldEnum]
-
-
-export const Tev2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  janRemarks3: 'janRemarks3',
-  february: 'february',
-  febRemarks1: 'febRemarks1',
-  febRemarks2: 'febRemarks2',
-  march: 'march',
-  marRemarks1: 'marRemarks1',
-  marRemarks2: 'marRemarks2',
-  april: 'april',
-  aprRemarks1: 'aprRemarks1',
-  aprRemarks2: 'aprRemarks2',
-  aprilDup: 'aprilDup',
-  aprDupRemarks1: 'aprDupRemarks1',
-  aprDupRemarks2: 'aprDupRemarks2',
-  may: 'may',
-  mayRemarks1: 'mayRemarks1',
-  mayRemarks2: 'mayRemarks2',
-  june: 'june',
-  junRemarks1: 'junRemarks1',
-  junRemarks2: 'junRemarks2',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type Tev2026ScalarFieldEnum = (typeof Tev2026ScalarFieldEnum)[keyof typeof Tev2026ScalarFieldEnum]
-
-
-export const LoadAllowance2026ScalarFieldEnum = {
-  id: 'id',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemark1: 'janRemark1',
-  janRemark2: 'janRemark2',
-  janRemark3: 'janRemark3',
-  janRemark4: 'janRemark4',
-  janRemark5: 'janRemark5',
-  february: 'february',
-  febRemark1: 'febRemark1',
-  febRemark2: 'febRemark2',
-  febRemark3: 'febRemark3',
-  febRemark4: 'febRemark4',
-  febRemark5: 'febRemark5',
-  march: 'march',
-  marRemark1: 'marRemark1',
-  marRemark2: 'marRemark2',
-  marRemark3: 'marRemark3',
-  marRemark4: 'marRemark4',
-  marRemark5: 'marRemark5',
-  april: 'april',
-  aprRemark1: 'aprRemark1',
-  aprRemark2: 'aprRemark2',
-  aprRemark3: 'aprRemark3',
-  aprRemark4: 'aprRemark4',
-  aprRemark5: 'aprRemark5',
-  may: 'may',
-  mayRemark1: 'mayRemark1',
-  mayRemark2: 'mayRemark2',
-  mayRemark3: 'mayRemark3',
-  mayRemark4: 'mayRemark4',
-  mayRemark5: 'mayRemark5',
-  june: 'june',
-  junRemark1: 'junRemark1',
-  junRemark2: 'junRemark2',
-  junRemark3: 'junRemark3',
-  junRemark4: 'junRemark4',
-  junRemark5: 'junRemark5',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  julRemarks3: 'julRemarks3',
-  julRemarks4: 'julRemarks4',
-  julRemarks5: 'julRemarks5',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  augRemarks3: 'augRemarks3',
-  augRemarks4: 'augRemarks4',
-  augRemarks5: 'augRemarks5',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  sepRemarks3: 'sepRemarks3',
-  sepRemarks4: 'sepRemarks4',
-  sepRemarks5: 'sepRemarks5',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  octRemarks3: 'octRemarks3',
-  octRemarks4: 'octRemarks4',
-  octRemarks5: 'octRemarks5',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  novRemarks3: 'novRemarks3',
-  novRemarks4: 'novRemarks4',
-  novRemarks5: 'novRemarks5',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  decRemarks3: 'decRemarks3',
-  decRemarks4: 'decRemarks4',
-  decRemarks5: 'decRemarks5',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type LoadAllowance2026ScalarFieldEnum = (typeof LoadAllowance2026ScalarFieldEnum)[keyof typeof LoadAllowance2026ScalarFieldEnum]
-
-
-export const MagnaCarta2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  february: 'february',
-  febRemarks1: 'febRemarks1',
-  febRemarks2: 'febRemarks2',
-  march: 'march',
-  marRemarks1: 'marRemarks1',
-  marRemarks2: 'marRemarks2',
-  april: 'april',
-  aprRemarks: 'aprRemarks',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type MagnaCarta2026ScalarFieldEnum = (typeof MagnaCarta2026ScalarFieldEnum)[keyof typeof MagnaCarta2026ScalarFieldEnum]
 
 
 export const LeaveFormsScalarFieldEnum = {
@@ -1154,6 +794,13 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -1168,4 +815,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

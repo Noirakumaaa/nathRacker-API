@@ -398,7 +398,7 @@ export const ModelName = {
   EncodedDocument: 'EncodedDocument',
   AaDocumentModule: 'AaDocumentModule',
   AaDocument: 'AaDocument',
-  AaLoad26Monthly: 'AaLoad26Monthly',
+  AaMonthlyData: 'AaMonthlyData',
   AaRemark: 'AaRemark',
   EdtmsTrackingRequest: 'EdtmsTrackingRequest',
   CvsTracking: 'CvsTracking',
@@ -410,14 +410,8 @@ export const ModelName = {
   TrainingFeedbacks: 'TrainingFeedbacks',
   TravelRequest: 'TravelRequest',
   MrbTofMonitoring: 'MrbTofMonitoring',
-  CoaWTr2026: 'CoaWTr2026',
   FiledForCocot: 'FiledForCocot',
   SuccessStories: 'SuccessStories',
-  Dtr2026: 'Dtr2026',
-  Hazard2026: 'Hazard2026',
-  Tev2026: 'Tev2026',
-  LoadAllowance2026: 'LoadAllowance2026',
-  MagnaCarta2026: 'MagnaCarta2026',
   LeaveForms: 'LeaveForms',
   CvsDropdown: 'CvsDropdown',
   Ipcrf2ndSem2025: 'Ipcrf2ndSem2025',
@@ -439,7 +433,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "operationsOfficeNum" | "lgu" | "barangay" | "user" | "userInfo" | "passwordResetCode" | "bus" | "swdi" | "pcn" | "cVS" | "miscellaneous" | "encodedDocument" | "aaDocumentModule" | "aaDocument" | "aaLoad26Monthly" | "aaRemark" | "edtmsTrackingRequest" | "cvsTracking" | "bdmTracking" | "grsTracking" | "mneTracking" | "ooLevel" | "oo8IncomingFiles" | "trainingFeedbacks" | "travelRequest" | "mrbTofMonitoring" | "coaWTr2026" | "filedForCocot" | "successStories" | "dtr2026" | "hazard2026" | "tev2026" | "loadAllowance2026" | "magnaCarta2026" | "leaveForms" | "cvsDropdown" | "ipcrf2ndSem2025" | "saln2026" | "acOnly" | "swoiiiOnly"
+    modelProps: "operationsOfficeNum" | "lgu" | "barangay" | "user" | "userInfo" | "passwordResetCode" | "bus" | "swdi" | "pcn" | "cVS" | "miscellaneous" | "encodedDocument" | "aaDocumentModule" | "aaDocument" | "aaMonthlyData" | "aaRemark" | "edtmsTrackingRequest" | "cvsTracking" | "bdmTracking" | "grsTracking" | "mneTracking" | "ooLevel" | "oo8IncomingFiles" | "trainingFeedbacks" | "travelRequest" | "mrbTofMonitoring" | "filedForCocot" | "successStories" | "leaveForms" | "cvsDropdown" | "ipcrf2ndSem2025" | "saln2026" | "acOnly" | "swoiiiOnly"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1479,77 +1473,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    AaLoad26Monthly: {
-      payload: Prisma.$AaLoad26MonthlyPayload<ExtArgs>
-      fields: Prisma.AaLoad26MonthlyFieldRefs
+    AaMonthlyData: {
+      payload: Prisma.$AaMonthlyDataPayload<ExtArgs>
+      fields: Prisma.AaMonthlyDataFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.AaLoad26MonthlyFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload> | null
+          args: Prisma.AaMonthlyDataFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.AaLoad26MonthlyFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>
+          args: Prisma.AaMonthlyDataFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>
         }
         findFirst: {
-          args: Prisma.AaLoad26MonthlyFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload> | null
+          args: Prisma.AaMonthlyDataFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.AaLoad26MonthlyFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>
+          args: Prisma.AaMonthlyDataFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>
         }
         findMany: {
-          args: Prisma.AaLoad26MonthlyFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>[]
+          args: Prisma.AaMonthlyDataFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>[]
         }
         create: {
-          args: Prisma.AaLoad26MonthlyCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>
+          args: Prisma.AaMonthlyDataCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>
         }
         createMany: {
-          args: Prisma.AaLoad26MonthlyCreateManyArgs<ExtArgs>
+          args: Prisma.AaMonthlyDataCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.AaLoad26MonthlyCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>[]
+          args: Prisma.AaMonthlyDataCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>[]
         }
         delete: {
-          args: Prisma.AaLoad26MonthlyDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>
+          args: Prisma.AaMonthlyDataDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>
         }
         update: {
-          args: Prisma.AaLoad26MonthlyUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>
+          args: Prisma.AaMonthlyDataUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>
         }
         deleteMany: {
-          args: Prisma.AaLoad26MonthlyDeleteManyArgs<ExtArgs>
+          args: Prisma.AaMonthlyDataDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.AaLoad26MonthlyUpdateManyArgs<ExtArgs>
+          args: Prisma.AaMonthlyDataUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.AaLoad26MonthlyUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>[]
+          args: Prisma.AaMonthlyDataUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>[]
         }
         upsert: {
-          args: Prisma.AaLoad26MonthlyUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaLoad26MonthlyPayload>
+          args: Prisma.AaMonthlyDataUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AaMonthlyDataPayload>
         }
         aggregate: {
-          args: Prisma.AaLoad26MonthlyAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAaLoad26Monthly>
+          args: Prisma.AaMonthlyDataAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAaMonthlyData>
         }
         groupBy: {
-          args: Prisma.AaLoad26MonthlyGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AaLoad26MonthlyGroupByOutputType>[]
+          args: Prisma.AaMonthlyDataGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AaMonthlyDataGroupByOutputType>[]
         }
         count: {
-          args: Prisma.AaLoad26MonthlyCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AaLoad26MonthlyCountAggregateOutputType> | number
+          args: Prisma.AaMonthlyDataCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AaMonthlyDataCountAggregateOutputType> | number
         }
       }
     }
@@ -2367,80 +2361,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    CoaWTr2026: {
-      payload: Prisma.$CoaWTr2026Payload<ExtArgs>
-      fields: Prisma.CoaWTr2026FieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.CoaWTr2026FindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.CoaWTr2026FindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>
-        }
-        findFirst: {
-          args: Prisma.CoaWTr2026FindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.CoaWTr2026FindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>
-        }
-        findMany: {
-          args: Prisma.CoaWTr2026FindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>[]
-        }
-        create: {
-          args: Prisma.CoaWTr2026CreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>
-        }
-        createMany: {
-          args: Prisma.CoaWTr2026CreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.CoaWTr2026CreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>[]
-        }
-        delete: {
-          args: Prisma.CoaWTr2026DeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>
-        }
-        update: {
-          args: Prisma.CoaWTr2026UpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>
-        }
-        deleteMany: {
-          args: Prisma.CoaWTr2026DeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.CoaWTr2026UpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.CoaWTr2026UpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>[]
-        }
-        upsert: {
-          args: Prisma.CoaWTr2026UpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CoaWTr2026Payload>
-        }
-        aggregate: {
-          args: Prisma.CoaWTr2026AggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCoaWTr2026>
-        }
-        groupBy: {
-          args: Prisma.CoaWTr2026GroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CoaWTr2026GroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.CoaWTr2026CountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CoaWTr2026CountAggregateOutputType> | number
-        }
-      }
-    }
     FiledForCocot: {
       payload: Prisma.$FiledForCocotPayload<ExtArgs>
       fields: Prisma.FiledForCocotFieldRefs
@@ -2586,376 +2506,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.SuccessStoriesCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.SuccessStoriesCountAggregateOutputType> | number
-        }
-      }
-    }
-    Dtr2026: {
-      payload: Prisma.$Dtr2026Payload<ExtArgs>
-      fields: Prisma.Dtr2026FieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.Dtr2026FindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.Dtr2026FindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>
-        }
-        findFirst: {
-          args: Prisma.Dtr2026FindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.Dtr2026FindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>
-        }
-        findMany: {
-          args: Prisma.Dtr2026FindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>[]
-        }
-        create: {
-          args: Prisma.Dtr2026CreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>
-        }
-        createMany: {
-          args: Prisma.Dtr2026CreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.Dtr2026CreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>[]
-        }
-        delete: {
-          args: Prisma.Dtr2026DeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>
-        }
-        update: {
-          args: Prisma.Dtr2026UpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>
-        }
-        deleteMany: {
-          args: Prisma.Dtr2026DeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.Dtr2026UpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.Dtr2026UpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>[]
-        }
-        upsert: {
-          args: Prisma.Dtr2026UpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Dtr2026Payload>
-        }
-        aggregate: {
-          args: Prisma.Dtr2026AggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDtr2026>
-        }
-        groupBy: {
-          args: Prisma.Dtr2026GroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Dtr2026GroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.Dtr2026CountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Dtr2026CountAggregateOutputType> | number
-        }
-      }
-    }
-    Hazard2026: {
-      payload: Prisma.$Hazard2026Payload<ExtArgs>
-      fields: Prisma.Hazard2026FieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.Hazard2026FindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.Hazard2026FindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>
-        }
-        findFirst: {
-          args: Prisma.Hazard2026FindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.Hazard2026FindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>
-        }
-        findMany: {
-          args: Prisma.Hazard2026FindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>[]
-        }
-        create: {
-          args: Prisma.Hazard2026CreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>
-        }
-        createMany: {
-          args: Prisma.Hazard2026CreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.Hazard2026CreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>[]
-        }
-        delete: {
-          args: Prisma.Hazard2026DeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>
-        }
-        update: {
-          args: Prisma.Hazard2026UpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>
-        }
-        deleteMany: {
-          args: Prisma.Hazard2026DeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.Hazard2026UpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.Hazard2026UpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>[]
-        }
-        upsert: {
-          args: Prisma.Hazard2026UpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Hazard2026Payload>
-        }
-        aggregate: {
-          args: Prisma.Hazard2026AggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateHazard2026>
-        }
-        groupBy: {
-          args: Prisma.Hazard2026GroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Hazard2026GroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.Hazard2026CountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Hazard2026CountAggregateOutputType> | number
-        }
-      }
-    }
-    Tev2026: {
-      payload: Prisma.$Tev2026Payload<ExtArgs>
-      fields: Prisma.Tev2026FieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.Tev2026FindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.Tev2026FindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>
-        }
-        findFirst: {
-          args: Prisma.Tev2026FindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.Tev2026FindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>
-        }
-        findMany: {
-          args: Prisma.Tev2026FindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>[]
-        }
-        create: {
-          args: Prisma.Tev2026CreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>
-        }
-        createMany: {
-          args: Prisma.Tev2026CreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.Tev2026CreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>[]
-        }
-        delete: {
-          args: Prisma.Tev2026DeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>
-        }
-        update: {
-          args: Prisma.Tev2026UpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>
-        }
-        deleteMany: {
-          args: Prisma.Tev2026DeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.Tev2026UpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.Tev2026UpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>[]
-        }
-        upsert: {
-          args: Prisma.Tev2026UpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Tev2026Payload>
-        }
-        aggregate: {
-          args: Prisma.Tev2026AggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateTev2026>
-        }
-        groupBy: {
-          args: Prisma.Tev2026GroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Tev2026GroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.Tev2026CountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Tev2026CountAggregateOutputType> | number
-        }
-      }
-    }
-    LoadAllowance2026: {
-      payload: Prisma.$LoadAllowance2026Payload<ExtArgs>
-      fields: Prisma.LoadAllowance2026FieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.LoadAllowance2026FindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.LoadAllowance2026FindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>
-        }
-        findFirst: {
-          args: Prisma.LoadAllowance2026FindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.LoadAllowance2026FindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>
-        }
-        findMany: {
-          args: Prisma.LoadAllowance2026FindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>[]
-        }
-        create: {
-          args: Prisma.LoadAllowance2026CreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>
-        }
-        createMany: {
-          args: Prisma.LoadAllowance2026CreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.LoadAllowance2026CreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>[]
-        }
-        delete: {
-          args: Prisma.LoadAllowance2026DeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>
-        }
-        update: {
-          args: Prisma.LoadAllowance2026UpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>
-        }
-        deleteMany: {
-          args: Prisma.LoadAllowance2026DeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.LoadAllowance2026UpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.LoadAllowance2026UpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>[]
-        }
-        upsert: {
-          args: Prisma.LoadAllowance2026UpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LoadAllowance2026Payload>
-        }
-        aggregate: {
-          args: Prisma.LoadAllowance2026AggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateLoadAllowance2026>
-        }
-        groupBy: {
-          args: Prisma.LoadAllowance2026GroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LoadAllowance2026GroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.LoadAllowance2026CountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LoadAllowance2026CountAggregateOutputType> | number
-        }
-      }
-    }
-    MagnaCarta2026: {
-      payload: Prisma.$MagnaCarta2026Payload<ExtArgs>
-      fields: Prisma.MagnaCarta2026FieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.MagnaCarta2026FindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.MagnaCarta2026FindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>
-        }
-        findFirst: {
-          args: Prisma.MagnaCarta2026FindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.MagnaCarta2026FindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>
-        }
-        findMany: {
-          args: Prisma.MagnaCarta2026FindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>[]
-        }
-        create: {
-          args: Prisma.MagnaCarta2026CreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>
-        }
-        createMany: {
-          args: Prisma.MagnaCarta2026CreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.MagnaCarta2026CreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>[]
-        }
-        delete: {
-          args: Prisma.MagnaCarta2026DeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>
-        }
-        update: {
-          args: Prisma.MagnaCarta2026UpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>
-        }
-        deleteMany: {
-          args: Prisma.MagnaCarta2026DeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.MagnaCarta2026UpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.MagnaCarta2026UpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>[]
-        }
-        upsert: {
-          args: Prisma.MagnaCarta2026UpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MagnaCarta2026Payload>
-        }
-        aggregate: {
-          args: Prisma.MagnaCarta2026AggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMagnaCarta2026>
-        }
-        groupBy: {
-          args: Prisma.MagnaCarta2026GroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MagnaCarta2026GroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.MagnaCarta2026CountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MagnaCarta2026CountAggregateOutputType> | number
         }
       }
     }
@@ -3670,6 +3220,7 @@ export const AaDocumentModuleScalarFieldEnum = {
   prefix: 'prefix',
   description: 'description',
   isActive: 'isActive',
+  isMonthly: 'isMonthly',
   colStaff: 'colStaff',
   colSubject: 'colSubject',
   colActivity: 'colActivity',
@@ -3689,6 +3240,8 @@ export const AaDocumentScalarFieldEnum = {
   operationNum: 'operationNum',
   year: 'year',
   dateCreated: 'dateCreated',
+  dateSubmittedJnt: 'dateSubmittedJnt',
+  oo8Level: 'oo8Level',
   moduleId: 'moduleId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -3697,86 +3250,15 @@ export const AaDocumentScalarFieldEnum = {
 export type AaDocumentScalarFieldEnum = (typeof AaDocumentScalarFieldEnum)[keyof typeof AaDocumentScalarFieldEnum]
 
 
-export const AaLoad26MonthlyScalarFieldEnum = {
+export const AaMonthlyDataScalarFieldEnum = {
   id: 'id',
   documentId: 'documentId',
-  january: 'january',
-  janRemark1: 'janRemark1',
-  janRemark2: 'janRemark2',
-  janRemark3: 'janRemark3',
-  janRemark4: 'janRemark4',
-  janRemark5: 'janRemark5',
-  february: 'february',
-  febRemark1: 'febRemark1',
-  febRemark2: 'febRemark2',
-  febRemark3: 'febRemark3',
-  febRemark4: 'febRemark4',
-  febRemark5: 'febRemark5',
-  march: 'march',
-  marRemark1: 'marRemark1',
-  marRemark2: 'marRemark2',
-  marRemark3: 'marRemark3',
-  marRemark4: 'marRemark4',
-  marRemark5: 'marRemark5',
-  april: 'april',
-  aprRemark1: 'aprRemark1',
-  aprRemark2: 'aprRemark2',
-  aprRemark3: 'aprRemark3',
-  aprRemark4: 'aprRemark4',
-  aprRemark5: 'aprRemark5',
-  may: 'may',
-  mayRemark1: 'mayRemark1',
-  mayRemark2: 'mayRemark2',
-  mayRemark3: 'mayRemark3',
-  mayRemark4: 'mayRemark4',
-  mayRemark5: 'mayRemark5',
-  june: 'june',
-  junRemark1: 'junRemark1',
-  junRemark2: 'junRemark2',
-  junRemark3: 'junRemark3',
-  junRemark4: 'junRemark4',
-  junRemark5: 'junRemark5',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  julRemarks3: 'julRemarks3',
-  julRemarks4: 'julRemarks4',
-  julRemarks5: 'julRemarks5',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  augRemarks3: 'augRemarks3',
-  augRemarks4: 'augRemarks4',
-  augRemarks5: 'augRemarks5',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  sepRemarks3: 'sepRemarks3',
-  sepRemarks4: 'sepRemarks4',
-  sepRemarks5: 'sepRemarks5',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  octRemarks3: 'octRemarks3',
-  octRemarks4: 'octRemarks4',
-  octRemarks5: 'octRemarks5',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  novRemarks3: 'novRemarks3',
-  novRemarks4: 'novRemarks4',
-  novRemarks5: 'novRemarks5',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  decRemarks3: 'decRemarks3',
-  decRemarks4: 'decRemarks4',
-  decRemarks5: 'decRemarks5',
+  data: 'data',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type AaLoad26MonthlyScalarFieldEnum = (typeof AaLoad26MonthlyScalarFieldEnum)[keyof typeof AaLoad26MonthlyScalarFieldEnum]
+export type AaMonthlyDataScalarFieldEnum = (typeof AaMonthlyDataScalarFieldEnum)[keyof typeof AaMonthlyDataScalarFieldEnum]
 
 
 export const AaRemarkScalarFieldEnum = {
@@ -4010,34 +3492,6 @@ export const MrbTofMonitoringScalarFieldEnum = {
 export type MrbTofMonitoringScalarFieldEnum = (typeof MrbTofMonitoringScalarFieldEnum)[keyof typeof MrbTofMonitoringScalarFieldEnum]
 
 
-export const CoaWTr2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarksMe1: 'janRemarksMe1',
-  janRemarksMe2: 'janRemarksMe2',
-  february: 'february',
-  febRemarksMe: 'febRemarksMe',
-  march: 'march',
-  marRemarksMe: 'marRemarksMe',
-  april: 'april',
-  aprRemarksMe: 'aprRemarksMe',
-  may: 'may',
-  mayRemarksMe: 'mayRemarksMe',
-  june: 'june',
-  junRemarksMe: 'junRemarksMe',
-  july: 'july',
-  julRemarksMe: 'julRemarksMe',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CoaWTr2026ScalarFieldEnum = (typeof CoaWTr2026ScalarFieldEnum)[keyof typeof CoaWTr2026ScalarFieldEnum]
-
-
 export const FiledForCocotScalarFieldEnum = {
   id: 'id',
   employeeName: 'employeeName',
@@ -4104,264 +3558,6 @@ export const SuccessStoriesScalarFieldEnum = {
 } as const
 
 export type SuccessStoriesScalarFieldEnum = (typeof SuccessStoriesScalarFieldEnum)[keyof typeof SuccessStoriesScalarFieldEnum]
-
-
-export const Dtr2026ScalarFieldEnum = {
-  id: 'id',
-  number: 'number',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  december2025: 'december2025',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  february: 'february',
-  febRemarks: 'febRemarks',
-  march: 'march',
-  marRemarks: 'marRemarks',
-  april: 'april',
-  aprRemarks: 'aprRemarks',
-  may: 'may',
-  mayRemarks1: 'mayRemarks1',
-  mayRemarks2: 'mayRemarks2',
-  june: 'june',
-  junRemarks1: 'junRemarks1',
-  junRemarks2: 'junRemarks2',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  julRemarks3: 'julRemarks3',
-  august: 'august',
-  augRemarks: 'augRemarks',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  sepRemarks3: 'sepRemarks3',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  octRemarks3: 'octRemarks3',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type Dtr2026ScalarFieldEnum = (typeof Dtr2026ScalarFieldEnum)[keyof typeof Dtr2026ScalarFieldEnum]
-
-
-export const Hazard2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  february: 'february',
-  febRemarks1: 'febRemarks1',
-  febRemarks2: 'febRemarks2',
-  march: 'march',
-  marRemarks1: 'marRemarks1',
-  marRemarks2: 'marRemarks2',
-  april: 'april',
-  aprRemarks1: 'aprRemarks1',
-  aprRemarks2: 'aprRemarks2',
-  may: 'may',
-  mayRemarks1: 'mayRemarks1',
-  mayRemarks2: 'mayRemarks2',
-  june: 'june',
-  junRemarks1: 'junRemarks1',
-  junRemarks2: 'junRemarks2',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type Hazard2026ScalarFieldEnum = (typeof Hazard2026ScalarFieldEnum)[keyof typeof Hazard2026ScalarFieldEnum]
-
-
-export const Tev2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  janRemarks3: 'janRemarks3',
-  february: 'february',
-  febRemarks1: 'febRemarks1',
-  febRemarks2: 'febRemarks2',
-  march: 'march',
-  marRemarks1: 'marRemarks1',
-  marRemarks2: 'marRemarks2',
-  april: 'april',
-  aprRemarks1: 'aprRemarks1',
-  aprRemarks2: 'aprRemarks2',
-  aprilDup: 'aprilDup',
-  aprDupRemarks1: 'aprDupRemarks1',
-  aprDupRemarks2: 'aprDupRemarks2',
-  may: 'may',
-  mayRemarks1: 'mayRemarks1',
-  mayRemarks2: 'mayRemarks2',
-  june: 'june',
-  junRemarks1: 'junRemarks1',
-  junRemarks2: 'junRemarks2',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type Tev2026ScalarFieldEnum = (typeof Tev2026ScalarFieldEnum)[keyof typeof Tev2026ScalarFieldEnum]
-
-
-export const LoadAllowance2026ScalarFieldEnum = {
-  id: 'id',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemark1: 'janRemark1',
-  janRemark2: 'janRemark2',
-  janRemark3: 'janRemark3',
-  janRemark4: 'janRemark4',
-  janRemark5: 'janRemark5',
-  february: 'february',
-  febRemark1: 'febRemark1',
-  febRemark2: 'febRemark2',
-  febRemark3: 'febRemark3',
-  febRemark4: 'febRemark4',
-  febRemark5: 'febRemark5',
-  march: 'march',
-  marRemark1: 'marRemark1',
-  marRemark2: 'marRemark2',
-  marRemark3: 'marRemark3',
-  marRemark4: 'marRemark4',
-  marRemark5: 'marRemark5',
-  april: 'april',
-  aprRemark1: 'aprRemark1',
-  aprRemark2: 'aprRemark2',
-  aprRemark3: 'aprRemark3',
-  aprRemark4: 'aprRemark4',
-  aprRemark5: 'aprRemark5',
-  may: 'may',
-  mayRemark1: 'mayRemark1',
-  mayRemark2: 'mayRemark2',
-  mayRemark3: 'mayRemark3',
-  mayRemark4: 'mayRemark4',
-  mayRemark5: 'mayRemark5',
-  june: 'june',
-  junRemark1: 'junRemark1',
-  junRemark2: 'junRemark2',
-  junRemark3: 'junRemark3',
-  junRemark4: 'junRemark4',
-  junRemark5: 'junRemark5',
-  july: 'july',
-  julRemarks1: 'julRemarks1',
-  julRemarks2: 'julRemarks2',
-  julRemarks3: 'julRemarks3',
-  julRemarks4: 'julRemarks4',
-  julRemarks5: 'julRemarks5',
-  august: 'august',
-  augRemarks1: 'augRemarks1',
-  augRemarks2: 'augRemarks2',
-  augRemarks3: 'augRemarks3',
-  augRemarks4: 'augRemarks4',
-  augRemarks5: 'augRemarks5',
-  september: 'september',
-  sepRemarks1: 'sepRemarks1',
-  sepRemarks2: 'sepRemarks2',
-  sepRemarks3: 'sepRemarks3',
-  sepRemarks4: 'sepRemarks4',
-  sepRemarks5: 'sepRemarks5',
-  october: 'october',
-  octRemarks1: 'octRemarks1',
-  octRemarks2: 'octRemarks2',
-  octRemarks3: 'octRemarks3',
-  octRemarks4: 'octRemarks4',
-  octRemarks5: 'octRemarks5',
-  november: 'november',
-  novRemarks1: 'novRemarks1',
-  novRemarks2: 'novRemarks2',
-  novRemarks3: 'novRemarks3',
-  novRemarks4: 'novRemarks4',
-  novRemarks5: 'novRemarks5',
-  december: 'december',
-  decRemarks1: 'decRemarks1',
-  decRemarks2: 'decRemarks2',
-  decRemarks3: 'decRemarks3',
-  decRemarks4: 'decRemarks4',
-  decRemarks5: 'decRemarks5',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type LoadAllowance2026ScalarFieldEnum = (typeof LoadAllowance2026ScalarFieldEnum)[keyof typeof LoadAllowance2026ScalarFieldEnum]
-
-
-export const MagnaCarta2026ScalarFieldEnum = {
-  id: 'id',
-  documentId: 'documentId',
-  employeeName: 'employeeName',
-  employmentStatus: 'employmentStatus',
-  areaOfAssignment: 'areaOfAssignment',
-  january: 'january',
-  janRemarks1: 'janRemarks1',
-  janRemarks2: 'janRemarks2',
-  february: 'february',
-  febRemarks1: 'febRemarks1',
-  febRemarks2: 'febRemarks2',
-  march: 'march',
-  marRemarks1: 'marRemarks1',
-  marRemarks2: 'marRemarks2',
-  april: 'april',
-  aprRemarks: 'aprRemarks',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type MagnaCarta2026ScalarFieldEnum = (typeof MagnaCarta2026ScalarFieldEnum)[keyof typeof MagnaCarta2026ScalarFieldEnum]
 
 
 export const LeaveFormsScalarFieldEnum = {
@@ -4487,6 +3683,13 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -4501,6 +3704,15 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
 
@@ -4597,6 +3809,20 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 /**
@@ -4708,7 +3934,7 @@ export type GlobalOmitConfig = {
   encodedDocument?: Prisma.EncodedDocumentOmit
   aaDocumentModule?: Prisma.AaDocumentModuleOmit
   aaDocument?: Prisma.AaDocumentOmit
-  aaLoad26Monthly?: Prisma.AaLoad26MonthlyOmit
+  aaMonthlyData?: Prisma.AaMonthlyDataOmit
   aaRemark?: Prisma.AaRemarkOmit
   edtmsTrackingRequest?: Prisma.EdtmsTrackingRequestOmit
   cvsTracking?: Prisma.CvsTrackingOmit
@@ -4720,14 +3946,8 @@ export type GlobalOmitConfig = {
   trainingFeedbacks?: Prisma.TrainingFeedbacksOmit
   travelRequest?: Prisma.TravelRequestOmit
   mrbTofMonitoring?: Prisma.MrbTofMonitoringOmit
-  coaWTr2026?: Prisma.CoaWTr2026Omit
   filedForCocot?: Prisma.FiledForCocotOmit
   successStories?: Prisma.SuccessStoriesOmit
-  dtr2026?: Prisma.Dtr2026Omit
-  hazard2026?: Prisma.Hazard2026Omit
-  tev2026?: Prisma.Tev2026Omit
-  loadAllowance2026?: Prisma.LoadAllowance2026Omit
-  magnaCarta2026?: Prisma.MagnaCarta2026Omit
   leaveForms?: Prisma.LeaveFormsOmit
   cvsDropdown?: Prisma.CvsDropdownOmit
   ipcrf2ndSem2025?: Prisma.Ipcrf2ndSem2025Omit

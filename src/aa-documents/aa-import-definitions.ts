@@ -254,7 +254,7 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
   {
     code: 'OO8',
     delegate: 'oo8IncomingFiles',
-    sheetNames: ['OO8 INCOMING FILES (AA ONLY)'],
+    sheetNames: ['OO8 INCOMING FILES (AA ONLY)', 'OO8 TRACKING'],
     fields: [
       'drnTrackingNo',
       'edtms',
@@ -383,8 +383,8 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'COAWTR26',
-    delegate: 'coaWTr2026',
+    code: 'COAWTR',
+    delegate: 'aaMonthlyData',
     sheetNames: ['COA W TR 2026'],
     fields: [
       'employeeName',
@@ -562,8 +562,8 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'DTR26',
-    delegate: 'dtr2026',
+    code: 'DTR',
+    delegate: 'aaMonthlyData',
     sheetNames: ['DTR 2026'],
     fields: [
       'number',
@@ -655,8 +655,8 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'HAZARD26',
-    delegate: 'hazard2026',
+    code: 'HAZARD',
+    delegate: 'aaMonthlyData',
     sheetNames: ['HAZARD 2026'],
     fields: [
       'employeeName',
@@ -751,8 +751,8 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'TEV26',
-    delegate: 'tev2026',
+    code: 'TEV',
+    delegate: 'aaMonthlyData',
     sheetNames: ['TEV 2026'],
     fields: [
       'employeeName',
@@ -857,8 +857,8 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'LOAD26',
-    delegate: 'loadAllowance2026',
+    code: 'LOAD',
+    delegate: 'aaMonthlyData',
     sheetNames: ['LOAD ALLOWANCE 2026'],
     fields: [
       'employeeName',
@@ -1025,8 +1025,8 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'MAGNA26',
-    delegate: 'magnaCarta2026',
+    code: 'MAGNA',
+    delegate: 'aaMonthlyData',
     sheetNames: ['MAGNA CARTA - 2026'],
     fields: [
       'employeeName',
@@ -1109,7 +1109,7 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'IPCRF25',
+    code: 'IPCRF',
     delegate: 'ipcrf2ndSem2025',
     sheetNames: ['IPCRF 2ND SEM 2025'],
     fields: [
@@ -1139,7 +1139,7 @@ export const AA_IMPORT_DEFINITIONS: AaImportDefinition[] = [
     },
   },
   {
-    code: 'SALN26',
+    code: 'SALN',
     delegate: 'saln2026',
     sheetNames: ['SALN 2026'],
     fields: [
@@ -1245,7 +1245,12 @@ export const AA_IMPORT_DEFINITIONS_BY_CODE = new Map(
 );
 
 const normalizeSheetName = (sheetName: string) =>
-  sheetName.trim().replace(/\s+/g, ' ').toUpperCase();
+  sheetName
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toUpperCase()
+    .replace(/\s*(19|20)\d{2}\b/g, '')
+    .trim();
 
 export const AA_IMPORT_DEFINITIONS_BY_SHEET_NAME = new Map(
   AA_IMPORT_DEFINITIONS.flatMap((definition) =>

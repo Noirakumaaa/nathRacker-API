@@ -110,10 +110,10 @@ export type AaDocumentModule = Prisma.AaDocumentModuleModel
  */
 export type AaDocument = Prisma.AaDocumentModel
 /**
- * Model AaLoad26Monthly
+ * Model AaMonthlyData
  * 
  */
-export type AaLoad26Monthly = Prisma.AaLoad26MonthlyModel
+export type AaMonthlyData = Prisma.AaMonthlyDataModel
 /**
  * Model AaRemark
  * 
@@ -170,11 +170,6 @@ export type TravelRequest = Prisma.TravelRequestModel
  */
 export type MrbTofMonitoring = Prisma.MrbTofMonitoringModel
 /**
- * Model CoaWTr2026
- * 
- */
-export type CoaWTr2026 = Prisma.CoaWTr2026Model
-/**
  * Model FiledForCocot
  * 
  */
@@ -184,31 +179,6 @@ export type FiledForCocot = Prisma.FiledForCocotModel
  * 
  */
 export type SuccessStories = Prisma.SuccessStoriesModel
-/**
- * Model Dtr2026
- * 
- */
-export type Dtr2026 = Prisma.Dtr2026Model
-/**
- * Model Hazard2026
- * 
- */
-export type Hazard2026 = Prisma.Hazard2026Model
-/**
- * Model Tev2026
- * 
- */
-export type Tev2026 = Prisma.Tev2026Model
-/**
- * Model LoadAllowance2026
- * 
- */
-export type LoadAllowance2026 = Prisma.LoadAllowance2026Model
-/**
- * Model MagnaCarta2026
- * 
- */
-export type MagnaCarta2026 = Prisma.MagnaCarta2026Model
 /**
  * Model LeaveForms
  * 

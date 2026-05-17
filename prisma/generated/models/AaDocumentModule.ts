@@ -31,6 +31,7 @@ export type AaDocumentModuleMinAggregateOutputType = {
   prefix: string | null
   description: string | null
   isActive: boolean | null
+  isMonthly: boolean | null
   colStaff: string | null
   colSubject: string | null
   colActivity: string | null
@@ -45,6 +46,7 @@ export type AaDocumentModuleMaxAggregateOutputType = {
   prefix: string | null
   description: string | null
   isActive: boolean | null
+  isMonthly: boolean | null
   colStaff: string | null
   colSubject: string | null
   colActivity: string | null
@@ -59,6 +61,7 @@ export type AaDocumentModuleCountAggregateOutputType = {
   prefix: number
   description: number
   isActive: number
+  isMonthly: number
   colStaff: number
   colSubject: number
   colActivity: number
@@ -75,6 +78,7 @@ export type AaDocumentModuleMinAggregateInputType = {
   prefix?: true
   description?: true
   isActive?: true
+  isMonthly?: true
   colStaff?: true
   colSubject?: true
   colActivity?: true
@@ -89,6 +93,7 @@ export type AaDocumentModuleMaxAggregateInputType = {
   prefix?: true
   description?: true
   isActive?: true
+  isMonthly?: true
   colStaff?: true
   colSubject?: true
   colActivity?: true
@@ -103,6 +108,7 @@ export type AaDocumentModuleCountAggregateInputType = {
   prefix?: true
   description?: true
   isActive?: true
+  isMonthly?: true
   colStaff?: true
   colSubject?: true
   colActivity?: true
@@ -190,6 +196,7 @@ export type AaDocumentModuleGroupByOutputType = {
   prefix: string
   description: string | null
   isActive: boolean
+  isMonthly: boolean
   colStaff: string | null
   colSubject: string | null
   colActivity: string | null
@@ -225,6 +232,7 @@ export type AaDocumentModuleWhereInput = {
   prefix?: Prisma.StringFilter<"AaDocumentModule"> | string
   description?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
   isActive?: Prisma.BoolFilter<"AaDocumentModule"> | boolean
+  isMonthly?: Prisma.BoolFilter<"AaDocumentModule"> | boolean
   colStaff?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
   colSubject?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
   colActivity?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
@@ -240,6 +248,7 @@ export type AaDocumentModuleOrderByWithRelationInput = {
   prefix?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
   colStaff?: Prisma.SortOrderInput | Prisma.SortOrder
   colSubject?: Prisma.SortOrderInput | Prisma.SortOrder
   colActivity?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -258,6 +267,7 @@ export type AaDocumentModuleWhereUniqueInput = Prisma.AtLeast<{
   prefix?: Prisma.StringFilter<"AaDocumentModule"> | string
   description?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
   isActive?: Prisma.BoolFilter<"AaDocumentModule"> | boolean
+  isMonthly?: Prisma.BoolFilter<"AaDocumentModule"> | boolean
   colStaff?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
   colSubject?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
   colActivity?: Prisma.StringNullableFilter<"AaDocumentModule"> | string | null
@@ -273,6 +283,7 @@ export type AaDocumentModuleOrderByWithAggregationInput = {
   prefix?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
   colStaff?: Prisma.SortOrderInput | Prisma.SortOrder
   colSubject?: Prisma.SortOrderInput | Prisma.SortOrder
   colActivity?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -293,6 +304,7 @@ export type AaDocumentModuleScalarWhereWithAggregatesInput = {
   prefix?: Prisma.StringWithAggregatesFilter<"AaDocumentModule"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"AaDocumentModule"> | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"AaDocumentModule"> | boolean
+  isMonthly?: Prisma.BoolWithAggregatesFilter<"AaDocumentModule"> | boolean
   colStaff?: Prisma.StringNullableWithAggregatesFilter<"AaDocumentModule"> | string | null
   colSubject?: Prisma.StringNullableWithAggregatesFilter<"AaDocumentModule"> | string | null
   colActivity?: Prisma.StringNullableWithAggregatesFilter<"AaDocumentModule"> | string | null
@@ -307,6 +319,7 @@ export type AaDocumentModuleCreateInput = {
   prefix: string
   description?: string | null
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: string | null
   colSubject?: string | null
   colActivity?: string | null
@@ -322,6 +335,7 @@ export type AaDocumentModuleUncheckedCreateInput = {
   prefix: string
   description?: string | null
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: string | null
   colSubject?: string | null
   colActivity?: string | null
@@ -337,6 +351,7 @@ export type AaDocumentModuleUpdateInput = {
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
   colStaff?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colSubject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colActivity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -352,6 +367,7 @@ export type AaDocumentModuleUncheckedUpdateInput = {
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
   colStaff?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colSubject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colActivity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -367,6 +383,7 @@ export type AaDocumentModuleCreateManyInput = {
   prefix: string
   description?: string | null
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: string | null
   colSubject?: string | null
   colActivity?: string | null
@@ -381,6 +398,7 @@ export type AaDocumentModuleUpdateManyMutationInput = {
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
   colStaff?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colSubject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colActivity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -395,6 +413,7 @@ export type AaDocumentModuleUncheckedUpdateManyInput = {
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
   colStaff?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colSubject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colActivity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -409,6 +428,7 @@ export type AaDocumentModuleCountOrderByAggregateInput = {
   prefix?: Prisma.SortOrder
   description?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
   colStaff?: Prisma.SortOrder
   colSubject?: Prisma.SortOrder
   colActivity?: Prisma.SortOrder
@@ -423,6 +443,7 @@ export type AaDocumentModuleMaxOrderByAggregateInput = {
   prefix?: Prisma.SortOrder
   description?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
   colStaff?: Prisma.SortOrder
   colSubject?: Prisma.SortOrder
   colActivity?: Prisma.SortOrder
@@ -437,6 +458,7 @@ export type AaDocumentModuleMinOrderByAggregateInput = {
   prefix?: Prisma.SortOrder
   description?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
   colStaff?: Prisma.SortOrder
   colSubject?: Prisma.SortOrder
   colActivity?: Prisma.SortOrder
@@ -470,6 +492,7 @@ export type AaDocumentModuleCreateWithoutDocumentsInput = {
   prefix: string
   description?: string | null
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: string | null
   colSubject?: string | null
   colActivity?: string | null
@@ -484,6 +507,7 @@ export type AaDocumentModuleUncheckedCreateWithoutDocumentsInput = {
   prefix: string
   description?: string | null
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: string | null
   colSubject?: string | null
   colActivity?: string | null
@@ -514,6 +538,7 @@ export type AaDocumentModuleUpdateWithoutDocumentsInput = {
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
   colStaff?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colSubject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colActivity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -528,6 +553,7 @@ export type AaDocumentModuleUncheckedUpdateWithoutDocumentsInput = {
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
   colStaff?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colSubject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   colActivity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -573,6 +599,7 @@ export type AaDocumentModuleSelect<ExtArgs extends runtime.Types.Extensions.Inte
   prefix?: boolean
   description?: boolean
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: boolean
   colSubject?: boolean
   colActivity?: boolean
@@ -589,6 +616,7 @@ export type AaDocumentModuleSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   prefix?: boolean
   description?: boolean
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: boolean
   colSubject?: boolean
   colActivity?: boolean
@@ -603,6 +631,7 @@ export type AaDocumentModuleSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   prefix?: boolean
   description?: boolean
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: boolean
   colSubject?: boolean
   colActivity?: boolean
@@ -617,6 +646,7 @@ export type AaDocumentModuleSelectScalar = {
   prefix?: boolean
   description?: boolean
   isActive?: boolean
+  isMonthly?: boolean
   colStaff?: boolean
   colSubject?: boolean
   colActivity?: boolean
@@ -624,7 +654,7 @@ export type AaDocumentModuleSelectScalar = {
   updatedAt?: boolean
 }
 
-export type AaDocumentModuleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "prefix" | "description" | "isActive" | "colStaff" | "colSubject" | "colActivity" | "createdAt" | "updatedAt", ExtArgs["result"]["aaDocumentModule"]>
+export type AaDocumentModuleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "prefix" | "description" | "isActive" | "isMonthly" | "colStaff" | "colSubject" | "colActivity" | "createdAt" | "updatedAt", ExtArgs["result"]["aaDocumentModule"]>
 export type AaDocumentModuleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documents?: boolean | Prisma.AaDocumentModule$documentsArgs<ExtArgs>
   _count?: boolean | Prisma.AaDocumentModuleCountOutputTypeDefaultArgs<ExtArgs>
@@ -644,6 +674,7 @@ export type $AaDocumentModulePayload<ExtArgs extends runtime.Types.Extensions.In
     prefix: string
     description: string | null
     isActive: boolean
+    isMonthly: boolean
     colStaff: string | null
     colSubject: string | null
     colActivity: string | null
@@ -1079,6 +1110,7 @@ export interface AaDocumentModuleFieldRefs {
   readonly prefix: Prisma.FieldRef<"AaDocumentModule", 'String'>
   readonly description: Prisma.FieldRef<"AaDocumentModule", 'String'>
   readonly isActive: Prisma.FieldRef<"AaDocumentModule", 'Boolean'>
+  readonly isMonthly: Prisma.FieldRef<"AaDocumentModule", 'Boolean'>
   readonly colStaff: Prisma.FieldRef<"AaDocumentModule", 'String'>
   readonly colSubject: Prisma.FieldRef<"AaDocumentModule", 'String'>
   readonly colActivity: Prisma.FieldRef<"AaDocumentModule", 'String'>

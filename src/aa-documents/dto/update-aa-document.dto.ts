@@ -30,4 +30,14 @@ export class UpdateAaDocumentDto {
   @IsDateString()
   @IsOptional()
   dateCreated?: string;
+
+  @ApiPropertyOptional({ example: '2026-03-10' })
+  @IsDateString()
+  @IsOptional()
+  dateSubmittedJnt?: string;
+
+  @ApiPropertyOptional({ example: 'Level 1' })
+  @IsString()
+  @IsOptional()
+  oo8Level?: string;
 }

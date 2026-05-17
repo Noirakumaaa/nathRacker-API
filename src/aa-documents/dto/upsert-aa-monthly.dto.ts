@@ -2,7 +2,7 @@ import { IsString, IsOptional } from 'class-validator';
 
 /**
  * Unified monthly-grid DTO covering all 5 monthly modules:
- * COAWTR26, HAZARD26, TEV26, MAGNA26, LOAD26
+ * COAWTR, HAZARD, TEV, MAGNA, LOAD
  * All fields are optional — only fields belonging to the target module are applied.
  */
 export class UpsertAaMonthlyDto {

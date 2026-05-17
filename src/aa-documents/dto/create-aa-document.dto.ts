@@ -41,4 +41,14 @@ export class CreateAaDocumentDto {
   })
   @IsDateString()
   dateCreated: string;
+
+  @ApiPropertyOptional({ example: '2026-03-10', description: 'Date the document was submitted to JNT (optional)' })
+  @IsDateString()
+  @IsOptional()
+  dateSubmittedJnt?: string;
+
+  @ApiPropertyOptional({ example: 'Level 1', description: 'OO8 level classification (GRS module only)' })
+  @IsString()
+  @IsOptional()
+  oo8Level?: string;
 }
