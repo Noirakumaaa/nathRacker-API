@@ -4,7 +4,6 @@ import { CreateAuthDto } from './dto/create-auth.dto.js';
 import { PrismaService } from './../prisma/prisma.service.js';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
-import { Upload } from 'lucide-react';
 
 declare global {
   namespace Express {
@@ -82,10 +81,7 @@ export class AuthService {
       role: checkUser.role,
       id: checkUser.id,
     };
-    const token = this.jwtService.sign(payload, {
-      secret: process.env.JWT_SECRET_KEY || 'i12*^(@G2315dsi2193T',
-      expiresIn: '1h',
-    });
+    const token = this.jwtService.sign(payload);
 
     res.cookie('accessToken', token, {
       httpOnly: true,

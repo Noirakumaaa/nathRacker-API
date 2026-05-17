@@ -1,4 +1,7 @@
-import 'dotenv/config';
+import { config } from 'dotenv';
+const nodeEnv = process.env.NODE_ENV ?? 'development';
+config({ path: `.env.${nodeEnv}` });
+config({ path: '.env' });
 import { PrismaClient } from './prisma/generated/client.js';
 import { PrismaPg } from '@prisma/adapter-pg';
 import * as argon2 from 'argon2';
@@ -22,7 +25,7 @@ const newUsers = [
     role: 'ADMIN' as const,
     assignedLGUID: 4,
     assignedOperationId: 8,
-    assignedBarangayId: 3,
+    assignedBarangayId: 1,
   },
 ];
 

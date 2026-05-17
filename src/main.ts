@@ -8,7 +8,7 @@ import compression from 'compression';
 import { AllExceptionsFilter } from './filters/all-exceptions.filter.js';
 
 function validateEnv() {
-  const required = ['JWT_SECRET_KEY', 'DATABASE_URL'];
+  const required = ['JWT_SECRET_KEY', 'DATABASE_URL', 'CORS_ORIGINS'];
   const missing = required.filter((key) => !process.env[key]);
   if (missing.length > 0) {
     throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
@@ -22,17 +22,13 @@ async function bootstrap() {
     logger: ['error', 'warn', 'log'],
   });
 
-  const allowedOrigins = [
-    'http://localhost:3000',
-    'http://192.168.68.43:3000',
-    'https://nath-racker.vercel.app', // hardcoded as backup
-    process.env.URL,
-  ].filter(Boolean) as string[];
+  const allowedOrigins = (process.env.CORS_ORIGINS ?? '')
+    .split(',')
+    .map((o) => o.trim())
+    .filter(Boolean);
 
-  // ✅ CORS must be before helmet
   app.enableCors({
     origin: (origin, callback) => {
-      console.log('CORS origin:', origin); // temp log, remove after fix
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -48,11 +44,10 @@ async function bootstrap() {
       'credentials',
       'X-CSRF-Token',
     ],
-    preflightContinue: false,       // ✅ added
-    optionsSuccessStatus: 204,      // ✅ added
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   });
 
-  // ✅ helmet after CORS, with crossOriginResourcePolicy disabled
   app.use(helmet({
     crossOriginResourcePolicy: false,
   }));
@@ -74,6 +69,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3001;
   await app.listen(port, '0.0.0.0');
+  logger.log(`Environment: ${process.env.NODE_ENV}`);
   logger.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
   logger.log(`Application is running on port ${port}`);
 }
